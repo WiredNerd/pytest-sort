@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest_sort"
+description = "Tools for sorting test cases"
+version = "0.0.0"
+license = { file = "LICENSE" }
+keywords = ["test", "pytest", "order"]
+authors = [
+    { name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" },
+]
+maintainers = [
+    { name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" },
+]
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Framework :: Pytest"
+]
+dependencies = [
+    "pytest>=7.4.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/WiredNerd/poodle"
+"Bug Tracker" = "https://github.com/WiredNerd/poodle/issues"
+
+#[tool.setuptools]
+#py-modules = ["pytest_sort"]
+
+[project.entry-points."pytest11"]
+sort = "pytest_sort.plugin"
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "src/pytest_sort"]
+testpaths = ["tests"]
+addopts = "-vv -p pytester --cov-reset --cov-report=html --cov-report=term"
+
+# https://pytest-cov.readthedocs.io/en/latest/config.html
+# https://coverage.readthedocs.io/en/latest/config.html
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+fail_under = 95
+skip_empty = true
+
+[tool.coverage.html]
+skip_covered = true
+
+[tool.black]
+line-length = 120
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+skip-string-normalization = true
+diff = true
+color = true
