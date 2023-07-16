@@ -7,10 +7,8 @@ name = "pytest_sort"
 description = "Tools for sorting test cases"
 version = "0.0.0"
 license = { file = "LICENSE" }
-keywords = ["test", "pytest", "order"]
-authors = [
-    { name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" },
-]
+keywords = ["test", "pytest", "order", "sort", "random", "randomly"]
+authors = [{ name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" }]
 maintainers = [
     { name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" },
 ]
@@ -20,15 +18,13 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
-    "Framework :: Pytest"
+    "Framework :: Pytest",
 ]
-dependencies = [
-    "pytest>=7.4.0",
-]
+dependencies = ["pytest>=7.4.0", "pony>=0.7.16"]
 
 [project.urls]
-"Homepage" = "https://github.com/WiredNerd/poodle"
-"Bug Tracker" = "https://github.com/WiredNerd/poodle/issues"
+"Homepage" = "https://github.com/WiredNerd/pytest_sort"
+"Bug Tracker" = "https://github.com/WiredNerd/pytest_sort/issues"
 
 #[tool.setuptools]
 #py-modules = ["pytest_sort"]
@@ -37,8 +33,8 @@ dependencies = [
 sort = "pytest_sort.plugin"
 
 [tool.pytest.ini_options]
-pythonpath = ["src", "src/pytest_sort"]
-testpaths = ["tests"]
+pythonpath = ["src"]
+testpaths = ["test"]
 addopts = "-vv -p pytester --cov-reset --cov-report=html --cov-report=term"
 
 # https://pytest-cov.readthedocs.io/en/latest/config.html
@@ -59,3 +55,66 @@ target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 skip-string-normalization = true
 diff = true
 color = true
+
+[tool.isort]
+profile = 'black'
+
+[tool.mypy]
+
+[tool.ruff]
+select = [
+    "E",
+    "F",
+    "W",
+    "C90",
+    "I",
+    "N",
+    "D",
+    "UP",
+    "YTT",
+    "ANN",
+    "S",
+    "BLE",
+    "FBT",
+    "B",
+    "A",
+    "COM",
+    "C4",
+    "EM",
+    "FA",
+    "ISC",
+    "ICN",
+    "G",
+    "PIE",
+    "T20",
+    "PYI",
+    "PT",
+    "RSE",
+    "RET",
+    "SLF",
+    "SIM",
+    "TID",
+    "TCH",
+    "INT",
+    "PTH",
+    "TD",
+    "FIX",
+    "ERA",
+    "PL",
+    "PERF",
+    "RUF",
+]
+line-length = 120
+exclude = [
+    ".eggs",
+    ".git",
+    ".mypy_cache",
+    ".pants.d",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "venv",
+]
