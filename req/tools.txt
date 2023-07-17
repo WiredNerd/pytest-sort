@@ -3,3 +3,7 @@ mypy
 ruff
 
 pony-stubs
+
+build
+setuptools>=61.0
+twine

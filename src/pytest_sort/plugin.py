@@ -62,11 +62,11 @@ def pytest_addoption(parser: Parser):
         "--sort-mode",
         action="store",
         dest="sort_mode",
-        default="md5",
+        default="none",
         choices=create_item_key.keys(),
         help='''
-        none   = pytest_sort will not modify order.
-        md5    = (default) Sort by md5 of test name.
+        none   = (default) pytest_sort will not modify order.
+        md5    = Sort by md5 of test name.
         random = randomly sort tests.
         fastest = use recorded times to run fastest tests first.
         '''

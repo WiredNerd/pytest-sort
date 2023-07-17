@@ -1,17 +1,15 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pytest_sort"
+name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "0.0.0"
+version = "0.0.1"
 license = { file = "LICENSE" }
 keywords = ["test", "pytest", "order", "sort", "random", "randomly"]
 authors = [{ name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" }]
-maintainers = [
-    { name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" },
-]
+maintainers = [{ name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" }]
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -20,11 +18,11 @@ classifiers = [
     "Operating System :: OS Independent",
     "Framework :: Pytest",
 ]
-dependencies = ["pytest>=7.4.0", "pony>=0.7.16"]
+dependencies = ["pytest>=7.0.0", "pony>=0.7.16"]
 
 [project.urls]
-"Homepage" = "https://github.com/WiredNerd/pytest_sort"
-"Bug Tracker" = "https://github.com/WiredNerd/pytest_sort/issues"
+"Homepage" = "https://github.com/WiredNerd/pytest-sort"
+"Bug Tracker" = "https://github.com/WiredNerd/pytest-sort/issues"
 
 #[tool.setuptools]
 #py-modules = ["pytest_sort"]
