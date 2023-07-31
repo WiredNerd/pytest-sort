@@ -2,13 +2,34 @@ from pytest import Config
 
 
 class SortConfig:
-    def __init__(self, config: Config):
-        self._config = config
+    mode = 'none'
+    bucket = 'module'
+    record = False
+    reset = False
 
-    @property
-    def mode(self):
-        return self._config.getoption('sort_mode', 'none')
+    @staticmethod
+    def from_pytest(config: Config):
+        SortConfig.mode = config.getoption('sort_mode', 'none')
+        SortConfig.bucket = config.getoption('sort_bucket', 'module')
+        SortConfig.record = config.getoption('sort_record', False)
+        if SortConfig.mode == 'fastest':
+            SortConfig.record = True
 
-    @property
-    def bucket(self):
-        return self._config.getoption('sort_bucket', 'module')
+        SortConfig.reset = config.getoption("sort_reset_times", False)
+
+    @staticmethod
+    def dict():
+        config = {
+            "sort-mode": SortConfig.mode,
+        }
+
+        if not SortConfig.mode == 'none':
+            config["sort-bucket"] = SortConfig.bucket
+
+        if SortConfig.reset:
+            config["sort-reset-times"] = True
+
+        if SortConfig.record:
+            config["sort-record-times"] = True
+
+        return config

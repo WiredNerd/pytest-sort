@@ -7,10 +7,11 @@ from functools import partial
 from typing import List
 
 import pytest
+from _pytest.terminal import TerminalReporter
 from pytest import CallInfo, Config, Item, Parser, Session
 
 from pytest_sort.config import SortConfig
-from pytest_sort.database import get_total, update_test_case
+from pytest_sort.database import clear_db, get_total, update_test_case
 
 md5 = hashlib.md5
 if sys.version_info >= (3, 9):
@@ -69,46 +70,78 @@ def pytest_addoption(parser: Parser):
         md5    = Sort by md5 of test name.
         random = randomly sort tests.
         fastest = use recorded times to run fastest tests first.
-        '''
+        ''',
+    )
+    group.addoption(
+        "--sort-record-times",
+        action="store_true",
+        dest="sort_record",
+        help="Records runtimes.  Activated by default when sort-mode=fastest",
+    )
+    group.addoption(
+        "--sort-reset-times",
+        action="store_true",
+        dest="sort_reset_times",
+        help="Clear the recorded runtimes before sorting.",
     )
 
 
 def pytest_report_header(config: Config):
-    sort_config = SortConfig(config)
-    if sort_config.mode == 'none':
-        return f'Sort disabled --sort-mode={sort_config.mode}\n'
-    return (
-        f'Sort Using --sort-bucket={sort_config.bucket}\n'
-        f'Sort Using --sort-mode={sort_config.mode}\n'
-    )
+    SortConfig.from_pytest(config)
+
+    header = "pytest-sort:"
+
+    for key, value in SortConfig.dict().items():
+        header += f"\n  {key}: {value}"
+
+    return header
 
 
 def pytest_collection_modifyitems(session: Session, config: Config, items: List[Item]):
-    sort_config = SortConfig(config)
-    if not sort_config.mode == 'none':
-        _sort(sort_config, items)
+    SortConfig.from_pytest(config)
+
+    if SortConfig.reset:
+        clear_db()
+
+    if not SortConfig.mode == 'none':
+        _sort(items)
 
 
-def _sort(sort_config: SortConfig, items: List[Item]):
-    buckets:OrderedDict = OrderedDict()
+def _sort(items: List[Item]):
+    buckets: OrderedDict = OrderedDict()
 
     for item in items:
-        bucket_key = create_bucket_key[sort_config.bucket](item)
+        bucket_key = create_bucket_key[SortConfig.bucket](item)
         if bucket_key not in buckets:
             buckets[bucket_key] = []
         buckets[bucket_key].append(item)
 
     for bucket_key in buckets.keys():
-        buckets[bucket_key].sort(key=create_item_key[sort_config.mode])
+        buckets[bucket_key].sort(key=create_item_key[SortConfig.mode])
 
     items[:] = [item for bucket_key in buckets.keys() for item in buckets[bucket_key]]
 
 
+recorded_times = {}
+
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item: Item, call: CallInfo):
-    sort_config = SortConfig(item.config)
-    if sort_config.mode == 'fastest' and call.when in ('setup', 'call', 'teardown'):
+    global recorded_times
+
+    if SortConfig.record and call.when in ('setup', 'call', 'teardown'):
         duration = int(call.duration * 1_000_000_000)  # convert to ns
-        update_test_case(item.nodeid, **{call.when: duration})
+
+        if item.nodeid not in recorded_times:
+            recorded_times[item.nodeid] = {}
+
+        recorded_times[item.nodeid][call.when] = duration
 
     yield
+
+
+def pytest_terminal_summary(terminalreporter: TerminalReporter, exitstatus: int, config: Config):
+    global recorded_times
+
+    for nodeid in recorded_times:
+        update_test_case(nodeid, **recorded_times[nodeid])

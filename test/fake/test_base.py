@@ -1,8 +1,11 @@
 import time
 
+from pytest_sort import plugin
+
 
 def test_dummy3():
     time.sleep(0.30)
+    assert plugin.create_bucket_key is not None
     pass
 
 

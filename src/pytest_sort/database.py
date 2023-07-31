@@ -7,7 +7,6 @@ database_file = os.path.join(os.getcwd(), ".pytest_sort")
 db = Database()
 
 
-
 class TestTab(db.Entity):
     nodeid = PrimaryKey(str)
     setup = Required(int, size=64)
@@ -33,20 +32,28 @@ def _init_db(f):
 
 
 @_init_db
+def clear_db():
+    """Manually drop and recreate tables"""
+    db.drop_all_tables(with_all_data=True)
+    db.schema = None  # Pony will only rebuild build tables if this is None
+    db.generate_mapping(create_tables=True)
+
+
+@_init_db
 @db_session
 def update_test_case(nodeid: str, setup=0, call=0, teardown=0):
     test: TestTab = TestTab.get(nodeid=nodeid)
     if not test:
         TestTab(nodeid=nodeid, setup=setup, call=call, teardown=teardown, total=setup + call + teardown)
     else:
-        if (test.setup < setup):
+        if test.setup < setup:
             test.setup = setup
-        if (test.call < call):
+        if test.call < call:
             test.call = call
-        if (test.teardown < teardown):
+        if test.teardown < teardown:
             test.teardown = teardown
         total = test.setup + test.call + test.teardown
-        if (test.total < total):
+        if test.total < total:
             test.total = total
 
 
