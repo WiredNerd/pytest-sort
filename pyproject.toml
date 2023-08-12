@@ -5,11 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "0.0.1"
+version = "0.0.3"
 license = { file = "LICENSE" }
 keywords = ["test", "pytest", "order", "sort", "random", "randomly"]
 authors = [{ name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" }]
-maintainers = [{ name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" }]
+maintainers = [
+    { name = "Peter Busch", email = "pbuschmail-pytestsort@yahoo.com" },
+]
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -24,9 +26,6 @@ dependencies = ["pytest>=7.0.0", "pony>=0.7.16"]
 "Homepage" = "https://github.com/WiredNerd/pytest-sort"
 "Bug Tracker" = "https://github.com/WiredNerd/pytest-sort/issues"
 
-#[tool.setuptools]
-#py-modules = ["pytest_sort"]
-
 [project.entry-points."pytest11"]
 sort = "pytest_sort.plugin"
 
@@ -34,6 +33,9 @@ sort = "pytest_sort.plugin"
 pythonpath = ["src"]
 testpaths = ["test"]
 addopts = "-vv -p pytester --cov-reset --cov-report=html --cov-report=term"
+sort_mode = "random"
+sort_bucket = "global"
+sort_record_times = true
 
 # https://pytest-cov.readthedocs.io/en/latest/config.html
 # https://coverage.readthedocs.io/en/latest/config.html
@@ -57,49 +59,17 @@ color = true
 profile = 'black'
 
 [tool.mypy]
+files = "src"
 
 [tool.ruff]
-select = [
-    "E",
-    "F",
-    "W",
-    "C90",
-    "I",
-    "N",
-    "D",
-    "UP",
-    "YTT",
-    "ANN",
-    "S",
-    "BLE",
-    "FBT",
-    "B",
-    "A",
-    "COM",
-    "C4",
-    "EM",
-    "FA",
-    "ISC",
-    "ICN",
-    "G",
-    "PIE",
-    "T20",
-    "PYI",
-    "PT",
-    "RSE",
-    "RET",
-    "SLF",
-    "SIM",
-    "TID",
-    "TCH",
-    "INT",
-    "PTH",
-    "TD",
-    "FIX",
-    "ERA",
-    "PL",
-    "PERF",
-    "RUF",
+target-version = "py38"
+select = ["ALL"]
+ignore = [
+    "D203",   # 1 blank line required before class docstring
+    "D213",   # multi-line-summary-second-line
+    "EM101",  # Exception must not use a string literal, assign to variable first
+    "S311",   # Standard pseudo-random generators are not suitable for cryptographic purposes
+    "TRY003", # Avoid specifying long messages outside the exception class
 ]
 line-length = 120
 exclude = [
