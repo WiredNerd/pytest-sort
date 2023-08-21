@@ -2,62 +2,16 @@
 
 from __future__ import annotations
 
-import hashlib
-import os
-import random
-import sys
-from collections import OrderedDict
-from functools import partial
-from typing import TYPE_CHECKING, Callable, Generator
+from typing import TYPE_CHECKING, Generator
 
 import pytest
 
 from pytest_sort.config import SortConfig
-from pytest_sort.database import clear_db, get_stats, get_total, update_test_case
-
-md5: Callable = hashlib.md5
-if sys.version_info >= (3, 9):
-    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
-
+from pytest_sort.core import sort_items
+from pytest_sort.database import clear_db, get_stats, update_test_case
 
 if TYPE_CHECKING:
     from _pytest.terminal import TerminalReporter
-
-
-def create_bucket_key_for_package(item: pytest.Item) -> str:
-    """Extract package name from pytest item."""
-    if hasattr(item, "module"):
-        return item.module.__package__
-    return os.path.split(item.location[0])[0]
-
-
-def create_bucket_key_for_class(item: pytest.Item) -> tuple | str:
-    """Extract Class name for pytest item.
-
-    If no class, use module, if no module, use location.
-    """
-    if hasattr(item, "module"):
-        if hasattr(item, "cls") and item.cls:
-            return item.module.__name__, item.cls.__name__
-        return item.module.__name__
-    return item.location[0]
-
-
-create_bucket_key = {
-    "global": lambda item: "",  # noqa: ARG005
-    "package": create_bucket_key_for_package,
-    "module": lambda item: item.location[0],
-    "class": create_bucket_key_for_class,
-    "parent": lambda item: item.parent,
-    "grandparent": lambda item: item.parent.parent,
-}
-
-create_item_key = {
-    "md5": lambda item: md5(item.nodeid.encode()).digest(),
-    "none": lambda item: (_ for _ in ()).throw(ValueError("Should not generate key for mode=none")),  # noqa: ARG005
-    "random": lambda item: random.random(),  # noqa: ARG005
-    "fastest": lambda item: get_total(item.nodeid),
-}
 
 
 def pytest_addoption(parser: pytest.Parser) -> None:
@@ -124,25 +78,7 @@ def pytest_collection_modifyitems(
         clear_db()
 
     if SortConfig.mode != "none":
-        _sort(items)
-
-
-def _sort(items: list[pytest.Item]) -> None:
-    """Reorder the items."""
-    buckets: OrderedDict = OrderedDict()
-
-    random.seed(SortConfig.seed)
-
-    for item in items:
-        bucket_key = create_bucket_key[SortConfig.bucket](item)
-        if bucket_key not in buckets:
-            buckets[bucket_key] = []
-        buckets[bucket_key].append(item)
-
-    for bucket_key in buckets:
-        buckets[bucket_key].sort(key=create_item_key[SortConfig.mode])
-
-    items[:] = [item for bucket_key in buckets for item in buckets[bucket_key]]
+        sort_items(items)
 
 
 recorded_times: dict = {}
@@ -200,3 +136,6 @@ def pytest_terminal_summary(
                 f"{nodeid.ljust(node_id_width)} {setup_ns.rjust(stat_width)} "
                 f"{call_ns.rjust(stat_width)} {teardown_ns.rjust(stat_width)} {total_ns.rjust(stat_width)}",
             )
+
+    for key in SortConfig.sort_keys:
+        print(key)

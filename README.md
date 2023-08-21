@@ -106,6 +106,11 @@ For example, if the sort bucket is "module", then all tests from the same module
 | parent | Group together test cases by their immediate parent. |
 | grandparent | Group together test cases by their parent's parent. |
 
+> Sort buckets higher than class or parent can cause fixtures to be teardown and setup more than expected.
+<br>For example: If sort bucket is "global" and fixture scope is "module", Pytest may setup the fixture every time the testing enters the module, and teardown each time testing leaves the module.
+<br>The option --setup-show can reveal when fixtures are created and destroyed.
+
+
 ## Sort Seed
 
 Only used in "random" sort mode.  This field allows you to manually set the seed used by random package when sorting tests.

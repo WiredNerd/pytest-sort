@@ -20,6 +20,13 @@ class SortConfig:
 
     seed = random.randint(0, 1_000_000)
 
+    default_priority = 99
+
+    sort_keys = []
+    bucket_priorities = {
+        "": default_priority
+    }
+
     @staticmethod
     def from_pytest(config: pytest.Config) -> None:
         """Extract pytest_sort settings from pytest's Config options and ini data."""

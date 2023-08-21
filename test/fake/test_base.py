@@ -1,12 +1,14 @@
 import time
 
-from pytest_sort import plugin
+from pytest_sort import core
+import pytest
+
+pytest.fixture()
 
 
 def test_dummy3():
     time.sleep(0.30)
-    assert plugin.create_bucket_key is not None
-    pass
+    assert core.create_bucket_key is None
 
 
 def test_dummy1():
@@ -25,9 +27,7 @@ def test_dummy1():
     l.sort()
     print(l)
     time.sleep(0.05)
-    pass
 
 
 def test_dummy2():
     time.sleep(0.25)
-    pass
