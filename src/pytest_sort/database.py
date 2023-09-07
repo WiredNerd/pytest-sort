@@ -79,9 +79,9 @@ def get_total(nodeid: str) -> int:
 
 @_init_db
 @db_session
-def get_bucket_total(bucket_key: str) -> int:
-    """Retrieve the total for all test nodeid that start with bucket_key. (0 if not found)."""
-    tests: TestTab = TestTab.select(lambda t: bucket_key in t.nodeid)
+def get_bucket_total(bucket_id: str) -> int:
+    """Retrieve the total for all test nodeid that start with bucket_id. (0 if not found)."""
+    tests: TestTab = TestTab.select(lambda t: bucket_id in t.nodeid)
 
     return sum([test.total for test in tests])
 

@@ -3,112 +3,193 @@
 from __future__ import annotations
 
 import hashlib
-import os
 import random
 import sys
 from functools import partial
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 import pytest
 from _pytest import nodes as pytest_nodes
 
 from pytest_sort.config import SortConfig
-from pytest_sort.database import get_bucket_total, get_total
+from pytest_sort.database import get_bucket_total, get_stats, get_total
 
 md5: Callable = hashlib.md5
 if sys.version_info >= (3, 9):
     md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
 
-def create_bucket_key_from_node(node: pytest_nodes.Node) -> str:
+if TYPE_CHECKING:
+    from _pytest.terminal import TerminalReporter
+
+
+def create_bucket_id_from_node(node: pytest_nodes.Node | None) -> str:
     """Extract portion of nodeid needed for bucket key."""
     if isinstance(node, pytest.Package):
         return node.nodeid.replace("__init__.py", "")
-    return node.nodeid
+
+    if isinstance(node, pytest_nodes.Node):
+        return node.nodeid
+
+    return ""
 
 
-def create_bucket_key_for_package(node: pytest_nodes.Node) -> str:
+def create_bucket_id_for_package(node: pytest_nodes.Node) -> str:
     """Extract package name from pytest item."""
     if isinstance(node, (pytest.Session, pytest.Package)):
-        return create_bucket_key_from_node(node)
+        return create_bucket_id_from_node(node)
 
-    if isinstance(node, (pytest_nodes.Node)):
-        return create_bucket_key_for_package(node.parent)
+    if isinstance(node, (pytest_nodes.Node)) and node.parent:
+        return create_bucket_id_for_package(node.parent)
 
     return ""
 
 
-def create_bucket_key_for_module(node: pytest_nodes.Node) -> str:
+def create_bucket_id_for_module(node: pytest_nodes.Node) -> str:
     """Extract module name from pytest item."""
     if isinstance(node, (pytest.Session, pytest.Package, pytest.Module)):
-        return create_bucket_key_from_node(node)
+        return create_bucket_id_from_node(node)
 
-    if isinstance(node, (pytest_nodes.Node)):
-        return create_bucket_key_for_module(node.parent)
+    if isinstance(node, (pytest_nodes.Node)) and node.parent:
+        return create_bucket_id_for_module(node.parent)
 
     return ""
 
 
-def create_bucket_key_for_class(node: pytest_nodes.Node) -> str:
+def create_bucket_id_for_class(node: pytest_nodes.Node) -> str:
     """Extract class or module name from pytest item."""
     if isinstance(node, (pytest.Session, pytest.Package, pytest.Module, pytest.Class)):
-        return create_bucket_key_from_node(node)
+        return create_bucket_id_from_node(node)
 
-    if isinstance(node, (pytest_nodes.Node)):
-        return create_bucket_key_for_class(node.parent)
+    if isinstance(node, (pytest_nodes.Node)) and node.parent:
+        return create_bucket_id_for_class(node.parent)
 
     return ""
 
 
-create_bucket_key = {
-    "global": lambda item: "",  # noqa: ARG005
-    "package": create_bucket_key_for_package,
-    "module": create_bucket_key_for_module,
-    "class": create_bucket_key_for_class,
-    "parent": lambda item: create_bucket_key_from_node(item.parent),
-    "grandparent": lambda item: create_bucket_key_from_node(item.parent.parent),
+create_bucket_id = {
+    "session": lambda item: "",
+    "package": create_bucket_id_for_package,
+    "module": create_bucket_id_for_module,
+    "class": create_bucket_id_for_class,
+    "parent": lambda item: create_bucket_id_from_node(item.parent),
+    "grandparent": lambda item: create_bucket_id_from_node(item.parent.parent),
 }
 
 create_item_key = {
-    "md5": lambda item: md5(item.nodeid.encode()).digest(),
-    "none": lambda item: (_ for _ in ()).throw(ValueError("Should not generate key for mode=none")),  # noqa: ARG005
-    "random": lambda item: random.random(),  # noqa: ARG005
-    "fastest": lambda item: get_total(item.nodeid),
+    "ordered": lambda item, idx, count: idx + 1,
+    "reverse": lambda item, idx, count: count - idx,
+    "md5": lambda item, idx, count: md5(item.nodeid.encode()).digest(),
+    "random": lambda item, idx, count: random.random(),
+    "fastest": lambda item, idx, count: get_total(item.nodeid),
+}
+
+create_bucket_key = {
+    "ordered": lambda bucket_id, idx, count: idx + 1,
+    "reverse": lambda bucket_id, idx, count: count - idx,
+    "md5": lambda bucket_id, idx, count: md5(bucket_id.encode()).digest(),
+    "random": lambda bucket_id, idx, count: random.random(),
+    "fastest": lambda bucket_id, idx, count: get_bucket_total(bucket_id),
 }
 
 
-def get_bucket_priority(item: pytest.Item, bucket_key: str) -> int:
-    """Get bucket priority for item."""
-    if bucket_key in SortConfig.bucket_priorities:
-        return SortConfig.bucket_priorities[bucket_key]
+def validate_order_marker(order_marker: pytest.Mark, node_id: str) -> Any:  # noqa: ANN401
+    """Validate values from order marker.
 
-    if SortConfig.mode == 'fastest':
-        SortConfig.bucket_priorities[bucket_key] = get_bucket_total(bucket_key)
-        return SortConfig.bucket_priorities[bucket_key]
-
-    return SortConfig.default_priority
-
-
-def get_item_priority(item: pytest.Item) -> int:
-    """Get order priority for item."""
-    return SortConfig.default_priority
-
-
-def create_sort_key(item: pytest.Item) -> tuple:
-    """Create Sort Key for Item.
-
-    Returns tuple as (bucket_priority, bucket_key, item_priority, item_key, item.nodeid)
+    Returns sort_key
     """
-    bucket_key = create_bucket_key[SortConfig.bucket](item)
-    bucket_priority = get_bucket_priority(item, bucket_key)
 
-    item_key = create_item_key[SortConfig.mode](item)
-    item_priority = get_item_priority(item)
+    def order(item_sort_key: Any) -> Any:  # noqa: ANN401
+        return item_sort_key
 
-    sort_key = (bucket_priority, bucket_key, item_priority, item_key, item.nodeid)
-    SortConfig.sort_keys.append(sort_key)
+    try:
+        return order(*order_marker.args, **order_marker.kwargs)
+    except TypeError as e:
+        msg = f"Incorrect arguments on marker 'order'. Target:{node_id}"
+        raise TypeError(msg) from e
 
-    return sort_key
+
+def validate_sort_marker(sort_marker: pytest.Mark, node_id: str) -> tuple:
+    """Validate values from sort marker.
+
+    Returns (mode, bucket)
+    """
+
+    def marker_sort(mode: str, bucket: str = "self") -> tuple:
+        return (mode, bucket)
+
+    try:
+        (mode, bucket_temp) = marker_sort(*sort_marker.args, **sort_marker.kwargs)
+    except TypeError as e:
+        msg = f"Incorrect arguments on marker 'sort'. Target:{node_id}"
+        raise TypeError(msg) from e
+
+    if mode not in create_item_key:
+        msg = f"Invalid Value for 'mode' on 'sort' marker. Value:{mode} Target:{node_id}"
+        raise ValueError(msg)
+
+    return (mode, bucket_temp)
+
+
+def get_marker_settings(node: pytest_nodes.Node) -> tuple:
+    """Retrieve and validate options on 'sort' and 'order' markers.
+
+    Recursively calls with node.parent to get values from any level.
+
+    Returns: (mode, bucket, bucket_id, sort_key)
+    """
+    mode = None
+    bucket = None
+    bucket_id = None
+    sort_key = None
+
+    node_id = node.nodeid
+
+    if node.parent:
+        (mode, bucket, bucket_id, sort_key) = get_marker_settings(node.parent)
+
+    for order in node.iter_markers("order"):
+        sort_key = validate_order_marker(order, node_id)
+
+    for sort in node.iter_markers("sort"):
+        (mode, bucket_temp) = validate_sort_marker(sort, node_id)
+
+        if bucket_temp == "self":
+            bucket_id = create_bucket_id_from_node(node)
+        elif bucket_temp in create_bucket_id:
+            bucket = bucket_temp
+            bucket_id = None
+        else:
+            msg = f"Invalid Value for 'bucket' on 'sort' marker: {bucket_temp}. Target: {node_id}"
+            raise ValueError(msg)
+
+    return (mode, bucket, bucket_id, sort_key)
+
+
+def create_sort_keys(item: pytest.Item, idx: int, count: int) -> None:
+    """Create item and bucket sort keys.
+
+    Store in SortConfig.item_sort_keys and SortConfig.bucket_sort_keys
+    """
+    (mode, bucket, bucket_id, sort_key) = get_marker_settings(item)
+
+    SortConfig.item_sort_keys[item.nodeid] = sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)
+
+    bucket_id = bucket_id or create_bucket_id[bucket or SortConfig.bucket](item)
+    SortConfig.item_bucket_id[item.nodeid] = bucket_id
+
+    bucket_key = create_bucket_key[SortConfig.bucket_mode](bucket_id, idx, count)
+    if bucket_id in SortConfig.bucket_sort_keys:
+        SortConfig.bucket_sort_keys[bucket_id] = min(SortConfig.bucket_sort_keys[bucket_id], bucket_key)
+    else:
+        SortConfig.bucket_sort_keys[bucket_id] = bucket_key
+
+
+def get_item_sort_key(item: pytest.Item) -> tuple:
+    """Build Combined Sort Key for this Item using the Bucket Keys and Item Keys stored in SortConfig."""
+    node_id = item.nodeid
+    bucket_id = SortConfig.item_bucket_id[node_id]
+    return (SortConfig.bucket_sort_keys[bucket_id], SortConfig.item_sort_keys[node_id])
 
 
 def sort_items(items: list[pytest.Item]) -> None:
@@ -116,4 +197,48 @@ def sort_items(items: list[pytest.Item]) -> None:
     if SortConfig.mode == "random":
         random.seed(SortConfig.seed)
 
-    items.sort(key=create_sort_key)
+    for idx, item in enumerate(items):
+        create_sort_keys(item, idx, len(items))
+
+    items.sort(key=get_item_sort_key)
+
+    if SortConfig.debug:
+        print_test_case_order(items)
+
+
+def print_recorded_times_report(terminalreporter: TerminalReporter) -> None:
+    """Print a summary report of maximum recorded times."""
+    nodeids = list({rpt.nodeid for rpt in terminalreporter.stats[""]})
+    nodeids.sort()
+
+    node_id_width = max([len(nodeid) for nodeid in nodeids]) + 3
+    stat_width = 16
+
+    print(
+        f"\n*** {'pytest-sort maximum recorded times'.ljust(node_id_width)}"
+        f"{'Nanoseconds'.center(stat_width*4 - 4)} ***",
+    )
+    print(
+        f"{'Test Case'.ljust(node_id_width)} {'setup'.rjust(stat_width)} "
+        f"{'call'.rjust(stat_width)} {'teardown'.rjust(stat_width)} {'total'.rjust(stat_width)}",
+    )
+    for nodeid in nodeids:
+        stats = get_stats(nodeid)
+        setup_ns = f"{stats['setup']:,}"
+        call_ns = f"{stats['call']:,}"
+        teardown_ns = f"{stats['teardown']:,}"
+        total_ns = f"{stats['total']:,}"
+        print(
+            f"{nodeid.ljust(node_id_width)} {setup_ns.rjust(stat_width)} "
+            f"{call_ns.rjust(stat_width)} {teardown_ns.rjust(stat_width)} {total_ns.rjust(stat_width)}",
+        )
+
+
+def print_test_case_order(items: list[pytest.Item]) -> None:
+    """Print test items sort data: bucket_key, bucket_id, item_key, item_id."""
+    print("\nTest Case Order:")
+    print("(bucket_key, bucket_id, item_key, item_id)")
+    for item in items:
+        node_id = item.nodeid
+        bucket_id = SortConfig.item_bucket_id[node_id]
+        print((SortConfig.bucket_sort_keys[bucket_id], bucket_id, SortConfig.item_sort_keys[node_id], node_id))

@@ -34,7 +34,7 @@ pythonpath = ["src"]
 testpaths = ["test"]
 addopts = "-vv -p pytester --cov-reset --cov-report=html --cov-report=term"
 sort_mode = "random"
-sort_bucket = "global"
+sort_bucket = "parent"
 sort_record_times = true
 
 # https://pytest-cov.readthedocs.io/en/latest/config.html
@@ -84,4 +84,9 @@ exclude = [
     "build",
     "dist",
     "venv",
+]
+[tool.ruff.per-file-ignores]
+"src/pytest_sort/core.py" = [
+    "ARG005", # Unused lambda argument
+    "T201",   # print found
 ]

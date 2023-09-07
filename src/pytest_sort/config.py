@@ -3,36 +3,81 @@
 from __future__ import annotations
 
 import random
-from typing import TYPE_CHECKING, Any
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, ClassVar
+
+from pytest_sort import database
 
 if TYPE_CHECKING:
     import pytest
+
+modes = ["ordered", "reverse", "md5", "random", "fastest"]
+bucket_types = ["session", "package", "module", "class", "parent", "grandparent"]
 
 
 class SortConfig:
     """Statoc class for storing configuration of pytest_sort."""
 
-    mode: str = "none"
-    bucket: str = "module"
-    record: bool | None = False
+    mode: str = "ordered"
+    bucket: str = "parent"
+    bucket_mode: str = "sort_mode"
+    record: bool | None = None
     reset: bool = False
     report: bool = False
 
     seed = random.randint(0, 1_000_000)
 
-    default_priority = 99
+    debug = False
 
-    sort_keys = []
-    bucket_priorities = {
-        "": default_priority
-    }
+    recorded_times: ClassVar[dict] = {}
+    item_sort_keys: ClassVar[dict] = {}
+    item_bucket_id: ClassVar[dict] = {}
+    bucket_sort_keys: ClassVar[dict] = {}
 
     @staticmethod
     def from_pytest(config: pytest.Config) -> None:
         """Extract pytest_sort settings from pytest's Config options and ini data."""
-        SortConfig.mode = config.getoption("sort_mode") or config.getini("sort_mode") or "none"
-        SortConfig.bucket = config.getoption("sort_bucket") or config.getini("sort_bucket") or "module"
+        SortConfig._mode_from_pytest(config)
+        SortConfig._bucket_from_pytest(config)
+        SortConfig._bucket_mode_from_pytest(config)
+        SortConfig._record_from_pytest(config)
 
+        SortConfig.reset = config.getoption("sort_reset_times", default=False)
+        SortConfig.report = config.getoption("sort_report_times", default=False)
+
+        SortConfig._seed_from_pytest(config)
+        SortConfig._database_file_from_pytest(config)
+
+        if config.getoption("sort_debug"):
+            SortConfig.debug = True
+
+    @staticmethod
+    def _mode_from_pytest(config: pytest.Config) -> None:
+        SortConfig.mode = config.getoption("sort_mode") or config.getini("sort_mode") or SortConfig.mode
+        if SortConfig.mode not in modes:
+            msg = f"Invalid Value for sort-mode='{SortConfig.mode}'"
+            raise ValueError(msg)
+
+    @staticmethod
+    def _bucket_from_pytest(config: pytest.Config) -> None:
+        SortConfig.bucket = config.getoption("sort_bucket") or config.getini("sort_bucket") or SortConfig.bucket
+        if SortConfig.bucket not in bucket_types:
+            msg = f"Invalid Value for sort-bucket='{SortConfig.bucket}'"
+            raise ValueError(msg)
+
+    @staticmethod
+    def _bucket_mode_from_pytest(config: pytest.Config) -> None:
+        SortConfig.bucket_mode = (
+            config.getoption("sort_bucket_mode") or config.getini("sort_bucket_mode") or SortConfig.bucket_mode
+        )
+        if SortConfig.bucket_mode == "sort_mode":
+            SortConfig.bucket_mode = SortConfig.mode
+        if SortConfig.bucket_mode not in modes:
+            msg = f"Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'"
+            raise ValueError(msg)
+
+    @staticmethod
+    def _record_from_pytest(config: pytest.Config) -> None:
         if config.getoption("sort_no_record") and config.getoption("sort_record"):
             raise ValueError("Do not use both --sort-record-times and --sort-no-record-times")
 
@@ -46,10 +91,19 @@ class SortConfig:
         if SortConfig.mode == "fastest" and SortConfig.record is None:
             SortConfig.record = True
 
-        SortConfig.reset = config.getoption("sort_reset_times", default=False)
-        SortConfig.report = config.getoption("sort_report_times", default=False)
-
+    @staticmethod
+    def _seed_from_pytest(config: pytest.Config) -> None:
         SortConfig.seed = config.getoption("sort_seed") or config.getini("sort_seed") or SortConfig.seed
+        if not str(SortConfig.seed).isdigit():
+            msg = f"Invalid seed value '{SortConfig.seed}' must be int"
+            raise ValueError(msg)
+        SortConfig.seed = int(str(SortConfig.seed))
+
+    @staticmethod
+    def _database_file_from_pytest(config: pytest.Config) -> None:
+        database_file = config.getoption("sort_datafile") or config.getini("sort_datafile") or None
+        if database_file:
+            database.database_file = Path(database_file)
 
     @staticmethod
     def header_dict() -> dict:
@@ -61,11 +115,14 @@ class SortConfig:
             "sort-mode": SortConfig.mode,
         }
 
+        if SortConfig.mode not in ("ordered", "reverse") or SortConfig.bucket_mode != SortConfig.mode:
+            config["sort-bucket"] = SortConfig.bucket
+
+        if SortConfig.bucket_mode != SortConfig.mode:
+            config["sort-bucket-mode"] = SortConfig.bucket_mode
+
         if SortConfig.mode == "random":
             config["sort-seed"] = SortConfig.seed
-
-        if SortConfig.mode != "none":
-            config["sort-bucket"] = SortConfig.bucket
 
         if SortConfig.reset:
             config["sort-reset-times"] = True
@@ -75,5 +132,8 @@ class SortConfig:
 
         if SortConfig.report:
             config["sort-report-times"] = True
+
+        if SortConfig.debug:
+            config["sort-debug"] = True
 
         return config
