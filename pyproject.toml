@@ -93,4 +93,4 @@ exclude = [
 
 [tool.mutmut]
 disable_mutation_types = "string"
-runner = "python -m pytest -x --assert=plain --sort-mode=random --sort-no-record-times"
+runner = "python -m pytest -x --assert=plain --sort-mode=fastest --sort-bucket=global --sort-no-record-times"

@@ -39,6 +39,7 @@ class TestSortConfig:
         assert config.SortConfig.seed <= 1_000_000
 
         assert config.SortConfig.recorded_times == {}
+        assert config.SortConfig.item_totals == {}
         assert config.SortConfig.item_sort_keys == {}
         assert config.SortConfig.item_bucket_id == {}
         assert config.SortConfig.bucket_sort_keys == {}
@@ -64,6 +65,7 @@ class TestSortConfig:
         [
             ({"sort_mode": "md5"}, {"sort_mode": "random"}, "md5"),
             ({}, {"sort_mode": "random"}, "random"),
+            ({}, {"sort_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
         ],
     )
@@ -77,6 +79,7 @@ class TestSortConfig:
         [
             ({"sort_bucket": "session"}, {"sort_bucket": "class"}, "session"),
             ({}, {"sort_bucket": "class"}, "class"),
+            ({}, {"sort_bucket": "global"}, "session"),
             ({}, {}, "parent"),
         ],
     )
@@ -90,6 +93,7 @@ class TestSortConfig:
         [
             ({"sort_bucket_mode": "md5"}, {"sort_bucket_mode": "random"}, "md5"),
             ({}, {"sort_bucket_mode": "random"}, "random"),
+            ({}, {"sort_bucket_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
             ({"sort_mode": "md5"}, {}, "md5"),
         ],

@@ -214,9 +214,9 @@ def sort_items(items: list[pytest.Item]) -> None:
         print_test_case_order(items)
 
 
-def print_recorded_times_report(terminalreporter: TerminalReporter) -> None:
+def print_recorded_times_report(terminal_reporter: TerminalReporter) -> None:
     """Print a summary report of maximum recorded times."""
-    nodeids = list({rpt.nodeid for rpt in terminalreporter.stats[""]})
+    nodeids = list({rpt.nodeid for rpt in terminal_reporter.stats[""]})
     nodeids.sort()
 
     node_id_width = max([len(nodeid) for nodeid in nodeids]) + 3

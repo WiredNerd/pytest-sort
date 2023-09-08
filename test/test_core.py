@@ -45,7 +45,7 @@ def mock_objects():
     return (session, package, module, cls, func)
 
 
-class TestCreateBucketId:
+class TestCreateBucketIdForNode:
     @pytest.mark.parametrize(
         "type,nodeid,bucket_id",
         [
@@ -397,3 +397,209 @@ class TestCreateSortKey:
         core.SortConfig.bucket_sort_keys = {cls.nodeid: 2.2}
 
         assert core.get_item_sort_key(func) == (2.2, 1.1)
+
+
+class TestSortItems:
+    nodeids = ["function_3", "function_4", "function_1", "function_2"]
+    items = [mock.MagicMock(nodeid=nodeid) for nodeid in nodeids]
+    node_priority = {"function_1": 1, "function_2": 2, "function_3": 3, "function_4": 4}
+
+    @pytest.fixture
+    def random(self):
+        with mock.patch("pytest_sort.core.random") as random:
+            yield random
+
+    @pytest.fixture
+    def get_all_totals(self):
+        with mock.patch("pytest_sort.core.get_all_totals") as get_all_totals:
+            get_all_totals.return_value = self.node_priority
+            yield get_all_totals
+
+    @pytest.fixture
+    def create_sort_keys(self):
+        with mock.patch("pytest_sort.core.create_sort_keys") as create_sort_keys:
+            yield create_sort_keys
+
+    @pytest.fixture
+    def get_item_sort_key(self):
+        with mock.patch("pytest_sort.core.get_item_sort_key") as get_item_sort_key:
+            get_item_sort_key.side_effect = lambda item: self.node_priority[item.nodeid]
+            yield get_item_sort_key
+
+    @pytest.fixture
+    def print_test_case_order(self):
+        with mock.patch("pytest_sort.core.print_test_case_order") as print_test_case_order:
+            yield print_test_case_order
+
+    def test_sort_items(self, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order):
+        core.SortConfig.mode = "ordered"
+        core.SortConfig.bucket_mode = "ordered"
+        core.SortConfig.debug = False
+
+        items = self.items.copy()
+        core.sort_items(items)
+        assert items[0].nodeid == "function_1"
+        assert items[1].nodeid == "function_2"
+        assert items[2].nodeid == "function_3"
+        assert items[3].nodeid == "function_4"
+
+        random.seed.assert_not_called()
+        get_all_totals.assert_not_called()
+        create_sort_keys.assert_has_calls(
+            [
+                mock.call(self.items[0], 0, 4),
+                mock.call(self.items[1], 1, 4),
+                mock.call(self.items[2], 2, 4),
+                mock.call(self.items[3], 3, 4),
+            ]
+        )
+        get_item_sort_key.call_count == 4
+        print_test_case_order.assert_not_called()
+
+    @pytest.mark.parametrize(
+        "mode,bucket_mode",
+        [
+            ("random", "ordered"),
+            ("ordered", "random"),
+            ("random", "random"),
+        ],
+    )
+    def test_sort_items_random(
+        self, mode, bucket_mode, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order
+    ):
+        core.SortConfig.mode = mode
+        core.SortConfig.bucket_mode = bucket_mode
+        core.SortConfig.seed = 12345
+        core.SortConfig.debug = False
+
+        core.sort_items(self.items.copy())
+
+        random.seed.assert_called_with(12345)
+        get_all_totals.assert_not_called()
+        assert create_sort_keys.call_count == 4
+        assert get_item_sort_key.call_count == 4
+        print_test_case_order.assert_not_called()
+
+    @pytest.mark.parametrize(
+        "mode,bucket_mode",
+        [
+            ("fastest", "ordered"),
+            ("ordered", "fastest"),
+            ("fastest", "fastest"),
+        ],
+    )
+    def test_sort_items_fastest(
+        self, mode, bucket_mode, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order
+    ):
+        core.SortConfig.mode = mode
+        core.SortConfig.bucket_mode = bucket_mode
+        core.SortConfig.seed = 12345
+        core.SortConfig.debug = False
+
+        core.sort_items(self.items.copy())
+
+        random.seed.assert_not_called()
+        get_all_totals.assert_called_with()
+        assert create_sort_keys.call_count == 4
+        assert get_item_sort_key.call_count == 4
+        print_test_case_order.assert_not_called()
+
+    def test_sort_items_debug(self, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order):
+        core.SortConfig.mode = "ordered"
+        core.SortConfig.bucket_mode = "ordered"
+        core.SortConfig.debug = True
+
+        items = self.items.copy()
+        core.sort_items(items)
+
+        random.seed.assert_not_called()
+        get_all_totals.assert_not_called()
+        assert create_sort_keys.call_count == 4
+        assert get_item_sort_key.call_count == 4
+        print_test_case_order.assert_called_with(items)
+
+
+class TestPrintReports:
+    @pytest.fixture
+    def print(self):
+        with mock.patch("builtins.print") as print:
+            yield print
+
+    @pytest.fixture
+    def get_stats(self):
+        with mock.patch("pytest_sort.core.get_stats") as get_stats:
+            yield get_stats
+
+    def test_print_recorded_times_report(self, print, get_stats):
+        terminal_reporter = mock.MagicMock(
+            stats={
+                "": [
+                    mock.MagicMock(nodeid="function_3"),
+                    mock.MagicMock(nodeid="function_4"),
+                    mock.MagicMock(nodeid="function_1"),
+                    mock.MagicMock(nodeid="function_2"),
+                ]
+            }
+        )
+
+        stats = {
+            "function_1": {"setup": 100, "call": 200, "teardown": 300, "total": 600},
+            "function_2": {"setup": 100_000, "call": 200_000, "teardown": 300_000, "total": 600_000},
+            "function_3": {"setup": 1_000_000, "call": 2_000_000, "teardown": 3_000_000, "total": 6_000_000},
+            "function_4": {"setup": 1, "call": 2, "teardown": 3, "total": 6},
+        }
+
+        get_stats.side_effect = lambda nodeid: stats[nodeid]
+
+        core.print_recorded_times_report(terminal_reporter)
+
+        print.assert_has_calls(
+            [
+                mock.call(
+                    "\n*** pytest-sort maximum recorded times                        "
+                    "Nanoseconds                          ***"
+                ),
+                mock.call("Test Case                setup             call         teardown            total"),
+                mock.call("function_1                 100              200              300              600"),
+                mock.call("function_2             100,000          200,000          300,000          600,000"),
+                mock.call("function_3           1,000,000        2,000,000        3,000,000        6,000,000"),
+                mock.call("function_4                   1                2                3                6"),
+            ]
+        )
+
+    def test_print_test_case_order(self, print):
+        items = [
+            mock.MagicMock(nodeid="function_1"),
+            mock.MagicMock(nodeid="function_2"),
+            mock.MagicMock(nodeid="function_3"),
+            mock.MagicMock(nodeid="function_4"),
+        ]
+        core.SortConfig.item_bucket_id = {
+            "function_1": "bucket_1",
+            "function_2": "bucket_1",
+            "function_3": "bucket_2",
+            "function_4": "bucket_2",
+        }
+        core.SortConfig.bucket_sort_keys = {
+            "bucket_1": 1,
+            "bucket_2": 2,
+        }
+        core.SortConfig.item_sort_keys = {
+            "function_1": 1,
+            "function_2": 2,
+            "function_3": 3,
+            "function_4": 4,
+        }
+
+        core.print_test_case_order(items)
+
+        print.assert_has_calls(
+            [
+                mock.call("\nTest Case Order:"),
+                mock.call("(bucket_key, bucket_id, item_key, item_id)"),
+                mock.call((1, "bucket_1", 1, "function_1")),
+                mock.call((1, "bucket_1", 2, "function_2")),
+                mock.call((2, "bucket_2", 3, "function_3")),
+                mock.call((2, "bucket_2", 4, "function_4")),
+            ]
+        )

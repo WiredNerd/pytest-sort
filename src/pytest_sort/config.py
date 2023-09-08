@@ -11,8 +11,15 @@ from pytest_sort import database
 if TYPE_CHECKING:
     import pytest
 
-modes = ["ordered", "reverse", "md5", "random", "fastest"]
-bucket_types = ["session", "package", "module", "class", "parent", "grandparent"]
+modes = ["ordered", "reverse", "md5", "random", "fastest", "none"]
+bucket_types = ["session", "package", "module", "class", "parent", "grandparent", "global"]
+
+legacy_modes = {
+    "none": "ordered",
+}
+legacy_bucket_types = {
+    "global": "session",
+}
 
 
 class SortConfig:
@@ -58,6 +65,7 @@ class SortConfig:
         if SortConfig.mode not in modes:
             msg = f"Invalid Value for sort-mode='{SortConfig.mode}'"
             raise ValueError(msg)
+        SortConfig.mode = legacy_modes.get(SortConfig.mode, SortConfig.mode)
 
     @staticmethod
     def _bucket_from_pytest(config: pytest.Config) -> None:
@@ -65,6 +73,7 @@ class SortConfig:
         if SortConfig.bucket not in bucket_types:
             msg = f"Invalid Value for sort-bucket='{SortConfig.bucket}'"
             raise ValueError(msg)
+        SortConfig.bucket = legacy_bucket_types.get(SortConfig.bucket, SortConfig.bucket)
 
     @staticmethod
     def _bucket_mode_from_pytest(config: pytest.Config) -> None:
@@ -76,6 +85,7 @@ class SortConfig:
         if SortConfig.bucket_mode not in modes:
             msg = f"Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'"
             raise ValueError(msg)
+        SortConfig.bucket_mode = legacy_modes.get(SortConfig.bucket_mode, SortConfig.bucket_mode)
 
     @staticmethod
     def _record_from_pytest(config: pytest.Config) -> None:
