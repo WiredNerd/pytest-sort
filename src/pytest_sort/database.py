@@ -81,7 +81,7 @@ def get_total(nodeid: str) -> int:
 @db_session
 def get_all_totals() -> dict:
     """Retrieve all total durations for all nodeids."""
-    tests: list[TestTab] = TestTab.select(lambda t: True)
+    tests: list[TestTab] = TestTab.select(lambda _: True)
     return {test.nodeid: test.total for test in tests}
 
 

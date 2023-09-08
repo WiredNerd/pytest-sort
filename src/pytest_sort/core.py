@@ -85,7 +85,8 @@ create_item_key = {
 }
 
 
-def get_bucket_total(bucket_id: str):
+def get_bucket_total(bucket_id: str) -> int:
+    """Get all totals from nodes matching this bucket and return sum."""
     return sum([total for nodeid, total in SortConfig.item_totals.items() if nodeid.startswith(bucket_id)])
 
 
