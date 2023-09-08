@@ -113,6 +113,14 @@ class TestGet:
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_total("test_node_1") == 10
 
+    def test_get_all_totals(self):
+        database.update_test_case("test_node_1", call=2)
+        database.update_test_case("test_node_2", call=3)
+        assert database.get_all_totals() == {
+            "test_node_1": 2,
+            "test_node_2": 3,
+        }
+
     def test_get_total_not_found(self):
         assert database.get_total("test_node_1") == 0
 
@@ -134,8 +142,8 @@ class TestGet:
 
     def test_get_stats(self):
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        assert database.get_stats("test_node_1") == {"setup": 3, "call": 2, "teardown": 5, "total": 8}
+        assert database.get_stats("test_node_1") == {"setup": 3, "call": 2, "teardown": 5, "total": 10}
 
-    def test_get_stats(self):
+    def test_get_stats_not_found(self):
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_stats("test_node_2") == {"setup": 0, "call": 0, "teardown": 0, "total": 0}

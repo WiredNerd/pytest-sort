@@ -121,10 +121,8 @@ class TestCreateBucketId:
 
         assert 0 <= core.create_item_key["random"](func, 5, 20) < 1
 
-        with mock.patch("pytest_sort.core.get_total") as get_total:
-            get_total.return_value = 123
-            assert core.create_item_key["fastest"](func, 5, 20) == 123
-            get_total.assert_called_with("tests/core/test_core.py::TestCoreStuff::test_init")
+        core.SortConfig.item_totals = {func.nodeid: 123}
+        assert core.create_item_key["fastest"](func, 5, 20) == 123
 
     def test_create_bucket_key(self):
         assert core.create_bucket_key["ordered"]("tests", 5, 20) == 6
@@ -135,10 +133,13 @@ class TestCreateBucketId:
 
         assert 0 <= core.create_bucket_key["random"]("tests", 5, 20) < 1
 
-        with mock.patch("pytest_sort.core.get_bucket_total") as get_bucket_total:
-            get_bucket_total.return_value = 123
-            assert core.create_bucket_key["fastest"]("tests", 5, 20) == 123
-            get_bucket_total.assert_called_with("tests")
+        core.SortConfig.item_totals = {
+            "tests/core.py": 100,
+            "tests/other/core.py": 23,
+            "test/tests/core.py": 1,
+        }
+
+        assert core.create_bucket_key["fastest"]("tests", 5, 20) == 123
 
 
 class TestValidateMarker:
@@ -288,16 +289,6 @@ class TestCreateSortKey:
         with mock.patch("pytest_sort.core.get_marker_settings") as get_marker_settings:
             yield get_marker_settings
 
-    @pytest.fixture
-    def get_total(self):
-        with mock.patch("pytest_sort.core.get_total") as get_total:
-            yield get_total
-
-    @pytest.fixture
-    def get_bucket_total(self):
-        with mock.patch("pytest_sort.core.get_bucket_total") as get_bucket_total:
-            yield get_bucket_total
-
     def test_marker_bucketid_sortkey(self, get_marker_settings, mock_objects):
         get_marker_settings.return_value = (None, None, "test/core", 1234)
         config.SortConfig.bucket_mode = "ordered"
@@ -351,20 +342,19 @@ class TestCreateSortKey:
         assert config.SortConfig.item_bucket_id == {func.nodeid: module.nodeid}
         assert config.SortConfig.bucket_sort_keys == {module.nodeid: 7}
 
-    def test_mode_fastest(self, get_marker_settings, mock_objects, get_total, get_bucket_total):
+    def test_mode_fastest(self, get_marker_settings, mock_objects):
         get_marker_settings.return_value = (None, None, None, None)
         config.SortConfig.mode = "fastest"
         config.SortConfig.bucket = "class"
         config.SortConfig.bucket_mode = "fastest"
         (session, package, module, cls, func) = mock_objects
 
-        get_total.return_value = 1.1
-        get_bucket_total.return_value = 2.2
+        config.SortConfig.item_totals = {
+            func.nodeid: 1.1,
+            func.nodeid + "_2": 1.1,
+        }
 
         core.create_sort_keys(func, 6, 60)
-
-        get_total.assert_called_with(func.nodeid)
-        get_bucket_total.assert_called_with(cls.nodeid)
 
         assert config.SortConfig.item_sort_keys == {func.nodeid: 1.1}
         assert config.SortConfig.item_bucket_id == {func.nodeid: cls.nodeid}

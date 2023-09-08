@@ -12,7 +12,7 @@ import pytest
 from _pytest import nodes as pytest_nodes
 
 from pytest_sort.config import SortConfig
-from pytest_sort.database import get_bucket_total, get_stats, get_total
+from pytest_sort.database import get_all_totals, get_stats
 
 md5: Callable = hashlib.md5
 if sys.version_info >= (3, 9):
@@ -81,8 +81,13 @@ create_item_key = {
     "reverse": lambda item, idx, count: count - idx,
     "md5": lambda item, idx, count: md5(item.nodeid.encode()).digest(),
     "random": lambda item, idx, count: random.random(),
-    "fastest": lambda item, idx, count: get_total(item.nodeid),
+    "fastest": lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),
 }
+
+
+def get_bucket_total(bucket_id: str):
+    return sum([total for nodeid, total in SortConfig.item_totals.items() if nodeid.startswith(bucket_id)])
+
 
 create_bucket_key = {
     "ordered": lambda bucket_id, idx, count: idx + 1,
@@ -194,8 +199,11 @@ def get_item_sort_key(item: pytest.Item) -> tuple:
 
 def sort_items(items: list[pytest.Item]) -> None:
     """Reorder the items."""
-    if SortConfig.mode == "random":
+    if SortConfig.mode == "random" or SortConfig.bucket_mode == "random":
         random.seed(SortConfig.seed)
+
+    if SortConfig.mode == "fastest" or SortConfig.bucket_mode == "fastest":
+        SortConfig.item_totals = get_all_totals()
 
     for idx, item in enumerate(items):
         create_sort_keys(item, idx, len(items))

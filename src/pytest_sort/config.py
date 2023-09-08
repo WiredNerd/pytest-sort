@@ -30,6 +30,7 @@ class SortConfig:
     debug = False
 
     recorded_times: ClassVar[dict] = {}
+    item_totals: ClassVar[dict] = {}
     item_sort_keys: ClassVar[dict] = {}
     item_bucket_id: ClassVar[dict] = {}
     bucket_sort_keys: ClassVar[dict] = {}

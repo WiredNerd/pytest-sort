@@ -32,7 +32,7 @@ sort = "pytest_sort.plugin"
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["test"]
-addopts = "-vv -p pytester --cov-reset --cov-report=html --cov-report=term"
+addopts = "-vv -p no:mutmut --cov-reset --cov-report=html --cov-report=term"
 sort_mode = "random"
 sort_bucket = "parent"
 sort_record_times = true
@@ -90,3 +90,7 @@ exclude = [
     "ARG005", # Unused lambda argument
     "T201",   # print found
 ]
+
+[tool.mutmut]
+disable_mutation_types = "string"
+runner = "python -m pytest -x --assert=plain --sort-mode=random --sort-no-record-times"
