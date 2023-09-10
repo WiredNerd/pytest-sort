@@ -1,0 +1,24 @@
+name: Python Tests and Scans
+
+on: [ push, pull_request, workflow_dispatch ]
+
+jobs:
+  pytest:
+    name: Unit Test with Pytest
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Dependencies and Tools
+        run: |
+          pip install -r req/py38.txt --upgrade
+          pip install pytest-cov --upgrade
+      - name: Unit Test with Pytest
+        run: pytest --cov=src
+      - name: save-reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: Coverage Report
+          path: reports/coverage
