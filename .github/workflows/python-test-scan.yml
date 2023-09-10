@@ -13,7 +13,7 @@ jobs:
           python-version: '3.8'
       - name: Install Dependencies and Tools
         run: |
-          pip install -r req/py38.txt --upgrade
+          pip install -r req/requirements.txt --upgrade
           pip install pytest-cov --upgrade
       - name: Unit Test with Pytest
         run: pytest --cov=src
