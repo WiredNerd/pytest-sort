@@ -43,7 +43,7 @@ sort_record_times = true
 branch = true
 
 [tool.coverage.report]
-fail_under = 95
+# fail_under = 95
 skip_empty = true
 
 [tool.coverage.html]

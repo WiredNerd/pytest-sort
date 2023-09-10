@@ -105,11 +105,11 @@ def validate_order_marker(order_marker: pytest.Mark, node_id: str) -> Any:  # no
     Returns sort_key
     """
 
-    def order(item_sort_key: Any) -> Any:  # noqa: ANN401
+    def mark_order_parse(item_sort_key: Any) -> Any:  # noqa: ANN401
         return item_sort_key
 
     try:
-        return order(*order_marker.args, **order_marker.kwargs)
+        return mark_order_parse(*order_marker.args, **order_marker.kwargs)
     except TypeError as e:
         msg = f"Incorrect arguments on marker 'order'. Target:{node_id}"
         raise TypeError(msg) from e
@@ -121,11 +121,11 @@ def validate_sort_marker(sort_marker: pytest.Mark, node_id: str) -> tuple:
     Returns (mode, bucket)
     """
 
-    def marker_sort(mode: str, bucket: str = "self") -> tuple:
+    def mark_sort_parse(mode: str, bucket: str = "self") -> tuple:
         return (mode, bucket)
 
     try:
-        (mode, bucket_temp) = marker_sort(*sort_marker.args, **sort_marker.kwargs)
+        (mode, bucket_temp) = mark_sort_parse(*sort_marker.args, **sort_marker.kwargs)
     except TypeError as e:
         msg = f"Incorrect arguments on marker 'sort'. Target:{node_id}"
         raise TypeError(msg) from e
