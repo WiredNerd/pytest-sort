@@ -34,7 +34,7 @@ jobs:
           pip install -r req/requirements.txt --upgrade
           pip install -r req/mypy.txt --upgrade
       - run: mypy src
- ruff:
+  ruff:
     name: Linter Checks with Ruff
     runs-on: [ubuntu-latest]
     steps:
