@@ -1,10 +1,7 @@
+pytest-cov
 black
-mypy
 ruff
 mutmut
 
-pony-stubs
-
-build
-setuptools>=61.0
-twine
+-r mypy.txt
+-r build.txt

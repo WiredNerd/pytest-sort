@@ -32,7 +32,7 @@ sort = "pytest_sort.plugin"
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["test"]
-addopts = "-vv -p no:mutmut --cov-reset --cov-report=html --cov-report=term"
+addopts = "-vv -p no:mutmut --cov-reset --cov-report=html:reports/coverage --cov-report=term"
 sort_mode = "random"
 sort_bucket = "parent"
 sort_record_times = true

@@ -164,3 +164,4 @@ cython_debug/
 .pytest_sort
 .mutmut-cache
 html
+reports
