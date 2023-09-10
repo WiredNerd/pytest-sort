@@ -34,3 +34,9 @@ jobs:
           pip install -r req/requirements.txt --upgrade
           pip install -r req/mypy.txt --upgrade
       - run: mypy src
+ ruff:
+    name: Linter Checks with Ruff
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chartboost/ruff-action@v1
