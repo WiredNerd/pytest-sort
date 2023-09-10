@@ -1,5 +1,4 @@
 {
-    "python.testing.pytestArgs": [],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "black-formatter.args": [
@@ -7,5 +6,9 @@
     ],
     "isort.args": [
         "--profile=black"
+    ],
+    "python.testing.pytestArgs": [
+        "-vv",
+        "-s"
     ]
 }

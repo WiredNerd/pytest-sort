@@ -162,3 +162,5 @@ cython_debug/
 .ruff_cache
 .pytest-sort
 .pytest_sort
+.mutmut-cache
+html

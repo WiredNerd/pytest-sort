@@ -1,6 +1,7 @@
 black
 mypy
 ruff
+mutmut
 
 pony-stubs
 
