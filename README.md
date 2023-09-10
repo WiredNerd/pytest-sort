@@ -2,7 +2,7 @@
 
 ## Project description
 
-pytest-sort is a pytest plugin to automatically change the execution order of test cases.  Changing the order of execution can help find test cases that only succeed because a different test left the system in a favorable state.
+pytest-sort is a pytest plugin to automatically change the execution order of test cases.  Changing the order of execution can help find test cases that only succeed because of a favorable state.
 
 This plugin provides several options for controlling how the test cases are reordered.
 
@@ -30,50 +30,39 @@ In the pytest-sort section, all currently avaialable options will be listed.
 
 You may also set options in any [pytest configruation file](https://docs.pytest.org/en/stable/reference/customize.html).
 
-## Options
+# Usage
 
-<<<<<<< Updated upstream
-### Sort Bucket
-=======
-Ideally, all test cases should be small and independant. And they should cleanup anything they change in the state of the applciation.  This package provides several options for validating if test cases can really be run safely, or if they have ordering dependencies. Additionally, if some tests need to be run in order intentionally, pytest markers are provided to preserve the order for those tests.
->>>>>>> Stashed changes
+Ideally, all test cases should be small and independant. And should cleanup any changes to the application state.  This package provides several options for validating if test cases can really be run independantly and cleanly.
 
-***Default:*** module
+## Deterministic but Unpredictable
 
-<<<<<<< Updated upstream
-This option controls the scope of the sort operation.  For example, if the sort bucket is "module", then all tests from the same module will run together.  If the sort bucket is global, than all tests are sorted together.
-=======
 Java developers will be farmilliar with JUnit. The JUnit package automatically runs test cases in a deterministic, but unpredictable order.  This package can provide similar functionality in pytest several ways.
->>>>>>> Stashed changes
 
-Example: 
-```
-pytest --sort_bucket=package
-```
+1. Using sort mode "md5" will produce the same order of tests every time as long as the test case names don't change.
+   ```toml
+   sort_mode="md5"
+   ```
+2. Using sort mode "random" with a fixed sort seed value will produce the same order of tests every time unles the list of test cases is changed (new test case, or name changes)
+   ```toml
+   sort_mode="random"
+   sort_seed=100
+   ```
 
-| sort_bucket | Definition | 
-| --- | --- |
-| global | Apply sort to all items together |
-| package | Group together test cases that are in the same package (folder) |
-| module | Group together test cases that are in the same module (py file) |
-| class | Group together test cases that are members of a class.  All other test cases are grouped by module |
-| parent | Group together test cases by their immediate parent |
-| grandparent | Group together test cases by their parent's parent |
+## Random
 
-### Sort Mode
+By running in random mode, the test case order will change every time. If a test case fails unexpectedly, you can use the seed from the failed run to determine what order is causing the tests to fail.
 
-***Default:*** none
-
-This option controlls how the order is modified within the bucket.
-
-Example:
-```
-pytest --sort_mode=md5
+```toml
+sort_mode="random"
 ```
 
-<<<<<<< Updated upstream
-| sort_mode | Definition | 
-=======
+## Fail Fast
+
+When you have a test suite that includes long running test cases, it can be helpful to delay the longer running test cases till later.  The 'fastest' mode allows you to track how long different test cases take to run.  Then always run the fastest test cases first, and the slow test cases last.
+```cmd
+pytest --exitfirst --sort-mode=fastest
+```
+
 # How it Works
 
 Pytest gathers a list of test cases to be executed, by default it orders test cases from top to bottom of each file.  This plugin takes that list and creates two sort keys.  The first is a sort key for each bucket, and the second is a sort key for each test.  It then sorts the list of test cases using the two sort keys.
@@ -133,7 +122,6 @@ def test_validate_the_data():  # always run this third
    ...
 ```
 
-
 # Options
 
 For all options, the priority of options is:
@@ -153,15 +141,10 @@ This option controlls how the order is modified within each bucket.
 ***Default:*** `ordered`
 
 | Option | Definition | 
->>>>>>> Stashed changes
 | --- | --- |
 | ordered | (default) pytest_sort will keep the default order of tests. |
 | reverse |pytest_sort will reverse the default order of tests. |
 | md5 | This mode creates an md5 of each test case id, then sorts on those values.  <br> This runs test cases in a deterministicly shuffled order. |
-<<<<<<< Updated upstream
-| random | Test cases are shuffled randomly |
-| fastest | In each run in "fasttest" mode, the plugin will track the longest execution time for each test case in a file '.pytest-sort'.  <br> At the beginning of a test run, any previously recorded values will be used to sort the tests so that the fastest test runs first.<br>  This is intended for use with "-x" or "--exitfirst"
-=======
 | random | Test cases are shuffled randomly. Sort Seed is used to control random sorting. |
 | fastest | In each run in "fasttest" mode, any previously recorded runtimes in ".pytest_sort" file will be used to sort the fastest tests to run first.  Also, by default, it will record the longest execution time for each test case to that file for future usage.  See [Record Test Runtimes](#record-test-runtimes) |
 
@@ -269,4 +252,4 @@ Change the location and/or name of the datafile used to store the test runtimes.
 ***Pytest Config:*** `sort_datafile`
 
 ***Default:*** `.pytest_sort` 
->>>>>>> Stashed changes
+
