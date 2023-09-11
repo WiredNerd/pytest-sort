@@ -15,12 +15,29 @@ jobs:
         run: |
           pip install -r req/requirements.txt --upgrade
           pip install pytest-cov --upgrade
+      - run: pytest --help
       - run: pytest --cov=src
       - name: save-reports
+        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: Coverage Report
           path: reports/coverage
+  isort:
+    name: Import Checks with ISort
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Dependencies and Tools
+        run: |
+          pip install -r req/requirements.txt --upgrade
+          pip install isort --upgrade
+      - name: isort
+        run: |
+          isort src --check --diff
+          isort test --check --diff
   mypy:
     name: Type Checks with Mypy
     runs-on: [ubuntu-latest]
