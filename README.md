@@ -17,7 +17,7 @@ pip install pytest-sort -upgrade
 Running with pytest-sort:
 
 ```
-pytest --sort_mode=random
+pytest --sort-mode=random
 ```
 
 By default, all tests from the same module or class will run together.  This command will randomize the execution order of the tests within the module/class.
