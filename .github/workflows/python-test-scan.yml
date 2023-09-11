@@ -25,6 +25,7 @@ jobs:
           path: reports/coverage
   isort:
     name: Import Checks with ISort
+    runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
