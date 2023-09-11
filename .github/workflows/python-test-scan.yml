@@ -35,10 +35,22 @@ jobs:
         run: |
           pip install -r req/requirements.txt --upgrade
           pip install isort --upgrade
-      - name: isort
+      - run: isort src --check --diff
+      - run: isort test --check --diff
+  black:
+    name: Code Format with Black
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Dependencies and Tools
         run: |
-          isort src --check --diff
-          isort test --check --diff
+          pip install -r req/requirements.txt --upgrade
+          pip install black --upgrade
+      - run: black --check src --diff
+      - run: black --check test --diff
   mypy:
     name: Type Checks with Mypy
     runs-on: [ubuntu-latest]
