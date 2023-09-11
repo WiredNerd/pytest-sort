@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "1.0.0"
+version = "1.0.1"
 license = { file = "LICENSE" }
 keywords = ["test", "pytest", "order", "sort", "random", "randomly"]
 authors = [{ name = "WiredNerd", email = "pbuschmail-pytestsort@yahoo.com" }]
