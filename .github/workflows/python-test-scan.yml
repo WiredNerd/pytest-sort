@@ -35,8 +35,9 @@ jobs:
         run: |
           pip install -r req/requirements.txt --upgrade
           pip install isort --upgrade
-      - run: isort src --check --diff
-      - run: isort test --check --diff
+      - run: python3 -m isort src --check --diff
+      - run: python3 -m isort test --check --diff
+        if: ${{ always() }}
   black:
     name: Code Format with Black
     runs-on: [ubuntu-latest]
@@ -51,6 +52,7 @@ jobs:
           pip install black --upgrade
       - run: black --check src --diff
       - run: black --check test --diff
+        if: ${{ always() }}
   mypy:
     name: Type Checks with Mypy
     runs-on: [ubuntu-latest]
