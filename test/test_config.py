@@ -31,7 +31,7 @@ class TestSortConfig:
         assert config.SortConfig.mode == "ordered"
         assert config.SortConfig.bucket == "parent"
         assert config.SortConfig.bucket_mode == "sort_mode"
-        assert config.SortConfig.record == None
+        assert config.SortConfig.record is None
         assert config.SortConfig.reset == False
         assert config.SortConfig.report == False
 
@@ -53,7 +53,7 @@ class TestSortConfig:
         assert config.SortConfig.mode == "ordered"
         assert config.SortConfig.bucket == "parent"
         assert config.SortConfig.bucket_mode == "ordered"
-        assert config.SortConfig.record == None
+        assert config.SortConfig.record is None
         assert config.SortConfig.reset == False
         assert config.SortConfig.report == False
         assert config.SortConfig.seed == seed

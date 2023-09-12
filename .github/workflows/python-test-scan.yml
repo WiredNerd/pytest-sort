@@ -1,6 +1,12 @@
 name: Python Tests and Scans
 
-on: [ push, pull_request, workflow_dispatch ]
+on: 
+  push:
+    paths-ignore:
+      - code-coverage.json
+      - README.md
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   pytest:
@@ -17,6 +23,10 @@ jobs:
           pip install pytest-cov --upgrade
       - run: pytest --help
       - run: pytest --cov=src
+      - name: save-json-report
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "code-coverage.json"
       - name: save-reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v3

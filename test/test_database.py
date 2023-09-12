@@ -42,7 +42,7 @@ class TestInitDb:
             ]
         )
         db.drop_all_tables.assert_called_with(with_all_data=True)
-        assert db.schema == None
+        assert db.schema is None
 
     def test_init_db_already_created(self, db: MagicMock):
         db.provider = "sqlite"

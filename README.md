@@ -1,4 +1,14 @@
 ![python>=3.8](https://img.shields.io/badge/python->=3.8-blue)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-sort)
+![PyPI - License](https://img.shields.io/pypi/l/pytest-sort)
+![PyPI - Version](https://img.shields.io/pypi/v/pytest-sort)
+
+[![Code Coverage](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWiredNerd%2Fpytest-sort%2Fmain%2Fcode-coverage.json&query=%24.totals.percent_covered_display&suffix=%25&label=Code%20Coverage&color=green)](https://pytest-cov.readthedocs.io/en/latest/)
+[![Snyk Security](https://snyk.io/test/github/WiredNerd/pytest-sort/badge.svg?targetFile=req/requirements.txt)](https://snyk.io/test/github/WiredNerd/pytest-sort)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![Code Style: black](https://img.shields.io/badge/Code_Style-Black-black)](https://black.readthedocs.io/en/stable/)
+[![Linter: ruff](https://img.shields.io/badge/Linter-ruff-purple)](https://beta.ruff.rs/docs/)
+
 
 ## Project description
 
