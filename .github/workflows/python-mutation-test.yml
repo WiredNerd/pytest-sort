@@ -1,0 +1,34 @@
+name: Python Mutation Test
+
+on: 
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    name: Unit Test with Pytest
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Dependencies and Tools
+        run: |
+          pip install -r req/requirements.txt --upgrade
+          pip install mutmut --upgrade
+      - name: Mutmut
+        run: |
+          python3 -m mutmut run
+          python3 -m mutmut junitxml > mutation-testing-report.xml
+          python3 -m mutmut html
+      - name: save-xml-report
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "mutation-testing-report.xml"
+      - name: save-reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Mutation testing report
+          path: html
