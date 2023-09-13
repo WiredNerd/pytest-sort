@@ -6,7 +6,7 @@ on:
 
 jobs:
   pytest:
-    name: Unit Test with Pytest
+    name: Mutation Test with Mutmut
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
@@ -17,6 +17,7 @@ jobs:
         run: |
           pip install -r req/requirements.txt --upgrade
           pip install mutmut pytest pytest-cov --upgrade
+          pip install --editable .
       - name: Mutmut
         run: |
           python3 -m mutmut run
