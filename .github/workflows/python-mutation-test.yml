@@ -20,9 +20,10 @@ jobs:
           pip install --editable .
       - name: Mutmut
         run: |
-          python3 -m mutmut run
-          python3 -m mutmut junitxml > mutation-testing-report.xml
+          time python3 -m mutmut run --no-progress || true
           python3 -m mutmut html
+          python3 -m mutmut junitxml > mutation-testing-report.xml
+          python3 -m mutmut results
       - name: save-xml-report
         uses: EndBug/add-and-commit@v9
         with:
