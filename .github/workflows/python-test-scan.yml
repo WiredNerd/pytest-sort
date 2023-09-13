@@ -2,9 +2,10 @@ name: Python Tests and Scans
 
 on: 
   push:
-    paths-ignore:
-      - code-coverage.json
-      - README.md
+    paths:
+      - req
+      - src
+      - test
   pull_request:
   workflow_dispatch:
 
