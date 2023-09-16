@@ -1,7 +1,11 @@
 import importlib
+import random
+import sys
 from pathlib import Path
+from unittest import mock
 
 import pytest
+from inspect_mate import is_static_method
 
 from pytest_sort import config, database
 
@@ -14,6 +18,7 @@ class TestSortConfig:
         yield
         importlib.reload(config)
         importlib.reload(database)
+        sys.modules['random'] = random
 
     class PytestConfig:
         def __init__(self, options, inis):
@@ -42,6 +47,22 @@ class TestSortConfig:
         assert config.SortConfig.item_sort_keys == {}
         assert config.SortConfig.item_bucket_id == {}
         assert config.SortConfig.bucket_sort_keys == {}
+
+    def test_create_default_seed(self):
+        random = mock.MagicMock()
+        sys.modules['random'] = random
+        importlib.reload(config)
+        random.randint.assert_called_with(0, 1_000_000)
+
+    def test_SortConfig_static_methods(self):
+        assert is_static_method(config.SortConfig, "from_pytest")
+        assert is_static_method(config.SortConfig, "_mode_from_pytest")
+        assert is_static_method(config.SortConfig, "_bucket_from_pytest")
+        assert is_static_method(config.SortConfig, "_bucket_mode_from_pytest")
+        assert is_static_method(config.SortConfig, "_record_from_pytest")
+        assert is_static_method(config.SortConfig, "_seed_from_pytest")
+        assert is_static_method(config.SortConfig, "_database_file_from_pytest")
+        assert is_static_method(config.SortConfig, "header_dict")
 
     def test_from_pytest_default(self):
         pytest_config = self.PytestConfig({}, {})
@@ -77,6 +98,11 @@ class TestSortConfig:
         config.SortConfig.from_pytest(pytest_config)
         assert config.SortConfig.mode == expected
 
+    def test_from_pytest_mode_invalid(self):
+        with pytest.raises(ValueError, match="^Invalid Value for sort-mode='September'$"):
+            pytest_config = self.PytestConfig({"sort_mode": "September"}, {})
+            config.SortConfig.from_pytest(pytest_config)
+
     @pytest.mark.parametrize(
         "getoption,getini,expected",
         [
@@ -95,6 +121,11 @@ class TestSortConfig:
         config.SortConfig.from_pytest(pytest_config)
         assert config.SortConfig.bucket == expected
 
+    def test_from_pytest_bucket_invalid(self):
+        with pytest.raises(ValueError, match="^Invalid Value for sort-bucket='September'$"):
+            pytest_config = self.PytestConfig({"sort_bucket": "September"}, {})
+            config.SortConfig.from_pytest(pytest_config)
+
     @pytest.mark.parametrize(
         "getoption,getini,expected",
         [
@@ -109,6 +140,11 @@ class TestSortConfig:
         pytest_config = self.PytestConfig(getoption, getini)
         config.SortConfig.from_pytest(pytest_config)
         assert config.SortConfig.bucket_mode == expected
+
+    def test_from_pytest_bucket_mode_invalid(self):
+        with pytest.raises(ValueError, match="^Invalid Value for sort-bucket-mode='September'$"):
+            pytest_config = self.PytestConfig({"sort_bucket_mode": "September"}, {})
+            config.SortConfig.from_pytest(pytest_config)
 
     def test_from_pytest_sort_record_conflict(self):
         pytest_config = self.PytestConfig({"sort_no_record": True, "sort_record": True}, {})
@@ -154,7 +190,7 @@ class TestSortConfig:
 
     def test_from_pytest_seed_invalid(self):
         pytest_config = self.PytestConfig({}, {"sort_seed": "ABC"})
-        with pytest.raises(ValueError, match="Invalid seed value 'ABC' must be int"):
+        with pytest.raises(ValueError, match="^Invalid seed value 'ABC' must be int$"):
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(

@@ -1,7 +1,7 @@
-pytest-cov
 black
 ruff
 isort
 
+-r pytest.txt
 -r mypy.txt
 -r build.txt

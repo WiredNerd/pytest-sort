@@ -16,7 +16,8 @@ jobs:
       - name: Install Dependencies and Tools
         run: |
           pip install -r req/requirements.txt --upgrade
-          pip install mutmut pytest pytest-cov --upgrade
+          pip install -r req/pytest.txt --upgrade
+          pip install mutmut --upgrade
       - name: Mutmut
         run: |
           time python3 -m mutmut run --no-progress --rerun-all || true

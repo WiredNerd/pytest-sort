@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies and Tools
         run: |
           pip install -r req/requirements.txt --upgrade
-          pip install pytest-cov --upgrade
+          pip install -r req/pytest.txt --upgrade
       - run: pytest --help
       - run: pytest --cov=src
       - name: save-json-report
