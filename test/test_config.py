@@ -63,7 +63,11 @@ class TestSortConfig:
         "getoption,getini,expected",
         [
             ({"sort_mode": "md5"}, {"sort_mode": "random"}, "md5"),
+            ({}, {"sort_mode": "ordered"}, "ordered"),
+            ({}, {"sort_mode": "reverse"}, "reverse"),
+            ({}, {"sort_mode": "md5"}, "md5"),
             ({}, {"sort_mode": "random"}, "random"),
+            ({}, {"sort_mode": "fastest"}, "fastest"),
             ({}, {"sort_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
         ],
@@ -77,7 +81,11 @@ class TestSortConfig:
         "getoption,getini,expected",
         [
             ({"sort_bucket": "session"}, {"sort_bucket": "class"}, "session"),
+            ({}, {"sort_bucket": "package"}, "package"),
+            ({}, {"sort_bucket": "module"}, "module"),
             ({}, {"sort_bucket": "class"}, "class"),
+            ({}, {"sort_bucket": "parent"}, "parent"),
+            ({}, {"sort_bucket": "grandparent"}, "grandparent"),
             ({}, {"sort_bucket": "global"}, "session"),
             ({}, {}, "parent"),
         ],
