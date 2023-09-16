@@ -32,10 +32,7 @@ sort = "pytest_sort.plugin"
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["test"]
-addopts = "-vv -p no:mutmut --cov-reset --cov-report=html:reports/coverage --cov-report=term --cov-report=json:code-coverage.json"
-sort_mode = "random"
-sort_bucket = "parent"
-sort_record_times = true
+addopts = "-vv --cov-reset --cov-report=html:reports/coverage --cov-report=term --cov-report=json:code-coverage.json"
 
 # https://pytest-cov.readthedocs.io/en/latest/config.html
 # https://coverage.readthedocs.io/en/latest/config.html
@@ -93,5 +90,4 @@ exclude = [
 ]
 
 [tool.mutmut]
-disable_mutation_types = "string"
-runner = "python -m pytest -x --assert=plain --sort-mode=fastest --sort-bucket=global --sort-no-record-times"
+runner = "pytest -x --assert=plain -p no:pytest_sort -p no:mutmut"

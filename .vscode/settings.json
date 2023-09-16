@@ -5,10 +5,38 @@
         "--line-length=120"
     ],
     "isort.args": [
-        "--profile=black"
+        "--profile=black",
+        "--line-length=120"
     ],
     "python.testing.pytestArgs": [
         "-vv",
-        "-s"
-    ]
+        "-s",
+        "test"
+    ],
+    "python.analysis.extraPaths": [
+        "src",
+        "test"
+    ],
+    "python.autoComplete.extraPaths": [
+        "src"
+    ],
+    "python.testing.pytestPath": "src",
+    "terminal.integrated.profiles.windows": {
+
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+    }
 }

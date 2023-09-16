@@ -17,10 +17,9 @@ jobs:
         run: |
           pip install -r req/requirements.txt --upgrade
           pip install mutmut pytest pytest-cov --upgrade
-          pip install --editable .
       - name: Mutmut
         run: |
-          time python3 -m mutmut run --no-progress || true
+          time python3 -m mutmut run --no-progress --rerun-all || true
           python3 -m mutmut html
           python3 -m mutmut junitxml > mutation-testing-report.xml
           python3 -m mutmut results
