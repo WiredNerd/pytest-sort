@@ -1,3 +1,4 @@
+import importlib
 from pathlib import Path
 from unittest import mock
 from unittest.mock import MagicMock
@@ -6,6 +7,11 @@ import pytest
 from pony.orm import OperationalError, db_session
 
 import pytest_sort.database as database
+
+
+@pytest.fixture(autouse=True)
+def reset():
+    importlib.reload(database)
 
 
 class TestInitDb:

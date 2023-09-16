@@ -11,9 +11,8 @@ class TestSortConfig:
     def reset(self):
         importlib.reload(config)
         importlib.reload(database)
-
         yield
-
+        importlib.reload(config)
         importlib.reload(database)
 
     class PytestConfig:
