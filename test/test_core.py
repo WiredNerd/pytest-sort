@@ -84,7 +84,7 @@ class TestCreateBucketIdForNode:
         assert core.create_bucket_id_for_module(func) == "tests/core/test_core.py"
 
         cls.parent = None
-        assert core.create_bucket_id_for_package(cls) == ""
+        assert core.create_bucket_id_for_module(cls) == ""
 
     def test_create_bucket_id_for_class(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
@@ -96,7 +96,7 @@ class TestCreateBucketIdForNode:
         assert core.create_bucket_id_for_class(func) == "tests/core/test_core.py::TestCoreStuff"
 
         func.parent = None
-        assert core.create_bucket_id_for_package(func) == ""
+        assert core.create_bucket_id_for_class(func) == ""
 
 
 class TestCreateBucketId:
@@ -121,6 +121,7 @@ class TestCreateBucketId:
 
         assert 0 <= core.create_item_key["random"](func, 5, 20) < 1
 
+        assert core.create_item_key["fastest"](func, 5, 20) == 0
         core.SortConfig.item_totals = {func.nodeid: 123}
         assert core.create_item_key["fastest"](func, 5, 20) == 123
 
