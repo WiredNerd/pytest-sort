@@ -103,12 +103,12 @@ class TestCreateBucketId:
     def test_create_bucket_id(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
-        core.create_bucket_id["session"](func) == ""
-        core.create_bucket_id["package"](func) == "tests/core/"
-        core.create_bucket_id["module"](func) == "tests/core/test_core.py"
-        core.create_bucket_id["class"](func) == "tests/core/test_core.py::TestCoreStuff"
-        core.create_bucket_id["parent"](func) == "tests/core/test_core.py::TestCoreStuff"
-        core.create_bucket_id["grandparent"](func) == "tests/core/test_core.py"
+        assert core.create_bucket_id["session"](func) == ""
+        assert core.create_bucket_id["package"](func) == "tests/core/"
+        assert core.create_bucket_id["module"](func) == "tests/core/test_core.py"
+        assert core.create_bucket_id["class"](func) == "tests/core/test_core.py::TestCoreStuff"
+        assert core.create_bucket_id["parent"](func) == "tests/core/test_core.py::TestCoreStuff"
+        assert core.create_bucket_id["grandparent"](func) == "tests/core/test_core.py"
 
     def test_create_item_key(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
@@ -162,7 +162,7 @@ class TestValidateMarker:
         order_marker.args = []
         order_marker.kwargs = {}
 
-        with pytest.raises(TypeError, match="Incorrect arguments on marker 'order'. Target:testnodeid") as type_error:
+        with pytest.raises(TypeError, match="^Incorrect arguments on marker 'order'. Target:testnodeid$") as type_error:
             core.validate_order_marker(order_marker, "testnodeid")
 
         assert type(type_error.value.__cause__) == TypeError
@@ -188,7 +188,7 @@ class TestValidateMarker:
         sort_marker.args = []
         sort_marker.kwargs = {}
 
-        with pytest.raises(TypeError, match="Incorrect arguments on marker 'sort'. Target:testnodeid") as type_error:
+        with pytest.raises(TypeError, match="^Incorrect arguments on marker 'sort'. Target:testnodeid$") as type_error:
             core.validate_sort_marker(sort_marker, "testnodeid")
 
         assert type(type_error.value.__cause__) == TypeError
@@ -199,7 +199,7 @@ class TestValidateMarker:
         sort_marker.kwargs = {}
 
         with pytest.raises(
-            ValueError, match="Invalid Value for 'mode' on 'sort' marker. Value:invalid Target:testnodeid"
+            ValueError, match="^Invalid Value for 'mode' on 'sort' marker. Value:invalid Target:testnodeid$"
         ) as type_error:
             core.validate_sort_marker(sort_marker, "testnodeid")
 
@@ -207,7 +207,7 @@ class TestValidateMarker:
 
 
 class TestMarkerSettings:
-    def test_geet_marker_settings_parent(self, mock_objects):
+    def test_get_marker_settings_parent(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
         order_1 = mock.MagicMock()
@@ -232,7 +232,14 @@ class TestMarkerSettings:
 
         assert core.get_marker_settings(func) == ("ordered", "parent", None, 1)
 
-    def test_geet_marker_settings_self(self, mock_objects):
+        func.iter_markers.assert_has_calls(
+            [
+                mock.call("order"),
+                mock.call("sort"),
+            ]
+        )
+
+    def test_get_marker_settings_self(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
         order_1 = mock.MagicMock()
@@ -272,7 +279,7 @@ class TestMarkerSettings:
         module.iter_markers.side_effect = [[], [sort_random]]
 
         with pytest.raises(
-            ValueError, match=f"Invalid Value for 'bucket' on 'sort' marker: hello. Target: {module.nodeid}"
+            ValueError, match=f"^Invalid Value for 'bucket' on 'sort' marker: hello. Target: {module.nodeid}$"
         ):
             core.get_marker_settings(func)
 

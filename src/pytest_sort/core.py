@@ -39,7 +39,7 @@ def create_bucket_id_for_package(node: pytest_nodes.Node) -> str:
     if isinstance(node, (pytest.Session, pytest.Package)):
         return create_bucket_id_from_node(node)
 
-    if isinstance(node, (pytest_nodes.Node)) and node.parent:
+    if isinstance(node, (pytest_nodes.Node)):
         return create_bucket_id_for_package(node.parent)
 
     return ""
@@ -50,7 +50,7 @@ def create_bucket_id_for_module(node: pytest_nodes.Node) -> str:
     if isinstance(node, (pytest.Session, pytest.Package, pytest.Module)):
         return create_bucket_id_from_node(node)
 
-    if isinstance(node, (pytest_nodes.Node)) and node.parent:
+    if isinstance(node, (pytest_nodes.Node)):
         return create_bucket_id_for_module(node.parent)
 
     return ""
@@ -61,7 +61,7 @@ def create_bucket_id_for_class(node: pytest_nodes.Node) -> str:
     if isinstance(node, (pytest.Session, pytest.Package, pytest.Module, pytest.Class)):
         return create_bucket_id_from_node(node)
 
-    if isinstance(node, (pytest_nodes.Node)) and node.parent:
+    if isinstance(node, (pytest_nodes.Node)):
         return create_bucket_id_for_class(node.parent)
 
     return ""
