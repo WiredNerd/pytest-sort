@@ -1,2 +1,2 @@
 pytest-cov
-inspect_mate
+inspect-mate-pp

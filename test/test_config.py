@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest import mock
 
 import pytest
-from inspect_mate import is_static_method
+from inspect_mate_pp import is_static_method
 
 from pytest_sort import config, database
 
@@ -55,14 +55,14 @@ class TestSortConfig:
         random.randint.assert_called_with(0, 1_000_000)
 
     def test_SortConfig_static_methods(self):
-        assert is_static_method(config.SortConfig, "from_pytest")
-        assert is_static_method(config.SortConfig, "_mode_from_pytest")
-        assert is_static_method(config.SortConfig, "_bucket_from_pytest")
-        assert is_static_method(config.SortConfig, "_bucket_mode_from_pytest")
-        assert is_static_method(config.SortConfig, "_record_from_pytest")
-        assert is_static_method(config.SortConfig, "_seed_from_pytest")
-        assert is_static_method(config.SortConfig, "_database_file_from_pytest")
-        assert is_static_method(config.SortConfig, "header_dict")
+        assert is_static_method(config.SortConfig, "from_pytest") == True
+        assert is_static_method(config.SortConfig, "_mode_from_pytest") == True
+        assert is_static_method(config.SortConfig, "_bucket_from_pytest") == True
+        assert is_static_method(config.SortConfig, "_bucket_mode_from_pytest") == True
+        assert is_static_method(config.SortConfig, "_record_from_pytest") == True
+        assert is_static_method(config.SortConfig, "_seed_from_pytest") == True
+        assert is_static_method(config.SortConfig, "_database_file_from_pytest") == True
+        assert is_static_method(config.SortConfig, "header_dict") == True
 
     def test_from_pytest_default(self):
         pytest_config = self.PytestConfig({}, {})

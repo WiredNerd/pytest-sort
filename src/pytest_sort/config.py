@@ -28,7 +28,7 @@ class SortConfig:
     mode: str = "ordered"
     bucket: str = "parent"
     bucket_mode: str = "sort_mode"
-    record: bool | None = None
+    record: bool | None = None  # pragma: no mutate
     reset: bool = False
     report: bool = False
 
