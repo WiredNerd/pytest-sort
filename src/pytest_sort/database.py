@@ -25,7 +25,7 @@ class TestTab(db.Entity):  # type: ignore[name-defined]
 def _init_db(f: Callable) -> Callable:
     """Initialize database before running function."""
 
-    @wraps(f)
+    @wraps(f)  # pragma: no mutate
     def wrapper(*args: tuple, **kwargs: dict[str, Any]):  # noqa: ANN202
         if not db.provider:
             db.bind(provider="sqlite", filename=str(database_file), create_db=True)

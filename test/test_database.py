@@ -14,12 +14,13 @@ def reset():
     importlib.reload(database)
 
 
-class TestInitDb:
-    @pytest.fixture
-    def db(self):
-        with mock.patch("pytest_sort.database.db") as db:
-            yield db
+@pytest.fixture
+def db():
+    with mock.patch("pytest_sort.database.db") as db:
+        yield db
 
+
+class TestInitDb:
     @database._init_db
     def init_db(self):
         pass
@@ -68,6 +69,13 @@ class TestClearDb:
         with db_session:
             assert database.TestTab.select().fetch().to_list() == []
 
+    def test_clear_db_mock(self, db):
+        db.schema = "test"
+        database.clear_db()
+        db.drop_all_tables.assert_called_with(with_all_data=True)
+        assert db.schema == None
+        db.generate_mapping.assert_called_with(create_tables=True)
+
 
 class TestUpdate:
     @pytest.fixture(autouse=True)
@@ -108,6 +116,30 @@ class TestUpdate:
             row = database.TestTab.select().first().to_dict()
             assert row == {"nodeid": "test_node_1", "setup": 4, "call": 3, "teardown": 6, "total": 13}
 
+    def test_update_test_case_mock(self, db):
+        with mock.patch("pytest_sort.database.TestTab") as TestTab:
+            test = TestTab.get.return_value
+            test.setup.__lt__ = lambda self, v: test.setup_lt(v)
+            test.call.__lt__ = lambda self, v: test.call_lt(v)
+            test.teardown.__lt__ = lambda self, v: test.teardown_lt(v)
+            test.total.__lt__ = lambda self, v: test.total_lt(v)
+
+            database.update_test_case("test_node_1", 1, 2, 3)
+
+            test.setup_lt.assert_called_with(1)
+            assert test.setup == 1
+            test.call_lt.assert_called_with(2)
+            assert test.call == 2
+            test.teardown_lt.assert_called_with(3)
+            assert test.teardown == 3
+            test.total_lt.assert_called_with(6)
+            assert test.total == 6
+
+    def test_update_test_case_init_db(self, db):
+        db.provider = None
+        database.update_test_case("test_node_1")
+        db.bind.assert_called()
+
 
 class TestGet:
     @pytest.fixture(autouse=True)
@@ -119,6 +151,14 @@ class TestGet:
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_total("test_node_1") == 10
 
+    def test_get_total_not_found(self):
+        assert database.get_total("test_node_1") == 0
+
+    def test_get_total_init_db(self, db):
+        db.provider = None
+        database.get_total("test_node_1")
+        db.bind.assert_called()
+
     def test_get_all_totals(self):
         database.update_test_case("test_node_1", call=2)
         database.update_test_case("test_node_2", call=3)
@@ -127,8 +167,10 @@ class TestGet:
             "test_node_2": 3,
         }
 
-    def test_get_total_not_found(self):
-        assert database.get_total("test_node_1") == 0
+    def test_get_all_totals_init_db(self, db):
+        db.provider = None
+        database.get_all_totals()
+        db.bind.assert_called()
 
     def test_get_bucket_total(self):
         database.update_test_case("test_node_1", call=2)
@@ -146,6 +188,11 @@ class TestGet:
 
         assert database.get_bucket_total("not") == 0
 
+    def test_get_bucket_total_init_db(self, db):
+        db.provider = None
+        database.get_bucket_total("test")
+        db.bind.assert_called()
+
     def test_get_stats(self):
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_stats("test_node_1") == {"setup": 3, "call": 2, "teardown": 5, "total": 10}
@@ -153,3 +200,8 @@ class TestGet:
     def test_get_stats_not_found(self):
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_stats("test_node_2") == {"setup": 0, "call": 0, "teardown": 0, "total": 0}
+
+    def test_get_stats_init_db(self, db):
+        db.provider = None
+        database.get_stats("test_node_1")
+        db.bind.assert_called()
