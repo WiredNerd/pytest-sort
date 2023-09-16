@@ -112,7 +112,7 @@ class TestSortConfig:
 
     def test_from_pytest_sort_record_conflict(self):
         pytest_config = self.PytestConfig({"sort_no_record": True, "sort_record": True}, {})
-        with pytest.raises(ValueError, match="Do not use both --sort-record-times and --sort-no-record-times"):
+        with pytest.raises(ValueError, match="^Do not use both --sort-record-times and --sort-no-record-times$"):
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
@@ -173,6 +173,19 @@ class TestSortConfig:
         pytest_config = self.PytestConfig(getoption, getini)
         config.SortConfig.from_pytest(pytest_config)
         assert database.database_file.absolute() == expected.absolute()
+
+    @pytest.mark.parametrize(
+        "getoption,expected",
+        [
+            ({}, False),
+            ({"sort_debug": True}, True),
+            ({"sort_debug": False}, False),
+        ],
+    )
+    def test_from_pytest_sort_debug(self, getoption, expected):
+        pytest_config = self.PytestConfig(getoption, {})
+        config.SortConfig.from_pytest(pytest_config)
+        assert config.SortConfig.debug == expected
 
 
 class TestDict:
