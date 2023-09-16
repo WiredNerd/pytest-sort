@@ -14,9 +14,9 @@ from _pytest import nodes as pytest_nodes
 from pytest_sort.config import SortConfig
 from pytest_sort.database import get_all_totals, get_stats
 
-md5: Callable = hashlib.md5
-if sys.version_info >= (3, 9):
-    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
+md5: Callable = hashlib.md5  # pragma: no mutate
+if sys.version_info >= (3, 9):  # pragma: no mutate
+    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef] # pragma: no mutate
 
 
 if TYPE_CHECKING:
