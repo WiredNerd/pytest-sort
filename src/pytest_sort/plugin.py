@@ -78,7 +78,7 @@ def pytest_report_header(config: pytest.Config) -> str:  # noqa: ARG001
 
 def pytest_collection_modifyitems(
     session: pytest.Session,  # noqa: ARG001
-    config: pytest.Config, # noqa: ARG001
+    config: pytest.Config,  # noqa: ARG001
     items: list[pytest.Item],
 ) -> None:
     """pytest_sort: Modify item order."""
