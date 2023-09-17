@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<testsuites disabled="0" errors="0" failures="81" tests="441" time="0.0">
-	<testsuite disabled="0" errors="0" failures="81" name="mutmut" skipped="0" tests="441" time="0">
+<testsuites disabled="0" errors="0" failures="0" tests="431" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="mutmut" skipped="0" tests="431" time="0">
 		<testcase name="Mutant #1" file="src/pytest_sort/database.py" line="11">
 			<system-out>database_file = Path.cwd() / &quot;.pytest_sort&quot;</system-out>
 		</testcase>
@@ -647,160 +647,160 @@
 			<system-out>        bucket_id = SortConfig.item_bucket_id[node_id]</system-out>
 		</testcase>
 		<testcase name="Mutant #216" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #217" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #218" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #219" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #220" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #221" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #222" file="src/pytest_sort/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;none&quot;]</system-out>
+		<testcase name="Mutant #222" file="src/pytest_sort/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #223" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #224" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #225" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #226" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #227" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #228" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #229" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #230" file="src/pytest_sort/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;parent&quot;, &quot;grandparent&quot;, &quot;global&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #231" file="src/pytest_sort/config.py" line="18">
+		<testcase name="Mutant #229" file="src/pytest_sort/config.py" line="18">
 			<system-out>    &quot;none&quot;: &quot;ordered&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #232" file="src/pytest_sort/config.py" line="18">
+		<testcase name="Mutant #230" file="src/pytest_sort/config.py" line="18">
 			<system-out>    &quot;none&quot;: &quot;ordered&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #233" file="src/pytest_sort/config.py" line="19">
+		<testcase name="Mutant #231" file="src/pytest_sort/config.py" line="19">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #234" file="src/pytest_sort/config.py" line="21">
+		<testcase name="Mutant #232" file="src/pytest_sort/config.py" line="21">
 			<system-out>    &quot;global&quot;: &quot;session&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #235" file="src/pytest_sort/config.py" line="21">
+		<testcase name="Mutant #233" file="src/pytest_sort/config.py" line="21">
 			<system-out>    &quot;global&quot;: &quot;session&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #236" file="src/pytest_sort/config.py" line="22">
+		<testcase name="Mutant #234" file="src/pytest_sort/config.py" line="22">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #237" file="src/pytest_sort/config.py" line="28">
+		<testcase name="Mutant #235" file="src/pytest_sort/config.py" line="28">
 			<system-out>    mode: str = &quot;ordered&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #238" file="src/pytest_sort/config.py" line="28">
+		<testcase name="Mutant #236" file="src/pytest_sort/config.py" line="28">
 			<system-out>    mode: str = &quot;ordered&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #239" file="src/pytest_sort/config.py" line="29">
+		<testcase name="Mutant #237" file="src/pytest_sort/config.py" line="29">
 			<system-out>    bucket: str = &quot;parent&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #240" file="src/pytest_sort/config.py" line="29">
+		<testcase name="Mutant #238" file="src/pytest_sort/config.py" line="29">
 			<system-out>    bucket: str = &quot;parent&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #241" file="src/pytest_sort/config.py" line="30">
+		<testcase name="Mutant #239" file="src/pytest_sort/config.py" line="30">
 			<system-out>    bucket_mode: str = &quot;sort_mode&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #242" file="src/pytest_sort/config.py" line="30">
+		<testcase name="Mutant #240" file="src/pytest_sort/config.py" line="30">
 			<system-out>    bucket_mode: str = &quot;sort_mode&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #243" file="src/pytest_sort/config.py" line="32">
+		<testcase name="Mutant #241" file="src/pytest_sort/config.py" line="32">
 			<system-out>    reset: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #244" file="src/pytest_sort/config.py" line="32">
+		<testcase name="Mutant #242" file="src/pytest_sort/config.py" line="32">
 			<system-out>    reset: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #245" file="src/pytest_sort/config.py" line="33">
+		<testcase name="Mutant #243" file="src/pytest_sort/config.py" line="33">
 			<system-out>    report: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #246" file="src/pytest_sort/config.py" line="33">
+		<testcase name="Mutant #244" file="src/pytest_sort/config.py" line="33">
 			<system-out>    report: bool = False</system-out>
+		</testcase>
+		<testcase name="Mutant #245" file="src/pytest_sort/config.py" line="35">
+			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
+		</testcase>
+		<testcase name="Mutant #246" file="src/pytest_sort/config.py" line="35">
+			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
 		</testcase>
 		<testcase name="Mutant #247" file="src/pytest_sort/config.py" line="35">
 			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
 		</testcase>
-		<testcase name="Mutant #248" file="src/pytest_sort/config.py" line="35">
-			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
-		</testcase>
-		<testcase name="Mutant #249" file="src/pytest_sort/config.py" line="35">
-			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
-		</testcase>
-		<testcase name="Mutant #250" file="src/pytest_sort/config.py" line="37">
+		<testcase name="Mutant #248" file="src/pytest_sort/config.py" line="37">
 			<system-out>    debug = False</system-out>
 		</testcase>
-		<testcase name="Mutant #251" file="src/pytest_sort/config.py" line="37">
+		<testcase name="Mutant #249" file="src/pytest_sort/config.py" line="37">
 			<system-out>    debug = False</system-out>
 		</testcase>
-		<testcase name="Mutant #252" file="src/pytest_sort/config.py" line="39">
+		<testcase name="Mutant #250" file="src/pytest_sort/config.py" line="39">
 			<system-out>    recorded_times: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #253" file="src/pytest_sort/config.py" line="40">
+		<testcase name="Mutant #251" file="src/pytest_sort/config.py" line="40">
 			<system-out>    item_totals: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #254" file="src/pytest_sort/config.py" line="41">
+		<testcase name="Mutant #252" file="src/pytest_sort/config.py" line="41">
 			<system-out>    item_sort_keys: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #255" file="src/pytest_sort/config.py" line="42">
+		<testcase name="Mutant #253" file="src/pytest_sort/config.py" line="42">
 			<system-out>    item_bucket_id: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #256" file="src/pytest_sort/config.py" line="43">
+		<testcase name="Mutant #254" file="src/pytest_sort/config.py" line="43">
 			<system-out>    bucket_sort_keys: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #257" file="src/pytest_sort/config.py" line="45">
+		<testcase name="Mutant #255" file="src/pytest_sort/config.py" line="45">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #256" file="src/pytest_sort/config.py" line="53">
+			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
+		</testcase>
+		<testcase name="Mutant #257" file="src/pytest_sort/config.py" line="53">
+			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
 		</testcase>
 		<testcase name="Mutant #258" file="src/pytest_sort/config.py" line="53">
 			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #259" file="src/pytest_sort/config.py" line="53">
-			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
+		<testcase name="Mutant #259" file="src/pytest_sort/config.py" line="54">
+			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #260" file="src/pytest_sort/config.py" line="53">
-			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
+		<testcase name="Mutant #260" file="src/pytest_sort/config.py" line="54">
+			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
 		</testcase>
 		<testcase name="Mutant #261" file="src/pytest_sort/config.py" line="54">
 			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #262" file="src/pytest_sort/config.py" line="54">
-			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
-		</testcase>
-		<testcase name="Mutant #263" file="src/pytest_sort/config.py" line="54">
-			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
-		</testcase>
-		<testcase name="Mutant #264" file="src/pytest_sort/config.py" line="59">
+		<testcase name="Mutant #262" file="src/pytest_sort/config.py" line="59">
 			<system-out>        if config.getoption(&quot;sort_debug&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #265" file="src/pytest_sort/config.py" line="60">
+		<testcase name="Mutant #263" file="src/pytest_sort/config.py" line="60">
 			<system-out>            SortConfig.debug = True</system-out>
 		</testcase>
-		<testcase name="Mutant #266" file="src/pytest_sort/config.py" line="60">
+		<testcase name="Mutant #264" file="src/pytest_sort/config.py" line="60">
 			<system-out>            SortConfig.debug = True</system-out>
 		</testcase>
-		<testcase name="Mutant #267" file="src/pytest_sort/config.py" line="62">
+		<testcase name="Mutant #265" file="src/pytest_sort/config.py" line="62">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #266" file="src/pytest_sort/config.py" line="64">
+			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
+		</testcase>
+		<testcase name="Mutant #267" file="src/pytest_sort/config.py" line="64">
+			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
 		</testcase>
 		<testcase name="Mutant #268" file="src/pytest_sort/config.py" line="64">
 			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
@@ -808,26 +808,26 @@
 		<testcase name="Mutant #269" file="src/pytest_sort/config.py" line="64">
 			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #270" file="src/pytest_sort/config.py" line="64">
-			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
-		</testcase>
-		<testcase name="Mutant #271" file="src/pytest_sort/config.py" line="64">
-			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
-		</testcase>
-		<testcase name="Mutant #272" file="src/pytest_sort/config.py" line="65">
-			<system-out>        if SortConfig.mode not in modes:</system-out>
-		</testcase>
-		<testcase name="Mutant #273" file="src/pytest_sort/config.py" line="66">
-			<system-out>            msg = f&quot;Invalid Value for sort-mode='{SortConfig.mode}'&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #274" file="src/pytest_sort/config.py" line="66">
-			<system-out>            msg = f&quot;Invalid Value for sort-mode='{SortConfig.mode}'&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #275" file="src/pytest_sort/config.py" line="68">
+		<testcase name="Mutant #270" file="src/pytest_sort/config.py" line="65">
 			<system-out>        SortConfig.mode = legacy_modes.get(SortConfig.mode, SortConfig.mode)</system-out>
 		</testcase>
-		<testcase name="Mutant #276" file="src/pytest_sort/config.py" line="70">
+		<testcase name="Mutant #271" file="src/pytest_sort/config.py" line="66">
+			<system-out>        if SortConfig.mode not in modes:</system-out>
+		</testcase>
+		<testcase name="Mutant #272" file="src/pytest_sort/config.py" line="67">
+			<system-out>            msg = f&quot;Invalid Value for sort-mode='{SortConfig.mode}'&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #273" file="src/pytest_sort/config.py" line="67">
+			<system-out>            msg = f&quot;Invalid Value for sort-mode='{SortConfig.mode}'&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #274" file="src/pytest_sort/config.py" line="70">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #275" file="src/pytest_sort/config.py" line="72">
+			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
+		</testcase>
+		<testcase name="Mutant #276" file="src/pytest_sort/config.py" line="72">
+			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
 		</testcase>
 		<testcase name="Mutant #277" file="src/pytest_sort/config.py" line="72">
 			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
@@ -835,83 +835,83 @@
 		<testcase name="Mutant #278" file="src/pytest_sort/config.py" line="72">
 			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #279" file="src/pytest_sort/config.py" line="72">
-			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
-		</testcase>
-		<testcase name="Mutant #280" file="src/pytest_sort/config.py" line="72">
-			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
-		</testcase>
-		<testcase name="Mutant #281" file="src/pytest_sort/config.py" line="73">
-			<system-out>        if SortConfig.bucket not in bucket_types:</system-out>
-		</testcase>
-		<testcase name="Mutant #282" file="src/pytest_sort/config.py" line="74">
-			<system-out>            msg = f&quot;Invalid Value for sort-bucket='{SortConfig.bucket}'&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #283" file="src/pytest_sort/config.py" line="74">
-			<system-out>            msg = f&quot;Invalid Value for sort-bucket='{SortConfig.bucket}'&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #284" file="src/pytest_sort/config.py" line="76">
+		<testcase name="Mutant #279" file="src/pytest_sort/config.py" line="73">
 			<system-out>        SortConfig.bucket = legacy_bucket_types.get(SortConfig.bucket, SortConfig.bucket)</system-out>
 		</testcase>
-		<testcase name="Mutant #285" file="src/pytest_sort/config.py" line="78">
+		<testcase name="Mutant #280" file="src/pytest_sort/config.py" line="74">
+			<system-out>        if SortConfig.bucket not in bucket_types:</system-out>
+		</testcase>
+		<testcase name="Mutant #281" file="src/pytest_sort/config.py" line="75">
+			<system-out>            msg = f&quot;Invalid Value for sort-bucket='{SortConfig.bucket}'&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #282" file="src/pytest_sort/config.py" line="75">
+			<system-out>            msg = f&quot;Invalid Value for sort-bucket='{SortConfig.bucket}'&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #283" file="src/pytest_sort/config.py" line="78">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #284" file="src/pytest_sort/config.py" line="81">
+			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
+		</testcase>
+		<testcase name="Mutant #285" file="src/pytest_sort/config.py" line="81">
+			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
 		</testcase>
 		<testcase name="Mutant #286" file="src/pytest_sort/config.py" line="81">
 			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #287" file="src/pytest_sort/config.py" line="81">
-			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
-		</testcase>
-		<testcase name="Mutant #288" file="src/pytest_sort/config.py" line="81">
-			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
-		</testcase>
-		<testcase name="Mutant #289" file="src/pytest_sort/config.py" line="82">
+		<testcase name="Mutant #287" file="src/pytest_sort/config.py" line="82">
 			<system-out>        )</system-out>
 		</testcase>
-		<testcase name="Mutant #290" file="src/pytest_sort/config.py" line="83">
+		<testcase name="Mutant #288" file="src/pytest_sort/config.py" line="83">
 			<system-out>        if SortConfig.bucket_mode == &quot;sort_mode&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #291" file="src/pytest_sort/config.py" line="83">
+		<testcase name="Mutant #289" file="src/pytest_sort/config.py" line="83">
 			<system-out>        if SortConfig.bucket_mode == &quot;sort_mode&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #292" file="src/pytest_sort/config.py" line="84">
+		<testcase name="Mutant #290" file="src/pytest_sort/config.py" line="84">
 			<system-out>            SortConfig.bucket_mode = SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #293" file="src/pytest_sort/config.py" line="85">
-			<system-out>        if SortConfig.bucket_mode not in modes:</system-out>
-		</testcase>
-		<testcase name="Mutant #294" file="src/pytest_sort/config.py" line="86">
-			<system-out>            msg = f&quot;Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #295" file="src/pytest_sort/config.py" line="86">
-			<system-out>            msg = f&quot;Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #296" file="src/pytest_sort/config.py" line="88">
+		<testcase name="Mutant #291" file="src/pytest_sort/config.py" line="85">
 			<system-out>        SortConfig.bucket_mode = legacy_modes.get(SortConfig.bucket_mode, SortConfig.bucket_mode)</system-out>
 		</testcase>
-		<testcase name="Mutant #297" file="src/pytest_sort/config.py" line="90">
+		<testcase name="Mutant #292" file="src/pytest_sort/config.py" line="86">
+			<system-out>        if SortConfig.bucket_mode not in modes:</system-out>
+		</testcase>
+		<testcase name="Mutant #293" file="src/pytest_sort/config.py" line="87">
+			<system-out>            msg = f&quot;Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #294" file="src/pytest_sort/config.py" line="87">
+			<system-out>            msg = f&quot;Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #295" file="src/pytest_sort/config.py" line="90">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #296" file="src/pytest_sort/config.py" line="92">
+			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
+		</testcase>
+		<testcase name="Mutant #297" file="src/pytest_sort/config.py" line="92">
+			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
 		</testcase>
 		<testcase name="Mutant #298" file="src/pytest_sort/config.py" line="92">
 			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #299" file="src/pytest_sort/config.py" line="92">
-			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
-		</testcase>
-		<testcase name="Mutant #300" file="src/pytest_sort/config.py" line="92">
-			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
-		</testcase>
-		<testcase name="Mutant #301" file="src/pytest_sort/config.py" line="93">
+		<testcase name="Mutant #299" file="src/pytest_sort/config.py" line="93">
 			<system-out>            raise ValueError(&quot;Do not use both --sort-record-times and --sort-no-record-times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #302" file="src/pytest_sort/config.py" line="95">
+		<testcase name="Mutant #300" file="src/pytest_sort/config.py" line="95">
 			<system-out>        if config.getoption(&quot;sort_no_record&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #303" file="src/pytest_sort/config.py" line="96">
+		<testcase name="Mutant #301" file="src/pytest_sort/config.py" line="96">
 			<system-out>            SortConfig.record = False</system-out>
 		</testcase>
-		<testcase name="Mutant #304" file="src/pytest_sort/config.py" line="96">
+		<testcase name="Mutant #302" file="src/pytest_sort/config.py" line="96">
 			<system-out>            SortConfig.record = False</system-out>
+		</testcase>
+		<testcase name="Mutant #303" file="src/pytest_sort/config.py" line="98">
+			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
+		</testcase>
+		<testcase name="Mutant #304" file="src/pytest_sort/config.py" line="98">
+			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
 		</testcase>
 		<testcase name="Mutant #305" file="src/pytest_sort/config.py" line="98">
 			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
@@ -919,17 +919,17 @@
 		<testcase name="Mutant #306" file="src/pytest_sort/config.py" line="98">
 			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #307" file="src/pytest_sort/config.py" line="98">
-			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
-		</testcase>
-		<testcase name="Mutant #308" file="src/pytest_sort/config.py" line="98">
-			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
-		</testcase>
-		<testcase name="Mutant #309" file="src/pytest_sort/config.py" line="100">
+		<testcase name="Mutant #307" file="src/pytest_sort/config.py" line="100">
 			<system-out>        if not isinstance(SortConfig.record, bool):</system-out>
 		</testcase>
-		<testcase name="Mutant #310" file="src/pytest_sort/config.py" line="101">
+		<testcase name="Mutant #308" file="src/pytest_sort/config.py" line="101">
 			<system-out>            SortConfig.record = None</system-out>
+		</testcase>
+		<testcase name="Mutant #309" file="src/pytest_sort/config.py" line="102">
+			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
+		</testcase>
+		<testcase name="Mutant #310" file="src/pytest_sort/config.py" line="102">
+			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
 		</testcase>
 		<testcase name="Mutant #311" file="src/pytest_sort/config.py" line="102">
 			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
@@ -937,20 +937,20 @@
 		<testcase name="Mutant #312" file="src/pytest_sort/config.py" line="102">
 			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
 		</testcase>
-		<testcase name="Mutant #313" file="src/pytest_sort/config.py" line="102">
-			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
-		</testcase>
-		<testcase name="Mutant #314" file="src/pytest_sort/config.py" line="102">
-			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
-		</testcase>
-		<testcase name="Mutant #315" file="src/pytest_sort/config.py" line="103">
+		<testcase name="Mutant #313" file="src/pytest_sort/config.py" line="103">
 			<system-out>            SortConfig.record = True</system-out>
 		</testcase>
-		<testcase name="Mutant #316" file="src/pytest_sort/config.py" line="103">
+		<testcase name="Mutant #314" file="src/pytest_sort/config.py" line="103">
 			<system-out>            SortConfig.record = True</system-out>
 		</testcase>
-		<testcase name="Mutant #317" file="src/pytest_sort/config.py" line="105">
+		<testcase name="Mutant #315" file="src/pytest_sort/config.py" line="105">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #316" file="src/pytest_sort/config.py" line="107">
+			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
+		</testcase>
+		<testcase name="Mutant #317" file="src/pytest_sort/config.py" line="107">
+			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
 		</testcase>
 		<testcase name="Mutant #318" file="src/pytest_sort/config.py" line="107">
 			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
@@ -958,26 +958,26 @@
 		<testcase name="Mutant #319" file="src/pytest_sort/config.py" line="107">
 			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #320" file="src/pytest_sort/config.py" line="107">
-			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
-		</testcase>
-		<testcase name="Mutant #321" file="src/pytest_sort/config.py" line="107">
-			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
-		</testcase>
-		<testcase name="Mutant #322" file="src/pytest_sort/config.py" line="108">
+		<testcase name="Mutant #320" file="src/pytest_sort/config.py" line="108">
 			<system-out>        if not str(SortConfig.seed).isdigit():</system-out>
 		</testcase>
-		<testcase name="Mutant #323" file="src/pytest_sort/config.py" line="109">
+		<testcase name="Mutant #321" file="src/pytest_sort/config.py" line="109">
 			<system-out>            msg = f&quot;Invalid seed value '{SortConfig.seed}' must be int&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #324" file="src/pytest_sort/config.py" line="109">
+		<testcase name="Mutant #322" file="src/pytest_sort/config.py" line="109">
 			<system-out>            msg = f&quot;Invalid seed value '{SortConfig.seed}' must be int&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #325" file="src/pytest_sort/config.py" line="111">
+		<testcase name="Mutant #323" file="src/pytest_sort/config.py" line="111">
 			<system-out>        SortConfig.seed = int(str(SortConfig.seed))</system-out>
 		</testcase>
-		<testcase name="Mutant #326" file="src/pytest_sort/config.py" line="113">
+		<testcase name="Mutant #324" file="src/pytest_sort/config.py" line="113">
 			<system-out>    @staticmethod</system-out>
+		</testcase>
+		<testcase name="Mutant #325" file="src/pytest_sort/config.py" line="115">
+			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
+		</testcase>
+		<testcase name="Mutant #326" file="src/pytest_sort/config.py" line="115">
+			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
 		</testcase>
 		<testcase name="Mutant #327" file="src/pytest_sort/config.py" line="115">
 			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
@@ -985,23 +985,23 @@
 		<testcase name="Mutant #328" file="src/pytest_sort/config.py" line="115">
 			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
 		</testcase>
-		<testcase name="Mutant #329" file="src/pytest_sort/config.py" line="115">
-			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
-		</testcase>
-		<testcase name="Mutant #330" file="src/pytest_sort/config.py" line="115">
-			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
-		</testcase>
-		<testcase name="Mutant #331" file="src/pytest_sort/config.py" line="117">
+		<testcase name="Mutant #329" file="src/pytest_sort/config.py" line="117">
 			<system-out>            database.database_file = Path(database_file)</system-out>
 		</testcase>
-		<testcase name="Mutant #332" file="src/pytest_sort/config.py" line="119">
+		<testcase name="Mutant #330" file="src/pytest_sort/config.py" line="119">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #333" file="src/pytest_sort/config.py" line="126">
+		<testcase name="Mutant #331" file="src/pytest_sort/config.py" line="126">
 			<system-out>            &quot;sort-mode&quot;: SortConfig.mode,</system-out>
 		</testcase>
-		<testcase name="Mutant #334" file="src/pytest_sort/config.py" line="127">
+		<testcase name="Mutant #332" file="src/pytest_sort/config.py" line="127">
 			<system-out>        }</system-out>
+		</testcase>
+		<testcase name="Mutant #333" file="src/pytest_sort/config.py" line="129">
+			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
+		</testcase>
+		<testcase name="Mutant #334" file="src/pytest_sort/config.py" line="129">
+			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
 		<testcase name="Mutant #335" file="src/pytest_sort/config.py" line="129">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
@@ -1012,1295 +1012,286 @@
 		<testcase name="Mutant #337" file="src/pytest_sort/config.py" line="129">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #338" file="src/pytest_sort/config.py" line="129">
-			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
-		</testcase>
-		<testcase name="Mutant #339" file="src/pytest_sort/config.py" line="129">
-			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
-		</testcase>
-		<testcase name="Mutant #340" file="src/pytest_sort/config.py" line="130">
+		<testcase name="Mutant #338" file="src/pytest_sort/config.py" line="130">
 			<system-out>            config[&quot;sort-bucket&quot;] = SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #341" file="src/pytest_sort/config.py" line="130">
+		<testcase name="Mutant #339" file="src/pytest_sort/config.py" line="130">
 			<system-out>            config[&quot;sort-bucket&quot;] = SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #342" file="src/pytest_sort/config.py" line="132">
+		<testcase name="Mutant #340" file="src/pytest_sort/config.py" line="132">
 			<system-out>        if SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #343" file="src/pytest_sort/config.py" line="133">
+		<testcase name="Mutant #341" file="src/pytest_sort/config.py" line="133">
 			<system-out>            config[&quot;sort-bucket-mode&quot;] = SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #344" file="src/pytest_sort/config.py" line="133">
+		<testcase name="Mutant #342" file="src/pytest_sort/config.py" line="133">
 			<system-out>            config[&quot;sort-bucket-mode&quot;] = SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #345" file="src/pytest_sort/config.py" line="135">
+		<testcase name="Mutant #343" file="src/pytest_sort/config.py" line="135">
 			<system-out>        if SortConfig.mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #346" file="src/pytest_sort/config.py" line="135">
+		<testcase name="Mutant #344" file="src/pytest_sort/config.py" line="135">
 			<system-out>        if SortConfig.mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #347" file="src/pytest_sort/config.py" line="136">
+		<testcase name="Mutant #345" file="src/pytest_sort/config.py" line="136">
 			<system-out>            config[&quot;sort-seed&quot;] = SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #348" file="src/pytest_sort/config.py" line="136">
+		<testcase name="Mutant #346" file="src/pytest_sort/config.py" line="136">
 			<system-out>            config[&quot;sort-seed&quot;] = SortConfig.seed</system-out>
+		</testcase>
+		<testcase name="Mutant #347" file="src/pytest_sort/config.py" line="139">
+			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
+		</testcase>
+		<testcase name="Mutant #348" file="src/pytest_sort/config.py" line="139">
+			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
 		</testcase>
 		<testcase name="Mutant #349" file="src/pytest_sort/config.py" line="139">
 			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #350" file="src/pytest_sort/config.py" line="139">
-			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
-		</testcase>
-		<testcase name="Mutant #351" file="src/pytest_sort/config.py" line="139">
-			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
-		</testcase>
-		<testcase name="Mutant #352" file="src/pytest_sort/config.py" line="141">
+		<testcase name="Mutant #350" file="src/pytest_sort/config.py" line="141">
 			<system-out>        if SortConfig.record is not None:</system-out>
 		</testcase>
-		<testcase name="Mutant #353" file="src/pytest_sort/config.py" line="142">
+		<testcase name="Mutant #351" file="src/pytest_sort/config.py" line="142">
 			<system-out>            config[&quot;sort-record-times&quot;] = SortConfig.record</system-out>
 		</testcase>
-		<testcase name="Mutant #354" file="src/pytest_sort/config.py" line="142">
+		<testcase name="Mutant #352" file="src/pytest_sort/config.py" line="142">
 			<system-out>            config[&quot;sort-record-times&quot;] = SortConfig.record</system-out>
+		</testcase>
+		<testcase name="Mutant #353" file="src/pytest_sort/config.py" line="145">
+			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
+		</testcase>
+		<testcase name="Mutant #354" file="src/pytest_sort/config.py" line="145">
+			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
 		</testcase>
 		<testcase name="Mutant #355" file="src/pytest_sort/config.py" line="145">
 			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #356" file="src/pytest_sort/config.py" line="145">
-			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
+		<testcase name="Mutant #356" file="src/pytest_sort/config.py" line="148">
+			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #357" file="src/pytest_sort/config.py" line="145">
-			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
+		<testcase name="Mutant #357" file="src/pytest_sort/config.py" line="148">
+			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
 		</testcase>
 		<testcase name="Mutant #358" file="src/pytest_sort/config.py" line="148">
 			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #359" file="src/pytest_sort/config.py" line="148">
-			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
-		</testcase>
-		<testcase name="Mutant #360" file="src/pytest_sort/config.py" line="148">
-			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
-		</testcase>
-		<testcase name="Mutant #361" file="src/pytest_sort/plugin.py" line="20">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -17,7 +17,7 @@
- 
- def pytest_addoption(parser: pytest.Parser) -&gt; None:
-     &quot;&quot;&quot;pytest_sort: Add command line and ini options to pytest.&quot;&quot;&quot;
--    group = parser.getgroup(&quot;pytest-sort&quot;)
-+    group = parser.getgroup(&quot;XXpytest-sortXX&quot;)
- 
-     help_text = &quot;&quot;&quot;Method for sorting test items.
-     ordered = (default) pytest_sort will keep the default order.
-</failure>
+		<testcase name="Mutant #359" file="src/pytest_sort/plugin.py" line="20">
 			<system-out>    group = parser.getgroup(&quot;pytest-sort&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #362" file="src/pytest_sort/plugin.py" line="20">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -17,7 +17,7 @@
- 
- def pytest_addoption(parser: pytest.Parser) -&gt; None:
-     &quot;&quot;&quot;pytest_sort: Add command line and ini options to pytest.&quot;&quot;&quot;
--    group = parser.getgroup(&quot;pytest-sort&quot;)
-+    group = None
- 
-     help_text = &quot;&quot;&quot;Method for sorting test items.
-     ordered = (default) pytest_sort will keep the default order.
-</failure>
+		<testcase name="Mutant #360" file="src/pytest_sort/plugin.py" line="20">
 			<system-out>    group = parser.getgroup(&quot;pytest-sort&quot;)</system-out>
+		</testcase>
+		<testcase name="Mutant #361" file="src/pytest_sort/plugin.py" line="22">
+			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=modes)</system-out>
+		</testcase>
+		<testcase name="Mutant #362" file="src/pytest_sort/plugin.py" line="22">
+			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=modes)</system-out>
 		</testcase>
 		<testcase name="Mutant #363" file="src/pytest_sort/plugin.py" line="22">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -19,13 +19,7 @@
-     &quot;&quot;&quot;pytest_sort: Add command line and ini options to pytest.&quot;&quot;&quot;
-     group = parser.getgroup(&quot;pytest-sort&quot;)
- 
--    help_text = &quot;&quot;&quot;Method for sorting test items.
--    ordered = (default) pytest_sort will keep the default order.
--    reverse = pytest_sort will reverse the default order.
--    md5     = Sort by md5 of test name.
--    random  = randomly sort tests.
--    fastest = use recorded times to run fastest tests first.
--    &quot;&quot;&quot;
-+    help_text = None
-     choices = modes
-     group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
-</failure>
-			<system-out>    help_text = &quot;&quot;&quot;Method for sorting test items.</system-out>
+			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=modes)</system-out>
 		</testcase>
-		<testcase name="Mutant #364" file="src/pytest_sort/plugin.py" line="29">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -26,7 +26,7 @@
-     random  = randomly sort tests.
-     fastest = use recorded times to run fastest tests first.
-     &quot;&quot;&quot;
--    choices = modes
-+    choices = None
-     group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
-</failure>
-			<system-out>    choices = modes</system-out>
+		<testcase name="Mutant #364" file="src/pytest_sort/plugin.py" line="23">
+			<system-out>    parser.addini(&quot;sort_mode&quot;, help=str(modes))</system-out>
 		</testcase>
-		<testcase name="Mutant #365" file="src/pytest_sort/plugin.py" line="30">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -27,7 +27,7 @@
-     fastest = use recorded times to run fastest tests first.
-     &quot;&quot;&quot;
-     choices = modes
--    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;XX--sort-modeXX&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-</failure>
-			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)</system-out>
+		<testcase name="Mutant #365" file="src/pytest_sort/plugin.py" line="25">
+			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=bucket_types)</system-out>
 		</testcase>
-		<testcase name="Mutant #366" file="src/pytest_sort/plugin.py" line="30">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -27,7 +27,7 @@
-     fastest = use recorded times to run fastest tests first.
-     &quot;&quot;&quot;
-     choices = modes
--    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;--sort-mode&quot;, action=&quot;XXstoreXX&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-</failure>
-			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)</system-out>
+		<testcase name="Mutant #366" file="src/pytest_sort/plugin.py" line="25">
+			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=bucket_types)</system-out>
 		</testcase>
-		<testcase name="Mutant #367" file="src/pytest_sort/plugin.py" line="30">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -27,7 +27,7 @@
-     fastest = use recorded times to run fastest tests first.
-     &quot;&quot;&quot;
-     choices = modes
--    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;XXsort_modeXX&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-</failure>
-			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)</system-out>
+		<testcase name="Mutant #367" file="src/pytest_sort/plugin.py" line="25">
+			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=bucket_types)</system-out>
 		</testcase>
-		<testcase name="Mutant #368" file="src/pytest_sort/plugin.py" line="31">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -28,7 +28,7 @@
-     &quot;&quot;&quot;
-     choices = modes
-     group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
--    parser.addini(&quot;sort_mode&quot;, help=str(choices))
-+    parser.addini(&quot;XXsort_modeXX&quot;, help=str(choices))
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-     choices = bucket_types
-</failure>
-			<system-out>    parser.addini(&quot;sort_mode&quot;, help=str(choices))</system-out>
+		<testcase name="Mutant #368" file="src/pytest_sort/plugin.py" line="26">
+			<system-out>    parser.addini(&quot;sort_bucket&quot;, help=str(bucket_types))</system-out>
 		</testcase>
-		<testcase name="Mutant #369" file="src/pytest_sort/plugin.py" line="33">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -30,7 +30,7 @@
-     group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
--    help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-+    help_text = &quot;XXSort test items within specified test buckets. (default: parent)XX&quot;
-     choices = bucket_types
-     group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
-</failure>
-			<system-out>    help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #370" file="src/pytest_sort/plugin.py" line="33">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -30,7 +30,7 @@
-     group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
--    help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-+    help_text = None
-     choices = bucket_types
-     group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
-</failure>
-			<system-out>    help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;</system-out>
-		</testcase>
-		<testcase name="Mutant #371" file="src/pytest_sort/plugin.py" line="34">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -31,7 +31,7 @@
-     parser.addini(&quot;sort_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
--    choices = bucket_types
-+    choices = None
-     group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
- 
-</failure>
-			<system-out>    choices = bucket_types</system-out>
-		</testcase>
-		<testcase name="Mutant #372" file="src/pytest_sort/plugin.py" line="35">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -32,7 +32,7 @@
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-     choices = bucket_types
--    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;XX--sort-bucketXX&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
- 
-     help_text = &quot;&quot;&quot;Method for sorting the buckets.
-</failure>
-			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)</system-out>
-		</testcase>
-		<testcase name="Mutant #373" file="src/pytest_sort/plugin.py" line="35">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -32,7 +32,7 @@
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-     choices = bucket_types
--    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;--sort-bucket&quot;, action=&quot;XXstoreXX&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
- 
-     help_text = &quot;&quot;&quot;Method for sorting the buckets.
-</failure>
-			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)</system-out>
-		</testcase>
-		<testcase name="Mutant #374" file="src/pytest_sort/plugin.py" line="35">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -32,7 +32,7 @@
- 
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-     choices = bucket_types
--    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;XXsort_bucketXX&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
- 
-     help_text = &quot;&quot;&quot;Method for sorting the buckets.
-</failure>
-			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)</system-out>
-		</testcase>
-		<testcase name="Mutant #375" file="src/pytest_sort/plugin.py" line="36">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -33,7 +33,7 @@
-     help_text = &quot;Sort test items within specified test buckets. (default: parent)&quot;
-     choices = bucket_types
-     group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
--    parser.addini(&quot;sort_bucket&quot;, help=str(choices))
-+    parser.addini(&quot;XXsort_bucketXX&quot;, help=str(choices))
- 
-     help_text = &quot;&quot;&quot;Method for sorting the buckets.
-     sort_mode = (default) Use same setting for soring buckets as for sorting items.
-</failure>
-			<system-out>    parser.addini(&quot;sort_bucket&quot;, help=str(choices))</system-out>
-		</testcase>
-		<testcase name="Mutant #376" file="src/pytest_sort/plugin.py" line="38">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -35,10 +35,7 @@
-     group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket&quot;, help=str(choices))
- 
--    help_text = &quot;&quot;&quot;Method for sorting the buckets.
--    sort_mode = (default) Use same setting for soring buckets as for sorting items.
--    See sort_mode for desriptions of other options.
--    &quot;&quot;&quot;
-+    help_text = None
-     choices = [&quot;sort_mode&quot;]
-     choices.extend(modes)
-     group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-</failure>
-			<system-out>    help_text = &quot;&quot;&quot;Method for sorting the buckets.</system-out>
-		</testcase>
-		<testcase name="Mutant #377" file="src/pytest_sort/plugin.py" line="42">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -39,7 +39,7 @@
-     sort_mode = (default) Use same setting for soring buckets as for sorting items.
-     See sort_mode for desriptions of other options.
-     &quot;&quot;&quot;
--    choices = [&quot;sort_mode&quot;]
-+    choices = [&quot;XXsort_modeXX&quot;]
-     choices.extend(modes)
-     group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
-</failure>
+		<testcase name="Mutant #369" file="src/pytest_sort/plugin.py" line="28">
 			<system-out>    choices = [&quot;sort_mode&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #378" file="src/pytest_sort/plugin.py" line="42">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -39,7 +39,7 @@
-     sort_mode = (default) Use same setting for soring buckets as for sorting items.
-     See sort_mode for desriptions of other options.
-     &quot;&quot;&quot;
--    choices = [&quot;sort_mode&quot;]
-+    choices = None
-     choices.extend(modes)
-     group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
-</failure>
+		<testcase name="Mutant #370" file="src/pytest_sort/plugin.py" line="28">
 			<system-out>    choices = [&quot;sort_mode&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #379" file="src/pytest_sort/plugin.py" line="44">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -41,7 +41,7 @@
-     &quot;&quot;&quot;
-     choices = [&quot;sort_mode&quot;]
-     choices.extend(modes)
--    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;XX--sort-bucket-modeXX&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
-</failure>
-			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)</system-out>
+		<testcase name="Mutant #371" file="src/pytest_sort/plugin.py" line="30">
+			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices)</system-out>
 		</testcase>
-		<testcase name="Mutant #380" file="src/pytest_sort/plugin.py" line="44">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -41,7 +41,7 @@
-     &quot;&quot;&quot;
-     choices = [&quot;sort_mode&quot;]
-     choices.extend(modes)
--    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;XXstoreXX&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
-</failure>
-			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)</system-out>
+		<testcase name="Mutant #372" file="src/pytest_sort/plugin.py" line="30">
+			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices)</system-out>
 		</testcase>
-		<testcase name="Mutant #381" file="src/pytest_sort/plugin.py" line="44">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -41,7 +41,7 @@
-     &quot;&quot;&quot;
-     choices = [&quot;sort_mode&quot;]
-     choices.extend(modes)
--    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-+    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;XXsort_bucket_modeXX&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
-</failure>
-			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)</system-out>
+		<testcase name="Mutant #373" file="src/pytest_sort/plugin.py" line="30">
+			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices)</system-out>
 		</testcase>
-		<testcase name="Mutant #382" file="src/pytest_sort/plugin.py" line="45">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -42,7 +42,7 @@
-     choices = [&quot;sort_mode&quot;]
-     choices.extend(modes)
-     group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
--    parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
-+    parser.addini(&quot;XXsort_bucket_modeXX&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
-     group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #374" file="src/pytest_sort/plugin.py" line="31">
 			<system-out>    parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))</system-out>
 		</testcase>
-		<testcase name="Mutant #383" file="src/pytest_sort/plugin.py" line="47">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -44,7 +44,7 @@
-     group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
--    help_text = &quot;Random Seed to use with random mode.&quot;
-+    help_text = &quot;XXRandom Seed to use with random mode.XX&quot;
-     group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-</failure>
+		<testcase name="Mutant #375" file="src/pytest_sort/plugin.py" line="33">
 			<system-out>    help_text = &quot;Random Seed to use with random mode.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #384" file="src/pytest_sort/plugin.py" line="47">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -44,7 +44,7 @@
-     group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, choices=choices, help=help_text)
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
--    help_text = &quot;Random Seed to use with random mode.&quot;
-+    help_text = None
-     group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-</failure>
+		<testcase name="Mutant #376" file="src/pytest_sort/plugin.py" line="33">
 			<system-out>    help_text = &quot;Random Seed to use with random mode.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #385" file="src/pytest_sort/plugin.py" line="48">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -45,7 +45,7 @@
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
--    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-+    group.addoption(&quot;XX--sort-seedXX&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-</failure>
+		<testcase name="Mutant #377" file="src/pytest_sort/plugin.py" line="34">
 			<system-out>    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #386" file="src/pytest_sort/plugin.py" line="48">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -45,7 +45,7 @@
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
--    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-+    group.addoption(&quot;--sort-seed&quot;, action=&quot;XXstoreXX&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-</failure>
+		<testcase name="Mutant #378" file="src/pytest_sort/plugin.py" line="34">
 			<system-out>    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #387" file="src/pytest_sort/plugin.py" line="48">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -45,7 +45,7 @@
-     parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
--    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-+    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;XXsort_seedXX&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-</failure>
+		<testcase name="Mutant #379" file="src/pytest_sort/plugin.py" line="34">
 			<system-out>    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #388" file="src/pytest_sort/plugin.py" line="49">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -46,7 +46,7 @@
- 
-     help_text = &quot;Random Seed to use with random mode.&quot;
-     group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
--    parser.addini(&quot;sort_seed&quot;, help=help_text)
-+    parser.addini(&quot;XXsort_seedXX&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #380" file="src/pytest_sort/plugin.py" line="35">
 			<system-out>    parser.addini(&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #389" file="src/pytest_sort/plugin.py" line="51">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -48,7 +48,7 @@
-     group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
--    help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-+    help_text = &quot;XXRecords runtimes. Activated by default when sort-mode=fastestXX&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
-</failure>
+		<testcase name="Mutant #381" file="src/pytest_sort/plugin.py" line="37">
 			<system-out>    help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #390" file="src/pytest_sort/plugin.py" line="51">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -48,7 +48,7 @@
-     group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
--    help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-+    help_text = None
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
-</failure>
+		<testcase name="Mutant #382" file="src/pytest_sort/plugin.py" line="37">
 			<system-out>    help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #391" file="src/pytest_sort/plugin.py" line="52">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -49,7 +49,7 @@
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
--    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-+    group.addoption(&quot;XX--sort-record-timesXX&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-</failure>
+		<testcase name="Mutant #383" file="src/pytest_sort/plugin.py" line="38">
 			<system-out>    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #392" file="src/pytest_sort/plugin.py" line="52">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -49,7 +49,7 @@
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
--    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-+    group.addoption(&quot;--sort-record-times&quot;, action=&quot;XXstore_trueXX&quot;, dest=&quot;sort_record&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-</failure>
+		<testcase name="Mutant #384" file="src/pytest_sort/plugin.py" line="38">
 			<system-out>    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #393" file="src/pytest_sort/plugin.py" line="52">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -49,7 +49,7 @@
-     parser.addini(&quot;sort_seed&quot;, help=help_text)
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
--    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-+    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;XXsort_recordXX&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-</failure>
+		<testcase name="Mutant #385" file="src/pytest_sort/plugin.py" line="38">
 			<system-out>    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #394" file="src/pytest_sort/plugin.py" line="53">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -50,7 +50,7 @@
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
--    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-+    group.addoption(&quot;XX--sort-no-record-timesXX&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-</failure>
+		<testcase name="Mutant #386" file="src/pytest_sort/plugin.py" line="39">
 			<system-out>    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #395" file="src/pytest_sort/plugin.py" line="53">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -50,7 +50,7 @@
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
--    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-+    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;XXstore_trueXX&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-</failure>
+		<testcase name="Mutant #387" file="src/pytest_sort/plugin.py" line="39">
 			<system-out>    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #396" file="src/pytest_sort/plugin.py" line="53">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -50,7 +50,7 @@
- 
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
--    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-+    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;XXsort_no_recordXX&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-</failure>
+		<testcase name="Mutant #388" file="src/pytest_sort/plugin.py" line="39">
 			<system-out>    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #397" file="src/pytest_sort/plugin.py" line="54">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -51,7 +51,7 @@
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
--    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
-+    parser.addini(&quot;XXsort_record_timesXX&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #389" file="src/pytest_sort/plugin.py" line="40">
 			<system-out>    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #398" file="src/pytest_sort/plugin.py" line="54">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -51,7 +51,7 @@
-     help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;
-     group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
--    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
-+    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;XXboolXX&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #390" file="src/pytest_sort/plugin.py" line="40">
 			<system-out>    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #399" file="src/pytest_sort/plugin.py" line="56">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -53,7 +53,7 @@
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
--    help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-+    help_text = &quot;XXClear the recorded runtimes before sorting.XX&quot;
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
-</failure>
+		<testcase name="Mutant #391" file="src/pytest_sort/plugin.py" line="42">
 			<system-out>    help_text = &quot;Clear the recorded runtimes before sorting.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #400" file="src/pytest_sort/plugin.py" line="56">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -53,7 +53,7 @@
-     group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
--    help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-+    help_text = None
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
-</failure>
+		<testcase name="Mutant #392" file="src/pytest_sort/plugin.py" line="42">
 			<system-out>    help_text = &quot;Clear the recorded runtimes before sorting.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #401" file="src/pytest_sort/plugin.py" line="57">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -54,7 +54,7 @@
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
--    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
-+    group.addoption(&quot;XX--sort-reset-timesXX&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #393" file="src/pytest_sort/plugin.py" line="43">
 			<system-out>    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #402" file="src/pytest_sort/plugin.py" line="57">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -54,7 +54,7 @@
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
--    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
-+    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;XXstore_trueXX&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #394" file="src/pytest_sort/plugin.py" line="43">
 			<system-out>    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #403" file="src/pytest_sort/plugin.py" line="57">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -54,7 +54,7 @@
-     parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)
- 
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
--    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
-+    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;XXsort_reset_timesXX&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #395" file="src/pytest_sort/plugin.py" line="43">
 			<system-out>    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #404" file="src/pytest_sort/plugin.py" line="59">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -56,7 +56,7 @@
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
--    help_text = &quot;At end of report current times.&quot;
-+    help_text = &quot;XXAt end of report current times.XX&quot;
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-</failure>
+		<testcase name="Mutant #396" file="src/pytest_sort/plugin.py" line="45">
 			<system-out>    help_text = &quot;At end of report current times.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #405" file="src/pytest_sort/plugin.py" line="59">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -56,7 +56,7 @@
-     help_text = &quot;Clear the recorded runtimes before sorting.&quot;
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
--    help_text = &quot;At end of report current times.&quot;
-+    help_text = None
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-</failure>
+		<testcase name="Mutant #397" file="src/pytest_sort/plugin.py" line="45">
 			<system-out>    help_text = &quot;At end of report current times.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #406" file="src/pytest_sort/plugin.py" line="60">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -57,7 +57,7 @@
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
--    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
-+    group.addoption(&quot;XX--sort-report-timesXX&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #398" file="src/pytest_sort/plugin.py" line="46">
 			<system-out>    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #407" file="src/pytest_sort/plugin.py" line="60">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -57,7 +57,7 @@
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
--    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
-+    group.addoption(&quot;--sort-report-times&quot;, action=&quot;XXstore_trueXX&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #399" file="src/pytest_sort/plugin.py" line="46">
 			<system-out>    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #408" file="src/pytest_sort/plugin.py" line="60">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -57,7 +57,7 @@
-     group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)
- 
-     help_text = &quot;At end of report current times.&quot;
--    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
-+    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;XXsort_report_timesXX&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-</failure>
+		<testcase name="Mutant #400" file="src/pytest_sort/plugin.py" line="46">
 			<system-out>    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #409" file="src/pytest_sort/plugin.py" line="62">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -59,7 +59,7 @@
-     help_text = &quot;At end of report current times.&quot;
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
--    help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-+    help_text = &quot;XXLocation to store pytest-sort data. (default: ./.pytest_sort)XX&quot;
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
-</failure>
+		<testcase name="Mutant #401" file="src/pytest_sort/plugin.py" line="48">
 			<system-out>    help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #410" file="src/pytest_sort/plugin.py" line="62">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -59,7 +59,7 @@
-     help_text = &quot;At end of report current times.&quot;
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
--    help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-+    help_text = None
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
-</failure>
+		<testcase name="Mutant #402" file="src/pytest_sort/plugin.py" line="48">
 			<system-out>    help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #411" file="src/pytest_sort/plugin.py" line="63">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -60,7 +60,7 @@
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
--    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-+    group.addoption(&quot;XX--sort-datafileXX&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
-     group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
-</failure>
+		<testcase name="Mutant #403" file="src/pytest_sort/plugin.py" line="49">
 			<system-out>    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #412" file="src/pytest_sort/plugin.py" line="63">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -60,7 +60,7 @@
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
--    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-+    group.addoption(&quot;--sort-datafile&quot;, action=&quot;XXstoreXX&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
-     group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
-</failure>
+		<testcase name="Mutant #404" file="src/pytest_sort/plugin.py" line="49">
 			<system-out>    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #413" file="src/pytest_sort/plugin.py" line="63">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -60,7 +60,7 @@
-     group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
--    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-+    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;XXsort_datafileXX&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
-     group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
-</failure>
+		<testcase name="Mutant #405" file="src/pytest_sort/plugin.py" line="49">
 			<system-out>    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #414" file="src/pytest_sort/plugin.py" line="64">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -61,7 +61,7 @@
- 
-     help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort)&quot;
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
--    parser.addini(&quot;sort_datafile&quot;, help=help_text)
-+    parser.addini(&quot;XXsort_datafileXX&quot;, help=help_text)
- 
-     group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
- 
-</failure>
+		<testcase name="Mutant #406" file="src/pytest_sort/plugin.py" line="50">
 			<system-out>    parser.addini(&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #415" file="src/pytest_sort/plugin.py" line="66">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -63,7 +63,7 @@
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
--    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
-+    group.addoption(&quot;XX--sort-debugXX&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
- 
- 
- def pytest_configure(config: pytest.Config) -&gt; None:
-</failure>
+		<testcase name="Mutant #407" file="src/pytest_sort/plugin.py" line="52">
 			<system-out>    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #416" file="src/pytest_sort/plugin.py" line="66">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -63,7 +63,7 @@
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
--    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
-+    group.addoption(&quot;--sort-debug&quot;, action=&quot;XXstore_trueXX&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
- 
- 
- def pytest_configure(config: pytest.Config) -&gt; None:
-</failure>
+		<testcase name="Mutant #408" file="src/pytest_sort/plugin.py" line="52">
 			<system-out>    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #417" file="src/pytest_sort/plugin.py" line="66">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -63,7 +63,7 @@
-     group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)
-     parser.addini(&quot;sort_datafile&quot;, help=help_text)
- 
--    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)
-+    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;XXsort_debugXX&quot;, help=argparse.SUPPRESS)
- 
- 
- def pytest_configure(config: pytest.Config) -&gt; None:
-</failure>
+		<testcase name="Mutant #409" file="src/pytest_sort/plugin.py" line="52">
 			<system-out>    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #418" file="src/pytest_sort/plugin.py" line="72">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -69,7 +69,7 @@
- def pytest_configure(config: pytest.Config) -&gt; None:
-     &quot;&quot;&quot;pytest_sort: Add markers to pytest.&quot;&quot;&quot;
-     config.addinivalue_line(
--        &quot;markers&quot;,
-+        &quot;XXmarkersXX&quot;,
-         &quot;sort(mode,bucket): Override pytest-sort Options.&quot;,
-     )
- 
-</failure>
+		<testcase name="Mutant #410" file="src/pytest_sort/plugin.py" line="58">
 			<system-out>        &quot;markers&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #419" file="src/pytest_sort/plugin.py" line="73">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -70,7 +70,7 @@
-     &quot;&quot;&quot;pytest_sort: Add markers to pytest.&quot;&quot;&quot;
-     config.addinivalue_line(
-         &quot;markers&quot;,
--        &quot;sort(mode,bucket): Override pytest-sort Options.&quot;,
-+        &quot;XXsort(mode,bucket): Override pytest-sort Options.XX&quot;,
-     )
- 
-     config.addinivalue_line(
-</failure>
+		<testcase name="Mutant #411" file="src/pytest_sort/plugin.py" line="59">
 			<system-out>        &quot;sort(mode,bucket): Override pytest-sort Options.&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #420" file="src/pytest_sort/plugin.py" line="77">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -74,7 +74,7 @@
-     )
- 
-     config.addinivalue_line(
--        &quot;markers&quot;,
-+        &quot;XXmarkersXX&quot;,
-         &quot;order(item_sort_key): Always use specified Sort Key for this test item.&quot;,
-     )
- 
-</failure>
+		<testcase name="Mutant #412" file="src/pytest_sort/plugin.py" line="63">
 			<system-out>        &quot;markers&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #421" file="src/pytest_sort/plugin.py" line="78">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -75,7 +75,7 @@
- 
-     config.addinivalue_line(
-         &quot;markers&quot;,
--        &quot;order(item_sort_key): Always use specified Sort Key for this test item.&quot;,
-+        &quot;XXorder(item_sort_key): Always use specified Sort Key for this test item.XX&quot;,
-     )
- 
- 
-</failure>
+		<testcase name="Mutant #413" file="src/pytest_sort/plugin.py" line="64">
 			<system-out>        &quot;order(item_sort_key): Always use specified Sort Key for this test item.&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #422" file="src/pytest_sort/plugin.py" line="86">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -83,7 +83,7 @@
-     &quot;&quot;&quot;pytest_sort: Build Header for pytest to display.&quot;&quot;&quot;
-     SortConfig.from_pytest(config)
- 
--    header = &quot;pytest-sort:&quot;
-+    header = &quot;XXpytest-sort:XX&quot;
- 
-     for key, value in SortConfig.header_dict().items():
-         header += f&quot;\n  {key}: {value}&quot;
-</failure>
+		<testcase name="Mutant #414" file="src/pytest_sort/plugin.py" line="71">
 			<system-out>    header = &quot;pytest-sort:&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #423" file="src/pytest_sort/plugin.py" line="86">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -83,7 +83,7 @@
-     &quot;&quot;&quot;pytest_sort: Build Header for pytest to display.&quot;&quot;&quot;
-     SortConfig.from_pytest(config)
- 
--    header = &quot;pytest-sort:&quot;
-+    header = None
- 
-     for key, value in SortConfig.header_dict().items():
-         header += f&quot;\n  {key}: {value}&quot;
-</failure>
+		<testcase name="Mutant #415" file="src/pytest_sort/plugin.py" line="71">
 			<system-out>    header = &quot;pytest-sort:&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #424" file="src/pytest_sort/plugin.py" line="89">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -86,7 +86,7 @@
-     header = &quot;pytest-sort:&quot;
- 
-     for key, value in SortConfig.header_dict().items():
--        header += f&quot;\n  {key}: {value}&quot;
-+        header = f&quot;\n  {key}: {value}&quot;
- 
-     return header
- 
-</failure>
+		<testcase name="Mutant #416" file="src/pytest_sort/plugin.py" line="74">
 			<system-out>        header += f&quot;\n  {key}: {value}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #425" file="src/pytest_sort/plugin.py" line="89">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -86,7 +86,7 @@
-     header = &quot;pytest-sort:&quot;
- 
-     for key, value in SortConfig.header_dict().items():
--        header += f&quot;\n  {key}: {value}&quot;
-+        header -= f&quot;\n  {key}: {value}&quot;
- 
-     return header
- 
-</failure>
+		<testcase name="Mutant #417" file="src/pytest_sort/plugin.py" line="74">
 			<system-out>        header += f&quot;\n  {key}: {value}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #426" file="src/pytest_sort/plugin.py" line="89">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -86,7 +86,7 @@
-     header = &quot;pytest-sort:&quot;
- 
-     for key, value in SortConfig.header_dict().items():
--        header += f&quot;\n  {key}: {value}&quot;
-+        header += f&quot;XX\n  {key}: {value}XX&quot;
- 
-     return header
- 
-</failure>
+		<testcase name="Mutant #418" file="src/pytest_sort/plugin.py" line="74">
 			<system-out>        header += f&quot;\n  {key}: {value}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #427" file="src/pytest_sort/plugin.py" line="105">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -102,7 +102,7 @@
-     if SortConfig.reset:
-         clear_db()
- 
--    sort_items(items)
-+    sort_items(None)
- 
- 
- @pytest.hookimpl(hookwrapper=True)
-</failure>
+		<testcase name="Mutant #419" file="src/pytest_sort/plugin.py" line="88">
 			<system-out>    sort_items(items)</system-out>
 		</testcase>
-		<testcase name="Mutant #428" file="src/pytest_sort/plugin.py" line="108">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -105,7 +105,7 @@
-     sort_items(items)
- 
- 
--@pytest.hookimpl(hookwrapper=True)
-+@pytest.hookimpl(hookwrapper=False)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
-     if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-</failure>
-			<system-out>@pytest.hookimpl(hookwrapper=True)</system-out>
-		</testcase>
-		<testcase name="Mutant #429" file="src/pytest_sort/plugin.py" line="108">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -104,8 +104,6 @@
- 
-     sort_items(items)
- 
--
--@pytest.hookimpl(hookwrapper=True)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
-     if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-</failure>
-			<system-out>@pytest.hookimpl(hookwrapper=True)</system-out>
-		</testcase>
-		<testcase name="Mutant #430" file="src/pytest_sort/plugin.py" line="111">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -108,7 +108,7 @@
- @pytest.hookimpl(hookwrapper=True)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
--    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-+    if SortConfig.record and call.when not in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-</failure>
+		<testcase name="Mutant #420" file="src/pytest_sort/plugin.py" line="94">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #431" file="src/pytest_sort/plugin.py" line="111">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -108,7 +108,7 @@
- @pytest.hookimpl(hookwrapper=True)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
--    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-+    if SortConfig.record and call.when in (&quot;XXsetupXX&quot;, &quot;call&quot;, &quot;teardown&quot;):
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-</failure>
+		<testcase name="Mutant #421" file="src/pytest_sort/plugin.py" line="94">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #432" file="src/pytest_sort/plugin.py" line="111">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -108,7 +108,7 @@
- @pytest.hookimpl(hookwrapper=True)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
--    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-+    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;XXcallXX&quot;, &quot;teardown&quot;):
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-</failure>
+		<testcase name="Mutant #422" file="src/pytest_sort/plugin.py" line="94">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #433" file="src/pytest_sort/plugin.py" line="111">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -108,7 +108,7 @@
- @pytest.hookimpl(hookwrapper=True)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
--    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-+    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;XXteardownXX&quot;):
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-</failure>
+		<testcase name="Mutant #423" file="src/pytest_sort/plugin.py" line="94">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #434" file="src/pytest_sort/plugin.py" line="111">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -108,7 +108,7 @@
- @pytest.hookimpl(hookwrapper=True)
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
--    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-+    if SortConfig.record or call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-</failure>
+		<testcase name="Mutant #424" file="src/pytest_sort/plugin.py" line="94">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #435" file="src/pytest_sort/plugin.py" line="112">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -109,7 +109,7 @@
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
-     if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
--        duration = int(call.duration * 1_000_000_000)  # convert to ns
-+        duration = int(call.duration / 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-             SortConfig.recorded_times[item.nodeid] = {}
-</failure>
+		<testcase name="Mutant #425" file="src/pytest_sort/plugin.py" line="95">
 			<system-out>        duration = int(call.duration * 1_000_000_000)  # convert to ns</system-out>
 		</testcase>
-		<testcase name="Mutant #436" file="src/pytest_sort/plugin.py" line="112">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -109,7 +109,7 @@
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
-     if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
--        duration = int(call.duration * 1_000_000_000)  # convert to ns
-+        duration = int(call.duration * 1000000001)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-             SortConfig.recorded_times[item.nodeid] = {}
-</failure>
+		<testcase name="Mutant #426" file="src/pytest_sort/plugin.py" line="95">
 			<system-out>        duration = int(call.duration * 1_000_000_000)  # convert to ns</system-out>
 		</testcase>
-		<testcase name="Mutant #437" file="src/pytest_sort/plugin.py" line="112">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -109,7 +109,7 @@
- def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -&gt; Generator:
-     &quot;&quot;&quot;pytest_sort: Record test runtimes in memory.&quot;&quot;&quot;
-     if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
--        duration = int(call.duration * 1_000_000_000)  # convert to ns
-+        duration = None  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
-             SortConfig.recorded_times[item.nodeid] = {}
-</failure>
+		<testcase name="Mutant #427" file="src/pytest_sort/plugin.py" line="95">
 			<system-out>        duration = int(call.duration * 1_000_000_000)  # convert to ns</system-out>
 		</testcase>
-		<testcase name="Mutant #438" file="src/pytest_sort/plugin.py" line="114">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -111,7 +111,7 @@
-     if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
--        if item.nodeid not in SortConfig.recorded_times:
-+        if item.nodeid  in SortConfig.recorded_times:
-             SortConfig.recorded_times[item.nodeid] = {}
- 
-         SortConfig.recorded_times[item.nodeid][call.when] = duration
-</failure>
+		<testcase name="Mutant #428" file="src/pytest_sort/plugin.py" line="97">
 			<system-out>        if item.nodeid not in SortConfig.recorded_times:</system-out>
 		</testcase>
-		<testcase name="Mutant #439" file="src/pytest_sort/plugin.py" line="115">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -112,7 +112,7 @@
-         duration = int(call.duration * 1_000_000_000)  # convert to ns
- 
-         if item.nodeid not in SortConfig.recorded_times:
--            SortConfig.recorded_times[item.nodeid] = {}
-+            SortConfig.recorded_times[item.nodeid] = None
- 
-         SortConfig.recorded_times[item.nodeid][call.when] = duration
- 
-</failure>
+		<testcase name="Mutant #429" file="src/pytest_sort/plugin.py" line="98">
 			<system-out>            SortConfig.recorded_times[item.nodeid] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #440" file="src/pytest_sort/plugin.py" line="117">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -114,7 +114,7 @@
-         if item.nodeid not in SortConfig.recorded_times:
-             SortConfig.recorded_times[item.nodeid] = {}
- 
--        SortConfig.recorded_times[item.nodeid][call.when] = duration
-+        SortConfig.recorded_times[item.nodeid][call.when] = None
- 
-     yield
- 
-</failure>
+		<testcase name="Mutant #430" file="src/pytest_sort/plugin.py" line="100">
 			<system-out>        SortConfig.recorded_times[item.nodeid][call.when] = duration</system-out>
 		</testcase>
-		<testcase name="Mutant #441" file="src/pytest_sort/plugin.py" line="132">
-			<failure type="failure" message="bad_survived">--- src/pytest_sort/plugin.py
-+++ src/pytest_sort/plugin.py
-@@ -129,5 +129,5 @@
-         update_test_case(nodeid, **SortConfig.recorded_times[nodeid])
- 
-     if SortConfig.report:
--        print_recorded_times_report(terminalreporter)
-+        print_recorded_times_report(None)
- 
-</failure>
+		<testcase name="Mutant #431" file="src/pytest_sort/plugin.py" line="115">
 			<system-out>        print_recorded_times_report(terminalreporter)</system-out>
 		</testcase>
 	</testsuite>
