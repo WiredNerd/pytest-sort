@@ -19,29 +19,15 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     """pytest_sort: Add command line and ini options to pytest."""
     group = parser.getgroup("pytest-sort")
 
-    help_text = """Method for sorting test items.
-    ordered = (default) pytest_sort will keep the default order.
-    reverse = pytest_sort will reverse the default order.
-    md5     = Sort by md5 of test name.
-    random  = randomly sort tests.
-    fastest = use recorded times to run fastest tests first.
-    """
-    choices = modes
-    group.addoption("--sort-mode", action="store", dest="sort_mode", choices=choices, help=help_text)
-    parser.addini("sort_mode", help=str(choices))
+    group.addoption("--sort-mode", action="store", dest="sort_mode", choices=modes)
+    parser.addini("sort_mode", help=str(modes))
 
-    help_text = "Sort test items within specified test buckets. (default: parent)"
-    choices = bucket_types
-    group.addoption("--sort-bucket", action="store", dest="sort_bucket", choices=choices, help=help_text)
-    parser.addini("sort_bucket", help=str(choices))
+    group.addoption("--sort-bucket", action="store", dest="sort_bucket", choices=bucket_types)
+    parser.addini("sort_bucket", help=str(bucket_types))
 
-    help_text = """Method for sorting the buckets.
-    sort_mode = (default) Use same setting for soring buckets as for sorting items.
-    See sort_mode for desriptions of other options.
-    """
     choices = ["sort_mode"]
     choices.extend(modes)
-    group.addoption("--sort-bucket-mode", action="store", dest="sort_bucket_mode", choices=choices, help=help_text)
+    group.addoption("--sort-bucket-mode", action="store", dest="sort_bucket_mode", choices=choices)
     parser.addini("sort_bucket_mode", help=str(choices))
 
     help_text = "Random Seed to use with random mode."
@@ -77,12 +63,11 @@ def pytest_configure(config: pytest.Config) -> None:
         "markers",
         "order(item_sort_key): Always use specified Sort Key for this test item.",
     )
+    SortConfig.from_pytest(config)
 
 
 def pytest_report_header(config: pytest.Config) -> str:
     """pytest_sort: Build Header for pytest to display."""
-    SortConfig.from_pytest(config)
-
     header = "pytest-sort:"
 
     for key, value in SortConfig.header_dict().items():
@@ -97,15 +82,13 @@ def pytest_collection_modifyitems(
     items: list[pytest.Item],
 ) -> None:
     """pytest_sort: Modify item order."""
-    SortConfig.from_pytest(config)
-
     if SortConfig.reset:
         clear_db()
 
     sort_items(items)
 
 
-@pytest.hookimpl(hookwrapper=True)
+@pytest.hookimpl(hookwrapper=True)  # pragma: no mutate 
 def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -> Generator:
     """pytest_sort: Record test runtimes in memory."""
     if SortConfig.record and call.when in ("setup", "call", "teardown"):

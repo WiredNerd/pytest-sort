@@ -11,8 +11,8 @@ from pytest_sort import database
 if TYPE_CHECKING:
     import pytest
 
-modes = ["ordered", "reverse", "md5", "random", "fastest", "none"]
-bucket_types = ["session", "package", "module", "class", "parent", "grandparent", "global"]
+modes = ["ordered", "reverse", "md5", "random", "fastest"]
+bucket_types = ["session", "package", "module", "class", "parent", "grandparent"]
 
 legacy_modes = {
     "none": "ordered",
@@ -62,18 +62,18 @@ class SortConfig:
     @staticmethod
     def _mode_from_pytest(config: pytest.Config) -> None:
         SortConfig.mode = config.getoption("sort_mode") or config.getini("sort_mode") or SortConfig.mode
+        SortConfig.mode = legacy_modes.get(SortConfig.mode, SortConfig.mode)
         if SortConfig.mode not in modes:
             msg = f"Invalid Value for sort-mode='{SortConfig.mode}'"
             raise ValueError(msg)
-        SortConfig.mode = legacy_modes.get(SortConfig.mode, SortConfig.mode)
 
     @staticmethod
     def _bucket_from_pytest(config: pytest.Config) -> None:
         SortConfig.bucket = config.getoption("sort_bucket") or config.getini("sort_bucket") or SortConfig.bucket
+        SortConfig.bucket = legacy_bucket_types.get(SortConfig.bucket, SortConfig.bucket)
         if SortConfig.bucket not in bucket_types:
             msg = f"Invalid Value for sort-bucket='{SortConfig.bucket}'"
             raise ValueError(msg)
-        SortConfig.bucket = legacy_bucket_types.get(SortConfig.bucket, SortConfig.bucket)
 
     @staticmethod
     def _bucket_mode_from_pytest(config: pytest.Config) -> None:
@@ -82,10 +82,10 @@ class SortConfig:
         )
         if SortConfig.bucket_mode == "sort_mode":
             SortConfig.bucket_mode = SortConfig.mode
+        SortConfig.bucket_mode = legacy_modes.get(SortConfig.bucket_mode, SortConfig.bucket_mode)
         if SortConfig.bucket_mode not in modes:
             msg = f"Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'"
             raise ValueError(msg)
-        SortConfig.bucket_mode = legacy_modes.get(SortConfig.bucket_mode, SortConfig.bucket_mode)
 
     @staticmethod
     def _record_from_pytest(config: pytest.Config) -> None:

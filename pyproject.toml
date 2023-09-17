@@ -42,9 +42,7 @@ branch = true
 [tool.coverage.report]
 # fail_under = 95
 skip_empty = true
-
-[tool.coverage.html]
-skip_covered = true
+exclude_also = ["import .*", "from .* import .*", "if TYPE_CHECKING:"]
 
 [tool.black]
 line-length = 120

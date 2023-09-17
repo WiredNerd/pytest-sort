@@ -19,11 +19,12 @@ jobs:
           pip install -r req/pytest.txt --upgrade
           pip install mutmut --upgrade
       - name: Mutmut
+        run: python3 -m mutmut run --no-progress --rerun-all || true
+      - run: python3 -m mutmut results
+      - name: Mutmut Report
         run: |
-          time python3 -m mutmut run --no-progress --rerun-all || true
           python3 -m mutmut html
           python3 -m mutmut junitxml > mutation-testing-report.xml
-          python3 -m mutmut results
       - name: save-xml-report
         uses: EndBug/add-and-commit@v9
         with:

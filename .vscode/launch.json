@@ -6,9 +6,13 @@
             "type": "python",
             "request": "launch",
             "module": "pytest",
-            "args": ["-vv", "-s"],
+            "console": "integratedTerminal",
+            "args": [
+                "-vv",
+                "-s",
+            ],
             "cwd": "${workspaceFolder}",
-            "justMyCode": true,
+            "justMyCode": false,
         }
     ]
 }

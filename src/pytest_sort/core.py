@@ -34,7 +34,7 @@ def create_bucket_id_from_node(node: pytest_nodes.Node | None) -> str:
     return ""
 
 
-def create_bucket_id_for_package(node: pytest_nodes.Node) -> str:
+def create_bucket_id_for_package(node: pytest_nodes.Node | None) -> str:
     """Extract package name from pytest item."""
     if isinstance(node, (pytest.Session, pytest.Package)):
         return create_bucket_id_from_node(node)
@@ -45,7 +45,7 @@ def create_bucket_id_for_package(node: pytest_nodes.Node) -> str:
     return ""
 
 
-def create_bucket_id_for_module(node: pytest_nodes.Node) -> str:
+def create_bucket_id_for_module(node: pytest_nodes.Node | None) -> str:
     """Extract module name from pytest item."""
     if isinstance(node, (pytest.Session, pytest.Package, pytest.Module)):
         return create_bucket_id_from_node(node)
@@ -56,7 +56,7 @@ def create_bucket_id_for_module(node: pytest_nodes.Node) -> str:
     return ""
 
 
-def create_bucket_id_for_class(node: pytest_nodes.Node) -> str:
+def create_bucket_id_for_class(node: pytest_nodes.Node | None) -> str:
     """Extract class or module name from pytest item."""
     if isinstance(node, (pytest.Session, pytest.Package, pytest.Module, pytest.Class)):
         return create_bucket_id_from_node(node)

@@ -130,9 +130,14 @@ class TestSortConfig:
         "getoption,getini,expected",
         [
             ({"sort_bucket_mode": "md5"}, {"sort_bucket_mode": "random"}, "md5"),
+            ({}, {"sort_bucket_mode": "ordered"}, "ordered"),
+            ({}, {"sort_bucket_mode": "reverse"}, "reverse"),
+            ({}, {"sort_bucket_mode": "md5"}, "md5"),
             ({}, {"sort_bucket_mode": "random"}, "random"),
+            ({}, {"sort_bucket_mode": "fastest"}, "fastest"),
             ({}, {"sort_bucket_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
+            ({"sort_mode": "md5"}, {"sort_bucket_mode": "sort_mode"}, "md5"),
             ({"sort_mode": "md5"}, {}, "md5"),
         ],
     )
