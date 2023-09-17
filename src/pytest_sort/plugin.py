@@ -66,7 +66,7 @@ def pytest_configure(config: pytest.Config) -> None:
     SortConfig.from_pytest(config)
 
 
-def pytest_report_header(config: pytest.Config) -> str:
+def pytest_report_header(config: pytest.Config) -> str:  # noqa: ARG001
     """pytest_sort: Build Header for pytest to display."""
     header = "pytest-sort:"
 
@@ -78,7 +78,7 @@ def pytest_report_header(config: pytest.Config) -> str:
 
 def pytest_collection_modifyitems(
     session: pytest.Session,  # noqa: ARG001
-    config: pytest.Config,
+    config: pytest.Config, # noqa: ARG001
     items: list[pytest.Item],
 ) -> None:
     """pytest_sort: Modify item order."""
@@ -88,7 +88,7 @@ def pytest_collection_modifyitems(
     sort_items(items)
 
 
-@pytest.hookimpl(hookwrapper=True)  # pragma: no mutate 
+@pytest.hookimpl(hookwrapper=True)  # pragma: no mutate
 def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -> Generator:
     """pytest_sort: Record test runtimes in memory."""
     if SortConfig.record and call.when in ("setup", "call", "teardown"):
