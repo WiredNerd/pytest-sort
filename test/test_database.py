@@ -193,6 +193,11 @@ class TestGet:
         database.get_bucket_total("test")
         db.bind.assert_called()
 
+    def test_get_stats_init_db(self, db):
+        db.provider = None
+        database.get_stats("test_node_1")
+        db.bind.assert_called()
+
     def test_get_stats(self):
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_stats("test_node_1") == {"setup": 3, "call": 2, "teardown": 5, "total": 10}
@@ -200,8 +205,3 @@ class TestGet:
     def test_get_stats_not_found(self):
         database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
         assert database.get_stats("test_node_2") == {"setup": 0, "call": 0, "teardown": 0, "total": 0}
-
-    def test_get_stats_init_db(self, db):
-        db.provider = None
-        database.get_stats("test_node_1")
-        db.bind.assert_called()
