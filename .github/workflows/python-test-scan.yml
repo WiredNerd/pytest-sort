@@ -7,12 +7,19 @@ on:
       - src
       - test
   pull_request:
+    paths:
+      - req
+      - src
+      - test
   workflow_dispatch:
 
 jobs:
   pytest:
     name: Unit Test with Pytest
-    runs-on: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
