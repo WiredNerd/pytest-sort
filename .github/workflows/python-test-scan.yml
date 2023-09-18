@@ -14,12 +14,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  pytest:
+  pytest-cov:
     name: Unit Test with Pytest
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -36,11 +33,26 @@ jobs:
         with:
           add: "code-coverage.json"
       - name: save-reports
-        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: Coverage Report
           path: reports/coverage
+  pytest-matrix:
+    name: Unit Test with Pytest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Dependencies and Tools
+        run: |
+          pip install -r req/requirements.txt --upgrade
+          pip install -r req/pytest.txt --upgrade
+      - run: pytest
   isort:
     name: Import Checks with ISort
     runs-on: [ubuntu-latest]
