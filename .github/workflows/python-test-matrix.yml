@@ -1,0 +1,32 @@
+name: Python Tests and Scans
+
+on: 
+  push:
+    paths:
+      - req
+      - src
+      - test
+  pull_request:
+    paths:
+      - req
+      - src
+      - test
+  workflow_dispatch:
+
+jobs:
+  pytest-matrix:
+    name: Unit Test with Pytest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install Dependencies and Tools
+        run: |
+          pip install -r req/requirements.txt --upgrade
+          pip install -r req/pytest.txt --upgrade
+      - run: pytest
