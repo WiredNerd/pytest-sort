@@ -6,6 +6,7 @@ on:
       - req
       - src
       - test
+      - .github/workflows/python-test-scan.yml
   pull_request:
     paths:
       - req

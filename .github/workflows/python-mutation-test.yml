@@ -6,6 +6,7 @@ on:
       - req
       - src
       - test
+      - .github/workflows/python-mutation-test.yml
   workflow_dispatch:
 
 jobs:

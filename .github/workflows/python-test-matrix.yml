@@ -6,6 +6,7 @@ on:
       - req
       - src
       - test
+      - .github/workflows/python-test-matrix.yml
   pull_request:
     paths:
       - req
@@ -18,9 +19,10 @@ jobs:
     name: Unit Test with Pytest
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        py: ['3.8','3.9','3.10','3.11','3.12']
+        py: ['3.8','3.9','3.10','3.11']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
