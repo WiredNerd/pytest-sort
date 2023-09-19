@@ -116,22 +116,34 @@ class TestClassAbc:
 def order(item_sort_key: Any)
 ```
 
-The 'order' marker sets the sort key for the marked test to the provided value.
-* The 'item_sort_key' value is required, and can be any value that can be used as a list sort key
+The 'order' marker sets the sort key for the marked test, class, or module to the provided value.
+* The 'sort_key' value is required, and can be any value that can be used as a list sort key
+
+When used to mark a test function, the sort key for that item is set to the priovided value.
+
+When used to mark a test Class or Module, the Class or Module is used as a bucket for all test within it, and the sort key for the bucket is set to the provided value.
 
 Usage Example:
 ```py
 import pytest
 
-@pytest.mark.order(1)
-def test_create_the_data():  # always run this first
-   ...
-@pytest.mark.order(2)
-def test_modify_the_data():  # always run this second
-   ...
-@pytest.mark.order(3)
-def test_validate_the_data():  # always run this third
-   ...
+pytestmark = pytest.mark.order("my_tests")
+
+@pytest.mark.order("test_group_1")
+class TestClass:
+   @pytest.mark.order(1)
+   def test_create_the_data():  # bucket_key="test_group_1", item_key=1
+      ...
+   @pytest.mark.order(2)
+   def test_modify_the_data():  # bucket_key="test_group_1", item_key=2
+      ...
+   @pytest.mark.order(3)
+   def test_validate_the_data():  # bucket_key="test_group_1", item_key=3
+      ...
+
+@pytest.mark.order("ZZZ")
+   def test_delete_the_data():  # bucket_key="my_tests", item_key="ZZZ"
+      ...
 ```
 
 # Options

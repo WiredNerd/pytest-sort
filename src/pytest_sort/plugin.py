@@ -61,7 +61,7 @@ def pytest_configure(config: pytest.Config) -> None:
 
     config.addinivalue_line(
         "markers",
-        "order(item_sort_key): Always use specified Sort Key for this test item.",
+        "order(item_sort_key): Always use specified Sort Key for this test item or bucket.",
     )
     SortConfig.from_pytest(config)
 

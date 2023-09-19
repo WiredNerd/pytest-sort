@@ -149,7 +149,7 @@ class TestValidateMarker:
         "args,kwargs,key",
         [
             ([1234], {}, 1234),
-            ([], {"item_sort_key": 1234}, 1234),
+            ([], {"item_sort_key": 5678}, 5678),
         ],
     )
     def test_validate_order_marker(self, args, kwargs, key):
@@ -209,30 +209,16 @@ class TestValidateMarker:
 
 
 class TestMarkerSettings:
-    def test_get_marker_settings_parent(self, mock_objects):
+    def test_get_marker_settings_order_function(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
         order_1 = mock.MagicMock()
         order_1.args = [1]
         order_1.kwargs = {}
 
-        order_10 = mock.MagicMock()
-        order_10.args = [1]
-        order_10.kwargs = {}
-
-        sort_random = mock.MagicMock()
-        sort_random.args = ["random"]
-        sort_random.kwargs = {}
-
-        sort_ordered = mock.MagicMock()
-        sort_ordered.args = ["ordered", "parent"]
-        sort_ordered.kwargs = {}
-
-        module.iter_markers.side_effect = [[], [sort_random]]
-        cls.iter_markers.side_effect = [[order_10], [sort_ordered]]
         func.iter_markers.side_effect = [[order_1], []]
 
-        assert core.get_marker_settings(func) == ("ordered", "parent", None, 1)
+        assert core.get_marker_settings(func) == (None, None, None, None, 1)
 
         func.iter_markers.assert_has_calls(
             [
@@ -241,7 +227,7 @@ class TestMarkerSettings:
             ]
         )
 
-    def test_get_marker_settings_self(self, mock_objects):
+    def test_get_marker_settings_order_cls(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
         order_1 = mock.MagicMock()
@@ -249,29 +235,99 @@ class TestMarkerSettings:
         order_1.kwargs = {}
 
         order_10 = mock.MagicMock()
-        order_10.args = [1]
+        order_10.args = [10]
+        order_10.kwargs = {}
+
+        cls.iter_markers.side_effect = [[order_10], []]
+        func.iter_markers.side_effect = [[order_1], []]
+
+        assert core.get_marker_settings(func) == (None, None, cls.nodeid, 10, 1)
+
+        func.iter_markers.assert_has_calls(
+            [
+                mock.call("order"),
+                mock.call("sort"),
+            ]
+        )
+
+    def test_get_marker_settings_order_mod(self, mock_objects):
+        (session, package, module, cls, func) = mock_objects
+
+        order_1 = mock.MagicMock()
+        order_1.args = [1]
+        order_1.kwargs = {}
+
+        order_10 = mock.MagicMock()
+        order_10.args = [10]
+        order_10.kwargs = {}
+
+        module.iter_markers.side_effect = [[order_10], []]
+        func.iter_markers.side_effect = [[order_1], []]
+
+        assert core.get_marker_settings(func) == (None, None, module.nodeid, 10, 1)
+
+        func.iter_markers.assert_has_calls(
+            [
+                mock.call("order"),
+                mock.call("sort"),
+            ]
+        )
+
+    def test_get_marker_settings_sort_self(self, mock_objects):
+        (session, package, module, cls, func) = mock_objects
+
+        order_1 = mock.MagicMock()
+        order_1.args = [1]
+        order_1.kwargs = {}
+
+        order_10 = mock.MagicMock()
+        order_10.args = [10]
+        order_10.kwargs = {}
+
+        sort_ordered = mock.MagicMock()
+        sort_ordered.args = ["ordered"]
+        sort_ordered.kwargs = {}
+
+        module.iter_markers.side_effect = [[order_10], []]
+        cls.iter_markers.side_effect = [[], [sort_ordered]]
+        func.iter_markers.side_effect = [[order_1], []]
+
+        assert core.get_marker_settings(func) == ("ordered", None, cls.nodeid, 10, 1)
+
+        func.iter_markers.assert_has_calls(
+            [
+                mock.call("order"),
+                mock.call("sort"),
+            ]
+        )
+
+    def test_get_marker_settings_sort_bucket(self, mock_objects):
+        (session, package, module, cls, func) = mock_objects
+
+        order_1 = mock.MagicMock()
+        order_1.args = [1]
+        order_1.kwargs = {}
+
+        order_10 = mock.MagicMock()
+        order_10.args = [10]
         order_10.kwargs = {}
 
         sort_random = mock.MagicMock()
         sort_random.args = ["random", "parent"]
         sort_random.kwargs = {}
 
-        sort_ordered = mock.MagicMock()
-        sort_ordered.args = ["ordered"]
-        sort_ordered.kwargs = {}
-
-        module.iter_markers.side_effect = [[], [sort_random]]
-        cls.iter_markers.side_effect = [[order_10], [sort_ordered]]
+        module.iter_markers.side_effect = [[order_10], []]
+        cls.iter_markers.side_effect = [[], [sort_random]]
         func.iter_markers.side_effect = [[order_1], []]
 
-        assert core.get_marker_settings(func) == ("ordered", "parent", cls.nodeid, 1)
+        assert core.get_marker_settings(func) == ("random", "parent", None, None, 1)
 
     def test_get_marker_settings_no_markers(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
-        assert core.get_marker_settings(func) == (None, None, None, None)
+        assert core.get_marker_settings(func) == (None, None, None, None, None)
 
-    def test_geet_marker_settings_error(self, mock_objects):
+    def test_get_marker_settings_error(self, mock_objects):
         (session, package, module, cls, func) = mock_objects
 
         sort_random = mock.MagicMock()
@@ -299,7 +355,7 @@ class TestCreateSortKey:
             yield get_marker_settings
 
     def test_marker_bucketid_sortkey(self, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = (None, None, "test/core", 1234)
+        get_marker_settings.return_value = (None, None, "test/core", None, 1234)
         config.SortConfig.bucket_mode = "ordered"
         (session, package, module, cls, func) = mock_objects
 
@@ -312,7 +368,7 @@ class TestCreateSortKey:
         assert core.SortConfig.bucket_sort_keys == {"test/core": 7}
 
     def test_marker_mode_bucket(self, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = ("reverse", "class", None, None)
+        get_marker_settings.return_value = ("reverse", "class", None, None, None)
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket_mode = "ordered"
         (session, package, module, cls, func) = mock_objects
@@ -325,8 +381,23 @@ class TestCreateSortKey:
         assert config.SortConfig.item_bucket_id == {func.nodeid: cls.nodeid}
         assert config.SortConfig.bucket_sort_keys == {cls.nodeid: 7}
 
+    def test_marker_mode_bucket_key(self, get_marker_settings, mock_objects):
+        get_marker_settings.return_value = (None, None, "test/core", "test_group_1", None)
+        config.SortConfig.mode = "ordered"
+        config.SortConfig.bucket_mode = "ordered"
+        config.SortConfig.bucket = "module"
+        (session, package, module, cls, func) = mock_objects
+
+        core.create_sort_keys(func, 6, 60)
+
+        get_marker_settings.assert_called_with(func)
+
+        assert config.SortConfig.item_sort_keys == {func.nodeid: 7}
+        assert config.SortConfig.item_bucket_id == {func.nodeid: "test/core"}
+        assert config.SortConfig.bucket_sort_keys == {"test/core": "test_group_1"}
+
     def test_mode_ordered_reverse(self, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = (None, None, None, None)
+        get_marker_settings.return_value = (None, None, None, None, None)
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "reverse"
@@ -339,7 +410,7 @@ class TestCreateSortKey:
         assert config.SortConfig.bucket_sort_keys == {module.nodeid: 54}
 
     def test_mode_reverse_ordered(self, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = (None, None, None, None)
+        get_marker_settings.return_value = (None, None, None, None, None)
         config.SortConfig.mode = "reverse"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "ordered"
@@ -352,7 +423,7 @@ class TestCreateSortKey:
         assert config.SortConfig.bucket_sort_keys == {module.nodeid: 7}
 
     def test_mode_fastest(self, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = (None, None, None, None)
+        get_marker_settings.return_value = (None, None, None, None, None)
         config.SortConfig.mode = "fastest"
         config.SortConfig.bucket = "class"
         config.SortConfig.bucket_mode = "fastest"
@@ -370,7 +441,7 @@ class TestCreateSortKey:
         assert config.SortConfig.bucket_sort_keys == {cls.nodeid: 2.2}
 
     def test_min_bucket_key_num(self, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = (None, None, None, None)
+        get_marker_settings.return_value = (None, None, None, None, None)
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "ordered"
@@ -384,7 +455,7 @@ class TestCreateSortKey:
 
     @mock.patch("pytest_sort.core.md5")
     def test_min_bucket_key_md5(self, md5, get_marker_settings, mock_objects):
-        get_marker_settings.return_value = (None, None, None, None)
+        get_marker_settings.return_value = (None, None, None, None, None)
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "md5"

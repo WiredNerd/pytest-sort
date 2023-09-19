@@ -143,20 +143,26 @@ def get_marker_settings(node: pytest_nodes.Node) -> tuple:
 
     Recursively calls with node.parent to get values from any level.
 
-    Returns: (mode, bucket, bucket_id, sort_key)
+    Returns: (mode, bucket, bucket_id, bucket_sort_key, sort_key)
     """
     mode = None
     bucket = None
     bucket_id = None
-    sort_key = None
+    bucket_sort_key = None
+    item_sort_key = None
 
     node_id = node.nodeid
 
     if node.parent:
-        (mode, bucket, bucket_id, sort_key) = get_marker_settings(node.parent)
+        (mode, bucket, bucket_id, bucket_sort_key, item_sort_key) = get_marker_settings(node.parent)
 
     for order in node.iter_markers("order"):
         sort_key = validate_order_marker(order, node_id)
+        if isinstance(node, pytest.Function):
+            item_sort_key = sort_key
+        else:
+            bucket_sort_key = sort_key
+            bucket_id = create_bucket_id_from_node(node)
 
     for sort in node.iter_markers("sort"):
         (mode, bucket_temp) = validate_sort_marker(sort, node_id)
@@ -166,11 +172,12 @@ def get_marker_settings(node: pytest_nodes.Node) -> tuple:
         elif bucket_temp in create_bucket_id:
             bucket = bucket_temp
             bucket_id = None
+            bucket_sort_key = None
         else:
             msg = f"Invalid Value for 'bucket' on 'sort' marker: {bucket_temp}. Target: {node_id}"
             raise ValueError(msg)
 
-    return (mode, bucket, bucket_id, sort_key)
+    return (mode, bucket, bucket_id, bucket_sort_key, item_sort_key)
 
 
 def create_sort_keys(item: pytest.Item, idx: int, count: int) -> None:
@@ -178,14 +185,14 @@ def create_sort_keys(item: pytest.Item, idx: int, count: int) -> None:
 
     Store in SortConfig.item_sort_keys and SortConfig.bucket_sort_keys
     """
-    (mode, bucket, bucket_id, sort_key) = get_marker_settings(item)
+    (mode, bucket, bucket_id, bucket_sort_key, item_sort_key) = get_marker_settings(item)
 
-    SortConfig.item_sort_keys[item.nodeid] = sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)
+    SortConfig.item_sort_keys[item.nodeid] = item_sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)
 
     bucket_id = bucket_id or create_bucket_id[bucket or SortConfig.bucket](item)
     SortConfig.item_bucket_id[item.nodeid] = bucket_id
 
-    bucket_key = create_bucket_key[SortConfig.bucket_mode](bucket_id, idx, count)
+    bucket_key = bucket_sort_key or create_bucket_key[SortConfig.bucket_mode](bucket_id, idx, count)
     if bucket_id in SortConfig.bucket_sort_keys:
         SortConfig.bucket_sort_keys[bucket_id] = min(SortConfig.bucket_sort_keys[bucket_id], bucket_key)
     else:
