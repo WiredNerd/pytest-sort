@@ -16,7 +16,7 @@ on:
 
 jobs:
   pytest-matrix:
-    name: Unit Test with Pytest
+    name: Pytest
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

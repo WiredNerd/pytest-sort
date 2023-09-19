@@ -178,6 +178,7 @@ For example, if the sort bucket is "module", then all tests from the same module
 | package | Group together test cases that are in the same package (folder). |
 | module | Group together test cases that are in the same module (py file). |
 | class | Group together test cases that are members of a class.  <br>All other (non-class) test cases are grouped by module. |
+| function | Each test function is assigned a separate bucket. |
 | parent | Group together test cases by their immediate parent. |
 | grandparent | Group together test cases by their parent's parent. |
 

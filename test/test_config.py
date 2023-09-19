@@ -110,6 +110,7 @@ class TestSortConfig:
             ({}, {"sort_bucket": "package"}, "package"),
             ({}, {"sort_bucket": "module"}, "module"),
             ({}, {"sort_bucket": "class"}, "class"),
+            ({}, {"sort_bucket": "function"}, "function"),
             ({}, {"sort_bucket": "parent"}, "parent"),
             ({}, {"sort_bucket": "grandparent"}, "grandparent"),
             ({}, {"sort_bucket": "global"}, "session"),

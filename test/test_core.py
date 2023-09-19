@@ -107,6 +107,7 @@ class TestCreateBucketId:
         assert core.create_bucket_id["package"](func) == "tests/core/"
         assert core.create_bucket_id["module"](func) == "tests/core/test_core.py"
         assert core.create_bucket_id["class"](func) == "tests/core/test_core.py::TestCoreStuff"
+        assert core.create_bucket_id["function"](func) == "tests/core/test_core.py::TestCoreStuff::test_init"
         assert core.create_bucket_id["parent"](func) == "tests/core/test_core.py::TestCoreStuff"
         assert core.create_bucket_id["grandparent"](func) == "tests/core/test_core.py"
 

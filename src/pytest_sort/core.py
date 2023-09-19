@@ -72,6 +72,7 @@ create_bucket_id = {
     "package": create_bucket_id_for_package,
     "module": create_bucket_id_for_module,
     "class": create_bucket_id_for_class,
+    "function": lambda item: item.nodeid,
     "parent": lambda item: create_bucket_id_from_node(item.parent),
     "grandparent": lambda item: create_bucket_id_from_node(item.parent.parent),
 }

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     import pytest
 
 modes = ["ordered", "reverse", "md5", "random", "fastest"]
-bucket_types = ["session", "package", "module", "class", "parent", "grandparent"]
+bucket_types = ["session", "package", "module", "class", "function", "parent", "grandparent"]
 
 legacy_modes = {
     "none": "ordered",
