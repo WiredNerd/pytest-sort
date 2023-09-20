@@ -63,7 +63,9 @@ class TestConfig:
         config.addinivalue_line.assert_has_calls(
             [
                 mock.call("markers", "sort(mode,bucket): Override pytest-sort Options."),
-                mock.call("markers", "order(item_sort_key): Always use specified Sort Key for this test item or bucket."),
+                mock.call(
+                    "markers", "order(item_sort_key): Always use specified Sort Key for this test item or bucket."
+                ),
             ]
         )
 

@@ -22,9 +22,17 @@ jobs:
         run: |
           pip install -r req/requirements.txt --upgrade
           pip install -r req/pytest.txt --upgrade
+          pip install --editable .
           pip install mutmut --upgrade
+      - name: clone pytest_sort
+        run: |
+          cp -r src src_mut
+          mv src_mut/pytest_sort src_mut/pytest_sort_mut
+          sed -i 's/pytest_sort/pytest_sort_mut/g' src_mut/pytest_sort_mut/*.py
+          sed -i 's/pytest_sort/pytest_sort_mut/g' test/*.py
       - name: Mutmut
-        run: python3 -m mutmut run --no-progress --rerun-all || true
+        run: python3 -m mutmut run --no-progress --rerun-all --paths-to-mutate src_mut \
+          --runner "pytest -x --assert=plain --sort-mode=fastest --sort-bucket=function"
       - run: python3 -m mutmut results
       - name: Mutmut Report
         run: |

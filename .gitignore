@@ -162,6 +162,9 @@ cython_debug/
 .ruff_cache
 .pytest-sort
 .pytest_sort
+.pytest_sort_mut
 .mutmut-cache
 html
 reports
+
+test_mut
