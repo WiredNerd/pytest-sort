@@ -19,37 +19,47 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     """pytest_sort: Add command line and ini options to pytest."""
     group = parser.getgroup("pytest-sort")
 
-    group.addoption("--sort-mode", action="store", dest="sort_mode", choices=modes)
+    group.addoption("--sort-mode", action="store", dest="sort_mode", help=str(modes))
+    group.addoption("--sort_mode", action="store", dest="sort_mode", help=argparse.SUPPRESS)
     parser.addini("sort_mode", help=str(modes))
 
-    group.addoption("--sort-bucket", action="store", dest="sort_bucket", choices=bucket_types)
+    group.addoption("--sort-bucket", action="store", dest="sort_bucket", help=str(bucket_types))
+    group.addoption("--sort_bucket", action="store", dest="sort_bucket", help=argparse.SUPPRESS)
     parser.addini("sort_bucket", help=str(bucket_types))
 
     choices = ["sort_mode"]
     choices.extend(modes)
-    group.addoption("--sort-bucket-mode", action="store", dest="sort_bucket_mode", choices=choices)
+    group.addoption("--sort-bucket-mode", action="store", dest="sort_bucket_mode", help=str(choices))
+    group.addoption("--sort_bucket_mode", action="store", dest="sort_bucket_mode", help=argparse.SUPPRESS)
     parser.addini("sort_bucket_mode", help=str(choices))
 
     help_text = "Random Seed to use with random mode."
     group.addoption("--sort-seed", action="store", dest="sort_seed", help=help_text)
+    group.addoption("--sort_seed", action="store", dest="sort_seed", help=argparse.SUPPRESS)
     parser.addini("sort_seed", help=help_text)
 
     help_text = "Records runtimes. Activated by default when sort-mode=fastest"
     group.addoption("--sort-record-times", action="store_true", dest="sort_record", help=help_text)
+    group.addoption("--sort_record_times", action="store_true", dest="sort_record", help=argparse.SUPPRESS)
     group.addoption("--sort-no-record-times", action="store_true", dest="sort_no_record", help=help_text)
+    group.addoption("--sort_no_record_times", action="store_true", dest="sort_no_record", help=argparse.SUPPRESS)
     parser.addini("sort_record_times", help=help_text, type="bool")
 
     help_text = "Clear the recorded runtimes before sorting."
     group.addoption("--sort-reset-times", action="store_true", dest="sort_reset_times", help=help_text)
+    group.addoption("--sort_reset_times", action="store_true", dest="sort_reset_times", help=argparse.SUPPRESS)
 
     help_text = "At end of report current times."
     group.addoption("--sort-report-times", action="store_true", dest="sort_report_times", help=help_text)
+    group.addoption("--sort_report_times", action="store_true", dest="sort_report_times", help=argparse.SUPPRESS)
 
     help_text = "Location to store pytest-sort data. (default: ./.pytest_sort)"
     group.addoption("--sort-datafile", action="store", dest="sort_datafile", help=help_text)
+    group.addoption("--sort_datafile", action="store", dest="sort_datafile", help=argparse.SUPPRESS)
     parser.addini("sort_datafile", help=help_text)
 
     group.addoption("--sort-debug", action="store_true", dest="sort_debug", help=argparse.SUPPRESS)
+    group.addoption("--sort_debug", action="store_true", dest="sort_debug", help=argparse.SUPPRESS)
 
 
 def pytest_configure(config: pytest.Config) -> None:

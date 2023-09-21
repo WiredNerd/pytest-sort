@@ -16,25 +16,39 @@ class TestConfig:
 
         parser.getgroup.assert_called_with("pytest-sort")
 
-        group.addoption.assert_any_call("--sort-mode", action="store", dest="sort_mode", choices=modes)
+        group.addoption.assert_any_call("--sort-mode", action="store", dest="sort_mode", help=str(modes))
+        group.addoption.assert_any_call("--sort_mode", action="store", dest="sort_mode", help=argparse.SUPPRESS)
         parser.addini.assert_any_call("sort_mode", help=str(modes))
 
-        group.addoption.assert_any_call("--sort-bucket", action="store", dest="sort_bucket", choices=bucket_types)
+        group.addoption.assert_any_call("--sort-bucket", action="store", dest="sort_bucket", help=str(bucket_types))
+        group.addoption.assert_any_call("--sort_bucket", action="store", dest="sort_bucket", help=argparse.SUPPRESS)
         parser.addini.assert_any_call("sort_bucket", help=str(bucket_types))
 
         choices = ["sort_mode"]
         choices.extend(modes)
-        group.addoption.assert_any_call("--sort-bucket-mode", action="store", dest="sort_bucket_mode", choices=choices)
+        group.addoption.assert_any_call(
+            "--sort-bucket-mode", action="store", dest="sort_bucket_mode", help=str(choices)
+        )
+        group.addoption.assert_any_call(
+            "--sort_bucket_mode", action="store", dest="sort_bucket_mode", help=argparse.SUPPRESS
+        )
         parser.addini.assert_any_call("sort_bucket_mode", help=str(choices))
 
         help_text = "Random Seed to use with random mode."
         group.addoption.assert_any_call("--sort-seed", action="store", dest="sort_seed", help=help_text)
+        group.addoption.assert_any_call("--sort_seed", action="store", dest="sort_seed", help=argparse.SUPPRESS)
         parser.addini.assert_any_call("sort_seed", help=help_text)
 
         help_text = "Records runtimes. Activated by default when sort-mode=fastest"
         group.addoption.assert_any_call("--sort-record-times", action="store_true", dest="sort_record", help=help_text)
         group.addoption.assert_any_call(
+            "--sort_record_times", action="store_true", dest="sort_record", help=argparse.SUPPRESS
+        )
+        group.addoption.assert_any_call(
             "--sort-no-record-times", action="store_true", dest="sort_no_record", help=help_text
+        )
+        group.addoption.assert_any_call(
+            "--sort_no_record_times", action="store_true", dest="sort_no_record", help=argparse.SUPPRESS
         )
         parser.addini.assert_any_call("sort_record_times", help=help_text, type="bool")
 
@@ -42,17 +56,25 @@ class TestConfig:
         group.addoption.assert_any_call(
             "--sort-reset-times", action="store_true", dest="sort_reset_times", help=help_text
         )
+        group.addoption.assert_any_call(
+            "--sort_reset_times", action="store_true", dest="sort_reset_times", help=argparse.SUPPRESS
+        )
 
         help_text = "At end of report current times."
         group.addoption.assert_any_call(
             "--sort-report-times", action="store_true", dest="sort_report_times", help=help_text
         )
+        group.addoption.assert_any_call(
+            "--sort_report_times", action="store_true", dest="sort_report_times", help=argparse.SUPPRESS
+        )
 
         help_text = "Location to store pytest-sort data. (default: ./.pytest_sort)"
         group.addoption.assert_any_call("--sort-datafile", action="store", dest="sort_datafile", help=help_text)
+        group.addoption.assert_any_call("--sort_datafile", action="store", dest="sort_datafile", help=argparse.SUPPRESS)
         parser.addini.assert_any_call("sort_datafile", help=help_text)
 
         group.addoption.assert_any_call("--sort-debug", action="store_true", dest="sort_debug", help=argparse.SUPPRESS)
+        group.addoption.assert_any_call("--sort_debug", action="store_true", dest="sort_debug", help=argparse.SUPPRESS)
 
     @mock.patch("pytest_sort.plugin.SortConfig")
     def test_pytest_configure(self, SortConfig):
