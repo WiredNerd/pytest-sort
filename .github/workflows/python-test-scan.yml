@@ -14,6 +14,8 @@ on:
       - test/*
   workflow_dispatch:
 
+concurrency: updates-project
+
 jobs:
   pytest-cov:
     name: Unit Test with Pytest
