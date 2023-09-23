@@ -20,8 +20,7 @@ classifiers = [
     "Operating System :: OS Independent",
     "Framework :: Pytest",
 ]
-dependencies = ["pytest>=7.0.0", "pony>=0.7.16"]
-# Need next vesion of pony for python 3.11
+dependencies = ["pytest>=7.0.0"]
 
 [project.urls]
 "Homepage" = "https://github.com/WiredNerd/pytest-sort"

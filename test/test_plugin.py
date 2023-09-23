@@ -160,9 +160,9 @@ class TestExecute:
         assert SortConfig.recorded_times == out_recorded_times
 
     @mock.patch("pytest_sort.plugin.print_recorded_times_report")
-    @mock.patch("pytest_sort.plugin.update_test_case")
+    @mock.patch("pytest_sort.plugin.update_test_cases")
     @mock.patch("pytest_sort.plugin.SortConfig")
-    def test_pytest_terminal_summary(self, SortConfig, update_test_case, print_recorded_times_report):
+    def test_pytest_terminal_summary(self, SortConfig, update_test_cases, print_recorded_times_report):
         SortConfig.recorded_times = {
             "test_item_1": {"setup": 1},
             "test_item_2": {"setup": 2},
@@ -175,10 +175,5 @@ class TestExecute:
 
         plugin.pytest_terminal_summary(terminalreporter, exitstatus, config)
 
-        update_test_case.assert_has_calls(
-            [
-                mock.call("test_item_1", **{"setup": 1}),
-                mock.call("test_item_2", **{"setup": 2}),
-            ]
-        )
+        update_test_cases.assert_called_with(SortConfig.recorded_times)
         print_recorded_times_report.assert_called_with(terminalreporter)

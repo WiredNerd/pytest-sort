@@ -78,7 +78,7 @@ class TestSortConfig:
         assert config.SortConfig.report == False
         assert config.SortConfig.seed == seed
 
-        assert database.database_file.absolute() == (Path.cwd() / ".pytest_sort").absolute()
+        assert database.database_file.absolute() == (Path.cwd() / ".pytest_sort_data").absolute()
 
     @pytest.mark.parametrize(
         "getoption,getini,expected",
@@ -202,7 +202,7 @@ class TestSortConfig:
     @pytest.mark.parametrize(
         "getoption,getini,expected",
         [
-            ({}, {}, Path.cwd() / ".pytest_sort"),
+            ({}, {}, Path.cwd() / ".pytest_sort_data"),
             (
                 {"sort_datafile": "./tests/.sort_db"},
                 {"sort_datafile": "./tests/.sort"},

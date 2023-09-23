@@ -9,7 +9,7 @@ import pytest
 
 from pytest_sort.config import SortConfig, bucket_types, modes
 from pytest_sort.core import print_recorded_times_report, sort_items
-from pytest_sort.database import clear_db, update_test_case
+from pytest_sort.database import clear_db, update_test_cases
 
 if TYPE_CHECKING:
     from _pytest.terminal import TerminalReporter
@@ -118,8 +118,8 @@ def pytest_terminal_summary(
     config: pytest.Config,  # noqa: ARG001
 ) -> None:
     """pytest_sort: Store recorded runtimes in database."""
-    for nodeid in SortConfig.recorded_times:
-        update_test_case(nodeid, **SortConfig.recorded_times[nodeid])
+    if SortConfig.recorded_times:
+        update_test_cases(SortConfig.recorded_times)
 
     if SortConfig.report:
         print_recorded_times_report(terminalreporter)

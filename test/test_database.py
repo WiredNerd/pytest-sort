@@ -1,10 +1,8 @@
 import importlib
-from pathlib import Path
+import json
 from unittest import mock
-from unittest.mock import MagicMock
 
 import pytest
-from pony.orm import OperationalError, db_session
 
 import pytest_sort.database as database
 
@@ -14,194 +12,188 @@ def reset():
     importlib.reload(database)
 
 
+@pytest.fixture(autouse=True)
+def database_file(reset):
+    with mock.patch("pytest_sort.database.database_file") as database_file:
+        yield database_file
+
+
 @pytest.fixture
-def db():
-    with mock.patch("pytest_sort.database.db") as db:
-        yield db
+def test_data():
+    return {
+        "test/test_core.py::TestClass::test_case[A]": {
+            "setup": 1,
+            "call": 2,
+            "teardown": 3,
+            "total": 6,
+        },
+        "test/test_core.py::TestClass::test_case[B]": {
+            "setup": 11,
+            "call": 21,
+            "teardown": 31,
+            "total": 63,
+        },
+    }
 
 
-class TestInitDb:
-    @database._init_db
-    def init_db(self):
-        pass
+@pytest.fixture
+def test_file(test_data):
+    return json.dumps(test_data, indent=4)
 
-    def test_init_db(self, db: MagicMock):
-        db.provider = None
 
-        self.init_db()
+class TestLoadSave:
+    def test_load_data(self, database_file, test_file, test_data):
+        database_file.exists.return_value = True
+        database_file.read_text.return_value = test_file
 
-        db_path_filename = str(Path.cwd() / ".pytest_sort")
-        db.bind.assert_called_with(provider="sqlite", filename=db_path_filename, create_db=True)
-        db.generate_mapping.assert_called_with(create_tables=True)
+        database._load_data()
 
-    def test_init_db_fix_db(self, db: MagicMock):
-        db.provider = None
-        db.generate_mapping.side_effect = [OperationalError(Exception()), None]
+        database_file.read_text.assert_called_with("utf-8")
+        assert database._sort_data == test_data
 
-        self.init_db()
+    def test_load_data_loaded(self, database_file, test_file, test_data):
+        database_file.exists.return_value = True
+        database_file.read_text.return_value = test_file
+        database._sort_data = test_data
 
-        db_path_filename = str(Path.cwd() / ".pytest_sort")
-        db.bind.assert_called_with(provider="sqlite", filename=db_path_filename, create_db=True)
-        db.generate_mapping.assert_has_calls(
-            [
-                mock.call(create_tables=True),
-                mock.call(create_tables=True),
-            ]
-        )
-        db.drop_all_tables.assert_called_with(with_all_data=True)
-        assert db.schema is None
+        database._load_data()
 
-    def test_init_db_already_created(self, db: MagicMock):
-        db.provider = "sqlite"
+        database_file.read_text.assert_not_called()
+        assert database._sort_data == test_data
 
-        self.init_db()
+    def test_load_data_no_file(self, database_file):
+        database_file.exists.return_value = False
+        database_file.read_text.return_value = None
 
-        db.bind.assert_not_called()
-        db.generate_mapping.assert_not_called()
+        database._load_data()
+
+        database_file.read_text.assert_not_called()
+        assert database._sort_data == {}
+
+    def test__save_data(self, database_file, test_file, test_data):
+        database._sort_data = test_data
+
+        database._save_data()
+
+        database_file.write_text.assert_called_with(test_file, "utf-8")
 
 
 class TestClearDb:
-    def test_clear_db(self):
-        database.clear_db()
-        with db_session:
-            database.TestTab(nodeid="fake", setup=0, call=0, teardown=0, total=0)
-        database.clear_db()
-        with db_session:
-            assert database.TestTab.select().fetch().to_list() == []
+    @pytest.fixture
+    def _save_data(self):
+        with mock.patch("pytest_sort.database._save_data") as _save_data:
+            yield _save_data
 
-    def test_clear_db_mock(self, db):
-        db.schema = "test"
+    def test_clear_db(self, _save_data, test_data):
+        database._sort_data = test_data
         database.clear_db()
-        db.drop_all_tables.assert_called_with(with_all_data=True)
-        assert db.schema == None
-        db.generate_mapping.assert_called_with(create_tables=True)
+        assert database._sort_data == {}
+        _save_data.assert_called()
 
 
 class TestUpdate:
     @pytest.fixture(autouse=True)
-    def clear_db(self):
-        database.clear_db()
-        yield
+    def _load_data(self, test_data):
+        def load_test_data():
+            database._sort_data = test_data.copy()
 
-    def test_update_test_case_default(self):
-        database.update_test_case("test_node_1")
-        with db_session:
-            row = database.TestTab.select().first().to_dict()
-            assert row == {"nodeid": "test_node_1", "setup": 0, "call": 0, "teardown": 0, "total": 0}
+        with mock.patch("pytest_sort.database._load_data") as _load_data:
+            _load_data.side_effect = load_test_data
+            yield _load_data
 
-    def test_update_test_case_values(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        with db_session:
-            row = database.TestTab.select().first().to_dict()
-            assert row == {"nodeid": "test_node_1", "setup": 3, "call": 2, "teardown": 5, "total": 10}
+    @pytest.fixture
+    def _save_data(self):
+        with mock.patch("pytest_sort.database._save_data") as _save_data:
+            _save_data.side_effect = lambda: _save_data.saved(database._sort_data)
+            yield _save_data
 
-    def test_update_test_case_less(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        database.update_test_case("test_node_1", setup=2, call=1, teardown=4)
-        with db_session:
-            row = database.TestTab.select().first().to_dict()
-            assert row == {"nodeid": "test_node_1", "setup": 3, "call": 2, "teardown": 5, "total": 10}
+    def test_update_test_cases_update_less(self, _save_data):
+        database.update_test_cases(
+            {
+                "test/test_core.py::TestClass::test_case[A]": {"setup": 0, "call": 1, "teardown": 2},
+            }
+        )
+        assert database._sort_data["test/test_core.py::TestClass::test_case[A]"] == {
+            "setup": 1,
+            "call": 2,
+            "teardown": 3,
+            "total": 6,
+        }
+        _save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_case_equal(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        with db_session:
-            row = database.TestTab.select().first().to_dict()
-            assert row == {"nodeid": "test_node_1", "setup": 3, "call": 2, "teardown": 5, "total": 10}
+    def test_update_test_cases_update_equal(self, _save_data):
+        database.update_test_cases(
+            {"test/test_core.py::TestClass::test_case[A]": {"setup": 1, "call": 2, "teardown": 3}}
+        )
+        assert database._sort_data["test/test_core.py::TestClass::test_case[A]"] == {
+            "setup": 1,
+            "call": 2,
+            "teardown": 3,
+            "total": 6,
+        }
+        _save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_case_greater(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        database.update_test_case("test_node_1", setup=4, call=3, teardown=6)
-        with db_session:
-            row = database.TestTab.select().first().to_dict()
-            assert row == {"nodeid": "test_node_1", "setup": 4, "call": 3, "teardown": 6, "total": 13}
+    def test_update_test_cases_update_greater(self, _save_data):
+        database.update_test_cases(
+            {
+                "test/test_core.py::TestClass::test_case[A]": {"setup": 2, "call": 3, "teardown": 4},
+                "test/test_core.py::TestClass::test_case[B]": {"setup": 11, "call": 22, "teardown": 31},
+            }
+        )
+        assert database._sort_data["test/test_core.py::TestClass::test_case[A]"] == {
+            "setup": 2,
+            "call": 3,
+            "teardown": 4,
+            "total": 9,
+        }
+        assert database._sort_data["test/test_core.py::TestClass::test_case[B]"] == {
+            "setup": 11,
+            "call": 22,
+            "teardown": 31,
+            "total": 64,
+        }
+        _save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_case_mock(self, db):
-        with mock.patch("pytest_sort.database.TestTab") as TestTab:
-            test = TestTab.get.return_value
-            test.setup.__lt__ = lambda self, v: test.setup_lt(v)
-            test.call.__lt__ = lambda self, v: test.call_lt(v)
-            test.teardown.__lt__ = lambda self, v: test.teardown_lt(v)
-            test.total.__lt__ = lambda self, v: test.total_lt(v)
-
-            database.update_test_case("test_node_1", 1, 2, 3)
-
-            test.setup_lt.assert_called_with(1)
-            assert test.setup == 1
-            test.call_lt.assert_called_with(2)
-            assert test.call == 2
-            test.teardown_lt.assert_called_with(3)
-            assert test.teardown == 3
-            test.total_lt.assert_called_with(6)
-            assert test.total == 6
-
-    def test_update_test_case_init_db(self, db):
-        db.provider = None
-        database.update_test_case("test_node_1")
-        db.bind.assert_called()
+    def test_update_test_cases_update_defaults(self, _save_data):
+        database.update_test_cases({"test/test_core.py::test_default": {}})
+        assert database._sort_data["test/test_core.py::test_default"] == {
+            "setup": 0,
+            "call": 0,
+            "teardown": 0,
+            "total": 0,
+        }
+        _save_data.saved.assert_called_with(database._sort_data)
 
 
 class TestGet:
     @pytest.fixture(autouse=True)
-    def clear_db(self):
-        database.clear_db()
-        yield
+    def _load_data(self, test_data):
+        def load_test_data():
+            database._sort_data = test_data.copy()
 
-    def test_get_total(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        assert database.get_total("test_node_1") == 10
-
-    def test_get_total_not_found(self):
-        assert database.get_total("test_node_1") == 0
-
-    def test_get_total_init_db(self, db):
-        db.provider = None
-        database.get_total("test_node_1")
-        db.bind.assert_called()
+        with mock.patch("pytest_sort.database._load_data") as _load_data:
+            _load_data.side_effect = load_test_data
+            yield _load_data
 
     def test_get_all_totals(self):
-        database.update_test_case("test_node_1", call=2)
-        database.update_test_case("test_node_2", call=3)
         assert database.get_all_totals() == {
-            "test_node_1": 2,
-            "test_node_2": 3,
+            "test/test_core.py::TestClass::test_case[A]": 6,
+            "test/test_core.py::TestClass::test_case[B]": 63,
         }
 
-    def test_get_all_totals_init_db(self, db):
-        db.provider = None
-        database.get_all_totals()
-        db.bind.assert_called()
-
     def test_get_bucket_total(self):
-        database.update_test_case("test_node_1", call=2)
-        database.update_test_case("test_node_2", call=3)
-        database.update_test_case("other_node_1", call=4)
-        database.update_test_case("other_node_2", call=5)
-
-        assert database.get_bucket_total("test") == 5
+        assert database.get_bucket_total("test/test_core.py") == 69
 
     def test_get_bucket_total_not_found(self):
-        database.update_test_case("test_node_1", call=2)
-        database.update_test_case("test_node_2", call=3)
-        database.update_test_case("other_node_1", call=4)
-        database.update_test_case("other_node_2", call=5)
-
-        assert database.get_bucket_total("not") == 0
-
-    def test_get_bucket_total_init_db(self, db):
-        db.provider = None
-        database.get_bucket_total("test")
-        db.bind.assert_called()
-
-    def test_get_stats_init_db(self, db):
-        db.provider = None
-        database.get_stats("test_node_1")
-        db.bind.assert_called()
+        assert database.get_bucket_total("test/test_core.py::TestOther") == 0
 
     def test_get_stats(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        assert database.get_stats("test_node_1") == {"setup": 3, "call": 2, "teardown": 5, "total": 10}
+        assert database.get_stats("test/test_core.py::TestClass::test_case[A]") == {
+            "setup": 1,
+            "call": 2,
+            "teardown": 3,
+            "total": 6,
+        }
 
     def test_get_stats_not_found(self):
-        database.update_test_case("test_node_1", setup=3, call=2, teardown=5)
-        assert database.get_stats("test_node_2") == {"setup": 0, "call": 0, "teardown": 0, "total": 0}
+        assert database.get_stats("test/test_core.py::test_other") == {"setup": 0, "call": 0, "teardown": 0, "total": 0}

@@ -170,7 +170,7 @@ This option controlls how the order is modified within each bucket.
 | reverse |pytest_sort will reverse the default order of tests. |
 | md5 | This mode creates an md5 of each test case id, then sorts on those values.  <br> This runs test cases in a deterministicly shuffled order. |
 | random | Test cases are shuffled randomly. Sort Seed is used to control random sorting. |
-| fastest | In each run in "fasttest" mode, any previously recorded runtimes in ".pytest_sort" file will be used to sort the fastest tests to run first.  Also, by default, it will record the longest execution time for each test case to that file for future usage.  See [Record Test Runtimes](#record-test-runtimes) |
+| fastest | In each run in "fastest" mode, any previously recorded runtimes in ".pytest_sort_data" file will be used to sort the fastest tests to run first.  Also, by default, it will record the longest execution time for each test case to that file for future usage.  See [Record Test Runtimes](#record-test-runtimes) |
 
 ## Sort Bucket
 
@@ -231,7 +231,7 @@ Only used in "random" sort mode.  This field allows you to manually set the seed
 
 ## Record Test Runtimes
 
-When this option is enabled, this plugin with collect runtime information for all tests. If the recorded values are higher than values already stored in ".pytest_sort" file, the values in the file are updated.
+When this option is enabled, this plugin with collect runtime information for all tests. If the recorded values are higher than values already stored in ".pytest_sort_data" file, the values in the file are updated.
 
 When Sort Mode or Bucket Sort Mode is 'fastest' this option is enabled by default.
 
@@ -254,7 +254,7 @@ Clear all recorded runtimes before sorting and running the next test.
 
 When recording runtimes, only the highest runtime values for each test case are retained.  After significant changes to test cases that can change how fast they run, it is advisable to reset the runtimes.  This can help maintain more accurate sorting in "fastest" mode.
 
-> Runtimes can also be deleted by deleting the '.pytest_sort' file.
+> Runtimes can also be deleted by deleting the '.pytest_sort_data' file.
 
 ***Command Line:*** `--sort-reset-times`
 
@@ -276,5 +276,5 @@ Change the location and/or name of the datafile used to store the test runtimes.
 
 ***Pytest Config:*** `sort_datafile`
 
-***Default:*** `.pytest_sort` 
+***Default:*** `.pytest_sort_data` 
 
