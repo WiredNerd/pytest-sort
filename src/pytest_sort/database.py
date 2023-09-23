@@ -10,13 +10,13 @@ database_file = Path.cwd() / ".pytest_sort_data"
 _sort_data: dict = {}
 
 
-def _load_data():
+def _load_data() -> None:
     global _sort_data
     if not _sort_data and database_file.exists():
         _sort_data = json.loads(database_file.read_text("utf-8"))
 
 
-def _save_data():
+def _save_data() -> None:
     database_file.write_text(json.dumps(_sort_data, indent=4), "utf-8")
 
 
@@ -30,7 +30,6 @@ def clear_db() -> None:
 def update_test_cases(recorded_times: dict):
     """Update Test Case Data with specfiied duration(s) and recalculate total(s)."""
     _load_data()
-    global _sort_data
 
     for nodeid in recorded_times:
         node_data = _sort_data.get(nodeid, {})

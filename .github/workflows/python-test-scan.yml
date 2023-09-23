@@ -3,15 +3,15 @@ name: Python Tests and Scans
 on: 
   push:
     paths:
-      - req
-      - src
-      - test
+      - req/*
+      - src/*
+      - test/*
       - .github/workflows/python-test-scan.yml
   pull_request:
     paths:
-      - req
-      - src
-      - test
+      - req/*
+      - src/*
+      - test/*
   workflow_dispatch:
 
 jobs:

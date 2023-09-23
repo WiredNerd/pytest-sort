@@ -3,9 +3,9 @@ name: Python Mutation Test
 on: 
   pull_request:
     paths:
-      - req
-      - src
-      - test
+      - req/*
+      - src/*
+      - test/*
       - .github/workflows/python-mutation-test.yml
   workflow_dispatch:
 
@@ -34,7 +34,9 @@ jobs:
         run: python3 -m mutmut run --no-progress --rerun-all --paths-to-mutate src_mut 
           --runner "pytest -x --assert=plain --sort-mode=fastest --sort-bucket=function"
       - run: python3 -m mutmut results
+        if: ${{ always() }}
       - name: Mutmut Report
+        if: ${{ always() }}
         run: |
           python3 -m mutmut html
           python3 -m mutmut junitxml > mutation-testing-report.xml

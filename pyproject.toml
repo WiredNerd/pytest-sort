@@ -86,3 +86,6 @@ exclude = [
     "ARG005", # Unused lambda argument
     "T201",   # print found
 ]
+"src/pytest_sort/database.py" = [
+    "PLW0603", # global-statement
+]

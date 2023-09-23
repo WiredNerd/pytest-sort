@@ -3,15 +3,15 @@ name: Python Platform Tests
 on: 
   push:
     paths:
-      - req
-      - src
-      - test
+      - req/*
+      - src/*
+      - test/*
       - .github/workflows/python-test-matrix.yml
   pull_request:
     paths:
-      - req
-      - src
-      - test
+      - req/*
+      - src/*
+      - test/*
   workflow_dispatch:
 
 jobs:
