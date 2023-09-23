@@ -95,7 +95,7 @@ class TestUpdate:
     @pytest.fixture(autouse=True)
     def _load_data(self, test_data):
         def load_test_data():
-            database._sort_data = test_data.copy()
+            database._sort_data = test_data
 
         with mock.patch("pytest_sort.database._load_data") as _load_data:
             _load_data.side_effect = load_test_data
@@ -163,6 +163,34 @@ class TestUpdate:
             "total": 0,
         }
         _save_data.saved.assert_called_with(database._sort_data)
+
+    def test_update_test_cases_update_mock(self, test_data, _save_data):
+        setup = mock.MagicMock()
+        call = mock.MagicMock()
+        teardown = mock.MagicMock()
+
+        node_data = {
+            "setup": setup,
+            "call": call,
+            "teardown": teardown,
+        }
+
+        test_data['mocknode'] = node_data
+
+        setup.__lt__ = lambda self, v: setup.lt(v)
+        call.__lt__ = lambda self, v: call.lt(v)
+        teardown.__lt__ = lambda self, v: teardown.lt(v)
+
+        setup.lt.return_value = True
+        call.lt.return_value = True
+        teardown.lt.return_value = True
+
+        database.update_test_cases({"mocknode": {"setup": 1, "call": 2, "teardown": 3}})
+
+        setup.lt.assert_called_with(1)
+        call.lt.assert_called_with(2)
+        teardown.lt.assert_called_with(3)
+        assert node_data["total"] == 6
 
 
 class TestGet:

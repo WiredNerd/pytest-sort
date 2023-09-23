@@ -27,7 +27,7 @@ def clear_db() -> None:
     _save_data()
 
 
-def update_test_cases(recorded_times: dict):
+def update_test_cases(recorded_times: dict) -> None:
     """Update Test Case Data with specfiied duration(s) and recalculate total(s)."""
     _load_data()
 
