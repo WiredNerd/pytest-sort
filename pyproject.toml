@@ -5,9 +5,20 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "1.0.2"
+version = "1.1.0"
 license = { file = "LICENSE" }
-keywords = ["test", "pytest", "order", "sort", "random", "randomly"]
+keywords = [
+    "test",
+    "pytest",
+    "order",
+    "pytest-order",
+    "sort",
+    "random",
+    "pytest-random",
+    "pytest-random-order",
+    "randomly",
+    "pytest-randomly",
+]
 authors = [{ name = "WiredNerd", email = "pbuschmail-pytestsort@yahoo.com" }]
 maintainers = [
     { name = "WiredNerd", email = "pbuschmail-pytestsort@yahoo.com" },
@@ -30,8 +41,8 @@ dependencies = ["pytest>=7.0.0"]
 sort = "pytest_sort.plugin"
 
 [tool.pytest.ini_options]
-pythonpath = ["src","src_mut"]
-testpaths = ["test","test_mut"]
+pythonpath = ["src", "src_mut"]
+testpaths = ["test", "test_mut"]
 addopts = "-vv --cov-reset --cov-report=html:reports/coverage --cov-report=term --cov-report=json:code-coverage.json"
 
 # https://pytest-cov.readthedocs.io/en/latest/config.html
