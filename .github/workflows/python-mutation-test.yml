@@ -49,7 +49,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: "mutation-testing-report.xml"
-          pull: "--rebase --autostash"
+          pull: "--rebase=true --autostash"
       - name: save-reports
         if: ${{ always() }}
         uses: actions/upload-artifact@v3

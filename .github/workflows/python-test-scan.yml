@@ -35,7 +35,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: "code-coverage.json"
-          pull: "--rebase --autostash"
+          pull: "--rebase=true --autostash"
       - name: save-reports
         uses: actions/upload-artifact@v3
         with:
