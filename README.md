@@ -75,6 +75,28 @@ When you have a test suite that includes long running test cases, it can be help
 pytest --exitfirst --sort-mode=fastest
 ```
 
+## Mutation Testing
+
+Mutuation testing is slow.  The 'diffcov' mode can help accelerate mutation testing.
+
+The mutuation testing tool 'mutmut' works by modifying the source code, then running pytest to see if any tests catch the change.  Using 'git diff' and 'coverage.py' the 'diffcov' mode combines the differences detected by Git with the coverage information recorded by coverage.py to prioritize test cases.  That way the test cases most likely to catch the change are run as early as possible.
+
+Steps to use 'diffcov' mode:
+1. Run pytest with coverage and context.  This records the coverage for each test case as a separate context.
+```
+pytest --cov= --cov-context=test
+```
+2. Run mutmut with runner options.
+```
+mutmut run --runner "pytest --exitfirst --assert=plain --sort-mode=diffcov"
+```
+
+You can also combine with 'fastest' to run tests with same coverage from fastest to slowest:
+```
+pytest --cov= --cov-context=test --sort-mode=fastest
+mutmut run --runner "pytest --exitfirst --assert=plain --sort-bucket-mode=diffcov --sort-bucket=function --sort-mode=fastest"
+```
+
 # How it Works
 
 Pytest gathers a list of test cases to be executed, by default it orders test cases from top to bottom of each file.  This plugin takes that list and creates two sort keys.  The first is a sort key for each bucket, and the second is a sort key for each test.  It then sorts the list of test cases using the two sort keys.
@@ -171,6 +193,7 @@ This option controlls how the order is modified within each bucket.
 | md5 | This mode creates an md5 of each test case id, then sorts on those values.  <br> This runs test cases in a deterministicly shuffled order. |
 | random | Test cases are shuffled randomly. Sort Seed is used to control random sorting. |
 | fastest | In each run in "fastest" mode, any previously recorded runtimes in ".pytest_sort_data" file will be used to sort the fastest tests to run first.  Also, by default, it will record the longest execution time for each test case to that file for future usage.  See [Record Test Runtimes](#record-test-runtimes) |
+| diffcov | Uses 'git diff' and data from 'coverage.py' to determine which test cases likey cover the changed lines of code, and runs them first. |
 
 ## Sort Bucket
 
@@ -216,6 +239,7 @@ This option controlls how the order is modified within each bucket.
 | md5 | This mode creates an md5 of each bucket's id, then sorts on those values. |
 | random | Buckets are shuffled randomly. Sort Seed is used to control random sorting. |
 | fastest | The total of all runtimes for tests in the bucket is used as the sort key for the bucket. |
+| diffcov | Uses 'git diff' and data from 'coverage.py' to determine which test cases likey cover the changed lines of code, and runs them first. |
 
 ## Sort Seed
 
