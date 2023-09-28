@@ -11,7 +11,7 @@ from pytest_sort import database
 if TYPE_CHECKING:
     import pytest
 
-modes = ["ordered", "reverse", "md5", "random", "fastest"]
+modes = ["ordered", "reverse", "md5", "random", "fastest", "diffcov"]
 bucket_types = ["session", "package", "module", "class", "function", "parent", "grandparent"]
 
 legacy_modes = {
@@ -41,6 +41,7 @@ class SortConfig:
     item_sort_keys: ClassVar[dict] = {}
     item_bucket_id: ClassVar[dict] = {}
     bucket_sort_keys: ClassVar[dict] = {}
+    cov_scores: ClassVar[dict] = {}
 
     @staticmethod
     def from_pytest(config: pytest.Config) -> None:

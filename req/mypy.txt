@@ -1,2 +1,2 @@
 mypy
-pony-stubs
+types-whatthepatch
