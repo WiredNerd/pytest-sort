@@ -13,6 +13,7 @@ from _pytest import nodes as pytest_nodes
 
 from pytest_sort.config import SortConfig
 from pytest_sort.database import get_all_totals, get_stats
+from pytest_sort.diffcov import get_test_scores
 
 md5: Callable = hashlib.md5  # pragma: no mutate
 if sys.version_info >= (3, 9):  # pragma: no mutate
@@ -83,6 +84,7 @@ create_item_key = {
     "md5": lambda item, idx, count: md5(item.nodeid.encode()).digest(),
     "random": lambda item, idx, count: random.random(),
     "fastest": lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),
+    "diffcov": lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),
 }
 
 
@@ -91,12 +93,18 @@ def get_bucket_total(bucket_id: str) -> int:
     return sum([total for nodeid, total in SortConfig.item_totals.items() if nodeid.startswith(bucket_id)])
 
 
+def get_bucket_score(bucket_id: str) -> int:
+    """Get all scores from nodes matching this bucket and return min."""
+    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [0])
+
+
 create_bucket_key = {
     "ordered": lambda bucket_id, idx, count: idx + 1,
     "reverse": lambda bucket_id, idx, count: count - idx,
     "md5": lambda bucket_id, idx, count: md5(bucket_id.encode()).digest(),
     "random": lambda bucket_id, idx, count: random.random(),
     "fastest": lambda bucket_id, idx, count: get_bucket_total(bucket_id),
+    "diffcov": lambda bucket_id, idx, count: get_bucket_score(bucket_id),
 }
 
 
@@ -210,6 +218,9 @@ def sort_items(items: list[pytest.Item]) -> None:
     """Reorder the items."""
     if SortConfig.mode == "random" or SortConfig.bucket_mode == "random":
         random.seed(SortConfig.seed)
+
+    if SortConfig.mode == "diffcov" or SortConfig.bucket_mode == "diffcov":
+        SortConfig.cov_scores = get_test_scores()
 
     if SortConfig.mode == "fastest" or SortConfig.bucket_mode == "fastest":
         SortConfig.item_totals = get_all_totals()

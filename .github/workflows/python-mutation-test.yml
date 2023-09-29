@@ -35,9 +35,11 @@ jobs:
           mv src_mut/pytest_sort src_mut/pytest_sort_mut
           sed -i 's/pytest_sort/pytest_sort_mut/g' src_mut/pytest_sort_mut/*.py
           sed -i 's/pytest_sort/pytest_sort_mut/g' test/*.py
+      - name: coverage
+        run: pytest --cov=src_mut --sort-mode=fastest --cov-context=test
       - name: Mutmut
         run: python3 -m mutmut run --no-progress --rerun-all --paths-to-mutate src_mut 
-          --runner "pytest -x --assert=plain --sort-mode=fastest --sort-bucket=function"
+          --runner "pytest -x --assert=plain --sort-bucket-mode=diffcov --sort-bucket=function --sort-mode=fastest"
       - run: python3 -m mutmut results
         if: ${{ always() }}
       - name: Mutmut Report

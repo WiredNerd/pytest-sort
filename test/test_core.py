@@ -53,7 +53,7 @@ class TestCreateBucketIdForNode:
             (pytest.Package, "tests", "tests"),
             (pytest_nodes.Node, "test/__init__.py", "test/__init__.py"),
             (pytest_nodes.Node, "tests", "tests"),
-            (pytest.Config, "tests", ""),
+            (pytest.Config, "tests|", ""),
         ],
     )
     def test_create_bucket_id_from_node(self, type, nodeid, bucket_id):
