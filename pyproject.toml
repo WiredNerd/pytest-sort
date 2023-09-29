@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "1.1.0"
+version = "1.2.0"
 license = { file = "LICENSE" }
 keywords = [
     "test",
@@ -42,7 +42,7 @@ sort = "pytest_sort.plugin"
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "src_mut"]
-testpaths = ["test", "test_mut"]
+testpaths = ["test"]
 addopts = "-vv --cov-reset --cov-report=html:reports/coverage --cov-report=term --cov-report=json:code-coverage.json"
 
 # https://pytest-cov.readthedocs.io/en/latest/config.html

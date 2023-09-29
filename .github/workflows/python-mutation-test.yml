@@ -48,6 +48,7 @@ jobs:
           python3 -m mutmut html
           python3 -m mutmut junitxml > mutation-testing-report.xml
       - name: save-xml-report
+        if: ${{ always() && github.event_name != 'pull_request' }}
         uses: EndBug/add-and-commit@v9
         with:
           add: "mutation-testing-report.xml"

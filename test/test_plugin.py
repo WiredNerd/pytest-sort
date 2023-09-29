@@ -1,10 +1,15 @@
 import argparse
+import importlib
 from unittest import mock
 
 import pytest
 
 from pytest_sort import plugin
 from pytest_sort.config import bucket_types, modes
+
+
+def test_plugin():
+    importlib.reload(plugin)
 
 
 class TestConfig:
