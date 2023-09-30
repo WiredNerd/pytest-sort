@@ -17,7 +17,7 @@ PARSE_TEST_CONTEXT = re.compile(r"(?P<nodeid>.*)\|(?P<when>setup|run|teardown)")
 
 def get_git_toplevel_folder() -> str:
     """Run Git rev-parse to get toplevel folder name."""
-    output = subprocess.run(shlex.split("git rev-parse --show-toplevel"), capture_output=True, check=True)
+    output = subprocess.run(shlex.split("git rev-parse --show-toplevel"), capture_output=True, check=True)  # noqa: S603
     return output.stdout.decode().strip()
 
 
