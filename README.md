@@ -9,7 +9,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Code Style: black](https://img.shields.io/badge/Code_Style-Black-black)](https://black.readthedocs.io)
 [![Linter: ruff](https://img.shields.io/badge/Linter-ruff-purple)](https://beta.ruff.rs/docs/)
-[![Snyk Security](https://snyk.io/test/github/WiredNerd/pytest-sort/badge.svg?targetFile=req/requirements.txt)](https://snyk.io/test/github/WiredNerd/pytest-sort)
+[![Snyk Security](https://img.shields.io/badge/Snyk%20Security-monitored-FF66FF)](https://snyk.io/)
 
 
 ## Project description

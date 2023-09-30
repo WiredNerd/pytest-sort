@@ -47,6 +47,7 @@ class TestSortConfig:
         assert config.SortConfig.item_sort_keys == {}
         assert config.SortConfig.item_bucket_id == {}
         assert config.SortConfig.bucket_sort_keys == {}
+        assert config.SortConfig.cov_scores == {}
 
     def test_create_default_seed(self):
         random = mock.MagicMock()
@@ -89,6 +90,7 @@ class TestSortConfig:
             ({}, {"sort_mode": "md5"}, "md5"),
             ({}, {"sort_mode": "random"}, "random"),
             ({}, {"sort_mode": "fastest"}, "fastest"),
+            ({}, {"sort_mode": "diffcov"}, "diffcov"),
             ({}, {"sort_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
         ],
@@ -136,6 +138,7 @@ class TestSortConfig:
             ({}, {"sort_bucket_mode": "md5"}, "md5"),
             ({}, {"sort_bucket_mode": "random"}, "random"),
             ({}, {"sort_bucket_mode": "fastest"}, "fastest"),
+            ({}, {"sort_bucket_mode": "diffcov"}, "diffcov"),
             ({}, {"sort_bucket_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
             ({"sort_mode": "md5"}, {"sort_bucket_mode": "sort_mode"}, "md5"),

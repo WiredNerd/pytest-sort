@@ -15,13 +15,19 @@ from coverage.sqldata import CoverageData
 PARSE_TEST_CONTEXT = re.compile(r"(?P<nodeid>.*)\|(?P<when>setup|run|teardown)")
 
 
+def get_git_toplevel_folder() -> str:
+    """Run Git rev-parse to get toplevel folder name."""
+    output = subprocess.run(shlex.split("git rev-parse --show-toplevel"), capture_output=True, check=True)
+    return output.stdout.decode().strip()
+
+
 def get_git_diff_patch() -> str:
     """Run Git Diff command and return result as string."""
     output = subprocess.run(shlex.split("git diff -U0"), capture_output=True, check=True)  # noqa: S603
     return output.stdout.decode()
 
 
-def get_changed_lines(git_diff_patch: str) -> dict[Path, set[int]]:
+def get_changed_lines(git_folder: str, git_diff_patch: str) -> dict[Path, set[int]]:
     """Use whatthepatch to parse the patch string.
 
     Return map of resolved path of file to set of inserted, updated, or deleted line numbers.
@@ -31,7 +37,7 @@ def get_changed_lines(git_diff_patch: str) -> dict[Path, set[int]]:
     for diff in patch_data:
         if diff.header and diff.changes:
             path = diff.header.old_path
-            rpath = Path(path).resolve()
+            rpath = Path(git_folder).joinpath(path).resolve()
             changed_lines[rpath] = {change.old or change.new or 0 for change in diff.changes}
     return changed_lines
 
@@ -56,7 +62,7 @@ def get_line_coverage() -> Generator[tuple[Path, str, str, int], Any, None]:
 def get_test_scores() -> dict[str, int]:
     """Genarate a 'score' for each test case that has some coverage of the changed files."""
     test_scores = {}
-    changed_lines = get_changed_lines(get_git_diff_patch())
+    changed_lines = get_changed_lines(get_git_toplevel_folder(), get_git_diff_patch())
     for rpath, nodeid, when, line in get_line_coverage():
         if rpath in changed_lines:
             # If test coverage includes changed module

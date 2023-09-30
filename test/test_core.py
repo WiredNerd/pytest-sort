@@ -15,6 +15,35 @@ if sys.version_info >= (3, 9):
     md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
 
+class TestImports:
+    @pytest.fixture
+    def mock_md5(self):
+        with mock.patch("hashlib.md5") as mock_md5:
+            yield mock_md5
+
+    @pytest.fixture
+    def version_info(self):
+        with mock.patch("sys.version_info") as version_info:
+            yield version_info
+
+    @pytest.fixture(autouse=True)
+    def cleanup(self):
+        yield
+        importlib.reload(core)
+
+    def test_import_md5_38(self, version_info, mock_md5):
+        version_info.__ge__ = lambda s, v: False
+        importlib.reload(core)
+        assert core.md5 == mock_md5
+
+    def test_import_md5_39(self, version_info, mock_md5):
+        version_info.__ge__ = lambda s, v: v == (3, 9)
+        importlib.reload(core)
+        assert isinstance(core.md5, partial)
+        assert core.md5.func == mock_md5
+        assert core.md5.keywords == {"usedforsecurity": False}
+
+
 @pytest.fixture
 def mock_objects():
     session = mock.MagicMock(spec=pytest.Session)
@@ -122,9 +151,19 @@ class TestCreateBucketId:
 
         assert 0 <= core.create_item_key["random"](func, 5, 20) < 1
 
+    def test_create_item_key_fastest(self, mock_objects):
+        (session, package, module, cls, func) = mock_objects
+
         assert core.create_item_key["fastest"](func, 5, 20) == 0
         core.SortConfig.item_totals = {func.nodeid: 123}
         assert core.create_item_key["fastest"](func, 5, 20) == 123
+
+    def test_create_item_key_diffcov(self, mock_objects):
+        (session, package, module, cls, func) = mock_objects
+
+        assert core.create_item_key["diffcov"](func, 5, 20) == 0
+        core.SortConfig.cov_scores = {func.nodeid: -123}
+        assert core.create_item_key["diffcov"](func, 5, 20) == -123
 
     def test_create_bucket_key(self):
         assert core.create_bucket_key["ordered"]("tests", 5, 20) == 6
@@ -135,13 +174,25 @@ class TestCreateBucketId:
 
         assert 0 <= core.create_bucket_key["random"]("tests", 5, 20) < 1
 
+    def test_create_bucket_key_fastest(self):
+        core.SortConfig.item_totals = {}
+        assert core.create_bucket_key["fastest"]("tests", 5, 20) == 0
         core.SortConfig.item_totals = {
             "tests/core.py": 100,
             "tests/other/core.py": 23,
             "test/tests/core.py": 1,
         }
-
         assert core.create_bucket_key["fastest"]("tests", 5, 20) == 123
+
+    def test_create_bucket_key_diffcov(self):
+        core.SortConfig.cov_scores = {}
+        assert core.create_bucket_key["diffcov"]("tests", 5, 20) == 0
+        core.SortConfig.cov_scores = {
+            "tests/core.py": -2,
+            "tests/other/core.py": -20,
+            "test/tests/core.py": -90,
+        }
+        assert core.create_bucket_key["diffcov"]("tests", 5, 20) == -20
 
 
 class TestValidateMarker:
@@ -483,11 +534,18 @@ class TestSortItems:
     nodeids = ["function_3", "function_4", "function_1", "function_2"]
     items = [mock.MagicMock(nodeid=nodeid) for nodeid in nodeids]
     node_priority = {"function_1": 1, "function_2": 2, "function_3": 3, "function_4": 4}
+    test_scores = {"function_1": -4, "function_2": -3, "function_3": -2, "function_4": -1}
 
     @pytest.fixture
     def random(self):
         with mock.patch("pytest_sort.core.random") as random:
             yield random
+
+    @pytest.fixture
+    def get_test_scores(self):
+        with mock.patch("pytest_sort.core.get_test_scores") as get_test_scores:
+            get_test_scores.return_value = self.node_priority
+            yield get_test_scores
 
     @pytest.fixture
     def get_all_totals(self):
@@ -511,7 +569,9 @@ class TestSortItems:
         with mock.patch("pytest_sort.core.print_test_case_order") as print_test_case_order:
             yield print_test_case_order
 
-    def test_sort_items(self, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order):
+    def test_sort_items(
+        self, random, get_test_scores, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order
+    ):
         core.SortConfig.mode = "ordered"
         core.SortConfig.bucket_mode = "ordered"
         core.SortConfig.debug = False
@@ -524,6 +584,7 @@ class TestSortItems:
         assert items[3].nodeid == "function_4"
 
         random.seed.assert_not_called()
+        get_test_scores.assert_not_called()
         get_all_totals.assert_not_called()
         create_sort_keys.assert_has_calls(
             [
@@ -545,7 +606,15 @@ class TestSortItems:
         ],
     )
     def test_sort_items_random(
-        self, mode, bucket_mode, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order
+        self,
+        mode,
+        bucket_mode,
+        random,
+        get_test_scores,
+        get_all_totals,
+        create_sort_keys,
+        get_item_sort_key,
+        print_test_case_order,
     ):
         core.SortConfig.mode = mode
         core.SortConfig.bucket_mode = bucket_mode
@@ -555,6 +624,40 @@ class TestSortItems:
         core.sort_items(self.items.copy())
 
         random.seed.assert_called_with(12345)
+        get_test_scores.assert_not_called()
+        get_all_totals.assert_not_called()
+        assert create_sort_keys.call_count == 4
+        assert get_item_sort_key.call_count == 4
+        print_test_case_order.assert_not_called()
+
+    @pytest.mark.parametrize(
+        "mode,bucket_mode",
+        [
+            ("diffcov", "ordered"),
+            ("ordered", "diffcov"),
+            ("diffcov", "diffcov"),
+        ],
+    )
+    def test_sort_items_diffcov(
+        self,
+        mode,
+        bucket_mode,
+        random,
+        get_test_scores,
+        get_all_totals,
+        create_sort_keys,
+        get_item_sort_key,
+        print_test_case_order,
+    ):
+        core.SortConfig.mode = mode
+        core.SortConfig.bucket_mode = bucket_mode
+        core.SortConfig.seed = None
+        core.SortConfig.debug = False
+
+        core.sort_items(self.items.copy())
+
+        random.seed.assert_not_called()
+        get_test_scores.assert_called()
         get_all_totals.assert_not_called()
         assert create_sort_keys.call_count == 4
         assert get_item_sort_key.call_count == 4
@@ -569,7 +672,15 @@ class TestSortItems:
         ],
     )
     def test_sort_items_fastest(
-        self, mode, bucket_mode, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order
+        self,
+        mode,
+        bucket_mode,
+        random,
+        get_test_scores,
+        get_all_totals,
+        create_sort_keys,
+        get_item_sort_key,
+        print_test_case_order,
     ):
         core.SortConfig.mode = mode
         core.SortConfig.bucket_mode = bucket_mode
@@ -579,12 +690,15 @@ class TestSortItems:
         core.sort_items(self.items.copy())
 
         random.seed.assert_not_called()
+        get_test_scores.assert_not_called()
         get_all_totals.assert_called_with()
         assert create_sort_keys.call_count == 4
         assert get_item_sort_key.call_count == 4
         print_test_case_order.assert_not_called()
 
-    def test_sort_items_debug(self, random, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order):
+    def test_sort_items_debug(
+        self, random, get_test_scores, get_all_totals, create_sort_keys, get_item_sort_key, print_test_case_order
+    ):
         core.SortConfig.mode = "ordered"
         core.SortConfig.bucket_mode = "ordered"
         core.SortConfig.debug = True
@@ -593,6 +707,7 @@ class TestSortItems:
         core.sort_items(items)
 
         random.seed.assert_not_called()
+        get_test_scores.assert_not_called()
         get_all_totals.assert_not_called()
         assert create_sort_keys.call_count == 4
         assert get_item_sort_key.call_count == 4
