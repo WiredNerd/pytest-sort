@@ -182,3 +182,19 @@ class TestExecute:
 
         update_test_cases.assert_called_with(SortConfig.recorded_times)
         print_recorded_times_report.assert_called_with(terminalreporter)
+
+    @mock.patch("pytest_sort.plugin.print_recorded_times_report")
+    @mock.patch("pytest_sort.plugin.update_test_cases")
+    @mock.patch("pytest_sort.plugin.SortConfig")
+    def test_pytest_terminal_summary_false(self, SortConfig, update_test_cases, print_recorded_times_report):
+        SortConfig.recorded_times = {}
+        terminalreporter = mock.MagicMock()
+        exitstatus = mock.MagicMock()
+        config = mock.MagicMock()
+
+        SortConfig.report = False
+
+        plugin.pytest_terminal_summary(terminalreporter, exitstatus, config)
+
+        update_test_cases.assert_not_called()
+        print_recorded_times_report.assert_not_called()

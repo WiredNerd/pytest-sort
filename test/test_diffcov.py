@@ -1,5 +1,3 @@
-import importlib
-from collections import namedtuple
 from pathlib import Path
 from unittest import mock
 
@@ -7,10 +5,6 @@ import pytest
 from whatthepatch import patch as wtp
 
 from pytest_sort import diffcov
-
-# @pytest.fixture(autouse=True)
-# def reload():
-#     importlib.reload(diffcov)
 
 
 class TestParseTestContext:
@@ -70,6 +64,14 @@ class TestGitPatch:
         with mock.patch("pytest_sort.diffcov.whatthepatch") as whatthepatch:
             yield whatthepatch
 
+    def test_get_git_toplevel_folder(self, subprocess):
+        out = diffcov.get_git_toplevel_folder()
+
+        subprocess.run.assert_called_with(["git", "rev-parse", "--show-toplevel"], capture_output=True, check=True)
+        output = subprocess.run.return_value
+
+        assert output.stdout.decode.return_value.strip.return_value == out
+
     def test_get_git_diff_patch(self, subprocess):
         out = diffcov.get_git_diff_patch()
 
@@ -79,7 +81,9 @@ class TestGitPatch:
         assert output.stdout.decode.return_value == out
 
     def test_get_changed_lines(self):
-        assert diffcov.get_changed_lines(GIT_DIFF) == {Path("pytest_sort/module1.py").resolve(): {20, 24, 30}}
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {
+            Path("C:/dev/pytest_sort/module1.py").resolve(): {20, 24, 30}
+        }
 
     def test_get_changed_lines_mock(self, whatthepatch):
         whatthepatch.parse_patch.return_value = [
@@ -114,9 +118,9 @@ class TestGitPatch:
             ),
         ]
 
-        assert diffcov.get_changed_lines(GIT_DIFF) == {
-            Path("pytest_sort/module1.py").resolve(): {0, 2, 3, 4},
-            Path("pytest_sort/module2.py").resolve(): {20},
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {
+            Path("C:/dev/pytest_sort/module1.py").resolve(): {0, 2, 3, 4},
+            Path("C:/dev/pytest_sort/module2.py").resolve(): {20},
         }
 
         whatthepatch.parse_patch.assert_called_with(GIT_DIFF)
@@ -135,7 +139,7 @@ class TestGitPatch:
             ),
         ]
 
-        assert diffcov.get_changed_lines(GIT_DIFF) == {}
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {}
 
     def test_get_changed_lines_no_changes(self, whatthepatch):
         whatthepatch.parse_patch.return_value = [
@@ -152,7 +156,7 @@ class TestGitPatch:
             )
         ]
 
-        assert diffcov.get_changed_lines(GIT_DIFF) == {}
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {}
 
 
 class TestCoverage:
@@ -224,6 +228,11 @@ class TestCoverage:
 
 class TestGetScores:
     @pytest.fixture
+    def get_git_toplevel_folder(self):
+        with mock.patch("pytest_sort.diffcov.get_git_toplevel_folder") as get_git_toplevel_folder:
+            yield get_git_toplevel_folder
+
+    @pytest.fixture
     def get_git_diff_patch(self):
         with mock.patch("pytest_sort.diffcov.get_git_diff_patch") as get_git_diff_patch:
             yield get_git_diff_patch
@@ -238,7 +247,7 @@ class TestGetScores:
         with mock.patch("pytest_sort.diffcov.get_line_coverage") as get_line_coverage:
             yield get_line_coverage
 
-    def test_get_test_scores(self, get_git_diff_patch, get_changed_lines, get_line_coverage):
+    def test_get_test_scores(self, get_git_toplevel_folder, get_git_diff_patch, get_changed_lines, get_line_coverage):
         rpath_m1 = Path("pytest_sort/module1.py").resolve()
         rpath_m2 = Path("pytest_sort/module2.py").resolve()
         rpath_m3 = Path("pytest_sort/module3.py").resolve()
@@ -277,5 +286,6 @@ class TestGetScores:
             "test_diffcov.py::cov_teardown": -2,
         }
 
+        get_git_toplevel_folder.assert_called()
         get_git_diff_patch.assert_called()
-        get_changed_lines.assert_called_with(get_git_diff_patch.return_value)
+        get_changed_lines.assert_called_with(get_git_toplevel_folder.return_value, get_git_diff_patch.return_value)

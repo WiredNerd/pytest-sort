@@ -15,9 +15,9 @@ from pytest_sort.config import SortConfig
 from pytest_sort.database import get_all_totals, get_stats
 from pytest_sort.diffcov import get_test_scores
 
-md5: Callable = hashlib.md5  # pragma: no mutate
-if sys.version_info >= (3, 9):  # pragma: no mutate
-    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef] # pragma: no mutate
+md5: Callable = hashlib.md5
+if sys.version_info >= (3, 9):
+    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
 
 if TYPE_CHECKING:
