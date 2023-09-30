@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<testsuites disabled="0" errors="0" failures="15" tests="509" time="0.0">
-	<testsuite disabled="0" errors="0" failures="15" name="mutmut" skipped="0" tests="509" time="0">
+<testsuites disabled="0" errors="0" failures="0" tests="519" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="mutmut" skipped="0" tests="519" time="0">
 		<testcase name="Mutant #1" file="src_mut/pytest_sort_mut/database.py" line="8">
 			<system-out>database_file = Path.cwd() / &quot;.pytest_sort_mut_data&quot;</system-out>
 		</testcase>
@@ -190,695 +190,527 @@
 		<testcase name="Mutant #63" file="src_mut/pytest_sort_mut/database.py" line="81">
 			<system-out>            &quot;total&quot;: 0,</system-out>
 		</testcase>
-		<testcase name="Mutant #64" file="src_mut/pytest_sort_mut/core.py" line="30">
+		<testcase name="Mutant #64" file="src_mut/pytest_sort_mut/core.py" line="18">
+			<system-out>md5: Callable = hashlib.md5</system-out>
+		</testcase>
+		<testcase name="Mutant #65" file="src_mut/pytest_sort_mut/core.py" line="19">
+			<system-out>if sys.version_info &gt;= (3, 9):</system-out>
+		</testcase>
+		<testcase name="Mutant #66" file="src_mut/pytest_sort_mut/core.py" line="19">
+			<system-out>if sys.version_info &gt;= (3, 9):</system-out>
+		</testcase>
+		<testcase name="Mutant #67" file="src_mut/pytest_sort_mut/core.py" line="19">
+			<system-out>if sys.version_info &gt;= (3, 9):</system-out>
+		</testcase>
+		<testcase name="Mutant #68" file="src_mut/pytest_sort_mut/core.py" line="20">
+			<system-out>    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]</system-out>
+		</testcase>
+		<testcase name="Mutant #69" file="src_mut/pytest_sort_mut/core.py" line="20">
+			<system-out>    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]</system-out>
+		</testcase>
+		<testcase name="Mutant #70" file="src_mut/pytest_sort_mut/core.py" line="30">
 			<system-out>        return node.nodeid.replace(&quot;__init__.py&quot;, &quot;&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #65" file="src_mut/pytest_sort_mut/core.py" line="30">
+		<testcase name="Mutant #71" file="src_mut/pytest_sort_mut/core.py" line="30">
 			<system-out>        return node.nodeid.replace(&quot;__init__.py&quot;, &quot;&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #66" file="src_mut/pytest_sort_mut/core.py" line="35">
+		<testcase name="Mutant #72" file="src_mut/pytest_sort_mut/core.py" line="35">
 			<system-out>    return &quot;&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #67" file="src_mut/pytest_sort_mut/core.py" line="46">
+		<testcase name="Mutant #73" file="src_mut/pytest_sort_mut/core.py" line="46">
 			<system-out>    return &quot;&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #68" file="src_mut/pytest_sort_mut/core.py" line="57">
+		<testcase name="Mutant #74" file="src_mut/pytest_sort_mut/core.py" line="57">
 			<system-out>    return &quot;&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #69" file="src_mut/pytest_sort_mut/core.py" line="68">
+		<testcase name="Mutant #75" file="src_mut/pytest_sort_mut/core.py" line="68">
 			<system-out>    return &quot;&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #70" file="src_mut/pytest_sort_mut/core.py" line="72">
+		<testcase name="Mutant #76" file="src_mut/pytest_sort_mut/core.py" line="72">
 			<system-out>    &quot;session&quot;: lambda item: &quot;&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #71" file="src_mut/pytest_sort_mut/core.py" line="72">
+		<testcase name="Mutant #77" file="src_mut/pytest_sort_mut/core.py" line="72">
 			<system-out>    &quot;session&quot;: lambda item: &quot;&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #72" file="src_mut/pytest_sort_mut/core.py" line="72">
+		<testcase name="Mutant #78" file="src_mut/pytest_sort_mut/core.py" line="72">
 			<system-out>    &quot;session&quot;: lambda item: &quot;&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #73" file="src_mut/pytest_sort_mut/core.py" line="73">
+		<testcase name="Mutant #79" file="src_mut/pytest_sort_mut/core.py" line="73">
 			<system-out>    &quot;package&quot;: create_bucket_id_for_package,</system-out>
 		</testcase>
-		<testcase name="Mutant #74" file="src_mut/pytest_sort_mut/core.py" line="74">
+		<testcase name="Mutant #80" file="src_mut/pytest_sort_mut/core.py" line="74">
 			<system-out>    &quot;module&quot;: create_bucket_id_for_module,</system-out>
 		</testcase>
-		<testcase name="Mutant #75" file="src_mut/pytest_sort_mut/core.py" line="75">
+		<testcase name="Mutant #81" file="src_mut/pytest_sort_mut/core.py" line="75">
 			<system-out>    &quot;class&quot;: create_bucket_id_for_class,</system-out>
 		</testcase>
-		<testcase name="Mutant #76" file="src_mut/pytest_sort_mut/core.py" line="76">
+		<testcase name="Mutant #82" file="src_mut/pytest_sort_mut/core.py" line="76">
 			<system-out>    &quot;function&quot;: lambda item: item.nodeid,</system-out>
 		</testcase>
-		<testcase name="Mutant #77" file="src_mut/pytest_sort_mut/core.py" line="76">
+		<testcase name="Mutant #83" file="src_mut/pytest_sort_mut/core.py" line="76">
 			<system-out>    &quot;function&quot;: lambda item: item.nodeid,</system-out>
 		</testcase>
-		<testcase name="Mutant #78" file="src_mut/pytest_sort_mut/core.py" line="77">
+		<testcase name="Mutant #84" file="src_mut/pytest_sort_mut/core.py" line="77">
 			<system-out>    &quot;parent&quot;: lambda item: create_bucket_id_from_node(item.parent),</system-out>
 		</testcase>
-		<testcase name="Mutant #79" file="src_mut/pytest_sort_mut/core.py" line="77">
+		<testcase name="Mutant #85" file="src_mut/pytest_sort_mut/core.py" line="77">
 			<system-out>    &quot;parent&quot;: lambda item: create_bucket_id_from_node(item.parent),</system-out>
 		</testcase>
-		<testcase name="Mutant #80" file="src_mut/pytest_sort_mut/core.py" line="78">
+		<testcase name="Mutant #86" file="src_mut/pytest_sort_mut/core.py" line="78">
 			<system-out>    &quot;grandparent&quot;: lambda item: create_bucket_id_from_node(item.parent.parent),</system-out>
 		</testcase>
-		<testcase name="Mutant #81" file="src_mut/pytest_sort_mut/core.py" line="78">
+		<testcase name="Mutant #87" file="src_mut/pytest_sort_mut/core.py" line="78">
 			<system-out>    &quot;grandparent&quot;: lambda item: create_bucket_id_from_node(item.parent.parent),</system-out>
 		</testcase>
-		<testcase name="Mutant #82" file="src_mut/pytest_sort_mut/core.py" line="79">
+		<testcase name="Mutant #88" file="src_mut/pytest_sort_mut/core.py" line="79">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #83" file="src_mut/pytest_sort_mut/core.py" line="82">
+		<testcase name="Mutant #89" file="src_mut/pytest_sort_mut/core.py" line="82">
 			<system-out>    &quot;ordered&quot;: lambda item, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #84" file="src_mut/pytest_sort_mut/core.py" line="82">
+		<testcase name="Mutant #90" file="src_mut/pytest_sort_mut/core.py" line="82">
 			<system-out>    &quot;ordered&quot;: lambda item, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #85" file="src_mut/pytest_sort_mut/core.py" line="82">
+		<testcase name="Mutant #91" file="src_mut/pytest_sort_mut/core.py" line="82">
 			<system-out>    &quot;ordered&quot;: lambda item, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #86" file="src_mut/pytest_sort_mut/core.py" line="82">
+		<testcase name="Mutant #92" file="src_mut/pytest_sort_mut/core.py" line="82">
 			<system-out>    &quot;ordered&quot;: lambda item, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #87" file="src_mut/pytest_sort_mut/core.py" line="83">
+		<testcase name="Mutant #93" file="src_mut/pytest_sort_mut/core.py" line="83">
 			<system-out>    &quot;reverse&quot;: lambda item, idx, count: count - idx,</system-out>
 		</testcase>
-		<testcase name="Mutant #88" file="src_mut/pytest_sort_mut/core.py" line="83">
+		<testcase name="Mutant #94" file="src_mut/pytest_sort_mut/core.py" line="83">
 			<system-out>    &quot;reverse&quot;: lambda item, idx, count: count - idx,</system-out>
 		</testcase>
-		<testcase name="Mutant #89" file="src_mut/pytest_sort_mut/core.py" line="83">
+		<testcase name="Mutant #95" file="src_mut/pytest_sort_mut/core.py" line="83">
 			<system-out>    &quot;reverse&quot;: lambda item, idx, count: count - idx,</system-out>
 		</testcase>
-		<testcase name="Mutant #90" file="src_mut/pytest_sort_mut/core.py" line="84">
+		<testcase name="Mutant #96" file="src_mut/pytest_sort_mut/core.py" line="84">
 			<system-out>    &quot;md5&quot;: lambda item, idx, count: md5(item.nodeid.encode()).digest(),</system-out>
 		</testcase>
-		<testcase name="Mutant #91" file="src_mut/pytest_sort_mut/core.py" line="84">
+		<testcase name="Mutant #97" file="src_mut/pytest_sort_mut/core.py" line="84">
 			<system-out>    &quot;md5&quot;: lambda item, idx, count: md5(item.nodeid.encode()).digest(),</system-out>
 		</testcase>
-		<testcase name="Mutant #92" file="src_mut/pytest_sort_mut/core.py" line="85">
+		<testcase name="Mutant #98" file="src_mut/pytest_sort_mut/core.py" line="85">
 			<system-out>    &quot;random&quot;: lambda item, idx, count: random.random(),</system-out>
 		</testcase>
-		<testcase name="Mutant #93" file="src_mut/pytest_sort_mut/core.py" line="85">
+		<testcase name="Mutant #99" file="src_mut/pytest_sort_mut/core.py" line="85">
 			<system-out>    &quot;random&quot;: lambda item, idx, count: random.random(),</system-out>
 		</testcase>
-		<testcase name="Mutant #94" file="src_mut/pytest_sort_mut/core.py" line="86">
+		<testcase name="Mutant #100" file="src_mut/pytest_sort_mut/core.py" line="86">
 			<system-out>    &quot;fastest&quot;: lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),</system-out>
 		</testcase>
-		<testcase name="Mutant #95" file="src_mut/pytest_sort_mut/core.py" line="86">
+		<testcase name="Mutant #101" file="src_mut/pytest_sort_mut/core.py" line="86">
 			<system-out>    &quot;fastest&quot;: lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),</system-out>
 		</testcase>
-		<testcase name="Mutant #96" file="src_mut/pytest_sort_mut/core.py" line="86">
+		<testcase name="Mutant #102" file="src_mut/pytest_sort_mut/core.py" line="86">
 			<system-out>    &quot;fastest&quot;: lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),</system-out>
 		</testcase>
-		<testcase name="Mutant #97" file="src_mut/pytest_sort_mut/core.py" line="87">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -84,7 +84,7 @@
-     &quot;md5&quot;: lambda item, idx, count: md5(item.nodeid.encode()).digest(),
-     &quot;random&quot;: lambda item, idx, count: random.random(),
-     &quot;fastest&quot;: lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),
--    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),
-+    &quot;XXdiffcovXX&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),
- }
- 
- 
-</failure>
+		<testcase name="Mutant #103" file="src_mut/pytest_sort_mut/core.py" line="87">
 			<system-out>    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),</system-out>
 		</testcase>
-		<testcase name="Mutant #98" file="src_mut/pytest_sort_mut/core.py" line="87">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -84,7 +84,7 @@
-     &quot;md5&quot;: lambda item, idx, count: md5(item.nodeid.encode()).digest(),
-     &quot;random&quot;: lambda item, idx, count: random.random(),
-     &quot;fastest&quot;: lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),
--    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),
-+    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 1),
- }
- 
- 
-</failure>
+		<testcase name="Mutant #104" file="src_mut/pytest_sort_mut/core.py" line="87">
 			<system-out>    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),</system-out>
 		</testcase>
-		<testcase name="Mutant #99" file="src_mut/pytest_sort_mut/core.py" line="87">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -84,7 +84,7 @@
-     &quot;md5&quot;: lambda item, idx, count: md5(item.nodeid.encode()).digest(),
-     &quot;random&quot;: lambda item, idx, count: random.random(),
-     &quot;fastest&quot;: lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),
--    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),
-+    &quot;diffcov&quot;: lambda item, idx, count: None,
- }
- 
- 
-</failure>
+		<testcase name="Mutant #105" file="src_mut/pytest_sort_mut/core.py" line="87">
 			<system-out>    &quot;diffcov&quot;: lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),</system-out>
 		</testcase>
-		<testcase name="Mutant #100" file="src_mut/pytest_sort_mut/core.py" line="88">
+		<testcase name="Mutant #106" file="src_mut/pytest_sort_mut/core.py" line="88">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #101" file="src_mut/pytest_sort_mut/core.py" line="98">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -95,7 +95,7 @@
- 
- def get_bucket_score(bucket_id: str) -&gt; int:
-     &quot;&quot;&quot;Get all scores from nodes matching this bucket and return min.&quot;&quot;&quot;
--    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [0])
-+    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] - [0])
- 
- 
- create_bucket_key = {
-</failure>
+		<testcase name="Mutant #107" file="src_mut/pytest_sort_mut/core.py" line="98">
 			<system-out>    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [0])</system-out>
 		</testcase>
-		<testcase name="Mutant #102" file="src_mut/pytest_sort_mut/core.py" line="98">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -95,7 +95,7 @@
- 
- def get_bucket_score(bucket_id: str) -&gt; int:
-     &quot;&quot;&quot;Get all scores from nodes matching this bucket and return min.&quot;&quot;&quot;
--    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [0])
-+    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [1])
- 
- 
- create_bucket_key = {
-</failure>
+		<testcase name="Mutant #108" file="src_mut/pytest_sort_mut/core.py" line="98">
 			<system-out>    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [0])</system-out>
 		</testcase>
-		<testcase name="Mutant #103" file="src_mut/pytest_sort_mut/core.py" line="102">
+		<testcase name="Mutant #109" file="src_mut/pytest_sort_mut/core.py" line="102">
 			<system-out>    &quot;ordered&quot;: lambda bucket_id, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #104" file="src_mut/pytest_sort_mut/core.py" line="102">
+		<testcase name="Mutant #110" file="src_mut/pytest_sort_mut/core.py" line="102">
 			<system-out>    &quot;ordered&quot;: lambda bucket_id, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #105" file="src_mut/pytest_sort_mut/core.py" line="102">
+		<testcase name="Mutant #111" file="src_mut/pytest_sort_mut/core.py" line="102">
 			<system-out>    &quot;ordered&quot;: lambda bucket_id, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #106" file="src_mut/pytest_sort_mut/core.py" line="102">
+		<testcase name="Mutant #112" file="src_mut/pytest_sort_mut/core.py" line="102">
 			<system-out>    &quot;ordered&quot;: lambda bucket_id, idx, count: idx + 1,</system-out>
 		</testcase>
-		<testcase name="Mutant #107" file="src_mut/pytest_sort_mut/core.py" line="103">
+		<testcase name="Mutant #113" file="src_mut/pytest_sort_mut/core.py" line="103">
 			<system-out>    &quot;reverse&quot;: lambda bucket_id, idx, count: count - idx,</system-out>
 		</testcase>
-		<testcase name="Mutant #108" file="src_mut/pytest_sort_mut/core.py" line="103">
+		<testcase name="Mutant #114" file="src_mut/pytest_sort_mut/core.py" line="103">
 			<system-out>    &quot;reverse&quot;: lambda bucket_id, idx, count: count - idx,</system-out>
 		</testcase>
-		<testcase name="Mutant #109" file="src_mut/pytest_sort_mut/core.py" line="103">
+		<testcase name="Mutant #115" file="src_mut/pytest_sort_mut/core.py" line="103">
 			<system-out>    &quot;reverse&quot;: lambda bucket_id, idx, count: count - idx,</system-out>
 		</testcase>
-		<testcase name="Mutant #110" file="src_mut/pytest_sort_mut/core.py" line="104">
+		<testcase name="Mutant #116" file="src_mut/pytest_sort_mut/core.py" line="104">
 			<system-out>    &quot;md5&quot;: lambda bucket_id, idx, count: md5(bucket_id.encode()).digest(),</system-out>
 		</testcase>
-		<testcase name="Mutant #111" file="src_mut/pytest_sort_mut/core.py" line="104">
+		<testcase name="Mutant #117" file="src_mut/pytest_sort_mut/core.py" line="104">
 			<system-out>    &quot;md5&quot;: lambda bucket_id, idx, count: md5(bucket_id.encode()).digest(),</system-out>
 		</testcase>
-		<testcase name="Mutant #112" file="src_mut/pytest_sort_mut/core.py" line="105">
+		<testcase name="Mutant #118" file="src_mut/pytest_sort_mut/core.py" line="105">
 			<system-out>    &quot;random&quot;: lambda bucket_id, idx, count: random.random(),</system-out>
 		</testcase>
-		<testcase name="Mutant #113" file="src_mut/pytest_sort_mut/core.py" line="105">
+		<testcase name="Mutant #119" file="src_mut/pytest_sort_mut/core.py" line="105">
 			<system-out>    &quot;random&quot;: lambda bucket_id, idx, count: random.random(),</system-out>
 		</testcase>
-		<testcase name="Mutant #114" file="src_mut/pytest_sort_mut/core.py" line="106">
+		<testcase name="Mutant #120" file="src_mut/pytest_sort_mut/core.py" line="106">
 			<system-out>    &quot;fastest&quot;: lambda bucket_id, idx, count: get_bucket_total(bucket_id),</system-out>
 		</testcase>
-		<testcase name="Mutant #115" file="src_mut/pytest_sort_mut/core.py" line="106">
+		<testcase name="Mutant #121" file="src_mut/pytest_sort_mut/core.py" line="106">
 			<system-out>    &quot;fastest&quot;: lambda bucket_id, idx, count: get_bucket_total(bucket_id),</system-out>
 		</testcase>
-		<testcase name="Mutant #116" file="src_mut/pytest_sort_mut/core.py" line="107">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -104,7 +104,7 @@
-     &quot;md5&quot;: lambda bucket_id, idx, count: md5(bucket_id.encode()).digest(),
-     &quot;random&quot;: lambda bucket_id, idx, count: random.random(),
-     &quot;fastest&quot;: lambda bucket_id, idx, count: get_bucket_total(bucket_id),
--    &quot;diffcov&quot;: lambda bucket_id, idx, count: get_bucket_score(bucket_id),
-+    &quot;XXdiffcovXX&quot;: lambda bucket_id, idx, count: get_bucket_score(bucket_id),
- }
- 
- 
-</failure>
+		<testcase name="Mutant #122" file="src_mut/pytest_sort_mut/core.py" line="107">
 			<system-out>    &quot;diffcov&quot;: lambda bucket_id, idx, count: get_bucket_score(bucket_id),</system-out>
 		</testcase>
-		<testcase name="Mutant #117" file="src_mut/pytest_sort_mut/core.py" line="107">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -104,7 +104,7 @@
-     &quot;md5&quot;: lambda bucket_id, idx, count: md5(bucket_id.encode()).digest(),
-     &quot;random&quot;: lambda bucket_id, idx, count: random.random(),
-     &quot;fastest&quot;: lambda bucket_id, idx, count: get_bucket_total(bucket_id),
--    &quot;diffcov&quot;: lambda bucket_id, idx, count: get_bucket_score(bucket_id),
-+    &quot;diffcov&quot;: lambda bucket_id, idx, count: None,
- }
- 
- 
-</failure>
+		<testcase name="Mutant #123" file="src_mut/pytest_sort_mut/core.py" line="107">
 			<system-out>    &quot;diffcov&quot;: lambda bucket_id, idx, count: get_bucket_score(bucket_id),</system-out>
 		</testcase>
-		<testcase name="Mutant #118" file="src_mut/pytest_sort_mut/core.py" line="108">
+		<testcase name="Mutant #124" file="src_mut/pytest_sort_mut/core.py" line="108">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #119" file="src_mut/pytest_sort_mut/core.py" line="123">
+		<testcase name="Mutant #125" file="src_mut/pytest_sort_mut/core.py" line="123">
 			<system-out>        msg = f&quot;Incorrect arguments on marker 'order'. Target:{node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #120" file="src_mut/pytest_sort_mut/core.py" line="123">
+		<testcase name="Mutant #126" file="src_mut/pytest_sort_mut/core.py" line="123">
 			<system-out>        msg = f&quot;Incorrect arguments on marker 'order'. Target:{node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #121" file="src_mut/pytest_sort_mut/core.py" line="133">
+		<testcase name="Mutant #127" file="src_mut/pytest_sort_mut/core.py" line="133">
 			<system-out>    def mark_sort_parse(mode: str, bucket: str = &quot;self&quot;) -&gt; tuple:</system-out>
 		</testcase>
-		<testcase name="Mutant #122" file="src_mut/pytest_sort_mut/core.py" line="137">
+		<testcase name="Mutant #128" file="src_mut/pytest_sort_mut/core.py" line="137">
 			<system-out>        (mode, bucket_temp) = mark_sort_parse(*sort_marker.args, **sort_marker.kwargs)</system-out>
 		</testcase>
-		<testcase name="Mutant #123" file="src_mut/pytest_sort_mut/core.py" line="139">
+		<testcase name="Mutant #129" file="src_mut/pytest_sort_mut/core.py" line="139">
 			<system-out>        msg = f&quot;Incorrect arguments on marker 'sort'. Target:{node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #124" file="src_mut/pytest_sort_mut/core.py" line="139">
+		<testcase name="Mutant #130" file="src_mut/pytest_sort_mut/core.py" line="139">
 			<system-out>        msg = f&quot;Incorrect arguments on marker 'sort'. Target:{node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #125" file="src_mut/pytest_sort_mut/core.py" line="142">
+		<testcase name="Mutant #131" file="src_mut/pytest_sort_mut/core.py" line="142">
 			<system-out>    if mode not in create_item_key:</system-out>
 		</testcase>
-		<testcase name="Mutant #126" file="src_mut/pytest_sort_mut/core.py" line="143">
+		<testcase name="Mutant #132" file="src_mut/pytest_sort_mut/core.py" line="143">
 			<system-out>        msg = f&quot;Invalid Value for 'mode' on 'sort' marker. Value:{mode} Target:{node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #127" file="src_mut/pytest_sort_mut/core.py" line="143">
+		<testcase name="Mutant #133" file="src_mut/pytest_sort_mut/core.py" line="143">
 			<system-out>        msg = f&quot;Invalid Value for 'mode' on 'sort' marker. Value:{mode} Target:{node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #128" file="src_mut/pytest_sort_mut/core.py" line="156">
+		<testcase name="Mutant #134" file="src_mut/pytest_sort_mut/core.py" line="156">
 			<system-out>    mode = None</system-out>
 		</testcase>
-		<testcase name="Mutant #129" file="src_mut/pytest_sort_mut/core.py" line="157">
+		<testcase name="Mutant #135" file="src_mut/pytest_sort_mut/core.py" line="157">
 			<system-out>    bucket = None</system-out>
 		</testcase>
-		<testcase name="Mutant #130" file="src_mut/pytest_sort_mut/core.py" line="158">
+		<testcase name="Mutant #136" file="src_mut/pytest_sort_mut/core.py" line="158">
 			<system-out>    bucket_id = None</system-out>
 		</testcase>
-		<testcase name="Mutant #131" file="src_mut/pytest_sort_mut/core.py" line="159">
+		<testcase name="Mutant #137" file="src_mut/pytest_sort_mut/core.py" line="159">
 			<system-out>    bucket_sort_key = None</system-out>
 		</testcase>
-		<testcase name="Mutant #132" file="src_mut/pytest_sort_mut/core.py" line="160">
+		<testcase name="Mutant #138" file="src_mut/pytest_sort_mut/core.py" line="160">
 			<system-out>    item_sort_key = None</system-out>
 		</testcase>
-		<testcase name="Mutant #133" file="src_mut/pytest_sort_mut/core.py" line="162">
+		<testcase name="Mutant #139" file="src_mut/pytest_sort_mut/core.py" line="162">
 			<system-out>    node_id = node.nodeid</system-out>
 		</testcase>
-		<testcase name="Mutant #134" file="src_mut/pytest_sort_mut/core.py" line="165">
+		<testcase name="Mutant #140" file="src_mut/pytest_sort_mut/core.py" line="165">
 			<system-out>        (mode, bucket, bucket_id, bucket_sort_key, item_sort_key) = get_marker_settings(node.parent)</system-out>
 		</testcase>
-		<testcase name="Mutant #135" file="src_mut/pytest_sort_mut/core.py" line="167">
+		<testcase name="Mutant #141" file="src_mut/pytest_sort_mut/core.py" line="167">
 			<system-out>    for order in node.iter_markers(&quot;order&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #136" file="src_mut/pytest_sort_mut/core.py" line="168">
+		<testcase name="Mutant #142" file="src_mut/pytest_sort_mut/core.py" line="168">
 			<system-out>        sort_key = validate_order_marker(order, node_id)</system-out>
 		</testcase>
-		<testcase name="Mutant #137" file="src_mut/pytest_sort_mut/core.py" line="170">
+		<testcase name="Mutant #143" file="src_mut/pytest_sort_mut/core.py" line="170">
 			<system-out>            item_sort_key = sort_key</system-out>
 		</testcase>
-		<testcase name="Mutant #138" file="src_mut/pytest_sort_mut/core.py" line="172">
+		<testcase name="Mutant #144" file="src_mut/pytest_sort_mut/core.py" line="172">
 			<system-out>            bucket_sort_key = sort_key</system-out>
 		</testcase>
-		<testcase name="Mutant #139" file="src_mut/pytest_sort_mut/core.py" line="173">
+		<testcase name="Mutant #145" file="src_mut/pytest_sort_mut/core.py" line="173">
 			<system-out>            bucket_id = create_bucket_id_from_node(node)</system-out>
 		</testcase>
-		<testcase name="Mutant #140" file="src_mut/pytest_sort_mut/core.py" line="175">
+		<testcase name="Mutant #146" file="src_mut/pytest_sort_mut/core.py" line="175">
 			<system-out>    for sort in node.iter_markers(&quot;sort&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #141" file="src_mut/pytest_sort_mut/core.py" line="176">
+		<testcase name="Mutant #147" file="src_mut/pytest_sort_mut/core.py" line="176">
 			<system-out>        (mode, bucket_temp) = validate_sort_marker(sort, node_id)</system-out>
 		</testcase>
-		<testcase name="Mutant #142" file="src_mut/pytest_sort_mut/core.py" line="178">
+		<testcase name="Mutant #148" file="src_mut/pytest_sort_mut/core.py" line="178">
 			<system-out>        if bucket_temp == &quot;self&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #143" file="src_mut/pytest_sort_mut/core.py" line="178">
+		<testcase name="Mutant #149" file="src_mut/pytest_sort_mut/core.py" line="178">
 			<system-out>        if bucket_temp == &quot;self&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #144" file="src_mut/pytest_sort_mut/core.py" line="179">
+		<testcase name="Mutant #150" file="src_mut/pytest_sort_mut/core.py" line="179">
 			<system-out>            bucket_id = create_bucket_id_from_node(node)</system-out>
 		</testcase>
-		<testcase name="Mutant #145" file="src_mut/pytest_sort_mut/core.py" line="180">
+		<testcase name="Mutant #151" file="src_mut/pytest_sort_mut/core.py" line="180">
 			<system-out>        elif bucket_temp in create_bucket_id:</system-out>
 		</testcase>
-		<testcase name="Mutant #146" file="src_mut/pytest_sort_mut/core.py" line="181">
+		<testcase name="Mutant #152" file="src_mut/pytest_sort_mut/core.py" line="181">
 			<system-out>            bucket = bucket_temp</system-out>
 		</testcase>
-		<testcase name="Mutant #147" file="src_mut/pytest_sort_mut/core.py" line="182">
+		<testcase name="Mutant #153" file="src_mut/pytest_sort_mut/core.py" line="182">
 			<system-out>            bucket_id = None</system-out>
 		</testcase>
-		<testcase name="Mutant #148" file="src_mut/pytest_sort_mut/core.py" line="183">
+		<testcase name="Mutant #154" file="src_mut/pytest_sort_mut/core.py" line="183">
 			<system-out>            bucket_sort_key = None</system-out>
 		</testcase>
-		<testcase name="Mutant #149" file="src_mut/pytest_sort_mut/core.py" line="185">
+		<testcase name="Mutant #155" file="src_mut/pytest_sort_mut/core.py" line="185">
 			<system-out>            msg = f&quot;Invalid Value for 'bucket' on 'sort' marker: {bucket_temp}. Target: {node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #150" file="src_mut/pytest_sort_mut/core.py" line="185">
+		<testcase name="Mutant #156" file="src_mut/pytest_sort_mut/core.py" line="185">
 			<system-out>            msg = f&quot;Invalid Value for 'bucket' on 'sort' marker: {bucket_temp}. Target: {node_id}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #151" file="src_mut/pytest_sort_mut/core.py" line="196">
+		<testcase name="Mutant #157" file="src_mut/pytest_sort_mut/core.py" line="196">
 			<system-out>    (mode, bucket, bucket_id, bucket_sort_key, item_sort_key) = get_marker_settings(item)</system-out>
 		</testcase>
-		<testcase name="Mutant #152" file="src_mut/pytest_sort_mut/core.py" line="198">
+		<testcase name="Mutant #158" file="src_mut/pytest_sort_mut/core.py" line="198">
 			<system-out>    SortConfig.item_sort_keys[item.nodeid] = item_sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)</system-out>
 		</testcase>
-		<testcase name="Mutant #153" file="src_mut/pytest_sort_mut/core.py" line="198">
+		<testcase name="Mutant #159" file="src_mut/pytest_sort_mut/core.py" line="198">
 			<system-out>    SortConfig.item_sort_keys[item.nodeid] = item_sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)</system-out>
 		</testcase>
-		<testcase name="Mutant #154" file="src_mut/pytest_sort_mut/core.py" line="198">
+		<testcase name="Mutant #160" file="src_mut/pytest_sort_mut/core.py" line="198">
 			<system-out>    SortConfig.item_sort_keys[item.nodeid] = item_sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)</system-out>
 		</testcase>
-		<testcase name="Mutant #155" file="src_mut/pytest_sort_mut/core.py" line="200">
+		<testcase name="Mutant #161" file="src_mut/pytest_sort_mut/core.py" line="200">
 			<system-out>    bucket_id = bucket_id or create_bucket_id[bucket or SortConfig.bucket](item)</system-out>
 		</testcase>
-		<testcase name="Mutant #156" file="src_mut/pytest_sort_mut/core.py" line="200">
+		<testcase name="Mutant #162" file="src_mut/pytest_sort_mut/core.py" line="200">
 			<system-out>    bucket_id = bucket_id or create_bucket_id[bucket or SortConfig.bucket](item)</system-out>
 		</testcase>
-		<testcase name="Mutant #157" file="src_mut/pytest_sort_mut/core.py" line="200">
+		<testcase name="Mutant #163" file="src_mut/pytest_sort_mut/core.py" line="200">
 			<system-out>    bucket_id = bucket_id or create_bucket_id[bucket or SortConfig.bucket](item)</system-out>
 		</testcase>
-		<testcase name="Mutant #158" file="src_mut/pytest_sort_mut/core.py" line="201">
+		<testcase name="Mutant #164" file="src_mut/pytest_sort_mut/core.py" line="201">
 			<system-out>    SortConfig.item_bucket_id[item.nodeid] = bucket_id</system-out>
 		</testcase>
-		<testcase name="Mutant #159" file="src_mut/pytest_sort_mut/core.py" line="203">
+		<testcase name="Mutant #165" file="src_mut/pytest_sort_mut/core.py" line="203">
 			<system-out>    bucket_key = bucket_sort_key or create_bucket_key[SortConfig.bucket_mode](bucket_id, idx, count)</system-out>
 		</testcase>
-		<testcase name="Mutant #160" file="src_mut/pytest_sort_mut/core.py" line="203">
+		<testcase name="Mutant #166" file="src_mut/pytest_sort_mut/core.py" line="203">
 			<system-out>    bucket_key = bucket_sort_key or create_bucket_key[SortConfig.bucket_mode](bucket_id, idx, count)</system-out>
 		</testcase>
-		<testcase name="Mutant #161" file="src_mut/pytest_sort_mut/core.py" line="204">
+		<testcase name="Mutant #167" file="src_mut/pytest_sort_mut/core.py" line="204">
 			<system-out>    if bucket_id in SortConfig.bucket_sort_keys:</system-out>
 		</testcase>
-		<testcase name="Mutant #162" file="src_mut/pytest_sort_mut/core.py" line="205">
+		<testcase name="Mutant #168" file="src_mut/pytest_sort_mut/core.py" line="205">
 			<system-out>        SortConfig.bucket_sort_keys[bucket_id] = min(SortConfig.bucket_sort_keys[bucket_id], bucket_key)</system-out>
 		</testcase>
-		<testcase name="Mutant #163" file="src_mut/pytest_sort_mut/core.py" line="207">
+		<testcase name="Mutant #169" file="src_mut/pytest_sort_mut/core.py" line="207">
 			<system-out>        SortConfig.bucket_sort_keys[bucket_id] = bucket_key</system-out>
 		</testcase>
-		<testcase name="Mutant #164" file="src_mut/pytest_sort_mut/core.py" line="212">
+		<testcase name="Mutant #170" file="src_mut/pytest_sort_mut/core.py" line="212">
 			<system-out>    node_id = item.nodeid</system-out>
 		</testcase>
-		<testcase name="Mutant #165" file="src_mut/pytest_sort_mut/core.py" line="213">
+		<testcase name="Mutant #171" file="src_mut/pytest_sort_mut/core.py" line="213">
 			<system-out>    bucket_id = SortConfig.item_bucket_id[node_id]</system-out>
 		</testcase>
-		<testcase name="Mutant #166" file="src_mut/pytest_sort_mut/core.py" line="219">
+		<testcase name="Mutant #172" file="src_mut/pytest_sort_mut/core.py" line="219">
 			<system-out>    if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #167" file="src_mut/pytest_sort_mut/core.py" line="219">
+		<testcase name="Mutant #173" file="src_mut/pytest_sort_mut/core.py" line="219">
 			<system-out>    if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #168" file="src_mut/pytest_sort_mut/core.py" line="219">
+		<testcase name="Mutant #174" file="src_mut/pytest_sort_mut/core.py" line="219">
 			<system-out>    if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #169" file="src_mut/pytest_sort_mut/core.py" line="219">
+		<testcase name="Mutant #175" file="src_mut/pytest_sort_mut/core.py" line="219">
 			<system-out>    if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #170" file="src_mut/pytest_sort_mut/core.py" line="219">
+		<testcase name="Mutant #176" file="src_mut/pytest_sort_mut/core.py" line="219">
 			<system-out>    if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #171" file="src_mut/pytest_sort_mut/core.py" line="222">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -219,7 +219,7 @@
-     if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:
-         random.seed(SortConfig.seed)
- 
--    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-+    if SortConfig.mode != &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-         SortConfig.cov_scores = get_test_scores()
- 
-     if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:
-</failure>
+		<testcase name="Mutant #177" file="src_mut/pytest_sort_mut/core.py" line="222">
 			<system-out>    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #172" file="src_mut/pytest_sort_mut/core.py" line="222">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -219,7 +219,7 @@
-     if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:
-         random.seed(SortConfig.seed)
- 
--    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-+    if SortConfig.mode == &quot;XXdiffcovXX&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-         SortConfig.cov_scores = get_test_scores()
- 
-     if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:
-</failure>
+		<testcase name="Mutant #178" file="src_mut/pytest_sort_mut/core.py" line="222">
 			<system-out>    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #173" file="src_mut/pytest_sort_mut/core.py" line="222">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -219,7 +219,7 @@
-     if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:
-         random.seed(SortConfig.seed)
- 
--    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-+    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode != &quot;diffcov&quot;:
-         SortConfig.cov_scores = get_test_scores()
- 
-     if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:
-</failure>
+		<testcase name="Mutant #179" file="src_mut/pytest_sort_mut/core.py" line="222">
 			<system-out>    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #174" file="src_mut/pytest_sort_mut/core.py" line="222">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -219,7 +219,7 @@
-     if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:
-         random.seed(SortConfig.seed)
- 
--    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-+    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;XXdiffcovXX&quot;:
-         SortConfig.cov_scores = get_test_scores()
- 
-     if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:
-</failure>
+		<testcase name="Mutant #180" file="src_mut/pytest_sort_mut/core.py" line="222">
 			<system-out>    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #175" file="src_mut/pytest_sort_mut/core.py" line="222">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -219,7 +219,7 @@
-     if SortConfig.mode == &quot;random&quot; or SortConfig.bucket_mode == &quot;random&quot;:
-         random.seed(SortConfig.seed)
- 
--    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
-+    if SortConfig.mode == &quot;diffcov&quot; and SortConfig.bucket_mode == &quot;diffcov&quot;:
-         SortConfig.cov_scores = get_test_scores()
- 
-     if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:
-</failure>
+		<testcase name="Mutant #181" file="src_mut/pytest_sort_mut/core.py" line="222">
 			<system-out>    if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #176" file="src_mut/pytest_sort_mut/core.py" line="223">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/core.py
-+++ src_mut/pytest_sort_mut/core.py
-@@ -220,7 +220,7 @@
-         random.seed(SortConfig.seed)
- 
-     if SortConfig.mode == &quot;diffcov&quot; or SortConfig.bucket_mode == &quot;diffcov&quot;:
--        SortConfig.cov_scores = get_test_scores()
-+        SortConfig.cov_scores = None
- 
-     if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:
-         SortConfig.item_totals = get_all_totals()
-</failure>
+		<testcase name="Mutant #182" file="src_mut/pytest_sort_mut/core.py" line="223">
 			<system-out>        SortConfig.cov_scores = get_test_scores()</system-out>
 		</testcase>
-		<testcase name="Mutant #177" file="src_mut/pytest_sort_mut/core.py" line="225">
+		<testcase name="Mutant #183" file="src_mut/pytest_sort_mut/core.py" line="225">
 			<system-out>    if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #178" file="src_mut/pytest_sort_mut/core.py" line="225">
+		<testcase name="Mutant #184" file="src_mut/pytest_sort_mut/core.py" line="225">
 			<system-out>    if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #179" file="src_mut/pytest_sort_mut/core.py" line="225">
+		<testcase name="Mutant #185" file="src_mut/pytest_sort_mut/core.py" line="225">
 			<system-out>    if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #180" file="src_mut/pytest_sort_mut/core.py" line="225">
+		<testcase name="Mutant #186" file="src_mut/pytest_sort_mut/core.py" line="225">
 			<system-out>    if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #181" file="src_mut/pytest_sort_mut/core.py" line="225">
+		<testcase name="Mutant #187" file="src_mut/pytest_sort_mut/core.py" line="225">
 			<system-out>    if SortConfig.mode == &quot;fastest&quot; or SortConfig.bucket_mode == &quot;fastest&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #182" file="src_mut/pytest_sort_mut/core.py" line="226">
+		<testcase name="Mutant #188" file="src_mut/pytest_sort_mut/core.py" line="226">
 			<system-out>        SortConfig.item_totals = get_all_totals()</system-out>
 		</testcase>
-		<testcase name="Mutant #183" file="src_mut/pytest_sort_mut/core.py" line="234">
+		<testcase name="Mutant #189" file="src_mut/pytest_sort_mut/core.py" line="234">
 			<system-out>        print_test_case_order(items)</system-out>
 		</testcase>
-		<testcase name="Mutant #184" file="src_mut/pytest_sort_mut/core.py" line="239">
+		<testcase name="Mutant #190" file="src_mut/pytest_sort_mut/core.py" line="239">
 			<system-out>    nodeids = list({rpt.nodeid for rpt in terminal_reporter.stats[&quot;&quot;]})</system-out>
 		</testcase>
-		<testcase name="Mutant #185" file="src_mut/pytest_sort_mut/core.py" line="239">
+		<testcase name="Mutant #191" file="src_mut/pytest_sort_mut/core.py" line="239">
 			<system-out>    nodeids = list({rpt.nodeid for rpt in terminal_reporter.stats[&quot;&quot;]})</system-out>
 		</testcase>
-		<testcase name="Mutant #186" file="src_mut/pytest_sort_mut/core.py" line="242">
+		<testcase name="Mutant #192" file="src_mut/pytest_sort_mut/core.py" line="242">
 			<system-out>    node_id_width = max([len(nodeid) for nodeid in nodeids]) + 3</system-out>
 		</testcase>
-		<testcase name="Mutant #187" file="src_mut/pytest_sort_mut/core.py" line="242">
+		<testcase name="Mutant #193" file="src_mut/pytest_sort_mut/core.py" line="242">
 			<system-out>    node_id_width = max([len(nodeid) for nodeid in nodeids]) + 3</system-out>
 		</testcase>
-		<testcase name="Mutant #188" file="src_mut/pytest_sort_mut/core.py" line="242">
+		<testcase name="Mutant #194" file="src_mut/pytest_sort_mut/core.py" line="242">
 			<system-out>    node_id_width = max([len(nodeid) for nodeid in nodeids]) + 3</system-out>
 		</testcase>
-		<testcase name="Mutant #189" file="src_mut/pytest_sort_mut/core.py" line="243">
+		<testcase name="Mutant #195" file="src_mut/pytest_sort_mut/core.py" line="243">
 			<system-out>    stat_width = 16</system-out>
 		</testcase>
-		<testcase name="Mutant #190" file="src_mut/pytest_sort_mut/core.py" line="243">
+		<testcase name="Mutant #196" file="src_mut/pytest_sort_mut/core.py" line="243">
 			<system-out>    stat_width = 16</system-out>
 		</testcase>
-		<testcase name="Mutant #191" file="src_mut/pytest_sort_mut/core.py" line="246">
+		<testcase name="Mutant #197" file="src_mut/pytest_sort_mut/core.py" line="246">
 			<system-out>        f&quot;\n*** {'pytest-sort maximum recorded times'.ljust(node_id_width)}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #192" file="src_mut/pytest_sort_mut/core.py" line="246">
+		<testcase name="Mutant #198" file="src_mut/pytest_sort_mut/core.py" line="246">
 			<system-out>        f&quot;\n*** {'pytest-sort maximum recorded times'.ljust(node_id_width)}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #193" file="src_mut/pytest_sort_mut/core.py" line="247">
+		<testcase name="Mutant #199" file="src_mut/pytest_sort_mut/core.py" line="247">
 			<system-out>        f&quot;{'Nanoseconds'.center(stat_width*4 - 4)} ***&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #194" file="src_mut/pytest_sort_mut/core.py" line="247">
+		<testcase name="Mutant #200" file="src_mut/pytest_sort_mut/core.py" line="247">
 			<system-out>        f&quot;{'Nanoseconds'.center(stat_width*4 - 4)} ***&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #195" file="src_mut/pytest_sort_mut/core.py" line="247">
+		<testcase name="Mutant #201" file="src_mut/pytest_sort_mut/core.py" line="247">
 			<system-out>        f&quot;{'Nanoseconds'.center(stat_width*4 - 4)} ***&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #196" file="src_mut/pytest_sort_mut/core.py" line="247">
+		<testcase name="Mutant #202" file="src_mut/pytest_sort_mut/core.py" line="247">
 			<system-out>        f&quot;{'Nanoseconds'.center(stat_width*4 - 4)} ***&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #197" file="src_mut/pytest_sort_mut/core.py" line="247">
+		<testcase name="Mutant #203" file="src_mut/pytest_sort_mut/core.py" line="247">
 			<system-out>        f&quot;{'Nanoseconds'.center(stat_width*4 - 4)} ***&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #198" file="src_mut/pytest_sort_mut/core.py" line="247">
+		<testcase name="Mutant #204" file="src_mut/pytest_sort_mut/core.py" line="247">
 			<system-out>        f&quot;{'Nanoseconds'.center(stat_width*4 - 4)} ***&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #199" file="src_mut/pytest_sort_mut/core.py" line="250">
+		<testcase name="Mutant #205" file="src_mut/pytest_sort_mut/core.py" line="250">
 			<system-out>        f&quot;{'Test Case'.ljust(node_id_width)} {'setup'.rjust(stat_width)} &quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #200" file="src_mut/pytest_sort_mut/core.py" line="250">
+		<testcase name="Mutant #206" file="src_mut/pytest_sort_mut/core.py" line="250">
 			<system-out>        f&quot;{'Test Case'.ljust(node_id_width)} {'setup'.rjust(stat_width)} &quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #201" file="src_mut/pytest_sort_mut/core.py" line="250">
+		<testcase name="Mutant #207" file="src_mut/pytest_sort_mut/core.py" line="250">
 			<system-out>        f&quot;{'Test Case'.ljust(node_id_width)} {'setup'.rjust(stat_width)} &quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #202" file="src_mut/pytest_sort_mut/core.py" line="251">
+		<testcase name="Mutant #208" file="src_mut/pytest_sort_mut/core.py" line="251">
 			<system-out>        f&quot;{'call'.rjust(stat_width)} {'teardown'.rjust(stat_width)} {'total'.rjust(stat_width)}&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #203" file="src_mut/pytest_sort_mut/core.py" line="251">
+		<testcase name="Mutant #209" file="src_mut/pytest_sort_mut/core.py" line="251">
 			<system-out>        f&quot;{'call'.rjust(stat_width)} {'teardown'.rjust(stat_width)} {'total'.rjust(stat_width)}&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #204" file="src_mut/pytest_sort_mut/core.py" line="251">
+		<testcase name="Mutant #210" file="src_mut/pytest_sort_mut/core.py" line="251">
 			<system-out>        f&quot;{'call'.rjust(stat_width)} {'teardown'.rjust(stat_width)} {'total'.rjust(stat_width)}&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #205" file="src_mut/pytest_sort_mut/core.py" line="251">
+		<testcase name="Mutant #211" file="src_mut/pytest_sort_mut/core.py" line="251">
 			<system-out>        f&quot;{'call'.rjust(stat_width)} {'teardown'.rjust(stat_width)} {'total'.rjust(stat_width)}&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #206" file="src_mut/pytest_sort_mut/core.py" line="254">
+		<testcase name="Mutant #212" file="src_mut/pytest_sort_mut/core.py" line="254">
 			<system-out>        stats = get_stats(nodeid)</system-out>
 		</testcase>
-		<testcase name="Mutant #207" file="src_mut/pytest_sort_mut/core.py" line="255">
+		<testcase name="Mutant #213" file="src_mut/pytest_sort_mut/core.py" line="255">
 			<system-out>        setup_ns = f&quot;{stats['setup']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #208" file="src_mut/pytest_sort_mut/core.py" line="255">
+		<testcase name="Mutant #214" file="src_mut/pytest_sort_mut/core.py" line="255">
 			<system-out>        setup_ns = f&quot;{stats['setup']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #209" file="src_mut/pytest_sort_mut/core.py" line="255">
+		<testcase name="Mutant #215" file="src_mut/pytest_sort_mut/core.py" line="255">
 			<system-out>        setup_ns = f&quot;{stats['setup']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #210" file="src_mut/pytest_sort_mut/core.py" line="256">
+		<testcase name="Mutant #216" file="src_mut/pytest_sort_mut/core.py" line="256">
 			<system-out>        call_ns = f&quot;{stats['call']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #211" file="src_mut/pytest_sort_mut/core.py" line="256">
+		<testcase name="Mutant #217" file="src_mut/pytest_sort_mut/core.py" line="256">
 			<system-out>        call_ns = f&quot;{stats['call']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #212" file="src_mut/pytest_sort_mut/core.py" line="256">
+		<testcase name="Mutant #218" file="src_mut/pytest_sort_mut/core.py" line="256">
 			<system-out>        call_ns = f&quot;{stats['call']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #213" file="src_mut/pytest_sort_mut/core.py" line="257">
+		<testcase name="Mutant #219" file="src_mut/pytest_sort_mut/core.py" line="257">
 			<system-out>        teardown_ns = f&quot;{stats['teardown']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #214" file="src_mut/pytest_sort_mut/core.py" line="257">
+		<testcase name="Mutant #220" file="src_mut/pytest_sort_mut/core.py" line="257">
 			<system-out>        teardown_ns = f&quot;{stats['teardown']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #215" file="src_mut/pytest_sort_mut/core.py" line="257">
+		<testcase name="Mutant #221" file="src_mut/pytest_sort_mut/core.py" line="257">
 			<system-out>        teardown_ns = f&quot;{stats['teardown']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #216" file="src_mut/pytest_sort_mut/core.py" line="258">
+		<testcase name="Mutant #222" file="src_mut/pytest_sort_mut/core.py" line="258">
 			<system-out>        total_ns = f&quot;{stats['total']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #217" file="src_mut/pytest_sort_mut/core.py" line="258">
+		<testcase name="Mutant #223" file="src_mut/pytest_sort_mut/core.py" line="258">
 			<system-out>        total_ns = f&quot;{stats['total']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #218" file="src_mut/pytest_sort_mut/core.py" line="258">
+		<testcase name="Mutant #224" file="src_mut/pytest_sort_mut/core.py" line="258">
 			<system-out>        total_ns = f&quot;{stats['total']:,}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #219" file="src_mut/pytest_sort_mut/core.py" line="260">
+		<testcase name="Mutant #225" file="src_mut/pytest_sort_mut/core.py" line="260">
 			<system-out>            f&quot;{nodeid.ljust(node_id_width)} {setup_ns.rjust(stat_width)} &quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #220" file="src_mut/pytest_sort_mut/core.py" line="261">
+		<testcase name="Mutant #226" file="src_mut/pytest_sort_mut/core.py" line="261">
 			<system-out>            f&quot;{call_ns.rjust(stat_width)} {teardown_ns.rjust(stat_width)} {total_ns.rjust(stat_width)}&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #221" file="src_mut/pytest_sort_mut/core.py" line="267">
+		<testcase name="Mutant #227" file="src_mut/pytest_sort_mut/core.py" line="267">
 			<system-out>    print(&quot;\nTest Case Order:&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #222" file="src_mut/pytest_sort_mut/core.py" line="268">
+		<testcase name="Mutant #228" file="src_mut/pytest_sort_mut/core.py" line="268">
 			<system-out>    print(&quot;(bucket_key, bucket_id, item_key, item_id)&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #223" file="src_mut/pytest_sort_mut/core.py" line="270">
+		<testcase name="Mutant #229" file="src_mut/pytest_sort_mut/core.py" line="270">
 			<system-out>        node_id = item.nodeid</system-out>
 		</testcase>
-		<testcase name="Mutant #224" file="src_mut/pytest_sort_mut/core.py" line="271">
+		<testcase name="Mutant #230" file="src_mut/pytest_sort_mut/core.py" line="271">
 			<system-out>        bucket_id = SortConfig.item_bucket_id[node_id]</system-out>
-		</testcase>
-		<testcase name="Mutant #225" file="src_mut/pytest_sort_mut/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #226" file="src_mut/pytest_sort_mut/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #227" file="src_mut/pytest_sort_mut/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #228" file="src_mut/pytest_sort_mut/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #229" file="src_mut/pytest_sort_mut/config.py" line="14">
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
-		</testcase>
-		<testcase name="Mutant #230" file="src_mut/pytest_sort_mut/config.py" line="14">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/config.py
-+++ src_mut/pytest_sort_mut/config.py
-@@ -11,7 +11,7 @@
- if TYPE_CHECKING:
-     import pytest
- 
--modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]
-+modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;XXdiffcovXX&quot;]
- bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]
- 
- legacy_modes = {
-</failure>
-			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #231" file="src_mut/pytest_sort_mut/config.py" line="14">
 			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #232" file="src_mut/pytest_sort_mut/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		<testcase name="Mutant #232" file="src_mut/pytest_sort_mut/config.py" line="14">
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #233" file="src_mut/pytest_sort_mut/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		<testcase name="Mutant #233" file="src_mut/pytest_sort_mut/config.py" line="14">
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #234" file="src_mut/pytest_sort_mut/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		<testcase name="Mutant #234" file="src_mut/pytest_sort_mut/config.py" line="14">
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #235" file="src_mut/pytest_sort_mut/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		<testcase name="Mutant #235" file="src_mut/pytest_sort_mut/config.py" line="14">
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #236" file="src_mut/pytest_sort_mut/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		<testcase name="Mutant #236" file="src_mut/pytest_sort_mut/config.py" line="14">
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #237" file="src_mut/pytest_sort_mut/config.py" line="15">
-			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		<testcase name="Mutant #237" file="src_mut/pytest_sort_mut/config.py" line="14">
+			<system-out>modes = [&quot;ordered&quot;, &quot;reverse&quot;, &quot;md5&quot;, &quot;random&quot;, &quot;fastest&quot;, &quot;diffcov&quot;]</system-out>
 		</testcase>
 		<testcase name="Mutant #238" file="src_mut/pytest_sort_mut/config.py" line="15">
 			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
@@ -886,826 +718,844 @@
 		<testcase name="Mutant #239" file="src_mut/pytest_sort_mut/config.py" line="15">
 			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #240" file="src_mut/pytest_sort_mut/config.py" line="18">
+		<testcase name="Mutant #240" file="src_mut/pytest_sort_mut/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #241" file="src_mut/pytest_sort_mut/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #242" file="src_mut/pytest_sort_mut/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #243" file="src_mut/pytest_sort_mut/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #244" file="src_mut/pytest_sort_mut/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #245" file="src_mut/pytest_sort_mut/config.py" line="15">
+			<system-out>bucket_types = [&quot;session&quot;, &quot;package&quot;, &quot;module&quot;, &quot;class&quot;, &quot;function&quot;, &quot;parent&quot;, &quot;grandparent&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #246" file="src_mut/pytest_sort_mut/config.py" line="18">
 			<system-out>    &quot;none&quot;: &quot;ordered&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #241" file="src_mut/pytest_sort_mut/config.py" line="18">
+		<testcase name="Mutant #247" file="src_mut/pytest_sort_mut/config.py" line="18">
 			<system-out>    &quot;none&quot;: &quot;ordered&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #242" file="src_mut/pytest_sort_mut/config.py" line="19">
+		<testcase name="Mutant #248" file="src_mut/pytest_sort_mut/config.py" line="19">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #243" file="src_mut/pytest_sort_mut/config.py" line="21">
+		<testcase name="Mutant #249" file="src_mut/pytest_sort_mut/config.py" line="21">
 			<system-out>    &quot;global&quot;: &quot;session&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #244" file="src_mut/pytest_sort_mut/config.py" line="21">
+		<testcase name="Mutant #250" file="src_mut/pytest_sort_mut/config.py" line="21">
 			<system-out>    &quot;global&quot;: &quot;session&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #245" file="src_mut/pytest_sort_mut/config.py" line="22">
+		<testcase name="Mutant #251" file="src_mut/pytest_sort_mut/config.py" line="22">
 			<system-out>}</system-out>
 		</testcase>
-		<testcase name="Mutant #246" file="src_mut/pytest_sort_mut/config.py" line="28">
+		<testcase name="Mutant #252" file="src_mut/pytest_sort_mut/config.py" line="28">
 			<system-out>    mode: str = &quot;ordered&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #247" file="src_mut/pytest_sort_mut/config.py" line="28">
+		<testcase name="Mutant #253" file="src_mut/pytest_sort_mut/config.py" line="28">
 			<system-out>    mode: str = &quot;ordered&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #248" file="src_mut/pytest_sort_mut/config.py" line="29">
+		<testcase name="Mutant #254" file="src_mut/pytest_sort_mut/config.py" line="29">
 			<system-out>    bucket: str = &quot;parent&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #249" file="src_mut/pytest_sort_mut/config.py" line="29">
+		<testcase name="Mutant #255" file="src_mut/pytest_sort_mut/config.py" line="29">
 			<system-out>    bucket: str = &quot;parent&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #250" file="src_mut/pytest_sort_mut/config.py" line="30">
+		<testcase name="Mutant #256" file="src_mut/pytest_sort_mut/config.py" line="30">
 			<system-out>    bucket_mode: str = &quot;sort_mode&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #251" file="src_mut/pytest_sort_mut/config.py" line="30">
+		<testcase name="Mutant #257" file="src_mut/pytest_sort_mut/config.py" line="30">
 			<system-out>    bucket_mode: str = &quot;sort_mode&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #252" file="src_mut/pytest_sort_mut/config.py" line="32">
+		<testcase name="Mutant #258" file="src_mut/pytest_sort_mut/config.py" line="32">
 			<system-out>    reset: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #253" file="src_mut/pytest_sort_mut/config.py" line="32">
+		<testcase name="Mutant #259" file="src_mut/pytest_sort_mut/config.py" line="32">
 			<system-out>    reset: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #254" file="src_mut/pytest_sort_mut/config.py" line="33">
+		<testcase name="Mutant #260" file="src_mut/pytest_sort_mut/config.py" line="33">
 			<system-out>    report: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #255" file="src_mut/pytest_sort_mut/config.py" line="33">
+		<testcase name="Mutant #261" file="src_mut/pytest_sort_mut/config.py" line="33">
 			<system-out>    report: bool = False</system-out>
 		</testcase>
-		<testcase name="Mutant #256" file="src_mut/pytest_sort_mut/config.py" line="35">
+		<testcase name="Mutant #262" file="src_mut/pytest_sort_mut/config.py" line="35">
 			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
 		</testcase>
-		<testcase name="Mutant #257" file="src_mut/pytest_sort_mut/config.py" line="35">
+		<testcase name="Mutant #263" file="src_mut/pytest_sort_mut/config.py" line="35">
 			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
 		</testcase>
-		<testcase name="Mutant #258" file="src_mut/pytest_sort_mut/config.py" line="35">
+		<testcase name="Mutant #264" file="src_mut/pytest_sort_mut/config.py" line="35">
 			<system-out>    seed = random.randint(0, 1_000_000)</system-out>
 		</testcase>
-		<testcase name="Mutant #259" file="src_mut/pytest_sort_mut/config.py" line="37">
+		<testcase name="Mutant #265" file="src_mut/pytest_sort_mut/config.py" line="37">
 			<system-out>    debug = False</system-out>
 		</testcase>
-		<testcase name="Mutant #260" file="src_mut/pytest_sort_mut/config.py" line="37">
+		<testcase name="Mutant #266" file="src_mut/pytest_sort_mut/config.py" line="37">
 			<system-out>    debug = False</system-out>
 		</testcase>
-		<testcase name="Mutant #261" file="src_mut/pytest_sort_mut/config.py" line="39">
+		<testcase name="Mutant #267" file="src_mut/pytest_sort_mut/config.py" line="39">
 			<system-out>    recorded_times: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #262" file="src_mut/pytest_sort_mut/config.py" line="40">
+		<testcase name="Mutant #268" file="src_mut/pytest_sort_mut/config.py" line="40">
 			<system-out>    item_totals: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #263" file="src_mut/pytest_sort_mut/config.py" line="41">
+		<testcase name="Mutant #269" file="src_mut/pytest_sort_mut/config.py" line="41">
 			<system-out>    item_sort_keys: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #264" file="src_mut/pytest_sort_mut/config.py" line="42">
+		<testcase name="Mutant #270" file="src_mut/pytest_sort_mut/config.py" line="42">
 			<system-out>    item_bucket_id: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #265" file="src_mut/pytest_sort_mut/config.py" line="43">
+		<testcase name="Mutant #271" file="src_mut/pytest_sort_mut/config.py" line="43">
 			<system-out>    bucket_sort_keys: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #266" file="src_mut/pytest_sort_mut/config.py" line="44">
-			<failure type="failure" message="bad_survived">--- src_mut/pytest_sort_mut/config.py
-+++ src_mut/pytest_sort_mut/config.py
-@@ -41,7 +41,7 @@
-     item_sort_keys: ClassVar[dict] = {}
-     item_bucket_id: ClassVar[dict] = {}
-     bucket_sort_keys: ClassVar[dict] = {}
--    cov_scores: ClassVar[dict] = {}
-+    cov_scores: ClassVar[dict] = None
- 
-     @staticmethod
-     def from_pytest(config: pytest.Config) -&gt; None:
-</failure>
+		<testcase name="Mutant #272" file="src_mut/pytest_sort_mut/config.py" line="44">
 			<system-out>    cov_scores: ClassVar[dict] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #267" file="src_mut/pytest_sort_mut/config.py" line="46">
+		<testcase name="Mutant #273" file="src_mut/pytest_sort_mut/config.py" line="46">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #268" file="src_mut/pytest_sort_mut/config.py" line="54">
+		<testcase name="Mutant #274" file="src_mut/pytest_sort_mut/config.py" line="54">
 			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #269" file="src_mut/pytest_sort_mut/config.py" line="54">
+		<testcase name="Mutant #275" file="src_mut/pytest_sort_mut/config.py" line="54">
 			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #270" file="src_mut/pytest_sort_mut/config.py" line="54">
+		<testcase name="Mutant #276" file="src_mut/pytest_sort_mut/config.py" line="54">
 			<system-out>        SortConfig.reset = config.getoption(&quot;sort_reset_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #271" file="src_mut/pytest_sort_mut/config.py" line="55">
+		<testcase name="Mutant #277" file="src_mut/pytest_sort_mut/config.py" line="55">
 			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #272" file="src_mut/pytest_sort_mut/config.py" line="55">
+		<testcase name="Mutant #278" file="src_mut/pytest_sort_mut/config.py" line="55">
 			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #273" file="src_mut/pytest_sort_mut/config.py" line="55">
+		<testcase name="Mutant #279" file="src_mut/pytest_sort_mut/config.py" line="55">
 			<system-out>        SortConfig.report = config.getoption(&quot;sort_report_times&quot;, default=False)</system-out>
 		</testcase>
-		<testcase name="Mutant #274" file="src_mut/pytest_sort_mut/config.py" line="60">
+		<testcase name="Mutant #280" file="src_mut/pytest_sort_mut/config.py" line="60">
 			<system-out>        if config.getoption(&quot;sort_debug&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #275" file="src_mut/pytest_sort_mut/config.py" line="61">
+		<testcase name="Mutant #281" file="src_mut/pytest_sort_mut/config.py" line="61">
 			<system-out>            SortConfig.debug = True</system-out>
 		</testcase>
-		<testcase name="Mutant #276" file="src_mut/pytest_sort_mut/config.py" line="61">
+		<testcase name="Mutant #282" file="src_mut/pytest_sort_mut/config.py" line="61">
 			<system-out>            SortConfig.debug = True</system-out>
 		</testcase>
-		<testcase name="Mutant #277" file="src_mut/pytest_sort_mut/config.py" line="63">
+		<testcase name="Mutant #283" file="src_mut/pytest_sort_mut/config.py" line="63">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #278" file="src_mut/pytest_sort_mut/config.py" line="65">
+		<testcase name="Mutant #284" file="src_mut/pytest_sort_mut/config.py" line="65">
 			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #279" file="src_mut/pytest_sort_mut/config.py" line="65">
+		<testcase name="Mutant #285" file="src_mut/pytest_sort_mut/config.py" line="65">
 			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #280" file="src_mut/pytest_sort_mut/config.py" line="65">
+		<testcase name="Mutant #286" file="src_mut/pytest_sort_mut/config.py" line="65">
 			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #281" file="src_mut/pytest_sort_mut/config.py" line="65">
+		<testcase name="Mutant #287" file="src_mut/pytest_sort_mut/config.py" line="65">
 			<system-out>        SortConfig.mode = config.getoption(&quot;sort_mode&quot;) or config.getini(&quot;sort_mode&quot;) or SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #282" file="src_mut/pytest_sort_mut/config.py" line="66">
+		<testcase name="Mutant #288" file="src_mut/pytest_sort_mut/config.py" line="66">
 			<system-out>        SortConfig.mode = legacy_modes.get(SortConfig.mode, SortConfig.mode)</system-out>
 		</testcase>
-		<testcase name="Mutant #283" file="src_mut/pytest_sort_mut/config.py" line="67">
+		<testcase name="Mutant #289" file="src_mut/pytest_sort_mut/config.py" line="67">
 			<system-out>        if SortConfig.mode not in modes:</system-out>
 		</testcase>
-		<testcase name="Mutant #284" file="src_mut/pytest_sort_mut/config.py" line="68">
+		<testcase name="Mutant #290" file="src_mut/pytest_sort_mut/config.py" line="68">
 			<system-out>            msg = f&quot;Invalid Value for sort-mode='{SortConfig.mode}'&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #285" file="src_mut/pytest_sort_mut/config.py" line="68">
+		<testcase name="Mutant #291" file="src_mut/pytest_sort_mut/config.py" line="68">
 			<system-out>            msg = f&quot;Invalid Value for sort-mode='{SortConfig.mode}'&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #286" file="src_mut/pytest_sort_mut/config.py" line="71">
+		<testcase name="Mutant #292" file="src_mut/pytest_sort_mut/config.py" line="71">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #287" file="src_mut/pytest_sort_mut/config.py" line="73">
+		<testcase name="Mutant #293" file="src_mut/pytest_sort_mut/config.py" line="73">
 			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #288" file="src_mut/pytest_sort_mut/config.py" line="73">
+		<testcase name="Mutant #294" file="src_mut/pytest_sort_mut/config.py" line="73">
 			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #289" file="src_mut/pytest_sort_mut/config.py" line="73">
+		<testcase name="Mutant #295" file="src_mut/pytest_sort_mut/config.py" line="73">
 			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #290" file="src_mut/pytest_sort_mut/config.py" line="73">
+		<testcase name="Mutant #296" file="src_mut/pytest_sort_mut/config.py" line="73">
 			<system-out>        SortConfig.bucket = config.getoption(&quot;sort_bucket&quot;) or config.getini(&quot;sort_bucket&quot;) or SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #291" file="src_mut/pytest_sort_mut/config.py" line="74">
+		<testcase name="Mutant #297" file="src_mut/pytest_sort_mut/config.py" line="74">
 			<system-out>        SortConfig.bucket = legacy_bucket_types.get(SortConfig.bucket, SortConfig.bucket)</system-out>
 		</testcase>
-		<testcase name="Mutant #292" file="src_mut/pytest_sort_mut/config.py" line="75">
+		<testcase name="Mutant #298" file="src_mut/pytest_sort_mut/config.py" line="75">
 			<system-out>        if SortConfig.bucket not in bucket_types:</system-out>
 		</testcase>
-		<testcase name="Mutant #293" file="src_mut/pytest_sort_mut/config.py" line="76">
+		<testcase name="Mutant #299" file="src_mut/pytest_sort_mut/config.py" line="76">
 			<system-out>            msg = f&quot;Invalid Value for sort-bucket='{SortConfig.bucket}'&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #294" file="src_mut/pytest_sort_mut/config.py" line="76">
+		<testcase name="Mutant #300" file="src_mut/pytest_sort_mut/config.py" line="76">
 			<system-out>            msg = f&quot;Invalid Value for sort-bucket='{SortConfig.bucket}'&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #295" file="src_mut/pytest_sort_mut/config.py" line="79">
+		<testcase name="Mutant #301" file="src_mut/pytest_sort_mut/config.py" line="79">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #296" file="src_mut/pytest_sort_mut/config.py" line="82">
+		<testcase name="Mutant #302" file="src_mut/pytest_sort_mut/config.py" line="82">
 			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #297" file="src_mut/pytest_sort_mut/config.py" line="82">
+		<testcase name="Mutant #303" file="src_mut/pytest_sort_mut/config.py" line="82">
 			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #298" file="src_mut/pytest_sort_mut/config.py" line="82">
+		<testcase name="Mutant #304" file="src_mut/pytest_sort_mut/config.py" line="82">
 			<system-out>            config.getoption(&quot;sort_bucket_mode&quot;) or config.getini(&quot;sort_bucket_mode&quot;) or SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #299" file="src_mut/pytest_sort_mut/config.py" line="83">
+		<testcase name="Mutant #305" file="src_mut/pytest_sort_mut/config.py" line="83">
 			<system-out>        )</system-out>
 		</testcase>
-		<testcase name="Mutant #300" file="src_mut/pytest_sort_mut/config.py" line="84">
+		<testcase name="Mutant #306" file="src_mut/pytest_sort_mut/config.py" line="84">
 			<system-out>        if SortConfig.bucket_mode == &quot;sort_mode&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #301" file="src_mut/pytest_sort_mut/config.py" line="84">
+		<testcase name="Mutant #307" file="src_mut/pytest_sort_mut/config.py" line="84">
 			<system-out>        if SortConfig.bucket_mode == &quot;sort_mode&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #302" file="src_mut/pytest_sort_mut/config.py" line="85">
+		<testcase name="Mutant #308" file="src_mut/pytest_sort_mut/config.py" line="85">
 			<system-out>            SortConfig.bucket_mode = SortConfig.mode</system-out>
 		</testcase>
-		<testcase name="Mutant #303" file="src_mut/pytest_sort_mut/config.py" line="86">
+		<testcase name="Mutant #309" file="src_mut/pytest_sort_mut/config.py" line="86">
 			<system-out>        SortConfig.bucket_mode = legacy_modes.get(SortConfig.bucket_mode, SortConfig.bucket_mode)</system-out>
 		</testcase>
-		<testcase name="Mutant #304" file="src_mut/pytest_sort_mut/config.py" line="87">
+		<testcase name="Mutant #310" file="src_mut/pytest_sort_mut/config.py" line="87">
 			<system-out>        if SortConfig.bucket_mode not in modes:</system-out>
 		</testcase>
-		<testcase name="Mutant #305" file="src_mut/pytest_sort_mut/config.py" line="88">
+		<testcase name="Mutant #311" file="src_mut/pytest_sort_mut/config.py" line="88">
 			<system-out>            msg = f&quot;Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #306" file="src_mut/pytest_sort_mut/config.py" line="88">
+		<testcase name="Mutant #312" file="src_mut/pytest_sort_mut/config.py" line="88">
 			<system-out>            msg = f&quot;Invalid Value for sort-bucket-mode='{SortConfig.bucket_mode}'&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #307" file="src_mut/pytest_sort_mut/config.py" line="91">
+		<testcase name="Mutant #313" file="src_mut/pytest_sort_mut/config.py" line="91">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #308" file="src_mut/pytest_sort_mut/config.py" line="93">
+		<testcase name="Mutant #314" file="src_mut/pytest_sort_mut/config.py" line="93">
 			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #309" file="src_mut/pytest_sort_mut/config.py" line="93">
+		<testcase name="Mutant #315" file="src_mut/pytest_sort_mut/config.py" line="93">
 			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #310" file="src_mut/pytest_sort_mut/config.py" line="93">
+		<testcase name="Mutant #316" file="src_mut/pytest_sort_mut/config.py" line="93">
 			<system-out>        if config.getoption(&quot;sort_no_record&quot;) and config.getoption(&quot;sort_record&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #311" file="src_mut/pytest_sort_mut/config.py" line="94">
+		<testcase name="Mutant #317" file="src_mut/pytest_sort_mut/config.py" line="94">
 			<system-out>            raise ValueError(&quot;Do not use both --sort-record-times and --sort-no-record-times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #312" file="src_mut/pytest_sort_mut/config.py" line="96">
+		<testcase name="Mutant #318" file="src_mut/pytest_sort_mut/config.py" line="96">
 			<system-out>        if config.getoption(&quot;sort_no_record&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #313" file="src_mut/pytest_sort_mut/config.py" line="97">
+		<testcase name="Mutant #319" file="src_mut/pytest_sort_mut/config.py" line="97">
 			<system-out>            SortConfig.record = False</system-out>
 		</testcase>
-		<testcase name="Mutant #314" file="src_mut/pytest_sort_mut/config.py" line="97">
+		<testcase name="Mutant #320" file="src_mut/pytest_sort_mut/config.py" line="97">
 			<system-out>            SortConfig.record = False</system-out>
 		</testcase>
-		<testcase name="Mutant #315" file="src_mut/pytest_sort_mut/config.py" line="99">
+		<testcase name="Mutant #321" file="src_mut/pytest_sort_mut/config.py" line="99">
 			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #316" file="src_mut/pytest_sort_mut/config.py" line="99">
+		<testcase name="Mutant #322" file="src_mut/pytest_sort_mut/config.py" line="99">
 			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #317" file="src_mut/pytest_sort_mut/config.py" line="99">
+		<testcase name="Mutant #323" file="src_mut/pytest_sort_mut/config.py" line="99">
 			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #318" file="src_mut/pytest_sort_mut/config.py" line="99">
+		<testcase name="Mutant #324" file="src_mut/pytest_sort_mut/config.py" line="99">
 			<system-out>            SortConfig.record = config.getoption(&quot;sort_record&quot;) or config.getini(&quot;sort_record_times&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #319" file="src_mut/pytest_sort_mut/config.py" line="101">
+		<testcase name="Mutant #325" file="src_mut/pytest_sort_mut/config.py" line="101">
 			<system-out>        if not isinstance(SortConfig.record, bool):</system-out>
 		</testcase>
-		<testcase name="Mutant #320" file="src_mut/pytest_sort_mut/config.py" line="102">
+		<testcase name="Mutant #326" file="src_mut/pytest_sort_mut/config.py" line="102">
 			<system-out>            SortConfig.record = None</system-out>
 		</testcase>
-		<testcase name="Mutant #321" file="src_mut/pytest_sort_mut/config.py" line="103">
+		<testcase name="Mutant #327" file="src_mut/pytest_sort_mut/config.py" line="103">
 			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
 		</testcase>
-		<testcase name="Mutant #322" file="src_mut/pytest_sort_mut/config.py" line="103">
+		<testcase name="Mutant #328" file="src_mut/pytest_sort_mut/config.py" line="103">
 			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
 		</testcase>
-		<testcase name="Mutant #323" file="src_mut/pytest_sort_mut/config.py" line="103">
+		<testcase name="Mutant #329" file="src_mut/pytest_sort_mut/config.py" line="103">
 			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
 		</testcase>
-		<testcase name="Mutant #324" file="src_mut/pytest_sort_mut/config.py" line="103">
+		<testcase name="Mutant #330" file="src_mut/pytest_sort_mut/config.py" line="103">
 			<system-out>        if SortConfig.mode == &quot;fastest&quot; and SortConfig.record is None:</system-out>
 		</testcase>
-		<testcase name="Mutant #325" file="src_mut/pytest_sort_mut/config.py" line="104">
+		<testcase name="Mutant #331" file="src_mut/pytest_sort_mut/config.py" line="104">
 			<system-out>            SortConfig.record = True</system-out>
 		</testcase>
-		<testcase name="Mutant #326" file="src_mut/pytest_sort_mut/config.py" line="104">
+		<testcase name="Mutant #332" file="src_mut/pytest_sort_mut/config.py" line="104">
 			<system-out>            SortConfig.record = True</system-out>
 		</testcase>
-		<testcase name="Mutant #327" file="src_mut/pytest_sort_mut/config.py" line="106">
+		<testcase name="Mutant #333" file="src_mut/pytest_sort_mut/config.py" line="106">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #328" file="src_mut/pytest_sort_mut/config.py" line="108">
+		<testcase name="Mutant #334" file="src_mut/pytest_sort_mut/config.py" line="108">
 			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #329" file="src_mut/pytest_sort_mut/config.py" line="108">
+		<testcase name="Mutant #335" file="src_mut/pytest_sort_mut/config.py" line="108">
 			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #330" file="src_mut/pytest_sort_mut/config.py" line="108">
+		<testcase name="Mutant #336" file="src_mut/pytest_sort_mut/config.py" line="108">
 			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #331" file="src_mut/pytest_sort_mut/config.py" line="108">
+		<testcase name="Mutant #337" file="src_mut/pytest_sort_mut/config.py" line="108">
 			<system-out>        SortConfig.seed = config.getoption(&quot;sort_seed&quot;) or config.getini(&quot;sort_seed&quot;) or SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #332" file="src_mut/pytest_sort_mut/config.py" line="109">
+		<testcase name="Mutant #338" file="src_mut/pytest_sort_mut/config.py" line="109">
 			<system-out>        if not str(SortConfig.seed).isdigit():</system-out>
 		</testcase>
-		<testcase name="Mutant #333" file="src_mut/pytest_sort_mut/config.py" line="110">
+		<testcase name="Mutant #339" file="src_mut/pytest_sort_mut/config.py" line="110">
 			<system-out>            msg = f&quot;Invalid seed value '{SortConfig.seed}' must be int&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #334" file="src_mut/pytest_sort_mut/config.py" line="110">
+		<testcase name="Mutant #340" file="src_mut/pytest_sort_mut/config.py" line="110">
 			<system-out>            msg = f&quot;Invalid seed value '{SortConfig.seed}' must be int&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #335" file="src_mut/pytest_sort_mut/config.py" line="112">
+		<testcase name="Mutant #341" file="src_mut/pytest_sort_mut/config.py" line="112">
 			<system-out>        SortConfig.seed = int(str(SortConfig.seed))</system-out>
 		</testcase>
-		<testcase name="Mutant #336" file="src_mut/pytest_sort_mut/config.py" line="114">
+		<testcase name="Mutant #342" file="src_mut/pytest_sort_mut/config.py" line="114">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #337" file="src_mut/pytest_sort_mut/config.py" line="116">
+		<testcase name="Mutant #343" file="src_mut/pytest_sort_mut/config.py" line="116">
 			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
 		</testcase>
-		<testcase name="Mutant #338" file="src_mut/pytest_sort_mut/config.py" line="116">
+		<testcase name="Mutant #344" file="src_mut/pytest_sort_mut/config.py" line="116">
 			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
 		</testcase>
-		<testcase name="Mutant #339" file="src_mut/pytest_sort_mut/config.py" line="116">
+		<testcase name="Mutant #345" file="src_mut/pytest_sort_mut/config.py" line="116">
 			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
 		</testcase>
-		<testcase name="Mutant #340" file="src_mut/pytest_sort_mut/config.py" line="116">
+		<testcase name="Mutant #346" file="src_mut/pytest_sort_mut/config.py" line="116">
 			<system-out>        database_file = config.getoption(&quot;sort_datafile&quot;) or config.getini(&quot;sort_datafile&quot;) or None</system-out>
 		</testcase>
-		<testcase name="Mutant #341" file="src_mut/pytest_sort_mut/config.py" line="118">
+		<testcase name="Mutant #347" file="src_mut/pytest_sort_mut/config.py" line="118">
 			<system-out>            database.database_file = Path(database_file)</system-out>
 		</testcase>
-		<testcase name="Mutant #342" file="src_mut/pytest_sort_mut/config.py" line="120">
+		<testcase name="Mutant #348" file="src_mut/pytest_sort_mut/config.py" line="120">
 			<system-out>    @staticmethod</system-out>
 		</testcase>
-		<testcase name="Mutant #343" file="src_mut/pytest_sort_mut/config.py" line="127">
+		<testcase name="Mutant #349" file="src_mut/pytest_sort_mut/config.py" line="127">
 			<system-out>            &quot;sort-mode&quot;: SortConfig.mode,</system-out>
 		</testcase>
-		<testcase name="Mutant #344" file="src_mut/pytest_sort_mut/config.py" line="128">
+		<testcase name="Mutant #350" file="src_mut/pytest_sort_mut/config.py" line="128">
 			<system-out>        }</system-out>
 		</testcase>
-		<testcase name="Mutant #345" file="src_mut/pytest_sort_mut/config.py" line="130">
+		<testcase name="Mutant #351" file="src_mut/pytest_sort_mut/config.py" line="130">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #346" file="src_mut/pytest_sort_mut/config.py" line="130">
+		<testcase name="Mutant #352" file="src_mut/pytest_sort_mut/config.py" line="130">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #347" file="src_mut/pytest_sort_mut/config.py" line="130">
+		<testcase name="Mutant #353" file="src_mut/pytest_sort_mut/config.py" line="130">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #348" file="src_mut/pytest_sort_mut/config.py" line="130">
+		<testcase name="Mutant #354" file="src_mut/pytest_sort_mut/config.py" line="130">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #349" file="src_mut/pytest_sort_mut/config.py" line="130">
+		<testcase name="Mutant #355" file="src_mut/pytest_sort_mut/config.py" line="130">
 			<system-out>        if SortConfig.mode not in (&quot;ordered&quot;, &quot;reverse&quot;) or SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #350" file="src_mut/pytest_sort_mut/config.py" line="131">
+		<testcase name="Mutant #356" file="src_mut/pytest_sort_mut/config.py" line="131">
 			<system-out>            config[&quot;sort-bucket&quot;] = SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #351" file="src_mut/pytest_sort_mut/config.py" line="131">
+		<testcase name="Mutant #357" file="src_mut/pytest_sort_mut/config.py" line="131">
 			<system-out>            config[&quot;sort-bucket&quot;] = SortConfig.bucket</system-out>
 		</testcase>
-		<testcase name="Mutant #352" file="src_mut/pytest_sort_mut/config.py" line="133">
+		<testcase name="Mutant #358" file="src_mut/pytest_sort_mut/config.py" line="133">
 			<system-out>        if SortConfig.bucket_mode != SortConfig.mode:</system-out>
 		</testcase>
-		<testcase name="Mutant #353" file="src_mut/pytest_sort_mut/config.py" line="134">
+		<testcase name="Mutant #359" file="src_mut/pytest_sort_mut/config.py" line="134">
 			<system-out>            config[&quot;sort-bucket-mode&quot;] = SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #354" file="src_mut/pytest_sort_mut/config.py" line="134">
+		<testcase name="Mutant #360" file="src_mut/pytest_sort_mut/config.py" line="134">
 			<system-out>            config[&quot;sort-bucket-mode&quot;] = SortConfig.bucket_mode</system-out>
 		</testcase>
-		<testcase name="Mutant #355" file="src_mut/pytest_sort_mut/config.py" line="136">
+		<testcase name="Mutant #361" file="src_mut/pytest_sort_mut/config.py" line="136">
 			<system-out>        if SortConfig.mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #356" file="src_mut/pytest_sort_mut/config.py" line="136">
+		<testcase name="Mutant #362" file="src_mut/pytest_sort_mut/config.py" line="136">
 			<system-out>        if SortConfig.mode == &quot;random&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #357" file="src_mut/pytest_sort_mut/config.py" line="137">
+		<testcase name="Mutant #363" file="src_mut/pytest_sort_mut/config.py" line="137">
 			<system-out>            config[&quot;sort-seed&quot;] = SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #358" file="src_mut/pytest_sort_mut/config.py" line="137">
+		<testcase name="Mutant #364" file="src_mut/pytest_sort_mut/config.py" line="137">
 			<system-out>            config[&quot;sort-seed&quot;] = SortConfig.seed</system-out>
 		</testcase>
-		<testcase name="Mutant #359" file="src_mut/pytest_sort_mut/config.py" line="140">
+		<testcase name="Mutant #365" file="src_mut/pytest_sort_mut/config.py" line="140">
 			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #360" file="src_mut/pytest_sort_mut/config.py" line="140">
+		<testcase name="Mutant #366" file="src_mut/pytest_sort_mut/config.py" line="140">
 			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #361" file="src_mut/pytest_sort_mut/config.py" line="140">
+		<testcase name="Mutant #367" file="src_mut/pytest_sort_mut/config.py" line="140">
 			<system-out>            config[&quot;sort-reset-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #362" file="src_mut/pytest_sort_mut/config.py" line="142">
+		<testcase name="Mutant #368" file="src_mut/pytest_sort_mut/config.py" line="142">
 			<system-out>        if SortConfig.record is not None:</system-out>
 		</testcase>
-		<testcase name="Mutant #363" file="src_mut/pytest_sort_mut/config.py" line="143">
+		<testcase name="Mutant #369" file="src_mut/pytest_sort_mut/config.py" line="143">
 			<system-out>            config[&quot;sort-record-times&quot;] = SortConfig.record</system-out>
 		</testcase>
-		<testcase name="Mutant #364" file="src_mut/pytest_sort_mut/config.py" line="143">
+		<testcase name="Mutant #370" file="src_mut/pytest_sort_mut/config.py" line="143">
 			<system-out>            config[&quot;sort-record-times&quot;] = SortConfig.record</system-out>
 		</testcase>
-		<testcase name="Mutant #365" file="src_mut/pytest_sort_mut/config.py" line="146">
+		<testcase name="Mutant #371" file="src_mut/pytest_sort_mut/config.py" line="146">
 			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #366" file="src_mut/pytest_sort_mut/config.py" line="146">
+		<testcase name="Mutant #372" file="src_mut/pytest_sort_mut/config.py" line="146">
 			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #367" file="src_mut/pytest_sort_mut/config.py" line="146">
+		<testcase name="Mutant #373" file="src_mut/pytest_sort_mut/config.py" line="146">
 			<system-out>            config[&quot;sort-report-times&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #368" file="src_mut/pytest_sort_mut/config.py" line="149">
+		<testcase name="Mutant #374" file="src_mut/pytest_sort_mut/config.py" line="149">
 			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #369" file="src_mut/pytest_sort_mut/config.py" line="149">
+		<testcase name="Mutant #375" file="src_mut/pytest_sort_mut/config.py" line="149">
 			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #370" file="src_mut/pytest_sort_mut/config.py" line="149">
+		<testcase name="Mutant #376" file="src_mut/pytest_sort_mut/config.py" line="149">
 			<system-out>            config[&quot;sort-debug&quot;] = True</system-out>
 		</testcase>
-		<testcase name="Mutant #371" file="src_mut/pytest_sort_mut/diffcov.py" line="15">
+		<testcase name="Mutant #377" file="src_mut/pytest_sort_mut/diffcov.py" line="15">
 			<system-out>PARSE_TEST_CONTEXT = re.compile(r&quot;(?P&lt;nodeid&gt;.*)\|(?P&lt;when&gt;setup|run|teardown)&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #372" file="src_mut/pytest_sort_mut/diffcov.py" line="15">
+		<testcase name="Mutant #378" file="src_mut/pytest_sort_mut/diffcov.py" line="15">
 			<system-out>PARSE_TEST_CONTEXT = re.compile(r&quot;(?P&lt;nodeid&gt;.*)\|(?P&lt;when&gt;setup|run|teardown)&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #373" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+		<testcase name="Mutant #379" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+			<system-out>    output = subprocess.run(shlex.split(&quot;git rev-parse --show-toplevel&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
+		</testcase>
+		<testcase name="Mutant #380" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+			<system-out>    output = subprocess.run(shlex.split(&quot;git rev-parse --show-toplevel&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
+		</testcase>
+		<testcase name="Mutant #381" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+			<system-out>    output = subprocess.run(shlex.split(&quot;git rev-parse --show-toplevel&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
+		</testcase>
+		<testcase name="Mutant #382" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+			<system-out>    output = subprocess.run(shlex.split(&quot;git rev-parse --show-toplevel&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
+		</testcase>
+		<testcase name="Mutant #383" file="src_mut/pytest_sort_mut/diffcov.py" line="26">
 			<system-out>    output = subprocess.run(shlex.split(&quot;git diff -U0&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
 		</testcase>
-		<testcase name="Mutant #374" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+		<testcase name="Mutant #384" file="src_mut/pytest_sort_mut/diffcov.py" line="26">
 			<system-out>    output = subprocess.run(shlex.split(&quot;git diff -U0&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
 		</testcase>
-		<testcase name="Mutant #375" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+		<testcase name="Mutant #385" file="src_mut/pytest_sort_mut/diffcov.py" line="26">
 			<system-out>    output = subprocess.run(shlex.split(&quot;git diff -U0&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
 		</testcase>
-		<testcase name="Mutant #376" file="src_mut/pytest_sort_mut/diffcov.py" line="20">
+		<testcase name="Mutant #386" file="src_mut/pytest_sort_mut/diffcov.py" line="26">
 			<system-out>    output = subprocess.run(shlex.split(&quot;git diff -U0&quot;), capture_output=True, check=True)  # noqa: S603</system-out>
 		</testcase>
-		<testcase name="Mutant #377" file="src_mut/pytest_sort_mut/diffcov.py" line="29">
+		<testcase name="Mutant #387" file="src_mut/pytest_sort_mut/diffcov.py" line="35">
 			<system-out>    changed_lines = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #378" file="src_mut/pytest_sort_mut/diffcov.py" line="30">
+		<testcase name="Mutant #388" file="src_mut/pytest_sort_mut/diffcov.py" line="36">
 			<system-out>    patch_data = whatthepatch.parse_patch(git_diff_patch)</system-out>
 		</testcase>
-		<testcase name="Mutant #379" file="src_mut/pytest_sort_mut/diffcov.py" line="32">
+		<testcase name="Mutant #389" file="src_mut/pytest_sort_mut/diffcov.py" line="38">
 			<system-out>        if diff.header and diff.changes:</system-out>
 		</testcase>
-		<testcase name="Mutant #380" file="src_mut/pytest_sort_mut/diffcov.py" line="33">
+		<testcase name="Mutant #390" file="src_mut/pytest_sort_mut/diffcov.py" line="39">
 			<system-out>            path = diff.header.old_path</system-out>
 		</testcase>
-		<testcase name="Mutant #381" file="src_mut/pytest_sort_mut/diffcov.py" line="34">
-			<system-out>            rpath = Path(path).resolve()</system-out>
+		<testcase name="Mutant #391" file="src_mut/pytest_sort_mut/diffcov.py" line="40">
+			<system-out>            rpath = Path(git_folder).joinpath(path).resolve()</system-out>
 		</testcase>
-		<testcase name="Mutant #382" file="src_mut/pytest_sort_mut/diffcov.py" line="35">
+		<testcase name="Mutant #392" file="src_mut/pytest_sort_mut/diffcov.py" line="41">
 			<system-out>            changed_lines[rpath] = {change.old or change.new or 0 for change in diff.changes}</system-out>
 		</testcase>
-		<testcase name="Mutant #383" file="src_mut/pytest_sort_mut/diffcov.py" line="35">
+		<testcase name="Mutant #393" file="src_mut/pytest_sort_mut/diffcov.py" line="41">
 			<system-out>            changed_lines[rpath] = {change.old or change.new or 0 for change in diff.changes}</system-out>
 		</testcase>
-		<testcase name="Mutant #384" file="src_mut/pytest_sort_mut/diffcov.py" line="35">
+		<testcase name="Mutant #394" file="src_mut/pytest_sort_mut/diffcov.py" line="41">
 			<system-out>            changed_lines[rpath] = {change.old or change.new or 0 for change in diff.changes}</system-out>
 		</testcase>
-		<testcase name="Mutant #385" file="src_mut/pytest_sort_mut/diffcov.py" line="44">
+		<testcase name="Mutant #395" file="src_mut/pytest_sort_mut/diffcov.py" line="50">
 			<system-out>    cov = CoverageData()</system-out>
 		</testcase>
-		<testcase name="Mutant #386" file="src_mut/pytest_sort_mut/diffcov.py" line="47">
+		<testcase name="Mutant #396" file="src_mut/pytest_sort_mut/diffcov.py" line="53">
 			<system-out>        rpath = Path(path).resolve()</system-out>
 		</testcase>
-		<testcase name="Mutant #387" file="src_mut/pytest_sort_mut/diffcov.py" line="50">
+		<testcase name="Mutant #397" file="src_mut/pytest_sort_mut/diffcov.py" line="56">
 			<system-out>                match = PARSE_TEST_CONTEXT.search(test)</system-out>
 		</testcase>
-		<testcase name="Mutant #388" file="src_mut/pytest_sort_mut/diffcov.py" line="52">
+		<testcase name="Mutant #398" file="src_mut/pytest_sort_mut/diffcov.py" line="58">
 			<system-out>                    (nodeid, when) = match.group(&quot;nodeid&quot;, &quot;when&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #389" file="src_mut/pytest_sort_mut/diffcov.py" line="52">
+		<testcase name="Mutant #399" file="src_mut/pytest_sort_mut/diffcov.py" line="58">
 			<system-out>                    (nodeid, when) = match.group(&quot;nodeid&quot;, &quot;when&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #390" file="src_mut/pytest_sort_mut/diffcov.py" line="52">
+		<testcase name="Mutant #400" file="src_mut/pytest_sort_mut/diffcov.py" line="58">
 			<system-out>                    (nodeid, when) = match.group(&quot;nodeid&quot;, &quot;when&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #391" file="src_mut/pytest_sort_mut/diffcov.py" line="58">
+		<testcase name="Mutant #401" file="src_mut/pytest_sort_mut/diffcov.py" line="64">
 			<system-out>    test_scores = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #392" file="src_mut/pytest_sort_mut/diffcov.py" line="59">
-			<system-out>    changed_lines = get_changed_lines(get_git_diff_patch())</system-out>
+		<testcase name="Mutant #402" file="src_mut/pytest_sort_mut/diffcov.py" line="65">
+			<system-out>    changed_lines = get_changed_lines(get_git_toplevel_folder(), get_git_diff_patch())</system-out>
 		</testcase>
-		<testcase name="Mutant #393" file="src_mut/pytest_sort_mut/diffcov.py" line="61">
+		<testcase name="Mutant #403" file="src_mut/pytest_sort_mut/diffcov.py" line="67">
 			<system-out>        if rpath in changed_lines:</system-out>
 		</testcase>
-		<testcase name="Mutant #394" file="src_mut/pytest_sort_mut/diffcov.py" line="63">
+		<testcase name="Mutant #404" file="src_mut/pytest_sort_mut/diffcov.py" line="69">
 			<system-out>            if nodeid not in test_scores:</system-out>
 		</testcase>
-		<testcase name="Mutant #395" file="src_mut/pytest_sort_mut/diffcov.py" line="64">
+		<testcase name="Mutant #405" file="src_mut/pytest_sort_mut/diffcov.py" line="70">
 			<system-out>                test_scores[nodeid] = -1</system-out>
 		</testcase>
-		<testcase name="Mutant #396" file="src_mut/pytest_sort_mut/diffcov.py" line="64">
+		<testcase name="Mutant #406" file="src_mut/pytest_sort_mut/diffcov.py" line="70">
 			<system-out>                test_scores[nodeid] = -1</system-out>
 		</testcase>
-		<testcase name="Mutant #397" file="src_mut/pytest_sort_mut/diffcov.py" line="64">
+		<testcase name="Mutant #407" file="src_mut/pytest_sort_mut/diffcov.py" line="70">
 			<system-out>                test_scores[nodeid] = -1</system-out>
 		</testcase>
-		<testcase name="Mutant #398" file="src_mut/pytest_sort_mut/diffcov.py" line="66">
+		<testcase name="Mutant #408" file="src_mut/pytest_sort_mut/diffcov.py" line="72">
 			<system-out>            if line in changed_lines[rpath]:</system-out>
 		</testcase>
-		<testcase name="Mutant #399" file="src_mut/pytest_sort_mut/diffcov.py" line="68">
+		<testcase name="Mutant #409" file="src_mut/pytest_sort_mut/diffcov.py" line="74">
 			<system-out>                if when == &quot;run&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #400" file="src_mut/pytest_sort_mut/diffcov.py" line="68">
+		<testcase name="Mutant #410" file="src_mut/pytest_sort_mut/diffcov.py" line="74">
 			<system-out>                if when == &quot;run&quot;:</system-out>
 		</testcase>
-		<testcase name="Mutant #401" file="src_mut/pytest_sort_mut/diffcov.py" line="69">
+		<testcase name="Mutant #411" file="src_mut/pytest_sort_mut/diffcov.py" line="75">
 			<system-out>                    test_scores[nodeid] -= 5</system-out>
 		</testcase>
-		<testcase name="Mutant #402" file="src_mut/pytest_sort_mut/diffcov.py" line="69">
+		<testcase name="Mutant #412" file="src_mut/pytest_sort_mut/diffcov.py" line="75">
 			<system-out>                    test_scores[nodeid] -= 5</system-out>
 		</testcase>
-		<testcase name="Mutant #403" file="src_mut/pytest_sort_mut/diffcov.py" line="69">
+		<testcase name="Mutant #413" file="src_mut/pytest_sort_mut/diffcov.py" line="75">
 			<system-out>                    test_scores[nodeid] -= 5</system-out>
 		</testcase>
-		<testcase name="Mutant #404" file="src_mut/pytest_sort_mut/diffcov.py" line="72">
+		<testcase name="Mutant #414" file="src_mut/pytest_sort_mut/diffcov.py" line="78">
 			<system-out>                    test_scores[nodeid] -= 1</system-out>
 		</testcase>
-		<testcase name="Mutant #405" file="src_mut/pytest_sort_mut/diffcov.py" line="72">
+		<testcase name="Mutant #415" file="src_mut/pytest_sort_mut/diffcov.py" line="78">
 			<system-out>                    test_scores[nodeid] -= 1</system-out>
 		</testcase>
-		<testcase name="Mutant #406" file="src_mut/pytest_sort_mut/diffcov.py" line="72">
+		<testcase name="Mutant #416" file="src_mut/pytest_sort_mut/diffcov.py" line="78">
 			<system-out>                    test_scores[nodeid] -= 1</system-out>
 		</testcase>
-		<testcase name="Mutant #407" file="src_mut/pytest_sort_mut/plugin.py" line="20">
+		<testcase name="Mutant #417" file="src_mut/pytest_sort_mut/plugin.py" line="20">
 			<system-out>    group = parser.getgroup(&quot;pytest-sort&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #408" file="src_mut/pytest_sort_mut/plugin.py" line="20">
+		<testcase name="Mutant #418" file="src_mut/pytest_sort_mut/plugin.py" line="20">
 			<system-out>    group = parser.getgroup(&quot;pytest-sort&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #409" file="src_mut/pytest_sort_mut/plugin.py" line="22">
+		<testcase name="Mutant #419" file="src_mut/pytest_sort_mut/plugin.py" line="22">
 			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, help=str(modes))</system-out>
 		</testcase>
-		<testcase name="Mutant #410" file="src_mut/pytest_sort_mut/plugin.py" line="22">
+		<testcase name="Mutant #420" file="src_mut/pytest_sort_mut/plugin.py" line="22">
 			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, help=str(modes))</system-out>
 		</testcase>
-		<testcase name="Mutant #411" file="src_mut/pytest_sort_mut/plugin.py" line="22">
+		<testcase name="Mutant #421" file="src_mut/pytest_sort_mut/plugin.py" line="22">
 			<system-out>    group.addoption(&quot;--sort-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, help=str(modes))</system-out>
 		</testcase>
-		<testcase name="Mutant #412" file="src_mut/pytest_sort_mut/plugin.py" line="23">
+		<testcase name="Mutant #422" file="src_mut/pytest_sort_mut/plugin.py" line="23">
 			<system-out>    group.addoption(&quot;--sort_mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #413" file="src_mut/pytest_sort_mut/plugin.py" line="23">
+		<testcase name="Mutant #423" file="src_mut/pytest_sort_mut/plugin.py" line="23">
 			<system-out>    group.addoption(&quot;--sort_mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #414" file="src_mut/pytest_sort_mut/plugin.py" line="23">
+		<testcase name="Mutant #424" file="src_mut/pytest_sort_mut/plugin.py" line="23">
 			<system-out>    group.addoption(&quot;--sort_mode&quot;, action=&quot;store&quot;, dest=&quot;sort_mode&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #415" file="src_mut/pytest_sort_mut/plugin.py" line="24">
+		<testcase name="Mutant #425" file="src_mut/pytest_sort_mut/plugin.py" line="24">
 			<system-out>    parser.addini(&quot;sort_mode&quot;, help=str(modes))</system-out>
 		</testcase>
-		<testcase name="Mutant #416" file="src_mut/pytest_sort_mut/plugin.py" line="26">
+		<testcase name="Mutant #426" file="src_mut/pytest_sort_mut/plugin.py" line="26">
 			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, help=str(bucket_types))</system-out>
 		</testcase>
-		<testcase name="Mutant #417" file="src_mut/pytest_sort_mut/plugin.py" line="26">
+		<testcase name="Mutant #427" file="src_mut/pytest_sort_mut/plugin.py" line="26">
 			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, help=str(bucket_types))</system-out>
 		</testcase>
-		<testcase name="Mutant #418" file="src_mut/pytest_sort_mut/plugin.py" line="26">
+		<testcase name="Mutant #428" file="src_mut/pytest_sort_mut/plugin.py" line="26">
 			<system-out>    group.addoption(&quot;--sort-bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, help=str(bucket_types))</system-out>
 		</testcase>
-		<testcase name="Mutant #419" file="src_mut/pytest_sort_mut/plugin.py" line="27">
+		<testcase name="Mutant #429" file="src_mut/pytest_sort_mut/plugin.py" line="27">
 			<system-out>    group.addoption(&quot;--sort_bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #420" file="src_mut/pytest_sort_mut/plugin.py" line="27">
+		<testcase name="Mutant #430" file="src_mut/pytest_sort_mut/plugin.py" line="27">
 			<system-out>    group.addoption(&quot;--sort_bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #421" file="src_mut/pytest_sort_mut/plugin.py" line="27">
+		<testcase name="Mutant #431" file="src_mut/pytest_sort_mut/plugin.py" line="27">
 			<system-out>    group.addoption(&quot;--sort_bucket&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #422" file="src_mut/pytest_sort_mut/plugin.py" line="28">
+		<testcase name="Mutant #432" file="src_mut/pytest_sort_mut/plugin.py" line="28">
 			<system-out>    parser.addini(&quot;sort_bucket&quot;, help=str(bucket_types))</system-out>
 		</testcase>
-		<testcase name="Mutant #423" file="src_mut/pytest_sort_mut/plugin.py" line="30">
+		<testcase name="Mutant #433" file="src_mut/pytest_sort_mut/plugin.py" line="30">
 			<system-out>    choices = [&quot;sort_mode&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #424" file="src_mut/pytest_sort_mut/plugin.py" line="30">
+		<testcase name="Mutant #434" file="src_mut/pytest_sort_mut/plugin.py" line="30">
 			<system-out>    choices = [&quot;sort_mode&quot;]</system-out>
 		</testcase>
-		<testcase name="Mutant #425" file="src_mut/pytest_sort_mut/plugin.py" line="32">
+		<testcase name="Mutant #435" file="src_mut/pytest_sort_mut/plugin.py" line="32">
 			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, help=str(choices))</system-out>
 		</testcase>
-		<testcase name="Mutant #426" file="src_mut/pytest_sort_mut/plugin.py" line="32">
+		<testcase name="Mutant #436" file="src_mut/pytest_sort_mut/plugin.py" line="32">
 			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, help=str(choices))</system-out>
 		</testcase>
-		<testcase name="Mutant #427" file="src_mut/pytest_sort_mut/plugin.py" line="32">
+		<testcase name="Mutant #437" file="src_mut/pytest_sort_mut/plugin.py" line="32">
 			<system-out>    group.addoption(&quot;--sort-bucket-mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, help=str(choices))</system-out>
 		</testcase>
-		<testcase name="Mutant #428" file="src_mut/pytest_sort_mut/plugin.py" line="33">
+		<testcase name="Mutant #438" file="src_mut/pytest_sort_mut/plugin.py" line="33">
 			<system-out>    group.addoption(&quot;--sort_bucket_mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #429" file="src_mut/pytest_sort_mut/plugin.py" line="33">
+		<testcase name="Mutant #439" file="src_mut/pytest_sort_mut/plugin.py" line="33">
 			<system-out>    group.addoption(&quot;--sort_bucket_mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #430" file="src_mut/pytest_sort_mut/plugin.py" line="33">
+		<testcase name="Mutant #440" file="src_mut/pytest_sort_mut/plugin.py" line="33">
 			<system-out>    group.addoption(&quot;--sort_bucket_mode&quot;, action=&quot;store&quot;, dest=&quot;sort_bucket_mode&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #431" file="src_mut/pytest_sort_mut/plugin.py" line="34">
+		<testcase name="Mutant #441" file="src_mut/pytest_sort_mut/plugin.py" line="34">
 			<system-out>    parser.addini(&quot;sort_bucket_mode&quot;, help=str(choices))</system-out>
 		</testcase>
-		<testcase name="Mutant #432" file="src_mut/pytest_sort_mut/plugin.py" line="36">
+		<testcase name="Mutant #442" file="src_mut/pytest_sort_mut/plugin.py" line="36">
 			<system-out>    help_text = &quot;Random Seed to use with random mode.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #433" file="src_mut/pytest_sort_mut/plugin.py" line="36">
+		<testcase name="Mutant #443" file="src_mut/pytest_sort_mut/plugin.py" line="36">
 			<system-out>    help_text = &quot;Random Seed to use with random mode.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #434" file="src_mut/pytest_sort_mut/plugin.py" line="37">
+		<testcase name="Mutant #444" file="src_mut/pytest_sort_mut/plugin.py" line="37">
 			<system-out>    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #435" file="src_mut/pytest_sort_mut/plugin.py" line="37">
+		<testcase name="Mutant #445" file="src_mut/pytest_sort_mut/plugin.py" line="37">
 			<system-out>    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #436" file="src_mut/pytest_sort_mut/plugin.py" line="37">
+		<testcase name="Mutant #446" file="src_mut/pytest_sort_mut/plugin.py" line="37">
 			<system-out>    group.addoption(&quot;--sort-seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #437" file="src_mut/pytest_sort_mut/plugin.py" line="38">
+		<testcase name="Mutant #447" file="src_mut/pytest_sort_mut/plugin.py" line="38">
 			<system-out>    group.addoption(&quot;--sort_seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #438" file="src_mut/pytest_sort_mut/plugin.py" line="38">
+		<testcase name="Mutant #448" file="src_mut/pytest_sort_mut/plugin.py" line="38">
 			<system-out>    group.addoption(&quot;--sort_seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #439" file="src_mut/pytest_sort_mut/plugin.py" line="38">
+		<testcase name="Mutant #449" file="src_mut/pytest_sort_mut/plugin.py" line="38">
 			<system-out>    group.addoption(&quot;--sort_seed&quot;, action=&quot;store&quot;, dest=&quot;sort_seed&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #440" file="src_mut/pytest_sort_mut/plugin.py" line="39">
+		<testcase name="Mutant #450" file="src_mut/pytest_sort_mut/plugin.py" line="39">
 			<system-out>    parser.addini(&quot;sort_seed&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #441" file="src_mut/pytest_sort_mut/plugin.py" line="41">
+		<testcase name="Mutant #451" file="src_mut/pytest_sort_mut/plugin.py" line="41">
 			<system-out>    help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #442" file="src_mut/pytest_sort_mut/plugin.py" line="41">
+		<testcase name="Mutant #452" file="src_mut/pytest_sort_mut/plugin.py" line="41">
 			<system-out>    help_text = &quot;Records runtimes. Activated by default when sort-mode=fastest&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #443" file="src_mut/pytest_sort_mut/plugin.py" line="42">
+		<testcase name="Mutant #453" file="src_mut/pytest_sort_mut/plugin.py" line="42">
 			<system-out>    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #444" file="src_mut/pytest_sort_mut/plugin.py" line="42">
+		<testcase name="Mutant #454" file="src_mut/pytest_sort_mut/plugin.py" line="42">
 			<system-out>    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #445" file="src_mut/pytest_sort_mut/plugin.py" line="42">
+		<testcase name="Mutant #455" file="src_mut/pytest_sort_mut/plugin.py" line="42">
 			<system-out>    group.addoption(&quot;--sort-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #446" file="src_mut/pytest_sort_mut/plugin.py" line="43">
+		<testcase name="Mutant #456" file="src_mut/pytest_sort_mut/plugin.py" line="43">
 			<system-out>    group.addoption(&quot;--sort_record_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #447" file="src_mut/pytest_sort_mut/plugin.py" line="43">
+		<testcase name="Mutant #457" file="src_mut/pytest_sort_mut/plugin.py" line="43">
 			<system-out>    group.addoption(&quot;--sort_record_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #448" file="src_mut/pytest_sort_mut/plugin.py" line="43">
+		<testcase name="Mutant #458" file="src_mut/pytest_sort_mut/plugin.py" line="43">
 			<system-out>    group.addoption(&quot;--sort_record_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_record&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #449" file="src_mut/pytest_sort_mut/plugin.py" line="44">
+		<testcase name="Mutant #459" file="src_mut/pytest_sort_mut/plugin.py" line="44">
 			<system-out>    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #450" file="src_mut/pytest_sort_mut/plugin.py" line="44">
+		<testcase name="Mutant #460" file="src_mut/pytest_sort_mut/plugin.py" line="44">
 			<system-out>    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #451" file="src_mut/pytest_sort_mut/plugin.py" line="44">
+		<testcase name="Mutant #461" file="src_mut/pytest_sort_mut/plugin.py" line="44">
 			<system-out>    group.addoption(&quot;--sort-no-record-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #452" file="src_mut/pytest_sort_mut/plugin.py" line="45">
+		<testcase name="Mutant #462" file="src_mut/pytest_sort_mut/plugin.py" line="45">
 			<system-out>    group.addoption(&quot;--sort_no_record_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #453" file="src_mut/pytest_sort_mut/plugin.py" line="45">
+		<testcase name="Mutant #463" file="src_mut/pytest_sort_mut/plugin.py" line="45">
 			<system-out>    group.addoption(&quot;--sort_no_record_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #454" file="src_mut/pytest_sort_mut/plugin.py" line="45">
+		<testcase name="Mutant #464" file="src_mut/pytest_sort_mut/plugin.py" line="45">
 			<system-out>    group.addoption(&quot;--sort_no_record_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_no_record&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #455" file="src_mut/pytest_sort_mut/plugin.py" line="46">
+		<testcase name="Mutant #465" file="src_mut/pytest_sort_mut/plugin.py" line="46">
 			<system-out>    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #456" file="src_mut/pytest_sort_mut/plugin.py" line="46">
+		<testcase name="Mutant #466" file="src_mut/pytest_sort_mut/plugin.py" line="46">
 			<system-out>    parser.addini(&quot;sort_record_times&quot;, help=help_text, type=&quot;bool&quot;)</system-out>
 		</testcase>
-		<testcase name="Mutant #457" file="src_mut/pytest_sort_mut/plugin.py" line="48">
+		<testcase name="Mutant #467" file="src_mut/pytest_sort_mut/plugin.py" line="48">
 			<system-out>    help_text = &quot;Clear the recorded runtimes before sorting.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #458" file="src_mut/pytest_sort_mut/plugin.py" line="48">
+		<testcase name="Mutant #468" file="src_mut/pytest_sort_mut/plugin.py" line="48">
 			<system-out>    help_text = &quot;Clear the recorded runtimes before sorting.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #459" file="src_mut/pytest_sort_mut/plugin.py" line="49">
+		<testcase name="Mutant #469" file="src_mut/pytest_sort_mut/plugin.py" line="49">
 			<system-out>    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #460" file="src_mut/pytest_sort_mut/plugin.py" line="49">
+		<testcase name="Mutant #470" file="src_mut/pytest_sort_mut/plugin.py" line="49">
 			<system-out>    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #461" file="src_mut/pytest_sort_mut/plugin.py" line="49">
+		<testcase name="Mutant #471" file="src_mut/pytest_sort_mut/plugin.py" line="49">
 			<system-out>    group.addoption(&quot;--sort-reset-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #462" file="src_mut/pytest_sort_mut/plugin.py" line="50">
+		<testcase name="Mutant #472" file="src_mut/pytest_sort_mut/plugin.py" line="50">
 			<system-out>    group.addoption(&quot;--sort_reset_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #463" file="src_mut/pytest_sort_mut/plugin.py" line="50">
+		<testcase name="Mutant #473" file="src_mut/pytest_sort_mut/plugin.py" line="50">
 			<system-out>    group.addoption(&quot;--sort_reset_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #464" file="src_mut/pytest_sort_mut/plugin.py" line="50">
+		<testcase name="Mutant #474" file="src_mut/pytest_sort_mut/plugin.py" line="50">
 			<system-out>    group.addoption(&quot;--sort_reset_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_reset_times&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #465" file="src_mut/pytest_sort_mut/plugin.py" line="52">
+		<testcase name="Mutant #475" file="src_mut/pytest_sort_mut/plugin.py" line="52">
 			<system-out>    help_text = &quot;At end of report current times.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #466" file="src_mut/pytest_sort_mut/plugin.py" line="52">
+		<testcase name="Mutant #476" file="src_mut/pytest_sort_mut/plugin.py" line="52">
 			<system-out>    help_text = &quot;At end of report current times.&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #467" file="src_mut/pytest_sort_mut/plugin.py" line="53">
+		<testcase name="Mutant #477" file="src_mut/pytest_sort_mut/plugin.py" line="53">
 			<system-out>    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #468" file="src_mut/pytest_sort_mut/plugin.py" line="53">
+		<testcase name="Mutant #478" file="src_mut/pytest_sort_mut/plugin.py" line="53">
 			<system-out>    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #469" file="src_mut/pytest_sort_mut/plugin.py" line="53">
+		<testcase name="Mutant #479" file="src_mut/pytest_sort_mut/plugin.py" line="53">
 			<system-out>    group.addoption(&quot;--sort-report-times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #470" file="src_mut/pytest_sort_mut/plugin.py" line="54">
+		<testcase name="Mutant #480" file="src_mut/pytest_sort_mut/plugin.py" line="54">
 			<system-out>    group.addoption(&quot;--sort_report_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #471" file="src_mut/pytest_sort_mut/plugin.py" line="54">
+		<testcase name="Mutant #481" file="src_mut/pytest_sort_mut/plugin.py" line="54">
 			<system-out>    group.addoption(&quot;--sort_report_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #472" file="src_mut/pytest_sort_mut/plugin.py" line="54">
+		<testcase name="Mutant #482" file="src_mut/pytest_sort_mut/plugin.py" line="54">
 			<system-out>    group.addoption(&quot;--sort_report_times&quot;, action=&quot;store_true&quot;, dest=&quot;sort_report_times&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #473" file="src_mut/pytest_sort_mut/plugin.py" line="56">
+		<testcase name="Mutant #483" file="src_mut/pytest_sort_mut/plugin.py" line="56">
 			<system-out>    help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort_mut)&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #474" file="src_mut/pytest_sort_mut/plugin.py" line="56">
+		<testcase name="Mutant #484" file="src_mut/pytest_sort_mut/plugin.py" line="56">
 			<system-out>    help_text = &quot;Location to store pytest-sort data. (default: ./.pytest_sort_mut)&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #475" file="src_mut/pytest_sort_mut/plugin.py" line="57">
+		<testcase name="Mutant #485" file="src_mut/pytest_sort_mut/plugin.py" line="57">
 			<system-out>    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #476" file="src_mut/pytest_sort_mut/plugin.py" line="57">
+		<testcase name="Mutant #486" file="src_mut/pytest_sort_mut/plugin.py" line="57">
 			<system-out>    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #477" file="src_mut/pytest_sort_mut/plugin.py" line="57">
+		<testcase name="Mutant #487" file="src_mut/pytest_sort_mut/plugin.py" line="57">
 			<system-out>    group.addoption(&quot;--sort-datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #478" file="src_mut/pytest_sort_mut/plugin.py" line="58">
+		<testcase name="Mutant #488" file="src_mut/pytest_sort_mut/plugin.py" line="58">
 			<system-out>    group.addoption(&quot;--sort_datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #479" file="src_mut/pytest_sort_mut/plugin.py" line="58">
+		<testcase name="Mutant #489" file="src_mut/pytest_sort_mut/plugin.py" line="58">
 			<system-out>    group.addoption(&quot;--sort_datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #480" file="src_mut/pytest_sort_mut/plugin.py" line="58">
+		<testcase name="Mutant #490" file="src_mut/pytest_sort_mut/plugin.py" line="58">
 			<system-out>    group.addoption(&quot;--sort_datafile&quot;, action=&quot;store&quot;, dest=&quot;sort_datafile&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #481" file="src_mut/pytest_sort_mut/plugin.py" line="59">
+		<testcase name="Mutant #491" file="src_mut/pytest_sort_mut/plugin.py" line="59">
 			<system-out>    parser.addini(&quot;sort_datafile&quot;, help=help_text)</system-out>
 		</testcase>
-		<testcase name="Mutant #482" file="src_mut/pytest_sort_mut/plugin.py" line="61">
+		<testcase name="Mutant #492" file="src_mut/pytest_sort_mut/plugin.py" line="61">
 			<system-out>    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #483" file="src_mut/pytest_sort_mut/plugin.py" line="61">
+		<testcase name="Mutant #493" file="src_mut/pytest_sort_mut/plugin.py" line="61">
 			<system-out>    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #484" file="src_mut/pytest_sort_mut/plugin.py" line="61">
+		<testcase name="Mutant #494" file="src_mut/pytest_sort_mut/plugin.py" line="61">
 			<system-out>    group.addoption(&quot;--sort-debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #485" file="src_mut/pytest_sort_mut/plugin.py" line="62">
+		<testcase name="Mutant #495" file="src_mut/pytest_sort_mut/plugin.py" line="62">
 			<system-out>    group.addoption(&quot;--sort_debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #486" file="src_mut/pytest_sort_mut/plugin.py" line="62">
+		<testcase name="Mutant #496" file="src_mut/pytest_sort_mut/plugin.py" line="62">
 			<system-out>    group.addoption(&quot;--sort_debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #487" file="src_mut/pytest_sort_mut/plugin.py" line="62">
+		<testcase name="Mutant #497" file="src_mut/pytest_sort_mut/plugin.py" line="62">
 			<system-out>    group.addoption(&quot;--sort_debug&quot;, action=&quot;store_true&quot;, dest=&quot;sort_debug&quot;, help=argparse.SUPPRESS)</system-out>
 		</testcase>
-		<testcase name="Mutant #488" file="src_mut/pytest_sort_mut/plugin.py" line="68">
+		<testcase name="Mutant #498" file="src_mut/pytest_sort_mut/plugin.py" line="68">
 			<system-out>        &quot;markers&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #489" file="src_mut/pytest_sort_mut/plugin.py" line="69">
+		<testcase name="Mutant #499" file="src_mut/pytest_sort_mut/plugin.py" line="69">
 			<system-out>        &quot;sort(mode,bucket): Override pytest-sort Options.&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #490" file="src_mut/pytest_sort_mut/plugin.py" line="73">
+		<testcase name="Mutant #500" file="src_mut/pytest_sort_mut/plugin.py" line="73">
 			<system-out>        &quot;markers&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #491" file="src_mut/pytest_sort_mut/plugin.py" line="74">
+		<testcase name="Mutant #501" file="src_mut/pytest_sort_mut/plugin.py" line="74">
 			<system-out>        &quot;order(item_sort_key): Always use specified Sort Key for this test item or bucket.&quot;,</system-out>
 		</testcase>
-		<testcase name="Mutant #492" file="src_mut/pytest_sort_mut/plugin.py" line="81">
+		<testcase name="Mutant #502" file="src_mut/pytest_sort_mut/plugin.py" line="81">
 			<system-out>    header = &quot;pytest-sort:&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #493" file="src_mut/pytest_sort_mut/plugin.py" line="81">
+		<testcase name="Mutant #503" file="src_mut/pytest_sort_mut/plugin.py" line="81">
 			<system-out>    header = &quot;pytest-sort:&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #494" file="src_mut/pytest_sort_mut/plugin.py" line="84">
+		<testcase name="Mutant #504" file="src_mut/pytest_sort_mut/plugin.py" line="84">
 			<system-out>        header += f&quot;\n  {key}: {value}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #495" file="src_mut/pytest_sort_mut/plugin.py" line="84">
+		<testcase name="Mutant #505" file="src_mut/pytest_sort_mut/plugin.py" line="84">
 			<system-out>        header += f&quot;\n  {key}: {value}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #496" file="src_mut/pytest_sort_mut/plugin.py" line="84">
+		<testcase name="Mutant #506" file="src_mut/pytest_sort_mut/plugin.py" line="84">
 			<system-out>        header += f&quot;\n  {key}: {value}&quot;</system-out>
 		</testcase>
-		<testcase name="Mutant #497" file="src_mut/pytest_sort_mut/plugin.py" line="98">
+		<testcase name="Mutant #507" file="src_mut/pytest_sort_mut/plugin.py" line="98">
 			<system-out>    sort_items(items)</system-out>
 		</testcase>
-		<testcase name="Mutant #498" file="src_mut/pytest_sort_mut/plugin.py" line="104">
+		<testcase name="Mutant #508" file="src_mut/pytest_sort_mut/plugin.py" line="104">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #499" file="src_mut/pytest_sort_mut/plugin.py" line="104">
+		<testcase name="Mutant #509" file="src_mut/pytest_sort_mut/plugin.py" line="104">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #500" file="src_mut/pytest_sort_mut/plugin.py" line="104">
+		<testcase name="Mutant #510" file="src_mut/pytest_sort_mut/plugin.py" line="104">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #501" file="src_mut/pytest_sort_mut/plugin.py" line="104">
+		<testcase name="Mutant #511" file="src_mut/pytest_sort_mut/plugin.py" line="104">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #502" file="src_mut/pytest_sort_mut/plugin.py" line="104">
+		<testcase name="Mutant #512" file="src_mut/pytest_sort_mut/plugin.py" line="104">
 			<system-out>    if SortConfig.record and call.when in (&quot;setup&quot;, &quot;call&quot;, &quot;teardown&quot;):</system-out>
 		</testcase>
-		<testcase name="Mutant #503" file="src_mut/pytest_sort_mut/plugin.py" line="105">
+		<testcase name="Mutant #513" file="src_mut/pytest_sort_mut/plugin.py" line="105">
 			<system-out>        duration = int(call.duration * 1_000_000_000)  # convert to ns</system-out>
 		</testcase>
-		<testcase name="Mutant #504" file="src_mut/pytest_sort_mut/plugin.py" line="105">
+		<testcase name="Mutant #514" file="src_mut/pytest_sort_mut/plugin.py" line="105">
 			<system-out>        duration = int(call.duration * 1_000_000_000)  # convert to ns</system-out>
 		</testcase>
-		<testcase name="Mutant #505" file="src_mut/pytest_sort_mut/plugin.py" line="105">
+		<testcase name="Mutant #515" file="src_mut/pytest_sort_mut/plugin.py" line="105">
 			<system-out>        duration = int(call.duration * 1_000_000_000)  # convert to ns</system-out>
 		</testcase>
-		<testcase name="Mutant #506" file="src_mut/pytest_sort_mut/plugin.py" line="107">
+		<testcase name="Mutant #516" file="src_mut/pytest_sort_mut/plugin.py" line="107">
 			<system-out>        if item.nodeid not in SortConfig.recorded_times:</system-out>
 		</testcase>
-		<testcase name="Mutant #507" file="src_mut/pytest_sort_mut/plugin.py" line="108">
+		<testcase name="Mutant #517" file="src_mut/pytest_sort_mut/plugin.py" line="108">
 			<system-out>            SortConfig.recorded_times[item.nodeid] = {}</system-out>
 		</testcase>
-		<testcase name="Mutant #508" file="src_mut/pytest_sort_mut/plugin.py" line="110">
+		<testcase name="Mutant #518" file="src_mut/pytest_sort_mut/plugin.py" line="110">
 			<system-out>        SortConfig.recorded_times[item.nodeid][call.when] = duration</system-out>
 		</testcase>
-		<testcase name="Mutant #509" file="src_mut/pytest_sort_mut/plugin.py" line="125">
+		<testcase name="Mutant #519" file="src_mut/pytest_sort_mut/plugin.py" line="125">
 			<system-out>        print_recorded_times_report(terminalreporter)</system-out>
 		</testcase>
 	</testsuite>
