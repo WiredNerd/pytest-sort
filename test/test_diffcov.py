@@ -81,7 +81,7 @@ class TestGitPatch:
         assert output.stdout.decode.return_value == out
 
     def test_get_changed_lines(self):
-        assert diffcov.get_changed_lines("C:\\dev", GIT_DIFF) == {
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {
             Path("C:/dev/pytest_sort/module1.py").resolve(): {20, 24, 30}
         }
 
@@ -118,9 +118,9 @@ class TestGitPatch:
             ),
         ]
 
-        assert diffcov.get_changed_lines("C:\\dev", GIT_DIFF) == {
-            Path("C:/dev/pytest_sort/module1.py"): {0, 2, 3, 4},
-            Path("C:/dev/pytest_sort/module2.py"): {20},
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {
+            Path("C:/dev/pytest_sort/module1.py").resolve(): {0, 2, 3, 4},
+            Path("C:/dev/pytest_sort/module2.py").resolve(): {20},
         }
 
         whatthepatch.parse_patch.assert_called_with(GIT_DIFF)
@@ -139,7 +139,7 @@ class TestGitPatch:
             ),
         ]
 
-        assert diffcov.get_changed_lines("C:\\dev", GIT_DIFF) == {}
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {}
 
     def test_get_changed_lines_no_changes(self, whatthepatch):
         whatthepatch.parse_patch.return_value = [
@@ -156,7 +156,7 @@ class TestGitPatch:
             )
         ]
 
-        assert diffcov.get_changed_lines("C:\\dev", GIT_DIFF) == {}
+        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {}
 
 
 class TestCoverage:
