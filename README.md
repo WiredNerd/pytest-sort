@@ -10,6 +10,7 @@
 [![Code Style: black](https://img.shields.io/badge/Code_Style-Black-black)](https://black.readthedocs.io)
 [![Linter: ruff](https://img.shields.io/badge/Linter-ruff-purple)](https://beta.ruff.rs/docs/)
 [![Snyk Security](https://img.shields.io/badge/Snyk%20Security-monitored-FF66FF)](https://snyk.io/)
+[![Documentation Status](https://readthedocs.org/projects/pytest-sort/badge/?version=docs)](https://pytest-sort.readthedocs.io/)
 
 
 ## Project description
