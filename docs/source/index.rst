@@ -1,20 +1,30 @@
-.. pytest-sort documentation master file, created by
-   sphinx-quickstart on Sun Oct  1 21:40:31 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+pytest-sort
+===========
 
-Welcome to pytest-sort's documentation!
-=======================================
+.. image:: https://img.shields.io/pypi/v/pytest-sort
+   :alt: PyPI - Version
+   :target: https://pypi.org/project/pytest-sort
+
+pytest-sort is a pytest plugin to automatically change the execution order of test cases.
+Changing the order of execution can help find test cases that only succeed because of a favorable state.
+
+This plugin provides several options for controlling how the test cases are reordered.
+
+Installation::
+
+   pip install pytest-sort --upgrade
+
+Running with pytest-sort::
+
+   pytest --sort-mode=random
+
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
+   usage
+   how
+   markers
+   options
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

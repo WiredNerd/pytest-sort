@@ -38,5 +38,6 @@
         "Git Bash": {
             "source": "Git Bash"
         },
-    }
+    },
+    "esbonio.sphinx.confDir": ""
 }
