@@ -5,7 +5,7 @@ For all options, the priority of options is:
 
 1. Pytest Markers (closest to the test case)
 2. Command Line Option
-3. Pytest Config Option
+3. Pytest Config File
 4. Default values
 
 Sort Mode
