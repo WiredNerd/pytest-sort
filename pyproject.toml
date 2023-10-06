@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "1.2.1"
+version = "1.2.2"
 license = { file = "LICENSE" }
 keywords = [
     "test",
@@ -34,8 +34,9 @@ classifiers = [
 dependencies = ["pytest>=7.4.0", "whatthepatch>=1.0.5", "coverage>=7.3.1"]
 
 [project.urls]
+"Documentation" = "https://pytest-sort.readthedocs.io/"
 "Homepage" = "https://github.com/WiredNerd/pytest-sort"
-"Bug Tracker" = "https://github.com/WiredNerd/pytest-sort/issues"
+"Issue Tracker" = "https://github.com/WiredNerd/pytest-sort/issues"
 
 [project.entry-points."pytest11"]
 sort = "pytest_sort.plugin"
