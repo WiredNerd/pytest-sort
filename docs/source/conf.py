@@ -9,7 +9,7 @@
 project = 'pytest-sort'
 copyright = '2023, WiredNerd'
 author = 'WiredNerd'
-release = '1.2.1'
+release = 'latest'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
