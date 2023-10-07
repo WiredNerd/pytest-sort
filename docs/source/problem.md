@@ -21,6 +21,7 @@ Let's look at some drastically oversimplified examples to demonstrate how applic
 :titlesonly:
 example_env.md
 example_class.md
+example_test.md
 ```
 
 ## How to Prevent?

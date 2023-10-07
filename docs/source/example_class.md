@@ -51,10 +51,6 @@ Running Pytest with the option sort-mode as 'random' will give a very strong cha
 
 ## How to find the cause?
 
-As mentioned before, the example above is drastically oversimplified.
-Situations like this are more likely to occur when the project already has hundreds of test cases.
-Debugging 3 test cases is not that hard, but debugging 300 or more all at once, is not practical.
-
 Pytest Sort includes options that can help narrow down the list of test cases to examine.
 
 1. Run Pytest with `-vv -x --sort-mode=ordered` and note which test case is the first to fail.
