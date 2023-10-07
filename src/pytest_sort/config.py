@@ -25,16 +25,16 @@ legacy_bucket_types = {
 class SortConfig:
     """Statoc class for storing configuration of pytest_sort."""
 
-    mode: str = "ordered"
-    bucket: str = "parent"
-    bucket_mode: str = "sort_mode"
-    record: bool | None = None  # pragma: no mutate
-    reset: bool = False
-    report: bool = False
+    mode: ClassVar[str] = "ordered"
+    bucket: ClassVar[str] = "parent"
+    bucket_mode: ClassVar[str] = "sort_mode"
+    record: ClassVar[bool | None] = None  # pragma: no mutate
+    reset: ClassVar[bool] = False
+    report: ClassVar[bool] = False
 
-    seed = random.randint(0, 1_000_000)
+    seed: ClassVar[int] = random.randint(0, 1_000_000)
 
-    debug = False
+    debug: ClassVar[bool] = False
 
     recorded_times: ClassVar[dict] = {}
     item_totals: ClassVar[dict] = {}
