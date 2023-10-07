@@ -40,6 +40,10 @@ Running with pytest-sort:
 pytest --sort-mode=random
 ```
 
+## Documentation:
+
+- Usage, Examples, Configuration, and more: https://pytest-sort.readthedocs.io/
+
 ## Contribute
 
 - Issue Tracker: https://github.com/WiredNerd/pytest-sort/issues
