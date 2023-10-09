@@ -40,6 +40,7 @@ myst_enable_extensions = [
     "tasklist",
 ]
 myst_linkify_fuzzy_links=False
+myst_heading_anchors=6
 
 # templates_path = ['_templates']
 exclude_patterns = []
