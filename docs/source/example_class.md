@@ -4,7 +4,7 @@ _service.py:_
 ```python3
 from typing import ClassVar
 
-class Calulate:
+class Calculate:
     def __init__(self, start_value: int):
         self._value = start_value
 
@@ -12,7 +12,7 @@ class Calulate:
 
     @staticmethod
     def set_increment(increment):
-        Calulate._increment = increment
+        Calculate._increment = increment
 
     def next(self):
         self._value += self._increment
@@ -24,15 +24,15 @@ _test_service.py:_
 import service
 
 def test_calculate_default():
-    assert service.Calulate._increment == 5
+    assert service.Calculate._increment == 5
 
 def test_calculate_next():
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     assert calc.next() == 10
     assert calc.next() == 15
 
 def test_calculate_next_by_1():
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     calc.set_increment(1)
     assert calc.next() == 6
     assert calc.next() == 7
@@ -83,16 +83,16 @@ import service
 
 def test_calculate_default():
     importlib.reload(service)  # reload default values before testing
-    assert service.Calulate._increment == 5
+    assert service.Calculate._increment == 5
 
 def test_calculate_next():
-    service.Calulate._increment = 3  # set to known value before testing
-    calc = service.Calulate(5)
+    service.Calculate._increment = 3  # set to known value before testing
+    calc = service.Calculate(5)
     assert calc.next() == 8
     assert calc.next() == 11
 
 def test_calculate_next_by_1():
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     calc.set_increment(1)
     assert calc.next() == 6
     assert calc.next() == 7
@@ -103,7 +103,7 @@ def test_calculate_next_by_1():
 
 Reset all variables to defaults before every test case.
 
-This is a little more relyable because it allows all test cases to assume we are starting with default values.
+This is a little more reliable because it allows all test cases to assume we are starting with default values.
 However, you must remember to reload the modules in ever test module.
 
 Below I fixed the tests by adding a Pytest Fixture with autouse=True.
@@ -119,15 +119,15 @@ def _reload_service():
     importlib.reload(service)
 
 def test_calculate_default():
-    assert service.Calulate._increment == 5
+    assert service.Calculate._increment == 5
 
 def test_calculate_next():
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     assert calc.next() == 10
     assert calc.next() == 15
 
 def test_calculate_next_by_1():
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     calc.set_increment(1)
     assert calc.next() == 6
     assert calc.next() == 7
@@ -142,10 +142,10 @@ If each test case cleans up after itself, there is no chance of application stat
 
 The best way to implement this kind of cleanup is with a Pytest Fixture.
 Fixtures allow you to run the setup the data, then 'yield' execution to the test case.
-After the test case is completed, statments after the 'yield' are run to reset the data.
+After the test case is completed, statements after the 'yield' are run to reset the data.
 With a Fixture, the setup and reset pattern becomes reusable by other test cases.
 It also will run the reset steps even if the test case fails.
-Finally there can be perfomance benefits since we don't need to reset the data before every test case.
+Finally there can be performance benefits since we don't need to reset the data before every test case.
 
 ```python3
 import importlib
@@ -158,15 +158,15 @@ def reset_after():
     importlib.reload(service)
 
 def test_calculate_default():
-    assert service.Calulate._increment == 5
+    assert service.Calculate._increment == 5
 
 def test_calculate_next():
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     assert calc.next() == 10
     assert calc.next() == 15
 
 def test_calculate_next_by_1(reset_after):
-    calc = service.Calulate(5)
+    calc = service.Calculate(5)
     calc.set_increment(1)
     assert calc.next() == 6
     assert calc.next() == 7

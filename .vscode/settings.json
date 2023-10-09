@@ -39,5 +39,15 @@
             "source": "Git Bash"
         },
     },
-    "esbonio.sphinx.confDir": ""
+    "esbonio.sphinx.confDir": "",
+    "cSpell.words": [
+        "autouse",
+        "diffcov",
+        "exitfirst",
+        "maxdepth",
+        "Mutmut",
+        "staticmethod",
+        "titlesonly",
+        "toctree"
+    ]
 }

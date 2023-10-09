@@ -63,7 +63,7 @@ def test_username():
     with mock.patch.dict(os.environ, {"DB_USERNAME": "test_user"}):
         importlib.reload(app)
 ```
-This test case starts by temporariliy modifying `os.environ`.  Then, reloading the `app` module.  
+This test case starts by temporarily modifying `os.environ`.  Then, reloading the `app` module.  
 
 _app.py:_
 ```python3
@@ -101,7 +101,7 @@ Pytest Sort includes options that can help narrow down the list of test cases to
 3. Find both test cases in the ordered list in sysout.  The problem is most likely between the two.
 
 Let's try that with the above example.
-With ordered mode, the firt to fail is test_get_username.
+With ordered mode, the first to fail is test_get_username.
 With reverse mode, the first to fail is test_default_username.
 Looking at the ordered list of test cases in sysout, you can find the test cases that are between the two.
 In this simple example, there's only test_username.
@@ -137,14 +137,14 @@ def test_username():
 
 def test_get_username():
     app.USERNAME = "example_user"  # Set expected value
-    assert app.get_username() == "default"
+    assert app.get_username() == "example_user"
 ```
 
 ### Better
 
 Reset all variables to defaults before every test case.
 
-This is a little more relyable because it allows all test cases to assume we are starting with default values.
+This is a little more reliable because it allows all test cases to assume we are starting with default values.
 However, you must remember to reload the modules in ever test module.
 
 Below I fixed the tests by adding a Pytest Fixture with autouse=True.
@@ -182,10 +182,10 @@ If each test case cleans up after itself, there is no chance of application stat
 
 The best way to implement this kind of cleanup is with a Pytest Fixture.
 Fixtures allow you to run the setup the data, then 'yield' execution to the test case.
-After the test case is completed, statments after the 'yield' are run to reset the data.
+After the test case is completed, statements after the 'yield' are run to reset the data.
 With a Fixture, the setup and reset pattern becomes reusable by other test cases.
 It also will run the reset steps even if the test case fails.
-Finally there can be perfomance benefits since we don't need to reset the data before every test case.
+Finally there can be performance benefits since we don't need to reset the data before every test case.
 
 ```python3
 import importlib
@@ -194,8 +194,8 @@ from unittest import mock
 import pytest
 import app
 
-@pytest.fixture()  # Fixture to set envionment variables, and reset after testing
-def enviornment_variables():
+@pytest.fixture()  # Fixture to set environment variables, and reset after testing
+def environment_variables():
     vars = {"DB_USERNAME": "test_user"}
     with mock.patch.dict(os.environ, vars):
         importlib.reload(app)
@@ -205,8 +205,8 @@ def enviornment_variables():
 def test_default_username():
     assert app.USERNAME == "default"
 
-def test_username(enviornment_variables):
-    assert app.USERNAME == enviornment_variables["DB_USERNAME"]
+def test_username(environment_variables):
+    assert app.USERNAME == environment_variables["DB_USERNAME"]
 
 def test_get_username():
     assert app.get_username() == "default"

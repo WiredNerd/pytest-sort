@@ -95,7 +95,7 @@ Well, you could recreate response_1, response_2, and response_3 inside each test
 But we are already trying to reuse those values, so let's create a fixture instead.
 This fixture will create the three test objects from scratch before each test.
 You could alternately create 3 fixtures, one for each response.  
-That would save execution time, expecially if you were loading data form a file.
+That would save execution time, especially if you were loading data form a file.
 
 _test_core.py:_
 ```python3

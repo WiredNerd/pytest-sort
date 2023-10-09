@@ -1,4 +1,4 @@
-# Usage
+# Using Pytest Sort
 
 ## Getting Started
 
@@ -23,11 +23,11 @@ See [Finding State Leaks](project:#finding-state-leaks) below for help resolving
 * If runtime of the pytest is significantly longer with a larger bucket sizes, you may have fixtures that are being created and destroyed more than expected.  See [sort-bucket](project:configuration.md#sort-bucket) for details.
 * If you discover that some test cases really should be run in order, try using [Pytest Markers](project:configuration.md#pytest-markers) 'sort' or 'order' to keep those tests in a set order.
 
-Once you have found settings that best fit your needs, save them in your [pytest configuration file](https://docs.pytest.org/en/stable/reference/customize.html#configuration-file-formats)
+Once you have found settings that best fit your needs, save them in your [Pytest configuration file](https://docs.pytest.org/en/stable/reference/customize.html#configuration-file-formats)
 
 ### New Project
 
-When starting a new project, I recommend adding the following options to your [pytest configuration file](https://docs.pytest.org/en/stable/reference/customize.html#configuration-file-formats):
+When starting a new project, I recommend adding the following options to your [Pytest configuration file](https://docs.pytest.org/en/stable/reference/customize.html#configuration-file-formats):
 ```
 sort_mode = random
 sort_bucket = session
@@ -35,7 +35,7 @@ sort_bucket = session
 
 As you develop your test suite:
 * If you need to create fixtures with scope of module or package, consider changing the sort_bucket setting to match.  See [sort-bucket](project:configuration.md#sort-bucket) for details.
-* If you are adding test cases that must be run in a specific order.  Try grouping them in a class, and decorating the class with `@pytest.mark.sort("ordered")`
+* If you are adding test cases that must be run in a specific order.  Try grouping them in a class, and decorating the class with `@pytest.mark.sort("ordered")`.  See [Pytest Markers](project:configuration.md#pytest-markers) for more options.
 
 ## Problem Solving
 
@@ -47,7 +47,7 @@ As you develop your test suite:
 4. Walkthrough and/or Debug the test cases that might be a problem.
 Look specifically for any variables that are changed by the test case.
 If those variables are retained after the test case, they are likely the cause.
-See [The Problem](project:problem.md) for examples of common causes of Application State Leaks.
+See [Application State Leaks](project:app_state_leaks.md) for examples of common causes.
 
 ### Pytest Sometimes Fails
 
@@ -74,54 +74,41 @@ I also recommend following the steps in [Finding State Leaks](project:#finding-s
 
 ### Deterministic Shuffle
 
-Java developers may be farmilliar with JUnit. The JUnit package automatically runs test cases in a deterministic, but unpredictable order.  
+Java developers may be familiar with JUnit. The JUnit package automatically runs test cases in a deterministic, but unpredictable order.
 This package can provide similar functionality in Pytest.
 
 Using `--sort-mode=md5` will produce the same order of tests every time as long as the test case names don't change.
 
 ### Fail Fast
 
-When you have a test suite that includes long running test cases, it can be helpful to delay the longer running test cases till later.  
+When you have a test suite that includes long running test cases, it can be helpful to delay the longer running test cases till later.
 Using `--sort-mode=fastest` mode allows you to track how long different test cases take to run.  Then always run the fastest test cases first, and the slow test cases last.
 
-### Mutation Testing
+### Test Changed Code
 
-Mutation testing is slow.  But Pytest Sort has a couple of options that can help.
+If you are using Git to track source code changes, Pytest Sort can use information from Git and [pytest-cov](https://pytest-cov.readthedocs.io/) to prioritize test cases.
 
-#### Mutation Testing with Fastest
+Example: `pytest --cov=src --cov-context=test --sort-mode=diffcov --exitfirst`
 
-If your test suite has some slow test cases, accelerating mutation testing could be as simple as using `--sort-mode=fastest`.
+* `--cov=src` tells pytest-cov to generate coverage data for everything in the 'src' folder.
+* `--cov-context=test` tells pystest-cov to store the test case ID in the coverage data for each test.
+* `--sort-mode=diffcov` tells pytest-sort to run `git diff` to find the lines of code that changed since last commit.
+    It then finds test cases that have coverage for those changed lines of code, and runs them first.
+* `--exitfirst` tells pytest to exit after the first test case failure.
 
-Pytest Sort will track the execution times of the test cases, and prioritize the faster ones to run first.
-During mutation testing, test's for each mutation should stop as soon as one test case detects it.
-Therefore, by running the slow test cases last, they should only be executed if no fast test case detects the mutation.
+:::{tip}
+Run once before you start making changes to collect coverage information.
+:::
 
-#### Mutation Testing with Diffcov
+### Combining Options
 
-If you are using a mutation testing tool like [Mutmut](https://mutmut.readthedocs.io) that changes the source code.
-And you are using Git to track source code changes.
-The 'diffcov' mode may help.
+Pytest Sort allows you to set different sort options for buckets and tests.
 
-The mutuation testing tools like Mutmut work by modifying the source code, then running pytest to see if any tests catch the change.
-Using 'git diff' and 'coverage.py' the 'diffcov' mode combines the differences detected by Git with the coverage information recorded by coverage.py to prioritize test cases.
-That way the test cases most likely to catch the change are run first.
+For example, this line will group test cases by module, run the modules in order, but randomize the tests within each module.
 
-Steps to use 'diffcov' mode:
-1. Run pytest with coverage and context enabled.  This records the coverage for each test case as a separate context.
-
-    Example: `pytest --cov=src --cov-context=test`
-
-2. Run mutmut with runner options.
-
-    `mutmut run --runner "pytest --exitfirst --assert=plain --sort-mode=diffcov"`
-
-#### Combining Options
-
-If you are able to use 'diffcov' and have some slow test cases, you can also try combining the options.
-
-In this example, we are sirting first by diffcov, then by fastest:
 ```
-pytest --cov=src --cov-context=test --sort-mode=fastest
-mutmut run --runner "pytest --exitfirst --assert=plain --sort-bucket-mode=diffcov --sort-bucket=function --sort-mode=fastest"
+pytest --sort-mode=random --sort-bucket=module --sort-bucket-mode=ordered
 ```
+
+See [Sort Bucket Mode](project:configuration.md#sort-bucket-mode) for more details.
 
