@@ -4,8 +4,8 @@ Usage
 Ideally, all test cases should be small and independant. And should cleanup any changes to the application state.  
 This package provides several options for validating if test cases can really be run independantly and cleanly.
 
-Deterministic but Unpredictable
--------------------------------
+Deterministic
+-------------
 
 Java developers will be farmilliar with JUnit. The JUnit package automatically runs test cases in a deterministic, but unpredictable order.  
 This package can provide similar functionality in pytest several ways.

@@ -39,8 +39,6 @@ As needed, you can also adjust the sort_bucket setting to group test cases toget
 If you are looking for something that is a little more consistent between runs, try `sort_mode = md5`.
 With this, the test cases are shuffled, but always in the same order.
 
-See [Pytest Sort Options](project:options.rst)
-
 ## Keeping Order
 
 What if there are some test cases that NEED to run in a particular order?
@@ -48,5 +46,3 @@ For example, you want to test a multi-step workflow, and have it organized into 
 
 For this Pytest Sort provides Pytest Markers to keep specific test cases in order regardless of the options in the config files or command line.
 In cases like this, my recommendation is to group the test cases that must be kept together into a single class, then decorate that class with `@pytest.mark.sort("ordered")`
-
-See [Pytest Sort Markers](project:markers.rst)
