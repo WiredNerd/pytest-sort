@@ -94,6 +94,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r req/requirements.txt --upgrade
+          pip install -r req/pytest.txt --upgrade
           pip install -r req/mypy.txt --upgrade
       - run: mypy src test --python-version 3.8
         if: ${{ always() }}
