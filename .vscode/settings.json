@@ -45,6 +45,7 @@
         "diffcov",
         "exitfirst",
         "maxdepth",
+        "mutcov",
         "Mutmut",
         "staticmethod",
         "titlesonly",

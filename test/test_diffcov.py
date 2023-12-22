@@ -1,3 +1,4 @@
+import importlib
 from pathlib import Path
 from unittest import mock
 
@@ -9,7 +10,7 @@ from pytest_sort import diffcov
 
 class TestParseTestContext:
     @pytest.mark.parametrize(
-        "context,nodeid,when",
+        ("context", "nodeid", "when"),
         [
             (
                 "test_diffcov.py::TestParseTestContext::test_parse_text_context[1]|setup",
@@ -34,6 +35,7 @@ class TestParseTestContext:
         ],
     )
     def test_parse_text_context(self, context, nodeid, when):
+        importlib.reload(diffcov)
         match = diffcov.PARSE_TEST_CONTEXT.search(context)
 
         assert match.group("nodeid", "when") == (nodeid, when)
@@ -54,12 +56,12 @@ index 404ce22..5f2ed85 100644
 
 
 class TestGitPatch:
-    @pytest.fixture
+    @pytest.fixture()
     def subprocess(self):
         with mock.patch("pytest_sort.diffcov.subprocess") as subprocess:
             yield subprocess
 
-    @pytest.fixture
+    @pytest.fixture()
     def whatthepatch(self):
         with mock.patch("pytest_sort.diffcov.whatthepatch") as whatthepatch:
             yield whatthepatch
@@ -80,12 +82,12 @@ class TestGitPatch:
 
         assert output.stdout.decode.return_value == out
 
-    def test_get_changed_lines(self):
-        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {
+    def test_get_diff_changed_lines(self):
+        assert diffcov.get_diff_changed_lines("C:/dev", GIT_DIFF) == {
             Path("C:/dev/pytest_sort/module1.py").resolve(): {20, 24, 30}
         }
 
-    def test_get_changed_lines_mock(self, whatthepatch):
+    def test_get_diff_changed_lines_mock(self, whatthepatch):
         whatthepatch.parse_patch.return_value = [
             wtp.diffobj(
                 header=wtp.header(
@@ -118,14 +120,14 @@ class TestGitPatch:
             ),
         ]
 
-        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {
+        assert diffcov.get_diff_changed_lines("C:/dev", GIT_DIFF) == {
             Path("C:/dev/pytest_sort/module1.py").resolve(): {0, 2, 3, 4},
             Path("C:/dev/pytest_sort/module2.py").resolve(): {20},
         }
 
         whatthepatch.parse_patch.assert_called_with(GIT_DIFF)
 
-    def test_get_changed_lines_no_header(self, whatthepatch):
+    def test_get_diff_changed_lines_no_header(self, whatthepatch):
         whatthepatch.parse_patch.return_value = [
             wtp.diffobj(
                 header=None,
@@ -139,9 +141,9 @@ class TestGitPatch:
             ),
         ]
 
-        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {}
+        assert diffcov.get_diff_changed_lines("C:/dev", GIT_DIFF) == {}
 
-    def test_get_changed_lines_no_changes(self, whatthepatch):
+    def test_get_diff_changed_lines_no_changes(self, whatthepatch):
         whatthepatch.parse_patch.return_value = [
             wtp.diffobj(
                 header=wtp.header(
@@ -156,13 +158,50 @@ class TestGitPatch:
             )
         ]
 
-        assert diffcov.get_changed_lines("C:/dev", GIT_DIFF) == {}
+        assert diffcov.get_diff_changed_lines("C:/dev", GIT_DIFF) == {}
+
+
+class TestMutChangedLines:
+    def test_get_mut_changed_lines(self):
+        os_environ = {
+            "MUT_SOURCE_FILE": "pytest_sort/module1.py",
+            "MUT_LINENO": "20",
+            "MUT_END_LINENO": "30",
+        }
+        with mock.patch.dict("pytest_sort.diffcov.os.environ", os_environ, clear=True):
+            assert diffcov.get_mut_changed_lines() == {
+                Path("pytest_sort/module1.py").resolve(): {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30},
+            }
+
+    def test_get_mut_changed_lines_default_end(self):
+        os_environ = {
+            "MUT_SOURCE_FILE": "pytest_sort/module1.py",
+            "MUT_LINENO": "20",
+        }
+        with mock.patch.dict("pytest_sort.diffcov.os.environ", os_environ, clear=True):
+            assert diffcov.get_mut_changed_lines() == {
+                Path("pytest_sort/module1.py").resolve(): {20},
+            }
+
+    def test_get_mut_changed_lines_no_lineno(self):
+        os_environ = {
+            "MUT_SOURCE_FILE": "pytest_sort/module1.py",
+        }
+        with mock.patch.dict("pytest_sort.diffcov.os.environ", os_environ, clear=True):
+            assert diffcov.get_mut_changed_lines() == {}
+
+    def test_get_mut_changed_lines_no_source(self):
+        os_environ = {
+            "MUT_LINENO": "20",
+        }
+        with mock.patch.dict("pytest_sort.diffcov.os.environ", os_environ, clear=True):
+            assert diffcov.get_mut_changed_lines() == {}
 
 
 class TestCoverage:
-    @pytest.fixture
+    @pytest.fixture()
     def CoverageData(self):
-        with mock.patch("pytest_sort.diffcov.CoverageData") as CoverageData:
+        with mock.patch("pytest_sort.diffcov.CoverageData") as CoverageData:  # noqa: N806
             yield CoverageData
 
     def test_get_line_coverage(self, CoverageData):
@@ -227,32 +266,42 @@ class TestCoverage:
 
 
 class TestGetScores:
-    @pytest.fixture
+    @pytest.fixture()
     def get_git_toplevel_folder(self):
         with mock.patch("pytest_sort.diffcov.get_git_toplevel_folder") as get_git_toplevel_folder:
             yield get_git_toplevel_folder
 
-    @pytest.fixture
+    @pytest.fixture()
     def get_git_diff_patch(self):
         with mock.patch("pytest_sort.diffcov.get_git_diff_patch") as get_git_diff_patch:
             yield get_git_diff_patch
 
-    @pytest.fixture
-    def get_changed_lines(self):
-        with mock.patch("pytest_sort.diffcov.get_changed_lines") as get_changed_lines:
-            yield get_changed_lines
+    @pytest.fixture()
+    def get_diff_changed_lines(self):
+        with mock.patch("pytest_sort.diffcov.get_diff_changed_lines") as get_diff_changed_lines:
+            yield get_diff_changed_lines
 
-    @pytest.fixture
+    @pytest.fixture()
+    def get_mut_changed_lines(self):
+        with mock.patch("pytest_sort.diffcov.get_mut_changed_lines") as get_mut_changed_lines:
+            yield get_mut_changed_lines
+
+    @pytest.fixture()
     def get_line_coverage(self):
         with mock.patch("pytest_sort.diffcov.get_line_coverage") as get_line_coverage:
             yield get_line_coverage
 
-    def test_get_test_scores(self, get_git_toplevel_folder, get_git_diff_patch, get_changed_lines, get_line_coverage):
+    @pytest.fixture()
+    def get_test_scores(self):
+        with mock.patch("pytest_sort.diffcov.get_test_scores") as get_test_scores:
+            yield get_test_scores
+
+    def test_get_test_scores(self, get_line_coverage):
         rpath_m1 = Path("pytest_sort/module1.py").resolve()
         rpath_m2 = Path("pytest_sort/module2.py").resolve()
         rpath_m3 = Path("pytest_sort/module3.py").resolve()
 
-        get_changed_lines.return_value = {
+        changed_lines = {
             rpath_m1: {1, 2, 3, 4, 5, 6, 7, 8, 9},
             rpath_m2: {1, 2, 3, 4, 5, 6, 7, 8, 9},
         }
@@ -278,7 +327,7 @@ class TestGetScores:
             (rpath_m2, "test_diffcov.py::cov_teardown", "teardown", 1),
         ]
 
-        assert diffcov.get_test_scores() == {
+        assert diffcov.get_test_scores(changed_lines) == {
             "test_diffcov.py::covers_changes": -15,
             "test_diffcov.py::cov_mod_not_line": -1,
             "test_diffcov.py::cov_setup": -2,
@@ -286,6 +335,25 @@ class TestGetScores:
             "test_diffcov.py::cov_teardown": -2,
         }
 
-        get_git_toplevel_folder.assert_called()
-        get_git_diff_patch.assert_called()
-        get_changed_lines.assert_called_with(get_git_toplevel_folder.return_value, get_git_diff_patch.return_value)
+    def test_get_diff_test_scores(
+        self,
+        get_test_scores,
+        get_git_toplevel_folder,
+        get_git_diff_patch,
+        get_diff_changed_lines,
+    ):
+        assert diffcov.get_diff_test_scores() == get_test_scores.return_value
+        get_git_toplevel_folder.assert_called_once()
+        get_git_diff_patch.assert_called_once()
+        get_diff_changed_lines.assert_called_once_with(
+            get_git_toplevel_folder.return_value,
+            get_git_diff_patch.return_value,
+        )
+
+    def test_get_mut_test_scores(
+        self,
+        get_test_scores,
+        get_mut_changed_lines,
+    ):
+        assert diffcov.get_mut_test_scores() == get_test_scores.return_value
+        get_mut_changed_lines.assert_called_once()

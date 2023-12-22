@@ -1,7 +1,8 @@
-"""Logic for prioritizing tests by coverage of uncommitted changes."""
+"""Logic for prioritizing tests by coverage of changes."""
 
 from __future__ import annotations
 
+import os
 import re
 import shlex
 import subprocess
@@ -27,7 +28,7 @@ def get_git_diff_patch() -> str:
     return output.stdout.decode()
 
 
-def get_changed_lines(git_folder: str, git_diff_patch: str) -> dict[Path, set[int]]:
+def get_diff_changed_lines(git_folder: str, git_diff_patch: str) -> dict[Path, set[int]]:
     """Use whatthepatch to parse the patch string.
 
     Return map of resolved path of file to set of inserted, updated, or deleted line numbers.
@@ -39,6 +40,23 @@ def get_changed_lines(git_folder: str, git_diff_patch: str) -> dict[Path, set[in
             path = diff.header.old_path
             rpath = Path(git_folder).joinpath(path).resolve()
             changed_lines[rpath] = {change.old or change.new or 0 for change in diff.changes}
+    return changed_lines
+
+
+def get_mut_changed_lines() -> dict[Path, set[int]]:
+    """Use environment variables set by mutation testing tool to determine changed lines.
+
+    Return map of resolved path of file to set of inserted, updated, or deleted line numbers.
+    """
+    changed_lines = {}
+    mut_source_file = os.environ.get("MUT_SOURCE_FILE", None)
+    mut_lineno = os.environ.get("MUT_LINENO", 0)
+    mut_end_lineno = os.environ.get("MUT_END_LINENO", mut_lineno)
+
+    if mut_source_file and mut_lineno:
+        rpath = Path(mut_source_file).resolve()
+        changed_lines[rpath] = set(range(int(mut_lineno), int(mut_end_lineno) + 1))
+
     return changed_lines
 
 
@@ -59,10 +77,9 @@ def get_line_coverage() -> Generator[tuple[Path, str, str, int], Any, None]:
                     yield rpath, nodeid, when, line
 
 
-def get_test_scores() -> dict[str, int]:
-    """Genarate a 'score' for each test case that has some coverage of the changed files."""
+def get_test_scores(changed_lines: dict[Path, set[int]]) -> dict[str, int]:
+    """Genarate a 'score' for each test case that has some coverage of the changed lines."""
     test_scores = {}
-    changed_lines = get_changed_lines(get_git_toplevel_folder(), get_git_diff_patch())
     for rpath, nodeid, when, line in get_line_coverage():
         if rpath in changed_lines:
             # If test coverage includes changed module
@@ -77,3 +94,13 @@ def get_test_scores() -> dict[str, int]:
                 else:
                     test_scores[nodeid] -= 1
     return test_scores
+
+
+def get_diff_test_scores() -> dict[str, int]:
+    """Genarate a 'score' for each test case that has some coverage of the changed files."""
+    return get_test_scores(get_diff_changed_lines(get_git_toplevel_folder(), get_git_diff_patch()))
+
+
+def get_mut_test_scores() -> dict[str, int]:
+    """Genarate a 'score' for each test case that has some coverage of the mutated lines."""
+    return get_test_scores(get_mut_changed_lines())

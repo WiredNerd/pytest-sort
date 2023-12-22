@@ -141,7 +141,7 @@ class TestExecute:
         sort_items.assert_called_with(items)
 
     @pytest.mark.parametrize(
-        "record,recorded_times,when,out_recorded_times",
+        ("record", "recorded_times", "when", "out_recorded_times"),
         [
             (True, {}, "setup", {"test_item_1": {"setup": 1_123_456_789}}),
             (True, {}, "call", {"test_item_1": {"call": 1_123_456_789}}),

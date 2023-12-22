@@ -12,16 +12,16 @@ from pytest_sort import config, database
 
 class TestSortConfig:
     @pytest.fixture(autouse=True)
-    def reset(self):
+    def _reset(self):
         importlib.reload(config)
         importlib.reload(database)
         yield
         importlib.reload(config)
         importlib.reload(database)
-        sys.modules['random'] = random
+        sys.modules["random"] = random
 
     class PytestConfig:
-        def __init__(self, options, inis):
+        def __init__(self, options, inis) -> None:
             self.options = options
             self.inis = inis
 
@@ -36,8 +36,8 @@ class TestSortConfig:
         assert config.SortConfig.bucket == "parent"
         assert config.SortConfig.bucket_mode == "sort_mode"
         assert config.SortConfig.record is None
-        assert config.SortConfig.reset == False
-        assert config.SortConfig.report == False
+        assert config.SortConfig.reset is False
+        assert config.SortConfig.report is False
 
         assert config.SortConfig.seed >= 0
         assert config.SortConfig.seed <= 1_000_000
@@ -47,23 +47,24 @@ class TestSortConfig:
         assert config.SortConfig.item_sort_keys == {}
         assert config.SortConfig.item_bucket_id == {}
         assert config.SortConfig.bucket_sort_keys == {}
-        assert config.SortConfig.cov_scores == {}
+        assert config.SortConfig.diff_cov_scores == {}
+        assert config.SortConfig.mut_cov_scores == {}
 
     def test_create_default_seed(self):
         random = mock.MagicMock()
-        sys.modules['random'] = random
+        sys.modules["random"] = random
         importlib.reload(config)
         random.randint.assert_called_with(0, 1_000_000)
 
     def test_SortConfig_static_methods(self):
-        assert is_static_method(config.SortConfig, "from_pytest") == True
-        assert is_static_method(config.SortConfig, "_mode_from_pytest") == True
-        assert is_static_method(config.SortConfig, "_bucket_from_pytest") == True
-        assert is_static_method(config.SortConfig, "_bucket_mode_from_pytest") == True
-        assert is_static_method(config.SortConfig, "_record_from_pytest") == True
-        assert is_static_method(config.SortConfig, "_seed_from_pytest") == True
-        assert is_static_method(config.SortConfig, "_database_file_from_pytest") == True
-        assert is_static_method(config.SortConfig, "header_dict") == True
+        assert is_static_method(config.SortConfig, "from_pytest") is True
+        assert is_static_method(config.SortConfig, "_mode_from_pytest") is True
+        assert is_static_method(config.SortConfig, "_bucket_from_pytest") is True
+        assert is_static_method(config.SortConfig, "_bucket_mode_from_pytest") is True
+        assert is_static_method(config.SortConfig, "_record_from_pytest") is True
+        assert is_static_method(config.SortConfig, "_seed_from_pytest") is True
+        assert is_static_method(config.SortConfig, "_database_file_from_pytest") is True
+        assert is_static_method(config.SortConfig, "header_dict") is True
 
     def test_from_pytest_default(self):
         pytest_config = self.PytestConfig({}, {})
@@ -75,14 +76,14 @@ class TestSortConfig:
         assert config.SortConfig.bucket == "parent"
         assert config.SortConfig.bucket_mode == "ordered"
         assert config.SortConfig.record is None
-        assert config.SortConfig.reset == False
-        assert config.SortConfig.report == False
+        assert config.SortConfig.reset is False
+        assert config.SortConfig.report is False
         assert config.SortConfig.seed == seed
 
         assert database.database_file.absolute() == (Path.cwd() / ".pytest_sort_data").absolute()
 
     @pytest.mark.parametrize(
-        "getoption,getini,expected",
+        ("getoption", "getini", "expected"),
         [
             ({"sort_mode": "md5"}, {"sort_mode": "random"}, "md5"),
             ({}, {"sort_mode": "ordered"}, "ordered"),
@@ -91,6 +92,7 @@ class TestSortConfig:
             ({}, {"sort_mode": "random"}, "random"),
             ({}, {"sort_mode": "fastest"}, "fastest"),
             ({}, {"sort_mode": "diffcov"}, "diffcov"),
+            ({}, {"sort_mode": "mutcov"}, "mutcov"),
             ({}, {"sort_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
         ],
@@ -101,12 +103,12 @@ class TestSortConfig:
         assert config.SortConfig.mode == expected
 
     def test_from_pytest_mode_invalid(self):
+        pytest_config = self.PytestConfig({"sort_mode": "September"}, {})
         with pytest.raises(ValueError, match="^Invalid Value for sort-mode='September'$"):
-            pytest_config = self.PytestConfig({"sort_mode": "September"}, {})
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
-        "getoption,getini,expected",
+        ("getoption", "getini", "expected"),
         [
             ({"sort_bucket": "session"}, {"sort_bucket": "class"}, "session"),
             ({}, {"sort_bucket": "package"}, "package"),
@@ -125,12 +127,12 @@ class TestSortConfig:
         assert config.SortConfig.bucket == expected
 
     def test_from_pytest_bucket_invalid(self):
+        pytest_config = self.PytestConfig({"sort_bucket": "September"}, {})
         with pytest.raises(ValueError, match="^Invalid Value for sort-bucket='September'$"):
-            pytest_config = self.PytestConfig({"sort_bucket": "September"}, {})
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
-        "getoption,getini,expected",
+        ("getoption", "getini", "expected"),
         [
             ({"sort_bucket_mode": "md5"}, {"sort_bucket_mode": "random"}, "md5"),
             ({}, {"sort_bucket_mode": "ordered"}, "ordered"),
@@ -139,6 +141,7 @@ class TestSortConfig:
             ({}, {"sort_bucket_mode": "random"}, "random"),
             ({}, {"sort_bucket_mode": "fastest"}, "fastest"),
             ({}, {"sort_bucket_mode": "diffcov"}, "diffcov"),
+            ({}, {"sort_bucket_mode": "mutcov"}, "mutcov"),
             ({}, {"sort_bucket_mode": "none"}, "ordered"),
             ({}, {}, "ordered"),
             ({"sort_mode": "md5"}, {"sort_bucket_mode": "sort_mode"}, "md5"),
@@ -151,8 +154,8 @@ class TestSortConfig:
         assert config.SortConfig.bucket_mode == expected
 
     def test_from_pytest_bucket_mode_invalid(self):
+        pytest_config = self.PytestConfig({"sort_bucket_mode": "September"}, {})
         with pytest.raises(ValueError, match="^Invalid Value for sort-bucket-mode='September'$"):
-            pytest_config = self.PytestConfig({"sort_bucket_mode": "September"}, {})
             config.SortConfig.from_pytest(pytest_config)
 
     def test_from_pytest_sort_record_conflict(self):
@@ -161,7 +164,7 @@ class TestSortConfig:
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
-        "getoption,getini,expected",
+        ("getoption", "getini", "expected"),
         [
             ({"sort_record": True}, {}, True),
             ({"sort_no_record": True}, {}, False),
@@ -178,15 +181,15 @@ class TestSortConfig:
     def test_from_pytest_sort_reset(self):
         pytest_config = self.PytestConfig({"sort_reset_times": True}, {})
         config.SortConfig.from_pytest(pytest_config)
-        assert config.SortConfig.reset == True
+        assert config.SortConfig.reset is True
 
     def test_from_pytest_sort_report(self):
         pytest_config = self.PytestConfig({"sort_report_times": True}, {})
         config.SortConfig.from_pytest(pytest_config)
-        assert config.SortConfig.report == True
+        assert config.SortConfig.report is True
 
     @pytest.mark.parametrize(
-        "getoption,getini,expected",
+        ("getoption", "getini", "expected"),
         [
             ({"sort_seed": "123"}, {"sort_seed": "456"}, 123),
             ({}, {"sort_seed": "456"}, 456),
@@ -203,7 +206,7 @@ class TestSortConfig:
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
-        "getoption,getini,expected",
+        ("getoption", "getini", "expected"),
         [
             ({}, {}, Path.cwd() / ".pytest_sort_data"),
             (
@@ -220,7 +223,7 @@ class TestSortConfig:
         assert database.database_file.absolute() == expected.absolute()
 
     @pytest.mark.parametrize(
-        "getoption,expected",
+        ("getoption", "expected"),
         [
             ({}, False),
             ({"sort_debug": True}, True),
@@ -235,7 +238,7 @@ class TestSortConfig:
 
 class TestDict:
     @pytest.fixture(autouse=True)
-    def reset(self):
+    def _reset(self):
         importlib.reload(config)
         config.SortConfig.bucket_mode = "ordered"
 

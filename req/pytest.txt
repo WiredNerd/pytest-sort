@@ -1,2 +1,3 @@
 pytest-cov
 inspect-mate-pp
+poodle>=1.1.4

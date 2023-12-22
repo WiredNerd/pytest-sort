@@ -3,15 +3,12 @@ name: Python Platform Tests
 on: 
   push:
     paths:
-      - req/*
-      - src/*
-      - test/*
       - .github/workflows/python-test-matrix.yml
   pull_request:
     paths:
-      - req/*
-      - src/*
-      - test/*
+      - req/**
+      - src/**
+      - test/**
   workflow_dispatch:
 
 jobs:
@@ -22,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        py: ['3.8','3.9','3.10','3.11']
+        py: ['3.8','3.9','3.10','3.11','3.12']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4

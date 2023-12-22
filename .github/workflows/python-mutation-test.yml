@@ -1,61 +1,33 @@
 name: Python Mutation Test
 
 on: 
-  push:
-    paths:
-      - .github/workflows/python-mutation-test.yml
-  pull_request:
-    paths:
-      - req/*
-      - src/*
-      - test/*
-      - .github/workflows/python-mutation-test.yml
   workflow_dispatch:
 
 concurrency: updates-project
 
 jobs:
-  pytest:
-    name: Mutation Test with Mutmut
+  poodle:
+    name: Mutation Test with Poodle
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.12'
       - name: Install Dependencies and Tools
         run: |
-          pip install -r req/requirements.txt --upgrade
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt --upgrade
           pip install -r req/pytest.txt --upgrade
           pip install --editable .
-          pip install mutmut --upgrade
-      - name: clone pytest_sort
-        run: |
-          cp -r src src_mut
-          mv src_mut/pytest_sort src_mut/pytest_sort_mut
-          sed -i 's/pytest_sort/pytest_sort_mut/g' src_mut/pytest_sort_mut/*.py
-          sed -i 's/pytest_sort/pytest_sort_mut/g' test/*.py
-      - name: coverage
-        run: pytest --cov=src_mut --sort-mode=fastest --cov-context=test
-      - name: Mutmut
-        run: python3 -m mutmut run --no-progress --rerun-all --paths-to-mutate src_mut 
-          --runner "pytest -x --assert=plain --sort-bucket-mode=diffcov --sort-bucket=function --sort-mode=fastest"
-      - run: python3 -m mutmut results
-        if: ${{ always() }}
-      - name: Mutmut Report
-        if: ${{ always() }}
-        run: |
-          python3 -m mutmut html
-          python3 -m mutmut junitxml > mutation-testing-report.xml
-      - name: save-xml-report
-        if: ${{ always() && github.event_name != 'pull_request' }}
+      - name: Pytest Coverage
+        run: pytest --cov=src --cov-context=test
+      - name: Poodle
+        run: poodle || true
+      - name: save-json-report
+        if: ${{ github.ref_name == 'main' }}
         uses: EndBug/add-and-commit@v9
         with:
-          add: "mutation-testing-report.xml"
+          add: "mutation-testing-report.json"
           pull: "--rebase=true --autostash"
-      - name: save-reports
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: Mutation testing report
-          path: html
+        

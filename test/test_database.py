@@ -4,21 +4,17 @@ from unittest import mock
 
 import pytest
 
-import pytest_sort.database as database
+from pytest_sort import database
 
 
 @pytest.fixture(autouse=True)
-def reset():
+def database_file():
     importlib.reload(database)
-
-
-@pytest.fixture(autouse=True)
-def database_file(reset):
     with mock.patch("pytest_sort.database.database_file") as database_file:
         yield database_file
 
 
-@pytest.fixture
+@pytest.fixture()
 def test_data():
     return {
         "test/test_core.py::TestClass::test_case[A]": {
@@ -36,7 +32,7 @@ def test_data():
     }
 
 
-@pytest.fixture
+@pytest.fixture()
 def test_file(test_data):
     return json.dumps(test_data, indent=4)
 
@@ -79,35 +75,35 @@ class TestLoadSave:
 
 
 class TestClearDb:
-    @pytest.fixture
-    def _save_data(self):
-        with mock.patch("pytest_sort.database._save_data") as _save_data:
-            yield _save_data
+    @pytest.fixture()
+    def save_data(self):
+        with mock.patch("pytest_sort.database._save_data") as save_data:
+            yield save_data
 
-    def test_clear_db(self, _save_data, test_data):
+    def test_clear_db(self, save_data, test_data):
         database._sort_data = test_data
         database.clear_db()
         assert database._sort_data == {}
-        _save_data.assert_called()
+        save_data.assert_called()
 
 
 class TestUpdate:
     @pytest.fixture(autouse=True)
-    def _load_data(self, test_data):
+    def load_data(self, test_data):
         def load_test_data():
             database._sort_data = test_data
 
-        with mock.patch("pytest_sort.database._load_data") as _load_data:
-            _load_data.side_effect = load_test_data
-            yield _load_data
+        with mock.patch("pytest_sort.database._load_data") as load_data:
+            load_data.side_effect = load_test_data
+            yield load_data
 
-    @pytest.fixture
-    def _save_data(self):
-        with mock.patch("pytest_sort.database._save_data") as _save_data:
-            _save_data.side_effect = lambda: _save_data.saved(database._sort_data)
-            yield _save_data
+    @pytest.fixture()
+    def save_data(self):
+        with mock.patch("pytest_sort.database._save_data") as save_data:
+            save_data.side_effect = lambda: save_data.saved(database._sort_data)
+            yield save_data
 
-    def test_update_test_cases_update_less(self, _save_data):
+    def test_update_test_cases_update_less(self, save_data):
         database.update_test_cases(
             {
                 "test/test_core.py::TestClass::test_case[A]": {"setup": 0, "call": 1, "teardown": 2},
@@ -119,9 +115,9 @@ class TestUpdate:
             "teardown": 3,
             "total": 6,
         }
-        _save_data.saved.assert_called_with(database._sort_data)
+        save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_cases_update_equal(self, _save_data):
+    def test_update_test_cases_update_equal(self, save_data):
         database.update_test_cases(
             {"test/test_core.py::TestClass::test_case[A]": {"setup": 1, "call": 2, "teardown": 3}}
         )
@@ -131,9 +127,9 @@ class TestUpdate:
             "teardown": 3,
             "total": 6,
         }
-        _save_data.saved.assert_called_with(database._sort_data)
+        save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_cases_update_greater(self, _save_data):
+    def test_update_test_cases_update_greater(self, save_data):
         database.update_test_cases(
             {
                 "test/test_core.py::TestClass::test_case[A]": {"setup": 2, "call": 3, "teardown": 4},
@@ -152,9 +148,9 @@ class TestUpdate:
             "teardown": 31,
             "total": 64,
         }
-        _save_data.saved.assert_called_with(database._sort_data)
+        save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_cases_update_defaults(self, _save_data):
+    def test_update_test_cases_update_defaults(self, save_data):
         database.update_test_cases({"test/test_core.py::test_default": {}})
         assert database._sort_data["test/test_core.py::test_default"] == {
             "setup": 0,
@@ -162,9 +158,10 @@ class TestUpdate:
             "teardown": 0,
             "total": 0,
         }
-        _save_data.saved.assert_called_with(database._sort_data)
+        save_data.saved.assert_called_with(database._sort_data)
 
-    def test_update_test_cases_update_mock(self, test_data, _save_data):
+    @pytest.mark.usefixtures("save_data")
+    def test_update_test_cases_update_mock(self, test_data):
         setup = mock.MagicMock()
         call = mock.MagicMock()
         teardown = mock.MagicMock()
@@ -175,11 +172,11 @@ class TestUpdate:
             "teardown": teardown,
         }
 
-        test_data['mocknode'] = node_data
+        test_data["mocknode"] = node_data
 
-        setup.__lt__ = lambda self, v: setup.lt(v)
-        call.__lt__ = lambda self, v: call.lt(v)
-        teardown.__lt__ = lambda self, v: teardown.lt(v)
+        setup.__lt__ = lambda _, v: setup.lt(v)
+        call.__lt__ = lambda _, v: call.lt(v)
+        teardown.__lt__ = lambda _, v: teardown.lt(v)
 
         setup.lt.return_value = True
         call.lt.return_value = True
@@ -195,13 +192,13 @@ class TestUpdate:
 
 class TestGet:
     @pytest.fixture(autouse=True)
-    def _load_data(self, test_data):
+    def load_data(self, test_data):
         def load_test_data():
             database._sort_data = test_data.copy()
 
-        with mock.patch("pytest_sort.database._load_data") as _load_data:
-            _load_data.side_effect = load_test_data
-            yield _load_data
+        with mock.patch("pytest_sort.database._load_data") as load_data:
+            load_data.side_effect = load_test_data
+            yield load_data
 
     def test_get_all_totals(self):
         assert database.get_all_totals() == {

@@ -13,7 +13,7 @@ from _pytest import nodes as pytest_nodes
 
 from pytest_sort.config import SortConfig
 from pytest_sort.database import get_all_totals, get_stats
-from pytest_sort.diffcov import get_test_scores
+from pytest_sort.diffcov import get_diff_test_scores, get_mut_test_scores
 
 md5: Callable = hashlib.md5
 if sys.version_info >= (3, 9):
@@ -84,7 +84,8 @@ create_item_key = {
     "md5": lambda item, idx, count: md5(item.nodeid.encode()).digest(),
     "random": lambda item, idx, count: random.random(),
     "fastest": lambda item, idx, count: SortConfig.item_totals.get(item.nodeid, 0),
-    "diffcov": lambda item, idx, count: SortConfig.cov_scores.get(item.nodeid, 0),
+    "diffcov": lambda item, idx, count: SortConfig.diff_cov_scores.get(item.nodeid, 0),
+    "mutcov": lambda item, idx, count: SortConfig.mut_cov_scores.get(item.nodeid, 0),
 }
 
 
@@ -95,7 +96,12 @@ def get_bucket_total(bucket_id: str) -> int:
 
 def get_bucket_score(bucket_id: str) -> int:
     """Get all scores from nodes matching this bucket and return min."""
-    return min([score for nodeid, score in SortConfig.cov_scores.items() if nodeid.startswith(bucket_id)] + [0])
+    return min([score for nodeid, score in SortConfig.diff_cov_scores.items() if nodeid.startswith(bucket_id)] + [0])
+
+
+def get_mut_bucket_score(bucket_id: str) -> int:
+    """Get all scores from nodes matching this bucket and return min."""
+    return min([score for nodeid, score in SortConfig.mut_cov_scores.items() if nodeid.startswith(bucket_id)] + [0])
 
 
 create_bucket_key = {
@@ -105,6 +111,7 @@ create_bucket_key = {
     "random": lambda bucket_id, idx, count: random.random(),
     "fastest": lambda bucket_id, idx, count: get_bucket_total(bucket_id),
     "diffcov": lambda bucket_id, idx, count: get_bucket_score(bucket_id),
+    "mutcov": lambda bucket_id, idx, count: get_mut_bucket_score(bucket_id),
 }
 
 
@@ -220,7 +227,10 @@ def sort_items(items: list[pytest.Item]) -> None:
         random.seed(SortConfig.seed)
 
     if SortConfig.mode == "diffcov" or SortConfig.bucket_mode == "diffcov":
-        SortConfig.cov_scores = get_test_scores()
+        SortConfig.diff_cov_scores = get_diff_test_scores()
+
+    if SortConfig.mode == "mutcov" or SortConfig.bucket_mode == "mutcov":
+        SortConfig.mut_cov_scores = get_mut_test_scores()
 
     if SortConfig.mode == "fastest" or SortConfig.bucket_mode == "fastest":
         SortConfig.item_totals = get_all_totals()
