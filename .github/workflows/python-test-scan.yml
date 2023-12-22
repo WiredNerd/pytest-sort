@@ -95,15 +95,15 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r req/requirements.txt --upgrade
           pip install -r req/mypy.txt --upgrade
-      - run: mypy src tests --python-version 3.8
+      - run: mypy src test --python-version 3.8
         if: ${{ always() }}
-      - run: mypy src tests --python-version 3.9
+      - run: mypy src test --python-version 3.9
         if: ${{ always() }}
-      - run: mypy src tests --python-version 3.10
+      - run: mypy src test --python-version 3.10
         if: ${{ always() }}
-      - run: mypy src tests --python-version 3.11
+      - run: mypy src test --python-version 3.11
         if: ${{ always() }}
-      - run: mypy src tests --python-version 3.12
+      - run: mypy src test --python-version 3.12
         if: ${{ always() }}
   ruff:
     name: Linter Checks with Ruff
@@ -121,15 +121,15 @@ jobs:
         with:
           src: src
           args: check --diff
-      - name: Ruff tests
+      - name: Ruff test
         uses: chartboost/ruff-action@v1
         if: ${{ always() }}
         with:
-          src: tests
+          src: test
           args: check --show-source
-      - name: Ruff tests diff
+      - name: Ruff test diff
         uses: chartboost/ruff-action@v1
         if: ${{ always() }}
         with:
-          src: tests
+          src: test
           args: check --diff

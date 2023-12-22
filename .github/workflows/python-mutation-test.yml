@@ -18,7 +18,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt --upgrade
-          pip install -r req/pytest.txt --upgrade
+          pip install -r req/poodle.txt --upgrade
           pip install --editable .
       - name: Pytest Coverage
         run: pytest --cov=src --cov-context=test

@@ -1,0 +1,3 @@
+-r pytest.txt
+
+poodle>=1.1.4
