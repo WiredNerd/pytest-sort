@@ -55,6 +55,10 @@ This option controls how the order is modified within each bucket.
     See [Record Test Run Times](#record-test-run-times)
 * - ``diffcov``
   - Uses 'git diff' and data from 'coverage.py' to determine which test cases likely cover the changed lines of code, and runs them first. 
+  See [Diff Coverage](mutation_testing.md#diff-coverage) for usage example.
+* - ``mutcov``
+  - Uses environment variables from the Mutation Test tool and data from 'coverage.py' to determine which test cases likely cover the mutated lines of code, and runs them first.
+  See [Mutation Coverage](mutation_testing.md#mutation-coverage) for usage example.
 :::
 
 
@@ -131,6 +135,10 @@ This option controls how the order is modified within each bucket.
   - The total of all run times for tests in the bucket is used as the sort key for the bucket.
 * - ``diffcov``
   - Uses 'git diff' and data from 'coverage.py' to determine which test cases likely cover the changed lines of code, and runs them first.
+  See [Diff Coverage](mutation_testing.md#diff-coverage) for usage example.
+* - ``mutcov``
+  - Uses environment variables from the Mutation Test tool and data from 'coverage.py' to determine which test cases likely cover the mutated lines of code, and runs them first.
+  See [Mutation Coverage](mutation_testing.md#mutation-coverage) for usage example.
 :::
 
 ### Sort Seed

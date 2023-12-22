@@ -7,14 +7,18 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Pytest Sort'
-copyright = '2023, WiredNerd'
-author = 'WiredNerd'
+copyright = '2023, Peter Busch (WiredNerd)'
+author = 'Peter Busch (WiredNerd)'
 release = ''
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser']
+extensions = [
+    "myst_parser",
+    "sphinx_design",
+    "sphinx_copybutton",
+]
 
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -51,4 +55,8 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'furo'
-# html_static_path = ['_static']
+html_static_path = ['_static']
+html_logo = "_static/pytest_sort_logo.png"
+html_favicon = "_static/pytest_sort_logo.ico"
+
+copybutton_selector = "div:not(.no-copybutton) > div.highlight > pre"
