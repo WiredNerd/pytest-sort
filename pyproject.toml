@@ -73,6 +73,7 @@ profile = 'black'
 
 [tool.mypy]
 files = "src"
+mypy_path = "src"
 
 [tool.ruff]
 target-version = "py38"
