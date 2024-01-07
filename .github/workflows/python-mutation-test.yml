@@ -3,8 +3,7 @@ name: Python Mutation Test
 on: 
   workflow_dispatch:
 
-concurrency: updates-project
-
+# json is created and saved in update-coverage workflow
 jobs:
   poodle:
     name: Mutation Test with Poodle
@@ -22,12 +21,10 @@ jobs:
           pip install --editable .
       - name: Pytest Coverage
         run: pytest --cov=src --cov-context=test
-      - name: Poodle
-        run: poodle || true
-      - name: save-json-report
-        if: ${{ github.ref_name == 'main' }}
-        uses: EndBug/add-and-commit@v9
+      - run: poodle --html mutation_reports
+      - name: Upload Report HTML
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
         with:
-          add: "mutation-testing-report.json"
-          pull: "--rebase=true --autostash"
-        
+          name: Mutation testing report HTML
+          path: mutation_reports
