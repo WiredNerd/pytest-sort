@@ -4,14 +4,15 @@ on:
   push:
     paths:
       - .github/workflows/python-test-scan.yml
+      - req/**
+      - src/**
+      - test/**
   pull_request:
     paths:
       - req/**
       - src/**
       - test/**
   workflow_dispatch:
-
-concurrency: updates-project
 
 jobs:
   pytest-cov:
@@ -29,17 +30,18 @@ jobs:
           pip install -r req/pytest.txt --upgrade
       - run: pytest --help
       - run: pytest --cov=src --cov-report=json:code-coverage.json
-      - name: save-json-report
-        if: ${{ github.ref_name == 'main' }}
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: "code-coverage.json"
-          pull: "--rebase=true --autostash"
       - name: artifact-html-report
+        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
-          name: Coverage Report
+          name: Coverage Report HTML
           path: cov-html
+      - name: artifact-json-report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Coverage Report JSON
+          path: code-coverage.json
   isort:
     name: Import Checks with ISort
     runs-on: [ubuntu-latest]

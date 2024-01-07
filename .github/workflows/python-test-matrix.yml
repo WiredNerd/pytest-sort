@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - .github/workflows/python-test-matrix.yml
+      - req/**
+      - src/**
+      - test/**
   pull_request:
     paths:
       - req/**
