@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from _pytest.terminal import TerminalReporter
 
 
+@pytest.hookimpl
 def pytest_addoption(parser: pytest.Parser) -> None:
     """pytest_sort: Add command line and ini options to pytest."""
     group = parser.getgroup("pytest-sort")
@@ -62,6 +63,7 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     group.addoption("--sort_debug", action="store_true", dest="sort_debug", help=argparse.SUPPRESS)
 
 
+@pytest.hookimpl
 def pytest_configure(config: pytest.Config) -> None:
     """pytest_sort: Add markers to pytest."""
     config.addinivalue_line(
@@ -76,6 +78,7 @@ def pytest_configure(config: pytest.Config) -> None:
     SortConfig.from_pytest(config)
 
 
+@pytest.hookimpl
 def pytest_report_header(config: pytest.Config) -> str:  # noqa: ARG001
     """pytest_sort: Build Header for pytest to display."""
     header = "pytest-sort:"
@@ -86,6 +89,7 @@ def pytest_report_header(config: pytest.Config) -> str:  # noqa: ARG001
     return header
 
 
+@pytest.hookimpl
 def pytest_collection_modifyitems(
     session: pytest.Session,  # noqa: ARG001
     config: pytest.Config,  # noqa: ARG001
@@ -112,6 +116,7 @@ def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo) -> Gener
     yield
 
 
+@pytest.hookimpl
 def pytest_terminal_summary(
     terminalreporter: TerminalReporter,
     exitstatus: int,  # noqa: ARG001
