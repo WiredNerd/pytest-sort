@@ -254,7 +254,7 @@ def print_recorded_times_report(terminal_reporter: TerminalReporter) -> None:
 
     print(
         f"\n*** {'pytest-sort maximum recorded times'.ljust(node_id_width)}"
-        f"{'Nanoseconds'.center(stat_width*4 - 4)} ***",
+        f"{'Nanoseconds'.center(stat_width * 4 - 4)} ***",
     )
     print(
         f"{'Test Case'.ljust(node_id_width)} {'setup'.rjust(stat_width)} "
