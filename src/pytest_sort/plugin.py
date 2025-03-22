@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-from typing import TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING
 
 import pytest
 
@@ -12,6 +12,8 @@ from pytest_sort.core import print_recorded_times_report, sort_items
 from pytest_sort.database import clear_db, update_test_cases
 
 if TYPE_CHECKING:
+    from collections.abc import Generator
+
     from _pytest.terminal import TerminalReporter
 
 
