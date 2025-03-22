@@ -4,6 +4,11 @@ on:
   push:
     branches:
         - main
+    paths:
+      - .github/workflows/update-coverage.yml
+      - req/**
+      - src/**
+      - test/**
   workflow_dispatch:
 
 concurrency: updates-project
