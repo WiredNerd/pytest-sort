@@ -1,5 +1,5 @@
 [![Homepage](https://img.shields.io/badge/Homepage-github-white?logo=github)](https://github.com/WiredNerd/pytest-sort)
-[![python>=3.8](https://img.shields.io/badge/python->=3.8-orange?logo=python&logoColor=green)](https://pypi.org/project/pytest-sort)
+[![python>=3.9](https://img.shields.io/badge/python->=3.9-orange?logo=python&logoColor=green)](https://pypi.org/project/pytest-sort)
 [![PyPI - Version](https://img.shields.io/pypi/v/pytest-sort?logo=pypi&logoColor=white)](https://pypi.org/project/pytest-sort)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-sort)](https://pypistats.org/packages/pytest-sort)
 [![PyPI - License](https://img.shields.io/pypi/l/pytest-sort)](https://github.com/WiredNerd/pytest-sort/blob/main/LICENSE)
