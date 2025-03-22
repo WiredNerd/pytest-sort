@@ -7,10 +7,13 @@ import re
 import shlex
 import subprocess
 from pathlib import Path
-from typing import Any, Generator
+from typing import TYPE_CHECKING, Any
 
 import whatthepatch
 from coverage.sqldata import CoverageData
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 # pytest-cov populates test context as <nodeid>|(setup|run|teardown)
 PARSE_TEST_CONTEXT = re.compile(r"(?P<nodeid>.*)\|(?P<when>setup|run|teardown)")
@@ -50,10 +53,10 @@ def get_mut_changed_lines() -> dict[Path, set[int]]:
     """
     changed_lines = {}
     mut_source_file = os.environ.get("MUT_SOURCE_FILE", None)
-    mut_lineno = os.environ.get("MUT_LINENO", 0)
+    mut_lineno = os.environ.get("MUT_LINENO", "0")
     mut_end_lineno = os.environ.get("MUT_END_LINENO", mut_lineno)
 
-    if mut_source_file and mut_lineno:
+    if mut_source_file and int(mut_lineno):
         rpath = Path(mut_source_file).resolve()
         changed_lines[rpath] = set(range(int(mut_lineno), int(mut_end_lineno) + 1))
 

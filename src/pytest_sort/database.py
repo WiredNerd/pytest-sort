@@ -31,24 +31,12 @@ def update_test_cases(recorded_times: dict) -> None:
     """Update Test Case Data with specfiied duration(s) and recalculate total(s)."""
     _load_data()
 
-    for nodeid in recorded_times:
+    for nodeid, recorded_node in recorded_times.items():
         node_data = _sort_data.get(nodeid, {})
 
-        node_data["setup"] = node_data.get("setup", 0)
-        node_data["call"] = node_data.get("call", 0)
-        node_data["teardown"] = node_data.get("teardown", 0)
-
-        setup = recorded_times[nodeid].get("setup", 0)
-        if node_data["setup"] < setup:
-            node_data["setup"] = setup
-
-        call = recorded_times[nodeid].get("call", 0)
-        if node_data["call"] < call:
-            node_data["call"] = call
-
-        teardown = recorded_times[nodeid].get("teardown", 0)
-        if node_data["teardown"] < teardown:
-            node_data["teardown"] = teardown
+        node_data["setup"] = max(node_data.get("setup", 0), recorded_node.get("setup", 0))
+        node_data["call"] = max(node_data.get("call", 0), recorded_node.get("call", 0))
+        node_data["teardown"] = max(node_data.get("teardown", 0), recorded_node.get("teardown", 0))
 
         node_data["total"] = node_data["setup"] + node_data["call"] + node_data["teardown"]
 

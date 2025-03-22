@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
@@ -32,13 +32,13 @@ jobs:
       - run: pytest --cov=src --cov-report=json:code-coverage.json
       - name: artifact-html-report
         if: ${{ always() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Coverage Report HTML
           path: cov-html
       - name: artifact-json-report
         if: ${{ always() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Coverage Report JSON
           path: code-coverage.json
@@ -47,9 +47,9 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
@@ -63,9 +63,9 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
@@ -89,16 +89,14 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
           pip install -r req/requirements.txt --upgrade
           pip install -r req/mypy.txt --upgrade
-      - run: mypy --python-version 3.8
-        if: ${{ always() }}
       - run: mypy --python-version 3.9
         if: ${{ always() }}
       - run: mypy --python-version 3.10
@@ -106,6 +104,8 @@ jobs:
       - run: mypy --python-version 3.11
         if: ${{ always() }}
       - run: mypy --python-version 3.12
+        if: ${{ always() }}
+      - run: mypy --python-version 3.13
         if: ${{ always() }}
   ruff:
     name: Linter Checks with Ruff
@@ -116,7 +116,7 @@ jobs:
         uses: chartboost/ruff-action@v1
         with:
           src: src
-          args: check --show-source
+          args: check --show-files
       - name: Ruff src diff
         uses: chartboost/ruff-action@v1
         if: ${{ always() }}
@@ -128,7 +128,7 @@ jobs:
         if: ${{ always() }}
         with:
           src: test
-          args: check --show-source
+          args: check --show-files
       - name: Ruff test diff
         uses: chartboost/ruff-action@v1
         if: ${{ always() }}

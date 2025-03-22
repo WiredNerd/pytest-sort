@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import random
-import sys
 from functools import partial
 from typing import TYPE_CHECKING, Any, Callable
 
@@ -15,9 +14,7 @@ from pytest_sort.config import SortConfig
 from pytest_sort.database import get_all_totals, get_stats
 from pytest_sort.diffcov import get_diff_test_scores, get_mut_test_scores
 
-md5: Callable = hashlib.md5
-if sys.version_info >= (3, 9):
-    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
+md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
 
 if TYPE_CHECKING:
@@ -254,7 +251,7 @@ def print_recorded_times_report(terminal_reporter: TerminalReporter) -> None:
 
     print(
         f"\n*** {'pytest-sort maximum recorded times'.ljust(node_id_width)}"
-        f"{'Nanoseconds'.center(stat_width*4 - 4)} ***",
+        f"{'Nanoseconds'.center(stat_width * 4 - 4)} ***",
     )
     print(
         f"{'Test Case'.ljust(node_id_width)} {'setup'.rjust(stat_width)} "

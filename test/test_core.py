@@ -1,6 +1,5 @@
 import hashlib
 import importlib
-import sys
 from functools import partial
 from typing import Callable, ClassVar
 from unittest import mock
@@ -10,9 +9,7 @@ from _pytest import nodes as pytest_nodes
 
 from pytest_sort import config, core
 
-md5: Callable = hashlib.md5
-if sys.version_info >= (3, 9):
-    md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
+md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
 
 class TestImports:
@@ -21,23 +18,12 @@ class TestImports:
         with mock.patch("hashlib.md5") as mock_md5:
             yield mock_md5
 
-    @pytest.fixture()
-    def version_info(self):
-        with mock.patch("sys.version_info") as version_info:
-            yield version_info
-
     @pytest.fixture(autouse=True)
     def _cleanup(self):
         yield
         importlib.reload(core)
 
-    def test_import_md5_38(self, version_info, mock_md5):
-        version_info.__ge__ = lambda _, __: False
-        importlib.reload(core)
-        assert core.md5 == mock_md5
-
-    def test_import_md5_39(self, version_info, mock_md5):
-        version_info.__ge__ = lambda _, v: v == (3, 9)
+    def test_import_md5_39(self, mock_md5):
         importlib.reload(core)
         assert isinstance(core.md5, partial)
         assert core.md5.func == mock_md5
@@ -235,7 +221,7 @@ class TestValidateMarker:
         with pytest.raises(TypeError, match="^Incorrect arguments on marker 'order'. Target:testnodeid$") as type_error:
             core.validate_order_marker(order_marker, "testnodeid")
 
-        assert type(type_error.value.__cause__) == TypeError
+        assert isinstance(type_error.value.__cause__, TypeError)
 
     @pytest.mark.parametrize(
         ("args", "kwargs", "key"),
@@ -261,7 +247,7 @@ class TestValidateMarker:
         with pytest.raises(TypeError, match="^Incorrect arguments on marker 'sort'. Target:testnodeid$") as type_error:
             core.validate_sort_marker(sort_marker, "testnodeid")
 
-        assert type(type_error.value.__cause__) == TypeError
+        assert isinstance(type_error.value.__cause__, TypeError)
 
     def test_validate_sort_marker_value_error(self):
         sort_marker = mock.MagicMock()
