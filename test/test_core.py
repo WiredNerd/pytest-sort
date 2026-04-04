@@ -1,13 +1,19 @@
 import hashlib
 import importlib
+import sys
 from functools import partial
-from typing import Callable, ClassVar
+from typing import ClassVar
 from unittest import mock
 
 import pytest
 from _pytest import nodes as pytest_nodes
 
 from pytest_sort import config, core
+
+if sys.version_info < (3, 14):
+    from typing import Callable  # noqa: UP035  # pragma: no cover  # nomut
+else:
+    from collections.abc import Callable
 
 md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
@@ -78,7 +84,7 @@ class TestCreateBucketIdForNode:
         assert core.create_bucket_id_from_node(node) == bucket_id
 
     def test_create_bucket_id_for_package(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_bucket_id_for_package(session) == "session"
         assert core.create_bucket_id_for_package(package) == "tests/core/"
@@ -90,7 +96,7 @@ class TestCreateBucketIdForNode:
         assert core.create_bucket_id_for_package(module) == ""
 
     def test_create_bucket_id_for_module(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_bucket_id_for_module(session) == "session"
         assert core.create_bucket_id_for_module(package) == "tests/core/"
@@ -102,7 +108,7 @@ class TestCreateBucketIdForNode:
         assert core.create_bucket_id_for_module(cls) == ""
 
     def test_create_bucket_id_for_class(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_bucket_id_for_class(session) == "session"
         assert core.create_bucket_id_for_class(package) == "tests/core/"
@@ -116,7 +122,7 @@ class TestCreateBucketIdForNode:
 
 class TestCreateBucketId:
     def test_create_bucket_id(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_bucket_id["session"](func) == ""
         assert core.create_bucket_id["package"](func) == "tests/core/"
@@ -127,7 +133,7 @@ class TestCreateBucketId:
         assert core.create_bucket_id["grandparent"](func) == "tests/core/test_core.py"
 
     def test_create_item_key(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_item_key["ordered"](func, 5, 20) == 6
         assert core.create_item_key["reverse"](func, 5, 20) == 15
@@ -138,21 +144,21 @@ class TestCreateBucketId:
         assert 0 <= core.create_item_key["random"](func, 5, 20) < 1
 
     def test_create_item_key_fastest(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_item_key["fastest"](func, 5, 20) == 0
         core.SortConfig.item_totals = {func.nodeid: 123}
         assert core.create_item_key["fastest"](func, 5, 20) == 123
 
     def test_create_item_key_diffcov(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_item_key["diffcov"](func, 5, 20) == 0
         core.SortConfig.diff_cov_scores = {func.nodeid: -123}
         assert core.create_item_key["diffcov"](func, 5, 20) == -123
 
     def test_create_item_key_mutcov(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.create_item_key["mutcov"](func, 5, 20) == 0
         core.SortConfig.mut_cov_scores = {func.nodeid: -123}
@@ -218,7 +224,9 @@ class TestValidateMarker:
         order_marker.args = []
         order_marker.kwargs = {}
 
-        with pytest.raises(TypeError, match="^Incorrect arguments on marker 'order'. Target:testnodeid$") as type_error:
+        with pytest.raises(
+            TypeError, match=r"^Incorrect arguments on marker 'order'. Target:testnodeid$"
+        ) as type_error:
             core.validate_order_marker(order_marker, "testnodeid")
 
         assert isinstance(type_error.value.__cause__, TypeError)
@@ -244,7 +252,7 @@ class TestValidateMarker:
         sort_marker.args = []
         sort_marker.kwargs = {}
 
-        with pytest.raises(TypeError, match="^Incorrect arguments on marker 'sort'. Target:testnodeid$") as type_error:
+        with pytest.raises(TypeError, match=r"^Incorrect arguments on marker 'sort'. Target:testnodeid$") as type_error:
             core.validate_sort_marker(sort_marker, "testnodeid")
 
         assert isinstance(type_error.value.__cause__, TypeError)
@@ -255,7 +263,7 @@ class TestValidateMarker:
         sort_marker.kwargs = {}
 
         with pytest.raises(
-            ValueError, match="^Invalid Value for 'mode' on 'sort' marker. Value:invalid Target:testnodeid$"
+            ValueError, match=r"^Invalid Value for 'mode' on 'sort' marker. Value:invalid Target:testnodeid$"
         ) as type_error:
             core.validate_sort_marker(sort_marker, "testnodeid")
 
@@ -264,7 +272,7 @@ class TestValidateMarker:
 
 class TestMarkerSettings:
     def test_get_marker_settings_order_function(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         order_1 = mock.MagicMock()
         order_1.args = [1]
@@ -282,7 +290,7 @@ class TestMarkerSettings:
         )
 
     def test_get_marker_settings_order_cls(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         order_1 = mock.MagicMock()
         order_1.args = [1]
@@ -305,7 +313,7 @@ class TestMarkerSettings:
         )
 
     def test_get_marker_settings_order_mod(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         order_1 = mock.MagicMock()
         order_1.args = [1]
@@ -328,7 +336,7 @@ class TestMarkerSettings:
         )
 
     def test_get_marker_settings_sort_self(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         order_1 = mock.MagicMock()
         order_1.args = [1]
@@ -356,7 +364,7 @@ class TestMarkerSettings:
         )
 
     def test_get_marker_settings_sort_bucket(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         order_1 = mock.MagicMock()
         order_1.args = [1]
@@ -377,12 +385,12 @@ class TestMarkerSettings:
         assert core.get_marker_settings(func) == ("random", "parent", None, None, 1)
 
     def test_get_marker_settings_no_markers(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         assert core.get_marker_settings(func) == (None, None, None, None, None)
 
     def test_get_marker_settings_error(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         sort_random = mock.MagicMock()
         sort_random.args = ["random", "hello"]
@@ -410,7 +418,7 @@ class TestCreateSortKey:
     def test_marker_bucketid_sortkey(self, get_marker_settings, mock_objects):
         get_marker_settings.return_value = (None, None, "test/core", None, 1234)
         config.SortConfig.bucket_mode = "ordered"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.create_sort_keys(func, 6, 60)
 
@@ -424,7 +432,7 @@ class TestCreateSortKey:
         get_marker_settings.return_value = ("reverse", "class", None, None, None)
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket_mode = "ordered"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.create_sort_keys(func, 6, 60)
 
@@ -439,7 +447,7 @@ class TestCreateSortKey:
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket_mode = "ordered"
         config.SortConfig.bucket = "module"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.create_sort_keys(func, 6, 60)
 
@@ -454,7 +462,7 @@ class TestCreateSortKey:
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "reverse"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.create_sort_keys(func, 6, 60)
 
@@ -467,7 +475,7 @@ class TestCreateSortKey:
         config.SortConfig.mode = "reverse"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "ordered"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.create_sort_keys(func, 6, 60)
 
@@ -480,7 +488,7 @@ class TestCreateSortKey:
         config.SortConfig.mode = "fastest"
         config.SortConfig.bucket = "class"
         config.SortConfig.bucket_mode = "fastest"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         config.SortConfig.item_totals = {
             func.nodeid: 1.1,
@@ -498,7 +506,7 @@ class TestCreateSortKey:
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "ordered"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.create_sort_keys(func, 0, 60)
         core.create_sort_keys(func, 1, 60)
@@ -512,7 +520,7 @@ class TestCreateSortKey:
         config.SortConfig.mode = "ordered"
         config.SortConfig.bucket = "module"
         config.SortConfig.bucket_mode = "md5"
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         md5.return_value.digest.side_effect = [b"DEF", b"ABC", b"GHI"]
 
@@ -523,7 +531,7 @@ class TestCreateSortKey:
         assert config.SortConfig.bucket_sort_keys == {module.nodeid: b"ABC"}
 
     def test_get_item_sort_key(self, mock_objects):
-        (session, package, module, cls, func) = mock_objects
+        session, package, module, cls, func = mock_objects
 
         core.SortConfig.item_sort_keys = {func.nodeid: 1.1}
         core.SortConfig.item_bucket_id = {func.nodeid: cls.nodeid}

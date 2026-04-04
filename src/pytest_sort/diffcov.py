@@ -76,7 +76,7 @@ def get_line_coverage() -> Generator[tuple[Path, str, str, int], Any, None]:
             for test in tests:
                 match = PARSE_TEST_CONTEXT.search(test)
                 if match:
-                    (nodeid, when) = match.group("nodeid", "when")
+                    nodeid, when = match.group("nodeid", "when")
                     yield rpath, nodeid, when, line
 
 

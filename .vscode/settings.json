@@ -50,5 +50,10 @@
         "staticmethod",
         "titlesonly",
         "toctree"
-    ]
+    ],
+    "black-formatter.path": [
+        "black"
+    ],
+    "black-formatter.importStrategy": "fromEnvironment",
+    "isort.importStrategy": "fromEnvironment",
 }
