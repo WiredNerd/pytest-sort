@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import random
 from functools import partial
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING, Any
 
 import pytest
 from _pytest import nodes as pytest_nodes
@@ -14,11 +14,17 @@ from pytest_sort.config import SortConfig
 from pytest_sort.database import get_all_totals, get_stats
 from pytest_sort.diffcov import get_diff_test_scores, get_mut_test_scores
 
-md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
-
-
 if TYPE_CHECKING:
+    import sys
+
     from _pytest.terminal import TerminalReporter
+
+    if sys.version_info < (3, 14):  # nomut
+        from typing import Callable  # noqa: UP035  # pragma: no cover
+    else:
+        from collections.abc import Callable
+
+md5: Callable = partial(hashlib.md5, usedforsecurity=False)  # type: ignore[no-redef]
 
 
 def create_bucket_id_from_node(node: pytest_nodes.Node | None) -> str:
@@ -138,7 +144,7 @@ def validate_sort_marker(sort_marker: pytest.Mark, node_id: str) -> tuple:
         return (mode, bucket)
 
     try:
-        (mode, bucket_temp) = mark_sort_parse(*sort_marker.args, **sort_marker.kwargs)
+        mode, bucket_temp = mark_sort_parse(*sort_marker.args, **sort_marker.kwargs)
     except TypeError as e:
         msg = f"Incorrect arguments on marker 'sort'. Target:{node_id}"
         raise TypeError(msg) from e
@@ -166,7 +172,7 @@ def get_marker_settings(node: pytest_nodes.Node) -> tuple:
     node_id = node.nodeid
 
     if node.parent:
-        (mode, bucket, bucket_id, bucket_sort_key, item_sort_key) = get_marker_settings(node.parent)
+        mode, bucket, bucket_id, bucket_sort_key, item_sort_key = get_marker_settings(node.parent)
 
     for order in node.iter_markers("order"):
         sort_key = validate_order_marker(order, node_id)
@@ -177,7 +183,7 @@ def get_marker_settings(node: pytest_nodes.Node) -> tuple:
             bucket_id = create_bucket_id_from_node(node)
 
     for sort in node.iter_markers("sort"):
-        (mode, bucket_temp) = validate_sort_marker(sort, node_id)
+        mode, bucket_temp = validate_sort_marker(sort, node_id)
 
         if bucket_temp == "self":
             bucket_id = create_bucket_id_from_node(node)
@@ -197,7 +203,7 @@ def create_sort_keys(item: pytest.Item, idx: int, count: int) -> None:
 
     Store in SortConfig.item_sort_keys and SortConfig.bucket_sort_keys
     """
-    (mode, bucket, bucket_id, bucket_sort_key, item_sort_key) = get_marker_settings(item)
+    mode, bucket, bucket_id, bucket_sort_key, item_sort_key = get_marker_settings(item)
 
     SortConfig.item_sort_keys[item.nodeid] = item_sort_key or create_item_key[mode or SortConfig.mode](item, idx, count)
 

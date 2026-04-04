@@ -104,7 +104,7 @@ class TestSortConfig:
 
     def test_from_pytest_mode_invalid(self):
         pytest_config = self.PytestConfig({"sort_mode": "September"}, {})
-        with pytest.raises(ValueError, match="^Invalid Value for sort-mode='September'$"):
+        with pytest.raises(ValueError, match=r"^Invalid Value for sort-mode='September'$"):
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
@@ -128,7 +128,7 @@ class TestSortConfig:
 
     def test_from_pytest_bucket_invalid(self):
         pytest_config = self.PytestConfig({"sort_bucket": "September"}, {})
-        with pytest.raises(ValueError, match="^Invalid Value for sort-bucket='September'$"):
+        with pytest.raises(ValueError, match=r"^Invalid Value for sort-bucket='September'$"):
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
@@ -155,12 +155,12 @@ class TestSortConfig:
 
     def test_from_pytest_bucket_mode_invalid(self):
         pytest_config = self.PytestConfig({"sort_bucket_mode": "September"}, {})
-        with pytest.raises(ValueError, match="^Invalid Value for sort-bucket-mode='September'$"):
+        with pytest.raises(ValueError, match=r"^Invalid Value for sort-bucket-mode='September'$"):
             config.SortConfig.from_pytest(pytest_config)
 
     def test_from_pytest_sort_record_conflict(self):
         pytest_config = self.PytestConfig({"sort_no_record": True, "sort_record": True}, {})
-        with pytest.raises(ValueError, match="^Do not use both --sort-record-times and --sort-no-record-times$"):
+        with pytest.raises(ValueError, match=r"^Do not use both --sort-record-times and --sort-no-record-times$"):
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(
@@ -202,7 +202,7 @@ class TestSortConfig:
 
     def test_from_pytest_seed_invalid(self):
         pytest_config = self.PytestConfig({}, {"sort_seed": "ABC"})
-        with pytest.raises(ValueError, match="^Invalid seed value 'ABC' must be int$"):
+        with pytest.raises(ValueError, match=r"^Invalid seed value 'ABC' must be int$"):
             config.SortConfig.from_pytest(pytest_config)
 
     @pytest.mark.parametrize(

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-sort"
 description = "Tools for sorting test cases"
-version = "1.3.2"
+version = "1.3.3"
 license = { file = "LICENSE" }
 keywords = [
     "test",
@@ -24,14 +24,14 @@ maintainers = [
     { name = "WiredNerd", email = "pbuschmail-pytestsort@yahoo.com" },
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Framework :: Pytest",
 ]
-dependencies = ["pytest>=7.4.0", "whatthepatch>=1.0.5", "coverage>=7.3.1"]
+dependencies = ["pytest>=7.4.0", "whatthepatch>=1.0.5", "coverage>=7.3.1", "zipp>=3.19.1"]
 
 [project.urls]
 "Documentation" = "https://pytest-sort.readthedocs.io/"
@@ -64,7 +64,7 @@ command_line = "pytest -x --assert=plain -o pythonpath='{PYTHONPATH}' --sort-mod
 
 [tool.black]
 line-length = 120
-target-version = ['py39', 'py310', 'py311', 'py312', 'py313']
+target-version = ['py310', 'py311', 'py312', 'py313', 'py314']
 skip-string-normalization = true
 color = true
 
@@ -76,7 +76,7 @@ files = "src"
 mypy_path = "src"
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 output-format = "full"
 line-length = 120
 exclude = [
@@ -140,4 +140,5 @@ known-first-party = ["pytest_sort"]
     "PLR2004", # Magic value used in comparison
     "S101",    # Use of `assert` detected
     "SLF001",  # Private member accessed
+    "RUF059",  # Unpacked variable is never used
 ]
