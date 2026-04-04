@@ -10,8 +10,8 @@ from _pytest import nodes as pytest_nodes
 
 from pytest_sort import config, core
 
-if sys.version_info < (3, 14):
-    from typing import Callable  # noqa: UP035  # pragma: no cover  # nomut
+if sys.version_info < (3, 14):  # nomut
+    from typing import Callable  # noqa: UP035  # pragma: no cover
 else:
     from collections.abc import Callable
 

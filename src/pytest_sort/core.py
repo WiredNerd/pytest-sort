@@ -19,8 +19,8 @@ if TYPE_CHECKING:
 
     from _pytest.terminal import TerminalReporter
 
-    if sys.version_info < (3, 14):
-        from typing import Callable  # noqa: UP035  # pragma: no cover  # nomut
+    if sys.version_info < (3, 14):  # nomut
+        from typing import Callable  # noqa: UP035  # pragma: no cover
     else:
         from collections.abc import Callable
 
