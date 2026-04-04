@@ -19,10 +19,10 @@ jobs:
     name: Unit Test with Pytest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.14'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
@@ -32,13 +32,13 @@ jobs:
       - run: pytest --cov=src --cov-report=json:code-coverage.json
       - name: artifact-html-report
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Coverage Report HTML
           path: cov-html
       - name: artifact-json-report
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Coverage Report JSON
           path: code-coverage.json
@@ -46,10 +46,10 @@ jobs:
     name: Import Checks with ISort
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.14'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
@@ -62,10 +62,10 @@ jobs:
     name: Code Format with Black
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.14'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
@@ -88,17 +88,15 @@ jobs:
     name: Type Checks with Mypy
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: '3.14'
       - name: Install Dependencies and Tools
         run: |
           python3 -m pip install --upgrade pip
           pip install -r req/requirements.txt --upgrade
           pip install -r req/mypy.txt --upgrade
-      - run: mypy --python-version 3.9
-        if: ${{ always() }}
       - run: mypy --python-version 3.10
         if: ${{ always() }}
       - run: mypy --python-version 3.11
@@ -107,16 +105,18 @@ jobs:
         if: ${{ always() }}
       - run: mypy --python-version 3.13
         if: ${{ always() }}
+      - run: mypy --python-version 3.14
+        if: ${{ always() }}
   ruff:
     name: Linter Checks with Ruff
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Ruff src
         uses: chartboost/ruff-action@v1
         with:
           src: src
-          args: check --show-files
+          args: check --output-format=full
       - name: Ruff src diff
         uses: chartboost/ruff-action@v1
         if: ${{ always() }}
@@ -128,7 +128,7 @@ jobs:
         if: ${{ always() }}
         with:
           src: test
-          args: check --show-files
+          args: check --output-format=full
       - name: Ruff test diff
         uses: chartboost/ruff-action@v1
         if: ${{ always() }}
