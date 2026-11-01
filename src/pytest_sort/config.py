@@ -1,3 +1,5 @@
+# Copyright (c) 2023 WiredNerd
+# SPDX-License-Identifier: MIT
 """Container for configuration of pytest_sort."""
 
 from __future__ import annotations

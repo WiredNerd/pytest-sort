@@ -1,3 +1,5 @@
+# Copyright (c) 2023 WiredNerd
+# SPDX-License-Identifier: MIT
 """Logic for prioritizing tests by coverage of changes."""
 
 from __future__ import annotations

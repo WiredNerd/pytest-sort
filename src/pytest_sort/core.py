@@ -1,3 +1,5 @@
+# Copyright (c) 2023 WiredNerd
+# SPDX-License-Identifier: MIT
 """Core logic for pytest_sort plugin."""
 
 from __future__ import annotations

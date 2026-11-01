@@ -1,3 +1,5 @@
+# Copyright (c) 2023 WiredNerd
+# SPDX-License-Identifier: MIT
 import importlib
 from pathlib import Path
 from unittest import mock
